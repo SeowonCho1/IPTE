@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>경영컨설팅 기술사 키워드·사례 중심 정리</title>
+<style>
+:root {
+  --bg:#f5f7fb; --paper:#ffffff; --ink:#111827; --muted:#667085; --line:#e5e7eb;
+  --nav:#111827; --nav2:#1f2937; --accent:#2563eb; --accent2:#dbeafe; --green:#059669;
+  --amber:#f59e0b; --red:#ef4444;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",Roboto,sans-serif; line-height:1.65; }
+a { color:inherit; text-decoration:none; }
+.sidebar { position:fixed; inset:0 auto 0 0; width:300px; background:var(--nav); color:#e5e7eb; padding:24px 18px; overflow:auto; }
+.sidebar h1 { font-size:22px; line-height:1.25; margin:0 0 6px; color:#fff; }
+.sidebar .sub { color:#cbd5e1; font-size:13px; margin:0 0 22px; }
+.back-home { display:inline-block; margin-bottom:16px; padding:8px 12px; border-radius:10px; background:#374151; color:#e5e7eb; font-size:13px; font-weight:700; }
+.back-home:hover { background:#4b5563; }
+.back-home-main { display:none; margin-bottom:14px; background:#fff; color:#1d4ed8; border:1px solid var(--line); padding:10px 14px; border-radius:12px; font-weight:700; }
+.sidebar nav a { display:block; padding:10px 12px; margin:4px 0; border-radius:10px; font-size:14px; color:#e5e7eb; }
+.sidebar nav a:hover, .sidebar nav a.active { background:#374151; color:#fff; }
+.main { margin-left:300px; padding:32px 42px 80px; }
+.hero { background:linear-gradient(135deg,#1e3a8a,#0f172a); color:#fff; border-radius:22px; padding:34px; box-shadow:0 12px 30px rgba(15,23,42,.2); margin-bottom:28px; }
+.hero h1 { margin:0 0 10px; font-size:32px; }
+.hero p { margin:4px 0; color:#dbeafe; }
+.mobile-toc { display:none; margin:0 0 20px; }
+.mobile-toc summary { cursor:pointer; background:var(--paper); border:1px solid var(--line); padding:12px 14px; border-radius:12px; font-weight:700; }
+.mobile-toc .toc-links { background:var(--paper); border:1px solid var(--line); border-top:0; border-radius:0 0 12px 12px; padding:8px; }
+.mobile-toc a { display:block; padding:10px; border-bottom:1px solid #f1f5f9; }
+.section { margin:28px 0; }
+.section > h2 { font-size:28px; margin:0 0 18px; padding-bottom:12px; border-bottom:4px solid var(--line); }
+.topic-card { background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:22px; margin:20px 0 24px; box-shadow:0 4px 18px rgba(15,23,42,.05); }
+.topic-head { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; margin-bottom:10px; }
+.topic-head h3 { margin:0; font-size:22px; }
+.pages { margin:4px 0 0; color:var(--muted); font-size:13px; }
+.mnemonic { display:inline-block; white-space:nowrap; background:#fff7ed; color:#9a3412; border:1px solid #fed7aa; padding:6px 10px; border-radius:999px; font-weight:700; font-size:13px; }
+.chips { display:flex; flex-wrap:wrap; gap:6px; margin:12px 0 14px; }
+.chips span { background:#eef2ff; color:#3730a3; border:1px solid #c7d2fe; padding:4px 9px; border-radius:999px; font-size:13px; font-weight:650; }
+.diagram { background:#0f172a; color:#e0f2fe; border-radius:14px; padding:14px 16px; margin:14px 0; overflow:auto; }
+.diagram pre { margin:0; font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace; font-size:14px; line-height:1.6; }
+.table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:12px; margin:14px 0; }
+table { border-collapse:collapse; width:100%; min-width:720px; background:#fff; }
+th,td { border-bottom:1px solid var(--line); border-right:1px solid var(--line); padding:12px 12px; vertical-align:top; word-break:keep-all; overflow-wrap:break-word; }
+th:last-child,td:last-child { border-right:0; }
+tr:last-child td { border-bottom:0; }
+th { background:#f3f4f6; text-align:left; font-weight:800; color:#111827; }
+td:first-child { font-weight:800; width:18%; color:#1f2937; background:#fafafa; }
+.case-box, .answer-box { border-radius:12px; padding:14px 16px; margin:12px 0 0; }
+.case-box { background:#ecfdf5; border-left:5px solid var(--green); }
+.answer-box { background:#eff6ff; border-left:5px solid var(--accent); }
+.case-box strong, .answer-box strong { display:block; margin-bottom:4px; }
+.case-box p, .answer-box p { margin:0; }
+.case-bank { background:#fff; border:1px solid var(--line); border-radius:18px; padding:20px; margin-bottom:22px; }
+.case-bank h3 { margin:0 0 14px; }
+.case-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.case-mini { border:1px solid var(--line); border-radius:12px; padding:12px; background:#fafafa; }
+.case-mini b { display:block; font-size:15px; }
+.case-mini span { display:inline-block; color:#1d4ed8; font-weight:800; font-size:12px; margin:4px 0; }
+.case-mini p { margin:0; color:#344054; font-size:13px; }
+.flash-section { background:#fff; border:1px solid var(--line); border-radius:18px; padding:22px; margin-top:28px; }
+.controls { display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 16px; }
+.controls input, .controls select { padding:10px 12px; border:1px solid var(--line); border-radius:10px; font:inherit; }
+.controls button { padding:10px 12px; border:0; border-radius:10px; background:var(--accent); color:#fff; font-weight:800; cursor:pointer; }
+.cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+.flash-card { min-height:185px; perspective:1000px; position:relative; cursor:pointer; }
+.card-front, .card-back { position:absolute; inset:0; border-radius:16px; padding:16px; backface-visibility:hidden; transition:transform .35s; border:1px solid var(--line); box-shadow:0 3px 12px rgba(15,23,42,.06); }
+.card-front { background:#f8fafc; }
+.card-front span { display:inline-block; background:#111827; color:#fff; border-radius:999px; padding:3px 8px; font-size:12px; margin-bottom:10px; }
+.card-front p { font-size:16px; font-weight:800; margin:0; }
+.card-back { background:#fff7ed; transform:rotateY(180deg); overflow:auto; }
+.card-back pre { white-space:pre-wrap; margin:0; font-family:inherit; font-size:13px; }
+.flash-card.flipped .card-front { transform:rotateY(180deg); }
+.flash-card.flipped .card-back { transform:rotateY(360deg); }
+.top-btn { position:fixed; right:22px; bottom:22px; background:#111827; color:#fff; border:0; border-radius:999px; padding:12px 14px; cursor:pointer; box-shadow:0 8px 18px rgba(0,0,0,.18); }
+.note { color:var(--muted); font-size:13px; margin-top:10px; }
+@media (max-width: 1100px) { .case-grid,.cards { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width: 860px) {
+  .sidebar { display:none; }
+  .main { margin-left:0; padding:18px 14px 70px; }
+  .mobile-toc { display:block; }
+  .back-home-main { display:inline-block; }
+  .hero { padding:22px; border-radius:18px; }
+  .hero h1 { font-size:25px; }
+  .section > h2 { font-size:23px; }
+  .topic-head { display:block; }
+  .mnemonic { margin-top:8px; white-space:normal; }
+  .case-grid,.cards { grid-template-columns:1fr; }
+  table { min-width:680px; }
+}
+@media print { .sidebar,.mobile-toc,.controls,.top-btn,.back-home,.back-home-main { display:none; } .main { margin-left:0; padding:0; } .topic-card,.flash-section,.case-bank { break-inside:avoid; box-shadow:none; } }
+</style>
+<link rel="stylesheet" href="../assets/diagrams.css"/>
+</head>
+<body>
+<aside class="sidebar">
+  <a class="back-home" href="../index.html">← 목차로</a>
+  <h1>경영컨설팅<br>기술사 정리</h1>
+  <p class="sub">키워드 + 사례 + 답안 확장</p>
+  <nav><a href="#study">0. 사례 중심 공부 방식</a><a href="#strategy">1. 경영전략·환경분석</a><a href="#investment">2. 투자분석·포트폴리오·경쟁전략</a><a href="#innovation">3. 컨설팅 사고·혁신 방법론</a><a href="#process">4. 프로세스 혁신·정보화 전략·거버넌스</a><a href="#system">5. 성과관리·아키텍처·통합 시스템</a><a href="#service">6. 서비스관리·아웃소싱·연속성</a><a href="#customer">7. 고객·공급망·제조관리</a><a href="#digital">8. 준법·디지털·성장·ESG</a><a href="#flashcards">9. 암기카드</a></nav>
+</aside>
+<main class="main">
+  <a class="back-home back-home-main" href="../index.html">← 목차로</a>
+  <details class="mobile-toc"><summary>목차 열기</summary><div class="toc-links"><a href="#study">0. 사례 중심 공부 방식</a><a href="#strategy">1. 경영전략·환경분석</a><a href="#investment">2. 투자분석·포트폴리오·경쟁전략</a><a href="#innovation">3. 컨설팅 사고·혁신 방법론</a><a href="#process">4. 프로세스 혁신·정보화 전략·거버넌스</a><a href="#system">5. 성과관리·아키텍처·통합 시스템</a><a href="#service">6. 서비스관리·아웃소싱·연속성</a><a href="#customer">7. 고객·공급망·제조관리</a><a href="#digital">8. 준법·디지털·성장·ESG</a><a href="#flashcards">9. 암기카드</a></div></details>
+  <div class="hero">
+    <h1>경영컨설팅 기술사 키워드·사례 중심 정리</h1>
+    <p>교재 전체 흐름을 답안에 바로 붙일 수 있도록 “개념 키워드 → 사례 → 시사점” 구조로 정리</p>
+    <p class="note">PC: 왼쪽 고정 목차 / 모바일: 상단 접기형 목차 / 표: 가로 스크롤 지원</p>
+  </div>
+  <section id="study" class="section"><h2>0. 사례 중심 공부 방식</h2><div class="case-bank"><h3>사례은행 먼저 보기</h3><div class="case-grid"><div class="case-mini"><b>하이트맥주</b><span>ERRC</span><p>조선맥주·크라운맥주 이미지 제거, 주류 이미지 감소, 청량감 증대, 하이트 브랜드 창조</p></div><div class="case-mini"><b>LG전자</b><span>BCG Matrix</span><p>HA·AC는 Cash Cow, MC·HE는 Question Mark로 사업 포트폴리오 평가</p></div><div class="case-mini"><b>산후조리원 ICT</b><span>STEEP</span><p>사회활동 증가, ICT 컨버전스, 비용, 위생·감염, 정책요인을 거시환경으로 분석</p></div><div class="case-mini"><b>Oral-B</b><span>Design Thinking</span><p>어린이의 약한 악력을 관찰해 잡기 쉬운 칫솔로 개선</p></div><div class="case-mini"><b>BoA</b><span>Design Thinking</span><p>결제 후 남은 금액을 자동 저축하는 상품 출시</p></div><div class="case-mini"><b>현대카드</b><span>Design Thinking</span><p>카드청구서에서 총사용금액을 큰 글씨로 상단 배치</p></div><div class="case-mini"><b>자동차 가변 실린더</b><span>TRIZ</span><p>출력과 연비의 기술적 모순을 필요한 기통만 운영하는 방식으로 해결</p></div><div class="case-mini"><b>자전거 체인</b><span>TRIZ</span><p>강하면서 유연해야 하는 물리적 모순을 쇠사슬 구조로 해결</p></div><div class="case-mini"><b>오바마 캠프</b><span>A/B Test</span><p>20개월 500회 테스트, 기부 전환율 49%, 가입 전환율 161% 상승</p></div><div class="case-mini"><b>호텔 캘리포니아</b><span>Funnel 개선</span><p>예약 버튼을 메인화면에 배치해 예약 전환율 32.12% 증가</p></div><div class="case-mini"><b>HP 독일 지사</b><span>Green SCM</span><p>회수·재가공 센터로 제품 재처리·재판매</p></div><div class="case-mini"><b>노키아</b><span>고객지향 SCM</span><p>온·오프라인 고객접점 정보를 제품개발에 반영</p></div><div class="case-mini"><b>맥도날드</b><span>고객지향 SCM</span><p>고객 취향 변화에 맞춘 맥카페 출시</p></div><div class="case-mini"><b>코닥</b><span>Digital Transformation</span><p>디지털 카메라 개발 후 핵심사업 전환 실패</p></div><div class="case-mini"><b>SK그룹</b><span>RE100</span><p>SK 계열사 8곳의 RE100 가입 신청 사례</p></div></div></div><article id="study-0" class="topic-card"><div class="topic-head"><div><h3>답안 확장 공식</h3><p class="pages">교재 범위: 전체</p></div><span class="mnemonic">암기: 키-사-시</span></div><div class="chips"><span>키워드</span><span>사례</span><span>시사점</span><span>전략대안</span></div><div class="diagram"><pre>[개념 키워드]
+   ↓
+[분석 관점/프레임워크]
+   ↓
+[기업/서비스 사례]
+   ↓
+[전략적 시사점]</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>키워드</td><td>프레임워크의 구성요소, 절차, 평가관점</td><td>PEST는 정치·경제·사회·기술, BSC는 재무·고객·내부프로세스·학습성장</td></tr><tr><td>사례</td><td>기업명 + 문제상황 + 적용방식</td><td>하이트맥주 ERRC, LG전자 BCG, 오바마 A/B테스트</td></tr><tr><td>시사점</td><td>사례에서 뽑는 효과·한계·전략방향</td><td>경쟁우위 확보, 고객가치 증대, 리스크 감소, 실행력 확보</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>이 과목은 개념만 쓰면 답안이 건조해지므로, “프레임워크 → 기업 사례 → 시사점” 순서로 한 줄씩 붙이는 방식이 유리합니다.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>경영·컨설팅 답안은 분석 프레임워크의 구성요소를 제시한 후, 기업 사례를 통해 적용 가능성을 설명하고, 전략적 시사점과 고려사항을 도출하는 방식으로 구성.</p></div></article></section><section id="strategy" class="section"><h2>1. 경영전략·환경분석</h2><article id="strategy-0" class="topic-card"><div class="topic-head"><div><h3>경영전략 / IT 경영전략</h3><p class="pages">교재 범위: p.2~8</p></div><span class="mnemonic">암기: 목-이-평-전</span></div><div class="chips"><span>전략</span><span>전술</span><span>기업전략</span><span>사업전략</span><span>기능전략</span><span>IT-경영 연계</span></div><div class="diagram"><pre>[경영목표] → [외부환경 이해] → [경쟁자/자사 평가] → [전략 수립]
+                         ↓
+                 [IT전략: 프로세스·시스템으로 구체화]</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>전략</td><td>전쟁에서 승리하기 위한 자원배분 방향</td><td>기업전략-참여 사업 결정, 사업전략-경쟁 방식 결정, 기능전략-R&amp;D/생산/마케팅 실행</td></tr><tr><td>전술</td><td>특정 기능·시장 내 세부 실행방식</td><td>전략은 방향성, 전술은 실행수단으로 비교</td></tr><tr><td>IT전략 연계</td><td>PMS, PDM, CRM, MES 등으로 경영전략 구현</td><td>IT는 경영전략을 내재화하고 프로세스를 구체화하는 촉진요인</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>PMS는 R&amp;D 프로젝트 관리, PDM은 제품 설계, CRM은 마케팅/영업, MES는 생산/제조 전략을 시스템으로 구현하는 사례로 연결 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>IT 경영전략은 기업의 경영목표와 경쟁전략을 정보시스템, 프로세스, 데이터, IT인프라로 구체화하여 실행력과 경쟁우위를 확보하는 전략 체계.</p></div></article><article id="strategy-1" class="topic-card"><div class="topic-head"><div><h3>거시환경분석 PEST / STEEP / PESTEL</h3><p class="pages">교재 범위: p.11~14</p></div><span class="mnemonic">암기: 정-경-사-기 + 환-법</span></div><div class="chips"><span>PEST</span><span>STEEP</span><span>PESTEL</span><span>정치</span><span>경제</span><span>사회</span><span>기술</span><span>환경</span><span>법률</span></div><div class="diagram"><pre>[통제 불가능 외부요인]
+   ↓ PEST/STEEP/PESTEL
+[기회·위협 도출]
+   ↓
+[SWOT·전략수립·CSF 도출]</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>PEST</td><td>정치·경제·사회·기술 관점 분석</td><td>규제, GDP/환율, 인구·라이프스타일, 기술확산 분석</td></tr><tr><td>STEEP</td><td>사회·기술·경제·환경·정치 관점</td><td>산후조리원 대체 헬스케어 ICT 서비스 사례</td></tr><tr><td>PESTEL</td><td>PEST에 환경·법률 요인 추가</td><td>환경규제, 노동법, 소비자보호법 등 장기 전략 리스크 분석</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>산후조리원 대체 헬스케어 ICT 서비스: 여성 사회활동 증가, ICT 컨버전스, 산후조리 비용, 위생·감염 문제, 정부 출산정책을 STEEP 관점으로 분석.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>PESTEL은 기업이 통제하기 어려운 정치·경제·사회·기술·환경·법률 요인을 분석하여 외부 기회와 위협을 도출하고 중장기 전략 방향을 설정하는 거시환경 분석기법.</p></div></article><article id="strategy-2" class="topic-card"><div class="topic-head"><div><h3>마이클 포터 5 Force</h3><p class="pages">교재 범위: p.15</p></div><span class="mnemonic">암기: 기-잠-대-구-공</span></div><div class="chips"><span>기존경쟁사</span><span>잠재적 경쟁자</span><span>대체재</span><span>구매자</span><span>공급자</span></div>
+<figure class="svg-diagram" aria-label="포터 5 Forces">
+<svg viewBox="0 0 420 380" xmlns="http://www.w3.org/2000/svg" role="img">
+<rect class="box-dark" x="150" y="150" width="120" height="60" rx="10"/><text class="label-light" x="210" y="185" text-anchor="middle">기존</text><text class="label-light" x="210" y="198" text-anchor="middle">경쟁사</text>
+<rect class="box-warn" x="160" y="20" width="100" height="44" rx="8"/><text class="label-sm" x="210" y="47" text-anchor="middle">신규 진입자</text>
+<rect class="box" x="160" y="300" width="100" height="44" rx="8"/><text class="label-sm" x="210" y="327" text-anchor="middle">대체재</text>
+<rect class="box-alt" x="20" y="158" width="100" height="44" rx="8"/><text class="label-sm" x="70" y="185" text-anchor="middle">구매자</text>
+<rect class="box-test" x="300" y="158" width="100" height="44" rx="8"/><text class="label-sm" x="350" y="185" text-anchor="middle">공급자</text>
+<line class="arrow" x1="210" y1="64" x2="210" y2="150"/>
+<line class="arrow" x1="210" y1="210" x2="210" y2="300"/>
+<line class="arrow" x1="120" y1="180" x2="150" y2="180"/>
+<line class="arrow" x1="300" y1="180" x2="270" y2="180"/>
+<text class="label-sm" x="210" y="370" text-anchor="middle">암기: 기-잠-대-구-공 — 산업 수익성·경쟁강도 분석</text>
+</svg>
+<figcaption>마이클 포터 5 Forces</figcaption>
+</figure>
+<div class="diagram"><pre>          [잠재적 경쟁자]
+                 ↓
+[공급자] → [기존 경쟁사] ← [구매자]
+                 ↑
+             [대체재]</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>기존 경쟁사</td><td>고정비, 성장률, 과잉설비, 철수장벽</td><td>차별화전략·원가절감으로 대응</td></tr><tr><td>잠재적 경쟁자</td><td>신규 진입 가능성, 진입장벽</td><td>규모의 경제, 특허, 브랜드, 네트워크 효과로 진입장벽 구축</td></tr><tr><td>대체재/구매자/공급자</td><td>전환비용, 가격민감도, 원재료 차별화</td><td>CRM, 충성도 강화, 공급선 다변화로 대응</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>외식·플랫폼·구독서비스에서 대체재가 많고 구매자 전환비용이 낮으면 가격경쟁 심화. 이때 차별화, 락인, 공급선 다변화 전략 연결 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>5 Force는 산업 내 경쟁강도와 수익성에 영향을 주는 다섯 경쟁요인을 분석하여 시장 매력도와 경쟁전략 방향을 도출하는 외부환경 분석기법.</p></div></article><article id="strategy-3" class="topic-card"><figure class="svg-diagram" aria-label="Value Chain">
+<svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg" role="img">
+<rect fill="#f1f5f9" stroke="#94a3b8" x="10" y="10" width="540" height="36" rx="6"/><text class="label-sm" x="280" y="33" text-anchor="middle">지원활동: 인프라 · HR · 기술개발 · 구매조달</text>
+<rect class="box" x="10" y="60" width="95" height="50" rx="6"/><text class="label-sm" x="57" y="90" text-anchor="middle">투입물류</text>
+<rect class="box" x="115" y="60" width="95" height="50" rx="6"/><text class="label-sm" x="162" y="90" text-anchor="middle">운영</text>
+<rect class="box" x="220" y="60" width="95" height="50" rx="6"/><text class="label-sm" x="267" y="90" text-anchor="middle">출력물류</text>
+<rect class="box" x="325" y="60" width="95" height="50" rx="6"/><text class="label-sm" x="372" y="90" text-anchor="middle">마케팅</text>
+<rect class="box-alt" x="430" y="60" width="95" height="50" rx="6"/><text class="label-sm" x="477" y="90" text-anchor="middle">서비스</text>
+<line class="arrow-blue" x1="105" y1="85" x2="115" y2="85"/><line class="arrow-blue" x1="210" y1="85" x2="220" y2="85"/>
+<line class="arrow-blue" x1="315" y1="85" x2="325" y2="85"/><line class="arrow-blue" x1="420" y1="85" x2="430" y2="85"/>
+<text class="label-sm" x="280" y="145" text-anchor="middle">주활동: 투-운-산-마-서</text>
+<text class="label-sm" x="280" y="195" text-anchor="middle">마진·경쟁우위 = 활동별 비용·가치 분석</text>
+</svg>
+<figcaption>포터 Value Chain — 주활동 + 지원활동</figcaption>
+</figure><div class="topic-head"><div><h3>Value Chain</h3><p class="pages">교재 범위: p.16~18</p></div><span class="mnemonic">암기: 투-운-산-마-서 / 조-기-인-구</span></div><div class="chips"><span>주활동</span><span>지원활동</span><span>원가우위</span><span>차별화</span><span>프로세스 연계</span></div><div class="diagram"><pre>[지원활동] 기업인프라 / 인적자원 / 기술개발 / 구매조달
+------------------------------------------------
+[주활동] 투입물류 → 운영/생산 → 산출물류 → 마케팅·영업 → 서비스
+                                      ↓
+                               [마진·경쟁우위]</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>주 활동</td><td>물류투입, 운영/생산, 물류산출, 마케팅/영업, 서비스</td><td>고객에게 직접 가치를 전달하는 현장 프로세스</td></tr><tr><td>지원 활동</td><td>인프라, HR, 기술개발, 구매조달</td><td>주 활동의 효율성과 차별화 지원</td></tr><tr><td>분석 포인트</td><td>활동 세분화 → 중요도 → 비용결정요인 → 연관성</td><td>원가우위와 차별화 원천 도출</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>외식업계 사례: 식재료 조달, 조리·운영, 매장 서비스, 브랜드 마케팅, 고객서비스를 연결해 원가절감과 프랜차이즈 차별화 요인을 분석.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>Value Chain은 기업의 활동을 주 활동과 지원활동으로 구분하고 각 활동의 비용·가치창출 요인을 분석하여 원가우위와 차별화 원천을 도출하는 내부역량 분석기법.</p></div></article><article id="strategy-4" class="topic-card"><div class="topic-head"><div><h3>McKinsey 7S</h3><p class="pages">교재 범위: p.19~20</p></div><span class="mnemonic">암기: 전-시-조-공 / 직-핵-문</span></div><div class="chips"><span>Strategy</span><span>System</span><span>Structure</span><span>Shared Value</span><span>Staff</span><span>Skill</span><span>Style</span></div><div class="diagram"><pre>          [Shared Value]
+       ↙      ↓       ↘
+[Strategy] [Structure] [System]
+       ↘      ↓       ↙
+   [Staff] [Skill] [Style]</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>Hard 3S</td><td>전략, 시스템, 조직구조</td><td>비용·시간 투자로 상대적으로 변화 용이</td></tr><tr><td>Soft 4S</td><td>공유가치, 직원, 핵심역량, 조직문화</td><td>장기 관점의 변화관리 필요</td></tr><tr><td>활용</td><td>조직 내부 진단, 혁신과제 도출</td><td>조직개발·조직변혁 모델로 답안 연결</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>품질 중심 기업문화, 고객서비스 우선 문화, 기술 리더십 조직처럼 조직의 정체성을 설명할 때 Shared Value와 Style 사례로 연결 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>7S 모델은 조직의 전략 실행력을 좌우하는 7가지 내부 경영요소의 정합성을 진단하여 조직의 강점·약점과 혁신과제를 도출하는 내부역량 분석모델.</p></div></article><article id="strategy-5" class="topic-card"><figure class="svg-diagram" aria-label="SWOT">
+<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" role="img">
+<rect class="box-alt" x="20" y="20" width="150" height="110" rx="8"/><text class="label" x="95" y="55" text-anchor="middle">Strengths</text><text class="label-sm" x="95" y="75" text-anchor="middle">강점 (내부)</text><text class="label-sm" x="95" y="105" text-anchor="middle">→ SO 공격</text>
+<rect class="box-warn" x="190" y="20" width="150" height="110" rx="8"/><text class="label" x="265" y="55" text-anchor="middle">Weaknesses</text><text class="label-sm" x="265" y="75" text-anchor="middle">약점 (내부)</text><text class="label-sm" x="265" y="105" text-anchor="middle">→ WO 전환</text>
+<rect class="box" x="20" y="150" width="150" height="110" rx="8"/><text class="label" x="95" y="185" text-anchor="middle">Opportunities</text><text class="label-sm" x="95" y="205" text-anchor="middle">기회 (외부)</text>
+<rect class="box-test" x="190" y="150" width="150" height="110" rx="8"/><text class="label" x="265" y="185" text-anchor="middle">Threats</text><text class="label-sm" x="265" y="205" text-anchor="middle">위협 (외부)</text><text class="label-sm" x="265" y="235" text-anchor="middle">→ WT 방어</text>
+<text class="label-sm" x="180" y="285" text-anchor="middle">ST: 다양화 · WO: 방향전환 · WT: 방어·철수</text>
+</svg>
+<figcaption>SWOT 2×2 매트릭스</figcaption>
+</figure><div class="topic-head"><div><h3>SWOT / 3C / STP</h3><p class="pages">교재 범위: p.22~31</p></div><span class="mnemonic">암기: 강약기위 / 자경고 / 세목위</span></div><div class="chips"><span>SO</span><span>ST</span><span>WO</span><span>WT</span><span>Company</span><span>Competitor</span><span>Customer</span><span>Segmentation</span><span>Targeting</span><span>Positioning</span></div><div class="diagram"><pre>[PEST·5Force] → 외부 기회/위협
+[7S·Value Chain] → 내부 강점/약점
+        ↓
+      [SWOT] → SO/ST/WO/WT 전략대안
+        ↓
+      [STP] 시장세분화 → 목표시장 → 포지셔닝</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>SWOT</td><td>강점·약점·기회·위협 기반 전략대안</td><td>SO 공격, ST 다양화, WO 방향전환, WT 방어</td></tr><tr><td>3C</td><td>자사·경쟁사·고객 분석</td><td>거시환경 누락 보완 위해 FAW 또는 4C 병행</td></tr><tr><td>STP</td><td>시장세분화·목표시장·포지셔닝</td><td>고객군별 니즈에 맞춘 마케팅 전략 수립</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>스타트업 서비스 기획 시 3C로 고객 니즈와 경쟁사 차별점을 확인하고, SWOT으로 전략대안을 정리한 뒤, STP로 목표고객과 포지셔닝 확정.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>SWOT은 내부역량과 외부환경을 연결하여 전략대안을 도출하고, 3C와 STP는 고객·경쟁·자사 관점에서 목표시장을 선택하고 차별적 포지셔닝을 수립하는 마케팅 전략기법.</p></div></article></section><section id="investment" class="section"><h2>2. 투자분석·포트폴리오·경쟁전략</h2><article id="investment-0" class="topic-card"><div class="topic-head"><div><h3>IT투자분석 / 경제성 분석</h3><p class="pages">교재 범위: p.32~38</p></div><span class="mnemonic">암기: 사-중-후 / ROI-NPV-IRR-PP</span></div><div class="chips"><span>ROI</span><span>NPV</span><span>IRR</span><span>Payback Period</span><span>Real Option</span><span>Cost Benefit</span><span>Multi-Criteria</span></div><div class="diagram"><pre>[IT투자 후보]
+   ↓ 사전평가: 타당성·우선순위
+   ↓ 중간평가: Risk/Return·진척관리
+   ↓ 사후평가: 효과측정·Feedback
+[투자 포트폴리오 최적화]</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>재무평가</td><td>ROI, NPV, IRR, PP</td><td>투자 타당성, 회수기간, 현재가치 평가</td></tr><tr><td>실물옵션</td><td>블랙숄즈, 이항옵션, 몬테카를로</td><td>불확실한 IT투자의 유연성 가치 평가</td></tr><tr><td>다기준 분석</td><td>재무·비즈니스·기술·리스크</td><td>비재무 효과와 전략연계성까지 고려</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>현재가치 사례: 오늘 100만원 규모 프로젝트 후 대금을 3년 뒤 받고 할인율 5% 적용 시 PV = 1,000,000 / (1+0.05)^3 ≒ 853,837원.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>IT투자분석은 정보화 투자에 따른 비용·효과·위험을 사전·중간·사후 관점에서 평가하여 투자 타당성, 우선순위, 성과관리 체계를 확보하는 의사결정 기법.</p></div></article><article id="investment-1" class="topic-card"><div class="topic-head"><div><h3>Porter 본원적 경쟁전략</h3><p class="pages">교재 범위: p.39~40</p></div><span class="mnemonic">암기: 원-차-집</span></div><div class="chips"><span>원가주도</span><span>차별화</span><span>집중화</span><span>경쟁우위</span><span>5Force 대응</span></div><div class="diagram"><pre>[경쟁우위 원천]
+   ├─ 낮은 원가 → 원가주도
+   ├─ 독특한 가치 → 차별화
+   └─ 특정 시장 → 집중화</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>원가주도</td><td>낮은 원가로 평균 고객 공략</td><td>Ford 초기 대량생산, 규모의 경제</td></tr><tr><td>차별화</td><td>브랜드·기술·품질로 높은 가격 확보</td><td>애플, 파스퇴르처럼 독특한 가치 인식</td></tr><tr><td>집중화</td><td>틈새시장·제한시장 공략</td><td>의료기기처럼 특정 고객/지역 집중</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>애플은 제품·브랜드·사용자경험 차별화로 가격 프리미엄을 형성하는 차별화전략 사례로 활용 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>본원적 경쟁전략은 기업이 산업 내 경쟁우위를 확보하기 위해 원가주도, 차별화, 집중화 중 하나의 경쟁방향을 선택하여 자원배분과 실행전략을 정렬하는 방법론.</p></div></article><article id="investment-2" class="topic-card"><figure class="svg-diagram" aria-label="BCG Matrix">
+<svg viewBox="0 0 360 340" xmlns="http://www.w3.org/2000/svg" role="img">
+<line x1="180" y1="30" x2="180" y2="300" stroke="#cbd5e1" stroke-width="2"/>
+<line x1="30" y1="165" x2="330" y2="165" stroke="#cbd5e1" stroke-width="2"/>
+<text class="label-sm" x="180" y="20" text-anchor="middle">시장성장률 ↑</text>
+<text class="label-sm" transform="rotate(-90 18 165)" x="18" y="165" text-anchor="middle">상대시장점유율 →</text>
+<rect class="box-warn" x="40" y="40" width="130" height="110" rx="8"/><text class="label" x="105" y="90" text-anchor="middle">Question Mark</text><text class="label-sm" x="105" y="108" text-anchor="middle">물음표</text>
+<rect class="box-alt" x="190" y="40" width="130" height="110" rx="8"/><text class="label" x="255" y="90" text-anchor="middle">Star</text><text class="label-sm" x="255" y="108" text-anchor="middle">별</text>
+<rect class="box" x="40" y="180" width="130" height="110" rx="8"/><text class="label" x="105" y="230" text-anchor="middle">Dog</text><text class="label-sm" x="105" y="248" text-anchor="middle">개</text>
+<rect class="box-test" x="190" y="180" width="130" height="110" rx="8"/><text class="label" x="255" y="230" text-anchor="middle">Cash Cow</text><text class="label-sm" x="255" y="248" text-anchor="middle">돈벌이</text>
+<text class="label-sm" x="180" y="325" text-anchor="middle">LG전자: HA·AC=Cow, MC·HE=Question Mark</text>
+</svg>
+<figcaption>BCG Matrix — 성장률 × 점유율 포트폴리오</figcaption>
+</figure><div class="topic-head"><div><h3>BCG / GE Matrix</h3><p class="pages">교재 범위: p.49~52</p></div><span class="mnemonic">암기: 별-돈-물-개</span></div><div class="chips"><span>시장성장률</span><span>상대시장점유율</span><span>Star</span><span>Cash Cow</span><span>Question Mark</span><span>Dog</span><span>GE Matrix</span></div><div class="diagram"><pre>시장성장률 ↑
+        [Question Mark] | [Star]
+        ------------------------→ 상대점유율
+        [Dog]           | [Cash Cow]</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>BCG Matrix</td><td>시장성장률 × 상대시장점유율</td><td>Star, Cash Cow, Question Mark, Dog로 포트폴리오 판단</td></tr><tr><td>전략대안</td><td>Build, Hold, Harvest, Divest</td><td>성장사업 투자, 현금창출사업 유지, 한계사업 철수</td></tr><tr><td>GE Matrix</td><td>산업매력도 × 비즈니스 강점</td><td>BCG의 단일지표 한계를 보완한 9셀 분석</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>LG전자 사례: HA·AC는 Cash Cow, MC·HE는 Question Mark로 분석. MC는 낮은 RMS와 경쟁 심화로 향후 성장률 둔화 시 철수 검토 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>BCG Matrix는 사업부의 시장성장률과 상대시장점유율을 기준으로 사업 포트폴리오를 평가하고 투자·유지·수확·철수 전략을 도출하는 분석기법.</p></div></article><article id="investment-3" class="topic-card"><div class="topic-head"><div><h3>ERRC / 블루오션</h3><p class="pages">교재 범위: p.53</p></div><span class="mnemonic">암기: 제-감-증-창</span></div><div class="chips"><span>Eliminate</span><span>Reduce</span><span>Raise</span><span>Create</span><span>가치혁신</span><span>블루오션</span></div><div class="diagram"><pre>[기존 경쟁요소]
+  ├─ 제거 Eliminate
+  ├─ 감소 Reduce
+  ├─ 증대 Raise
+  └─ 창조 Create
+        ↓
+[새로운 가치곡선·블루오션]</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>제거</td><td>불필요하거나 낡은 경쟁요소 제거</td><td>조선맥주·크라운맥주 이미지 제거</td></tr><tr><td>감소</td><td>과도한 요소 축소</td><td>주류라는 무거운 이미지 감소</td></tr><tr><td>증대/창조</td><td>고객가치 강화·새로운 요소 창출</td><td>맛과 청량감 증대, 하이트 브랜드와 젊은 고객층 창조</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>하이트맥주: 기존 사명과 브랜드 이미지를 제거하고, 물이 좋은 맥주라는 청량감과 브랜드화를 통해 새로운 고객층을 창출.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>ERRC는 기존 경쟁요소를 제거·감소·증대·창조 관점으로 재구성하여 경쟁 없는 신규시장과 차별적 고객가치를 만드는 블루오션 전략도구.</p></div></article><article id="investment-4" class="topic-card"><div class="topic-head"><div><h3>TAM-SAM-SOM</h3><p class="pages">교재 범위: p.54~55</p></div><span class="mnemonic">암기: 전-유-거</span></div><div class="chips"><span>TAM</span><span>SAM</span><span>SOM</span><span>전체시장</span><span>유효시장</span><span>거점시장</span><span>Top-Down</span></div><div class="diagram"><pre>TAM 전체시장
+   ↓
+SAM 유효시장
+   ↓
+SOM 거점/수익시장
+   ↓
+단기 매출·고객확보 목표</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>TAM</td><td>이론적으로 접근 가능한 전체시장</td><td>스타트업의 장기 성장 가능성</td></tr><tr><td>SAM</td><td>제품·비즈니스모델이 실제 서비스 가능한 시장</td><td>현실적 타겟 영역</td></tr><tr><td>SOM</td><td>6개월~1년 내 확보 가능한 거점시장</td><td>초기 영업·수익 목표</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>헬스케어 앱이라면 전체 디지털 헬스 시장을 TAM, 산모 대상 원격관리 시장을 SAM, 특정 지역 산후관리 고객군을 SOM으로 축소 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>TAM-SAM-SOM은 전체시장, 유효시장, 거점시장을 단계적으로 축소 정의하여 스타트업의 시장규모와 단기 매출 가능성을 추정하는 시장규모 분석 프레임워크.</p></div></article></section><section id="innovation" class="section"><h2>3. 컨설팅 사고·혁신 방법론</h2><article id="innovation-0" class="topic-card"><div class="topic-head"><div><h3>Logic Tree / MECE / LISS</h3><p class="pages">교재 범위: p.56~59</p></div><span class="mnemonic">암기: 중복X-누락X</span></div><div class="chips"><span>Logic Tree</span><span>MECE</span><span>LISS</span><span>이슈트리</span><span>가설트리</span><span>병렬트리</span><span>순차트리</span></div><div class="diagram"><pre>[문제]
+ ├─ 이슈1
+ │   ├─ 원인1
+ │   └─ 원인2
+ └─ 이슈2
+     ├─ 대안1
+     └─ 대안2
+※ MECE: 중복 없이, 누락 없이</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>Logic Tree</td><td>과제를 트리 구조로 분해</td><td>문제·원인·해결책을 체계화</td></tr><tr><td>MECE</td><td>Mutually Exclusive, Collectively Exhaustive</td><td>상온/냉장/냉동처럼 전체를 빠짐없이 분류</td></tr><tr><td>LISS</td><td>핵심과제를 명확화</td><td>MECE가 어려울 때 핵심 중심으로 분석</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>시장 진입전략을 단기-중기-장기, 환경분석-자사분석-전략방향-실행계획처럼 순차트리로 작성하면 답안 목차화 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>Logic Tree는 MECE 사고를 바탕으로 문제를 구조적으로 분해하여 핵심 이슈, 원인, 해결대안을 도출하는 컨설팅 분석도구.</p></div></article><article id="innovation-1" class="topic-card"><div class="topic-head"><div><h3>TRIZ</h3><p class="pages">교재 범위: p.60~63</p></div><span class="mnemonic">암기: 모순-분리-발명원리</span></div><div class="chips"><span>모순</span><span>ARIZ</span><span>IFR</span><span>40가지 발명원리</span><span>4가지 분리원리</span></div><div class="diagram"><pre>[문제 정의] → [모순 식별] → [발명원리 적용] → [해결안 도출]
+       기술적 모순: 하나 개선 시 다른 특성 악화
+       물리적 모순: 동시에 상반된 속성 필요</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>기술적 모순</td><td>출력이 좋아지면 연비가 나빠짐</td><td>자동차 가변 실린더 구조</td></tr><tr><td>물리적 모순</td><td>강해야 하면서 유연해야 함</td><td>자전거 체인: 쇠사슬 구조</td></tr><tr><td>분리원리</td><td>공간·시간·전체/부분·조건 분리</td><td>초고층 엘리베이터 분리, 비행기 바퀴는 이착륙 시 사용</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>역경매는 “반대로 하라” 원리의 경영 사례로, 판매자가 가격을 정하는 방식에서 고객이 가격을 결정하는 방식으로 전환.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>TRIZ는 문제의 핵심 모순을 찾아 발명원리와 분리원리를 적용함으로써 이상적 해결안을 도출하는 창의적 문제해결 방법론.</p></div></article><article id="innovation-2" class="topic-card"><figure class="svg-diagram" aria-label="Design Thinking Double Diamond">
+<svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker>
+</defs>
+<text class="label-sm" x="280" y="18" text-anchor="middle">Double Diamond + Design Thinking</text>
+<polygon points="40,80 120,40 200,80 120,120" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text class="label-sm" x="120" y="78" text-anchor="middle">Discover</text><text class="label-sm" x="120" y="92" text-anchor="middle">발견·확산</text>
+<polygon points="210,80 270,60 330,80 270,100" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+<text class="label-sm" x="270" y="78" text-anchor="middle">Define</text><text class="label-sm" x="270" y="92" text-anchor="middle">정의·수렴</text>
+<polygon points="340,80 420,40 500,80 420,120" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+<text class="label-sm" x="420" y="78" text-anchor="middle">Develop</text><text class="label-sm" x="420" y="92" text-anchor="middle">개발·확산</text>
+<polygon points="510,80 530,70 550,80 530,90" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+<text class="label-sm" x="530" y="84" text-anchor="middle">Deliver</text>
+<line class="arrow-blue" x1="200" y1="80" x2="210" y2="80"/><line class="arrow-blue" x1="330" y1="80" x2="340" y2="80"/><line class="arrow-blue" x1="500" y1="80" x2="510" y2="80"/>
+<rect class="box-warn" x="20" y="155" width="88" height="40" rx="8"/><text class="label-sm" x="64" y="180" text-anchor="middle">공감</text>
+<line class="arrow-blue" x1="108" y1="175" x2="118" y2="175"/>
+<rect class="box" x="118" y="155" width="88" height="40" rx="8"/><text class="label-sm" x="162" y="180" text-anchor="middle">정의</text>
+<line class="arrow-blue" x1="206" y1="175" x2="216" y2="175"/>
+<rect class="box-alt" x="216" y="155" width="88" height="40" rx="8"/><text class="label-sm" x="260" y="180" text-anchor="middle">아이디어</text>
+<line class="arrow-blue" x1="304" y1="175" x2="314" y2="175"/>
+<rect class="box-test" x="314" y="155" width="100" height="40" rx="8"/><text class="label-sm" x="364" y="180" text-anchor="middle">프로토타입</text>
+<line class="arrow-blue" x1="414" y1="175" x2="424" y2="175"/>
+<rect class="box-dark" x="424" y="155" width="88" height="40" rx="8"/><text class="label-light" x="468" y="180" text-anchor="middle">테스트</text>
+<path class="dash" d="M512 175 Q540 220 64 220 Q20 220 20 195"/>
+<text class="label-sm" x="280" y="250" text-anchor="middle">암기: 발-정-개-전 / 공-정-상-시-검 — Oral-B·BoA·현대카드 사례</text>
+</svg>
+<figcaption>Double Diamond(4단계) + Design Thinking(5단계) 흐름</figcaption>
+</figure><div class="topic-head"><div><h3>Double Diamond / Design Thinking</h3><p class="pages">교재 범위: p.65~68</p></div><span class="mnemonic">암기: 발-정-개-전 / 공-정-상-시-검</span></div><div class="chips"><span>Discover</span><span>Define</span><span>Develop</span><span>Deliver</span><span>Empathize</span><span>Ideate</span><span>Prototype</span><span>Test</span></div><div class="diagram"><pre>[Discover 확산] → [Define 수렴] → [Develop 확산] → [Deliver 수렴]
+          문제공감             해결안개발
+Design Thinking: 공감 → 정의 → 아이디어 → 프로토타입 → 테스트</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>공감</td><td>사용자 관찰과 숨은 니즈 발견</td><td>Oral-B 어린이 칫솔: 약한 악력 고려</td></tr><tr><td>프로토타입</td><td>빠른 시제품과 피드백 반복</td><td>D.School 신생아 워머: 기존 인큐베이터 1% 가격</td></tr><tr><td>서비스 개선</td><td>사용 맥락 기반 재설계</td><td>현대카드 청구서: 총사용금액을 큰 글씨로 상단 배치</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>BoA 저축상품은 결제 후 남은 금액을 저축하는 방식으로 사용자 행동을 관찰해 금융상품으로 연결한 디자인 씽킹 사례.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>디자인 씽킹은 사용자 공감과 문제 재정의를 통해 아이디어를 도출하고 프로토타입과 테스트를 반복하여 인간중심의 혁신 솔루션을 만드는 방법론.</p></div></article><article id="innovation-3" class="topic-card"><div class="topic-head"><div><h3>Hype Cycle</h3><p class="pages">교재 범위: p.69~71</p></div><span class="mnemonic">암기: 발-버-각-안-성</span></div><div class="chips"><span>Technology Trigger</span><span>Peak</span><span>Trough</span><span>Slope</span><span>Plateau</span><span>기대치</span><span>성숙도</span></div><div class="diagram"><pre>기대치 ↑
+       버블기 Peak
+      /\
+발생기  \__ 각성기 __ 안정기 __ 성장기 → 성숙도</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>발생기</td><td>기술 잠재성 등장</td><td>퀀텀컴퓨팅, 3D바이오프린팅, 스마트더스트 관심</td></tr><tr><td>버블기</td><td>과잉 기대와 성공스토리 확산</td><td>빅데이터, 3D프린팅, 웨어러블 UI 등 기대 고조 사례</td></tr><tr><td>각성기~성장기</td><td>실망 후 개선제품과 시장성 인정</td><td>기술 투자시점과 상용화 리스크 판단</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>기술 도입 검토 시 하이프사이클의 위치를 확인하면 “과잉기대 단계인지, 생산성 안정 단계인지”를 근거로 투자 리스크 판단 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>Hype Cycle은 신기술의 기대치와 성숙도 변화를 발생기, 버블기, 각성기, 안정기, 성장기로 설명하여 기술투자 시점과 상용화 가능성을 판단하는 분석모델.</p></div></article><article id="innovation-4" class="topic-card"><div class="topic-head"><div><h3>기술수용주기·캐즘·TAM</h3><p class="pages">교재 범위: p.41~48</p></div><span class="mnemonic">암기: 혁-선-전-후-지 / PU-PEOU</span></div><div class="chips"><span>Chasm</span><span>혁신수용자</span><span>선각수용자</span><span>전기다수</span><span>Whole Product</span><span>TAM</span><span>PU</span><span>PEOU</span></div><div class="diagram"><pre>혁신수용자 → 선각수용자 |캐즘| 전기다수 → 후기다수 → 지각수용자
+                    ↓
+         완전완비제품·거점시장·구전효과</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>캐즘</td><td>초기시장과 주류시장 사이 대단절</td><td>스마트폰 확산에서 얼리어답터와 실용주의자 요구 차이</td></tr><tr><td>극복전략</td><td>세분시장 선택 → 완전완비제품 → 집중공략 → 거점확보</td><td>Bowling Alley, Tornado 전략</td></tr><tr><td>TAM</td><td>인지된 유용성·인지된 용이성이 이용의사에 영향</td><td>신기술·신시스템 도입 수용성 분석</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>모바일 증강현실 사업은 단순 호기심보다 지속 사용 가능한 유용성을 제공해야 주류시장 진입 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>캐즘이론은 신기술이 초기시장 이후 주류시장으로 확산되는 과정에서 발생하는 대단절을 설명하고, 완전완비제품과 틈새시장 집중공략으로 이를 극복하는 마케팅 전략이론.</p></div></article></section><section id="process" class="section"><h2>4. 프로세스 혁신·정보화 전략·거버넌스</h2><article id="process-0" class="topic-card"><div class="topic-head"><div><h3>PI / BPR / BPM</h3><p class="pages">교재 범위: p.72~78, p.181~185</p></div><span class="mnemonic">암기: PI점진 / BPR급진 / BPM관리</span></div><div class="chips"><span>Process Innovation</span><span>BPR</span><span>BPM</span><span>As-Is</span><span>To-Be</span><span>Process Lifecycle</span></div><div class="diagram"><pre>[As-Is 분석] → [Visioning] → [To-Be 설계] → [구현계획]
+     PI: 전사 효과성 개선
+     BPR: Zero-base 급진 재설계
+     BPM: 프로세스 자동화·통합·최적화</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>PI</td><td>Process·Organization·Technology 관점의 전사 프로세스 혁신</td><td>BPR보다 전사 효과성·지속 개선 성격 강조</td></tr><tr><td>BPR</td><td>비용·품질·서비스·속도 개선을 위한 근본적 재설계</td><td>Zero-base, 급진적, Top-down, 위험도 높음</td></tr><tr><td>BPM</td><td>프로세스 발생·분석·설계·실행·성과분석 전 사이클 관리</td><td>BRE, BPA, BAM, BPML 연계</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>제조기업의 주문-생산-출하 프로세스를 BPM으로 가시화하고, 병목 프로세스는 PI/BPR 과제로 전환하여 개선하는 식으로 사례 연결 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>PI는 전사 프로세스의 효과성 개선, BPR은 핵심 프로세스의 급진적 재설계, BPM은 프로세스 생명주기의 자동화·통합·최적화를 지원하는 프로세스 혁신 접근법.</p></div></article><article id="process-1" class="topic-card"><div class="topic-head"><div><h3>ISP / ISMP / EA / EAP</h3><p class="pages">교재 범위: p.80~86, p.118~123</p></div><span class="mnemonic">암기: 환-현-미-실 / 요-기-비-FP</span></div><div class="chips"><span>ISP</span><span>ISMP</span><span>EA</span><span>EAP</span><span>환경분석</span><span>AS-IS</span><span>TO-BE</span><span>실행계획</span><span>RFP</span><span>기능점수</span></div><div class="diagram"><pre>ISP: 환경분석 → 현황분석 → 미래모형 → 실행계획
+ISMP: 특정 SW사업 상세분석 → 요구사항 상세화 → RFP·기능점수
+EA/EAP: 비즈니스·데이터·애플리케이션·기술 아키텍처 청사진</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>ISP</td><td>전사 정보화 비전과 로드맵 수립</td><td>경영전략 지원을 위한 정보시스템 마스터플랜</td></tr><tr><td>ISMP</td><td>특정 SW사업의 기능/기술/비기능 요건 상세화</td><td>RFP 작성, 기능점수 도출, 구축전략 수립</td></tr><tr><td>EA/EAP</td><td>전사 아키텍처와 구현계획 정의</td><td>BA/AA/DA/TA, 참조모델, 표준프로파일</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>공공 SW 발주에서 불명확한 요구사항으로 과업변경이 반복되는 문제를 ISMP로 완화하고, ISP/EA로 전사 관점 로드맵과 표준성을 확보.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>ISP는 전사 정보화 방향과 로드맵을 수립하고, ISMP는 특정 SW사업 요구사항과 RFP를 상세화하며, EA/EAP는 전사 아키텍처 기반의 일관된 정보화 청사진을 제공.</p></div></article><article id="process-2" class="topic-card"><div class="topic-head"><div><h3>IT Governance / ISO 38500</h3><p class="pages">교재 범위: p.87~100</p></div><span class="mnemonic">암기: 전-가-위-자-성 / 평-지-모 / 책전획성준행</span></div><div class="chips"><span>전략적연계</span><span>가치전달</span><span>위험관리</span><span>자원관리</span><span>성과측정</span><span>Evaluate</span><span>Direct</span><span>Monitor</span></div><div class="diagram"><pre>[Evaluate 평가] → [Direct 지휘] → [Monitor 모니터링]
+       ↓ ISO38500 6원칙
+책임 / 전략 / 획득 / 성과 / 준거 / 인간행동</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>IT Governance 5도메인</td><td>전략적연계, 가치전달, 위험관리, 자원관리, 성과측정</td><td>ISP/EA, ERP/CRM/BPM, BCP/ERM, ITSM, IT ROI 연계</td></tr><tr><td>ISO38500 모델</td><td>Evaluate, Direct, Monitor</td><td>이사회 관점의 IT 통제와 책임성 확보</td></tr><tr><td>6원칙</td><td>책임·전략·획득·성과·준거·행동</td><td>IT의 효율적·효과적·책임성 있는 활용 기준</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>IT투자와 경영성과가 연결되지 않는 조직은 IT Governance로 투자 포트폴리오, 위험, 성과지표를 정렬해 의사결정 체계를 확립.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>IT Governance는 기업 전략과 목표에 부합하도록 IT자원과 프로세스를 통제·관리하여 가치전달, 위험관리, 자원최적화, 성과측정을 달성하는 관리체계.</p></div></article><article id="process-3" class="topic-card"><div class="topic-head"><div><h3>COBIT / COBIT 5.0</h3><p class="pages">교재 범위: p.101~106</p></div><span class="mnemonic">암기: 계-도-운-모 / 통이비인거 / 원프조문정서인</span></div><div class="chips"><span>COBIT</span><span>PO</span><span>AI</span><span>DS</span><span>ME</span><span>EDM</span><span>APO</span><span>BAI</span><span>DSS</span><span>MEA</span><span>Enabler</span></div><div class="diagram"><pre>COBIT 4: 계획조직 → 도입구축 → 운영지원 → 모니터평가
+COBIT 5: EDM + APO + BAI + DSS + MEA
+7 Enabler: 원칙·프로세스·조직·문화·정보·서비스·인력</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>COBIT 특징</td><td>Business-focused, Process-oriented, Control-based, Measurement-driven</td><td>IT통제 수준 진단과 개선 프레임워크</td></tr><tr><td>성숙도</td><td>0 부재 → 5 최적</td><td>프로세스별 현재수준 평가</td></tr><tr><td>COBIT 5 원칙</td><td>통합 FW, 이해관계자 가치, 비즈니스 초점, Enabler, 거버넌스/관리 분리</td><td>Risk IT, Val IT 통합</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>IT감사·내부통제 고도화 과제에서 COBIT을 적용하면 프로세스별 통제목표, RACI, 성과지표를 기반으로 개선과제를 도출 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>COBIT은 IT Governance 실행과 IT통제 수준 진단을 위해 비즈니스 요구사항, IT프로세스, IT자원을 연결하고 프로세스 성숙도를 평가하는 국제적 통제 프레임워크.</p></div></article></section><section id="system" class="section"><h2>5. 성과관리·아키텍처·통합 시스템</h2><article id="system-0" class="topic-card"><div class="topic-head"><div><h3>SEM / VBM / BSC</h3><p class="pages">교재 범위: p.107~117</p></div><span class="mnemonic">암기: BAV / 재고내학</span></div><div class="chips"><span>SEM</span><span>VBM</span><span>ABM</span><span>BSC</span><span>KPI</span><span>CSF</span><span>EVA</span><span>MVA</span><span>ROIC</span><span>WACC</span></div><div class="diagram"><pre>[ERP·운영·외부시스템] → [DW] → [SEM]
+       ├─ VBM: 기업가치
+       ├─ ABM: 활동원가
+       └─ BSC: 재무·고객·내부프로세스·학습성장</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>SEM</td><td>전략과 운영을 연결하는 전략경영 지원시스템</td><td>ERP 한계 보완, 가치중심 경영 지원</td></tr><tr><td>VBM</td><td>기업가치 극대화 관점의 경영</td><td>EVA, MVA, ROIC, WACC 활용</td></tr><tr><td>BSC</td><td>재무+비재무 4관점의 균형성과관리</td><td>전략맵, CSF, KPI로 전략을 성과지표화</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>성과관리 답안에서는 ERP가 내부 운영 데이터를 제공하고, SEM/BSC가 전략 KPI로 전환하여 경영진 의사결정을 지원하는 구조로 사례화 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>SEM은 기업의 비전·목표·전략을 운영성과와 연결하고, VBM·ABM·BSC를 통해 기업가치, 원가, 성과지표를 통합 관리하는 전략경영 지원체계.</p></div></article><article id="system-1" class="topic-card"><div class="topic-head"><div><h3>ERP / ALM / APM / EAI</h3><p class="pages">교재 범위: p.124~137</p></div><span class="mnemonic">암기: 전사자원-개발생명-성능-통합</span></div><div class="chips"><span>ERP</span><span>XRP</span><span>Global ERP</span><span>ALM</span><span>APM</span><span>EAI</span><span>Adapter</span><span>Broker</span></div><div class="diagram"><pre>ERP: 구매·생산·판매·회계·인사 통합
+ALM: 요구사항 → 개발 → 빌드 → 테스트 → 배포 관리
+APM: 사용자 관점 성능 모니터링
+EAI: Adapter/Broker로 애플리케이션 통합</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>ERP</td><td>전사 자원과 정보 통합</td><td>MRP → MRP II → ERP → ERP II/SCM/CRM 확장</td></tr><tr><td>ALM</td><td>요구사항·Task·Daily Build·테스트자동화 통합관리</td><td>HP ALI처럼 Agile·ALM 융합 사례 연결</td></tr><tr><td>APM/EAI</td><td>APM은 고객관점 성능관리, EAI는 기업 내 애플리케이션 통합</td><td>장애 사전예방, Point-to-Point 유지보수 한계 보완</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>고객 주문 지연 문제가 발생하는 경우 ERP 업무흐름, EAI 연계구간, APM 응답시간, ALM 변경이력을 함께 추적하는 통합 운영 사례로 답안화 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>ERP는 전사자원 통합, ALM은 개발 생명주기 관리, APM은 사용자 관점 성능관리, EAI는 이기종 애플리케이션 통합을 통해 기업 정보시스템의 운영 효율성과 품질을 높이는 기반 기술.</p></div></article><article id="system-2" class="topic-card"><div class="topic-head"><div><h3>ILM / MDM / Infonomics</h3><p class="pages">교재 범위: p.138~139, p.177~180</p></div><span class="mnemonic">암기: 생-저-소 / 기준정보 / 정보가치</span></div><div class="chips"><span>ILM</span><span>HSM</span><span>SRM</span><span>Archive</span><span>MDM</span><span>Repository</span><span>Data Quality</span><span>Infonomics</span></div><div class="diagram"><pre>ILM: 생성 → 저장 → 활용 → 보관 → 폐기
+MDM: 분산 기준정보 → 통합 Repository → 단일 View
+Infonomics: 데이터도 경제적 가치 자산으로 평가</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>ILM</td><td>정보가치 변화에 따른 저장·보호·폐기 관리</td><td>오래된 데이터는 저비용 스토리지·아카이브로 이동</td></tr><tr><td>MDM</td><td>Master Data의 통합·공유·단일 View 제공</td><td>고객명, 주소, 제품코드 등 기준정보 일관성 확보</td></tr><tr><td>Infonomics</td><td>데이터를 자산처럼 가치평가</td><td>데이터 활용성과 투자 우선순위 판단</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>고객정보가 CRM, ERP, 콜센터에 다르게 저장된 경우 MDM으로 기준정보를 통합해 고객 단일 View를 제공.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>ILM은 데이터 생명주기와 가치에 따라 저장·보호 비용을 최적화하고, MDM은 분산된 기준정보를 통합해 데이터 일관성과 신뢰성을 확보하는 데이터 거버넌스 기반 관리체계.</p></div></article></section><section id="service" class="section"><h2>6. 서비스관리·아웃소싱·연속성</h2><article id="service-0" class="topic-card"><div class="topic-head"><div><h3>ITO/BPO / SLM/SLA/SOW</h3><p class="pages">교재 범위: p.140~151</p></div><span class="mnemonic">암기: 선택집중 / 목록-계약-측정-개선</span></div><div class="chips"><span>Outsourcing</span><span>Total</span><span>Selective</span><span>Co-sourcing</span><span>SLM</span><span>SLA</span><span>SOW</span><span>KPI</span><span>SLO</span></div><div class="diagram"><pre>[서비스 카탈로그] → [SLA 합의] → [SOW 작업범위] → [성과측정] → [개선]
+[ITO/BPO] 비핵심 업무 외부 위탁 → 핵심역량 집중</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>ITO/BPO</td><td>비전략 영역을 전문업체에 위탁</td><td>Total, Selective, IT자회사, Co-sourcing</td></tr><tr><td>SLM/SLA</td><td>서비스 수준 계약과 관리</td><td>Service Catalog, SLA, OLA, Service Report</td></tr><tr><td>SOW</td><td>SLA의 세부 작업범위 명세</td><td>고장시간, 지원시간, 보안, 백업, 보고 등 범위 정의</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>A기업 홈페이지·포탈·영업관리 시스템의 SLA 지표와 측정방법 사례처럼, 가중치·평가수준·평가결과로 서비스 수준을 정량화 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>SLM은 SLA에서 정의한 서비스 수준을 측정·평가·개선하는 체계이며, SOW는 서비스 제공 범위와 작업 내용을 명확히 하여 공급자와 수요자 간 기대수준 차이를 줄이는 명세서.</p></div></article><article id="service-1" class="topic-card"><div class="topic-head"><div><h3>BCM / BCP / DRS</h3><p class="pages">교재 범위: p.152~176</p></div><span class="mnemonic">암기: BIA-RTO-RPO / 미핫웜콜</span></div><div class="chips"><span>BCM</span><span>BCP</span><span>DRS</span><span>BIA</span><span>RTO</span><span>RPO</span><span>Mirror Site</span><span>Hot Site</span><span>Warm Site</span><span>Cold Site</span></div><div class="diagram"><pre>[BIA] → [RTO/RPO 산정] → [복구전략] → [DRS 구축] → [모의훈련]
+복구수준: Mirror → Hot → Warm → Cold</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>BCM</td><td>업무연속성 관리체계</td><td>재해 시 핵심업무 지속 가능성 확보</td></tr><tr><td>BCP</td><td>업무연속성 계획</td><td>은행은 본점, 콜센터, IT센터, 영업점 중 범위 명확화 필요</td></tr><tr><td>DRS</td><td>재해복구시스템</td><td>Mirror/Hot/Warm/Cold Site, 동기/비동기 방식</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>금융권은 바젤II, 내부통제 강화 요구와 고객신뢰성 확보를 위해 RTO/RPO를 산정하고 핵심 애플리케이션 복구 우선순위를 결정.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>BCP는 재해 발생 시 핵심 업무를 허용 가능한 시간과 데이터 손실 범위 내에서 복구하기 위한 계획이며, DRS는 이를 실행하기 위한 인적·물적 자원과 복구체계.</p></div></article><article id="service-2" class="topic-card"><div class="topic-head"><div><h3>RPA</h3><p class="pages">교재 범위: p.184~185</p></div><span class="mnemonic">암기: 눈-손-두뇌</span></div><div class="chips"><span>RPA</span><span>구조분석</span><span>자동화</span><span>규칙기반</span><span>업무자동화</span></div><div class="diagram"><pre>[반복 업무] → [식별/인식] → [규칙 실행] → [결과 입력/보고]
+        사람의 눈·손·판단 일부를 소프트웨어 로봇으로 대체</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>적용대상</td><td>규칙 기반 반복 업무</td><td>정형 데이터 입력, 보고서 작성, 시스템 간 복사</td></tr><tr><td>효과</td><td>업무시간 절감, 오류 감소, 처리속도 향상</td><td>단순 반복 업무 자동화</td></tr><tr><td>한계</td><td>예외처리, 비정형 판단, 프로세스 변경 취약</td><td>AI/OCR/BPM과 결합 필요</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>재무 정산, 고객정보 등록, 엑셀 기반 보고서 취합처럼 규칙이 명확한 반복 업무를 RPA로 자동화하는 사례로 답안 연결 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>RPA는 규칙 기반 반복업무를 소프트웨어 로봇으로 자동화하여 업무처리 속도와 정확성을 높이고, 인력은 예외처리와 고부가가치 업무에 집중하도록 지원하는 자동화 기술.</p></div></article></section><section id="customer" class="section"><h2>7. 고객·공급망·제조관리</h2><article id="customer-0" class="topic-card"><div class="topic-head"><div><h3>CRM / CDP / X-Commerce</h3><p class="pages">교재 범위: p.186~195</p></div><span class="mnemonic">암기: 고객단일뷰-개인화-채널확장</span></div><div class="chips"><span>CRM</span><span>OLAP</span><span>DW</span><span>Data Mining</span><span>CDP</span><span>X-Commerce</span><span>Ambient Commerce</span><span>O2O</span></div><div class="diagram"><pre>[고객 데이터 수집] → [분석/세분화] → [개인화 마케팅] → [관계강화]
+CDP: 여러 접점의 고객데이터 → 단일 고객 View</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>CRM</td><td>고객관계관리와 충성도 향상</td><td>삼성몰: OLAP, DW, Data Mining 기반 CRM 활용</td></tr><tr><td>CDP</td><td>고객 데이터 플랫폼, 단일 고객 View</td><td>웹, 앱, 매장, 콜센터 데이터 통합</td></tr><tr><td>X/Ambient Commerce</td><td>사용자 맥락 기반 자동화 상거래</td><td>아마존 에코처럼 음성/에이전트 기반 구매경험</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>잡지 “행복이 가득한 집” CRM 사례, 삼성몰의 OLAP·DW·Data Mining을 통한 이탈방지와 수요예측 사례로 고객분석 효과 설명 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>CRM은 고객 데이터를 분석하여 고객획득, 유지, 충성도 향상을 지원하고, CDP는 다양한 채널의 고객 데이터를 통합해 개인화와 실시간 마케팅을 가능하게 하는 고객 데이터 기반 경영체계.</p></div></article><article id="customer-1" class="topic-card"><div class="topic-head"><div><h3>SCM / Green SCM / Smart SCM</h3><p class="pages">교재 범위: p.197~201</p></div><span class="mnemonic">암기: 공급망-친환경-고객중심</span></div><div class="chips"><span>SCM</span><span>Green SCM</span><span>Customer-oriented SCM</span><span>Smart SCM</span><span>수요예측</span><span>공급망 최적화</span></div><div class="diagram"><pre>[수요] → [조달] → [생산] → [물류] → [고객]
+        ↓
+  비용·품질·납기·유연성 최적화</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>Green SCM</td><td>에너지 절감, 폐기물 회수·재활용</td><td>HP 독일 지사의 회수 및 재가공 센터</td></tr><tr><td>고객지향 SCM</td><td>고객정보를 공급망 의사결정에 반영</td><td>노키아 온·오프라인 통합 접점, 맥도날드 맥카페</td></tr><tr><td>Smart SCM</td><td>실시간 데이터 기반 최적화</td><td>삼성전자 실시간 최적 경로 제공</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>맥도날드는 단순 가격경쟁력 중심 SCM에서 고객 취향 변화를 반영한 맥카페 출시로 고객지향 SCM 사례 제시 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>SCM은 공급망 내 조달·생산·물류·고객정보 흐름을 통합해 비용, 납기, 품질, 유연성을 최적화하는 관리체계이며, 최근에는 친환경·고객지향·실시간 최적화 방향으로 확장.</p></div></article><article id="customer-2" class="topic-card"><div class="topic-head"><div><h3>PLM / MES</h3><p class="pages">교재 범위: p.202~210</p></div><span class="mnemonic">암기: 제품생명주기 / 실시간생산</span></div><div class="chips"><span>PLM</span><span>PDM</span><span>CAD/CAM</span><span>BOM</span><span>MES</span><span>QCDF</span><span>ERP-MES-설비</span></div><div class="diagram"><pre>PLM: 기획 → 설계 → 제조 → 출시 → 유지보수 → 폐기
+MES: ERP/MRP 계획 ↔ 제조현장 설비제어 사이의 실시간 생산관리</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>PLM</td><td>제품 전체 생명주기 관리</td><td>지멘스 PLM을 통해 ALM 강화 사례</td></tr><tr><td>MES</td><td>ERP와 생산설비 사이의 실시간 통합생산정보시스템</td><td>자원할당, 작업일정, 생산추적, 품질관리, 공정관리</td></tr><tr><td>효과</td><td>개발기간 단축, 품질개선, 생산성 향상</td><td>설계변경 시간 감소, 불량·리콜 감소, QCDF 개선</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>지멘스는 PLM을 통해 ALM을 강화한 사례로 제품개발과 소프트웨어 개발 생명주기 연계 필요성을 설명 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>PLM은 제품의 기획부터 폐기까지 전체 생명주기를 통합 관리하고, MES는 제조현장의 실시간 데이터를 기반으로 생산활동을 통합·최적화하는 제조 실행 시스템.</p></div></article></section><section id="digital" class="section"><h2>8. 준법·디지털·성장·ESG</h2><article id="digital-0" class="topic-card"><div class="topic-head"><div><h3>IT Compliance / COSO</h3><p class="pages">교재 범위: p.211~218</p></div><span class="mnemonic">암기: 법규준수 / 통위통정모</span></div><div class="chips"><span>IT Compliance</span><span>SOX</span><span>Basel</span><span>COSO</span><span>Control Environment</span><span>Risk Assessment</span><span>Control Activities</span><span>Information Communication</span><span>Monitoring</span></div><div class="diagram"><pre>[규제·법률] → [IT통제] → [증적·모니터링] → [투명성·리스크 관리]
+COSO: 통제환경 → 위험평가 → 통제활동 → 정보/의사소통 → 모니터링</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>Compliance</td><td>정부·기관 규제를 만족하기 위한 IT 관점 대응</td><td>SOX, Basel, 개인정보보호, 전자문서 보관</td></tr><tr><td>COSO</td><td>전사 내부통제·위험관리 프레임워크</td><td>통제환경, 위험평가, 통제활동, 정보/의사소통, 모니터링</td></tr><tr><td>효과</td><td>기업 투명성, 신뢰성, 리스크 관리</td><td>감사 대응, 증적관리, 내부통제 강화</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>금융·상장기업은 SOX, Basel, 개인정보보호 요구에 대응하기 위해 접근통제, 변경관리, 로그보관, 보고체계를 IT Compliance 관점으로 정비.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>IT Compliance는 기업의 투명성과 리스크 관리를 위해 법·규제·표준 요구사항을 IT통제, 증적관리, 모니터링 체계로 구현하는 의무적 관리활동.</p></div></article><article id="digital-1" class="topic-card"><div class="topic-head"><div><h3>Digital Transformation</h3><p class="pages">교재 범위: p.220~223</p></div><span class="mnemonic">암기: 전-조-프-비-문-시</span></div><div class="chips"><span>Digital Transformation</span><span>Data Driven Innovation</span><span>Agile</span><span>EA</span><span>MSA</span><span>Digital Twin</span><span>ICBM+AI</span></div><div class="diagram"><pre>[디지털 기술] → [전략·조직·프로세스·비즈니스모델 변화]
+핵심영역: 고객경험 / 운영관리 프로세스 / 비즈니스 모델</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>고객경험</td><td>고객 중심 커뮤니케이션과 개인화</td><td>FK 디스트리뷰션: 고객 니즈 관련 인쇄광고를 온라인 신청</td></tr><tr><td>운영프로세스</td><td>IT인프라로 의사결정 속도 향상</td><td>싱글 ERP로 주문-결제 원스톱 처리</td></tr><tr><td>비즈니스모델</td><td>산업 재창조, 제품/서비스 대체, 신규 디지털 수익</td><td>코닥 실패사례: 디지털 카메라 개발 후 핵심사업 전환 실패</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>코닥은 디지털 기술을 보유했지만 비즈니스 모델 전환에 실패한 사례로, DX는 기술도입이 아니라 전략·조직·수익모델 전환이라는 점을 설명 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>디지털 트랜스포메이션은 디지털 기술을 기반으로 기업의 전략, 조직, 프로세스, 비즈니스 모델, 문화와 시스템을 근본적으로 변화시키는 경영전략.</p></div></article><article id="digital-2" class="topic-card"><div class="topic-head"><div><h3>Growth Hacking / AARRR / Funnel / A-B Test / Cohort</h3><p class="pages">교재 범위: p.224~233</p></div><span class="mnemonic">암기: AARRR / 가측검반</span></div><div class="chips"><span>Growth Hacking</span><span>AARRR</span><span>Funnel</span><span>A/B Test</span><span>Cohort</span><span>Activation</span><span>Retention</span><span>Revenue</span></div><div class="diagram"><pre>[가설] → [측정] → [검증] → [개선] → [반복]
+AARRR: Acquisition → Activation → Retention → Referral → Revenue
+Funnel: 단계별 전환율 측정 / Cohort: 동일 집단 행동 추적</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>Growth Hacking</td><td>가설·측정·검증 기반 성장 실험</td><td>페이스북·트위터 성장 실험, 데이터 기반 개선</td></tr><tr><td>AARRR</td><td>획득·활성화·유지·추천·매출</td><td>서비스 성장의 단계별 관리지표</td></tr><tr><td>A/B Test</td><td>두 버전 성과 비교</td><td>오바마 캠프 500회 A/B 테스트, 기부전환율 49%, 가입전환율 161% 상승</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>호텔 캘리포니아 웹사이트는 예약 하이퍼링크 대신 메인화면 “예약하기” 버튼을 배치해 예약 전환율 32.12% 증가 사례로 Funnel 개선 설명 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>그로스해킹은 창의적 아이디어를 데이터 기반 가설·측정·검증으로 반복하여 고객 획득, 활성화, 유지, 추천, 매출을 개선하는 성장 중심 마케팅 방법론.</p></div></article><article id="digital-3" class="topic-card"><div class="topic-head"><div><h3>Lean Startup</h3><p class="pages">교재 범위: p.234~236</p></div><span class="mnemonic">암기: Build-Measure-Learn</span></div><div class="chips"><span>MVP</span><span>Rapid Prototype</span><span>Lean Canvas</span><span>Pivot</span><span>Build</span><span>Measure</span><span>Learn</span></div><div class="diagram"><pre>[Idea] → Build(MVP) → Measure(핵심지표) → Learn(학습) → Pivot/Scale
+        빠르게 만들고, 빠르게 측정하고, 빠르게 학습</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>Build</td><td>MVP·Rapid Prototype 제작</td><td>최소기능제품으로 고객 반응 확인</td></tr><tr><td>Measure</td><td>핵심지표 측정</td><td>사용자 증가, 체류시간, 전환율 등</td></tr><tr><td>Learn</td><td>Lean Canvas와 Pivot</td><td>문제-솔루션 적합성, 솔루션-시장 적합성 검증</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>카닥은 자동차 외장수리 견적 서비스를 린 스타트업 방식으로 검증한 사례, 예능 제작도 소비자 반응을 보고 Pivot하는 사례로 연결 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>린 스타트업은 불확실한 시장에서 MVP를 빠르게 출시하고 고객 반응을 측정·학습하여 피봇 또는 확장을 결정하는 반복적 창업·혁신 방법론.</p></div></article><article id="digital-4" class="topic-card"><div class="topic-head"><div><h3>ESG / RE100 / ISO26000 / ISO14000</h3><p class="pages">교재 범위: p.237~246</p></div><span class="mnemonic">암기: 환-사-지 / 재생100 / CSR / EMS</span></div><div class="chips"><span>ESG</span><span>Environment</span><span>Social</span><span>Governance</span><span>RE100</span><span>ISO26000</span><span>CSR</span><span>ISO14000</span><span>PDCA</span></div><div class="diagram"><pre>ESG: 환경(E) + 사회(S) + 지배구조(G)
+RE100: 사용전력 100% 재생에너지
+ISO26000: 사회적 책임 가이드라인
+ISO14000: 환경경영시스템 EMS</pre></div><div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>사례·답안 활용</th></tr></thead><tbody><tr><td>ESG</td><td>재무성과와 비재무성과 통합</td><td>기업가치의 새로운 패러다임</td></tr><tr><td>RE100</td><td>2050년까지 재생에너지 100% 사용 캠페인</td><td>SK그룹 계열사 8곳 가입 신청 사례</td></tr><tr><td>ISO26000/14000</td><td>CSR 권고지침, 환경경영시스템 표준</td><td>사회적 책임, 환경영향 관리, PDCA 기반 개선</td></tr></tbody></table></div><div class="case-box"><strong>사례 포인트</strong><p>K-RE100은 전기사용량과 무관하게 국내 산업용·일반용 전기소비자가 재생에너지 구매 참여 가능하다는 제도 사례로 활용 가능.</p></div><div class="answer-box"><strong>답안 확장 문장</strong><p>ESG 경영은 환경, 사회, 지배구조를 기업전략과 성과관리 체계에 통합하여 지속가능성과 기업가치를 높이는 경영 패러다임이며, RE100·ISO26000·ISO14000은 이를 실행하는 대표 기준.</p></div></article></section>
+  <section id="flashcards" class="flash-section">
+    <h2>9. 클릭형 암기카드</h2>
+    <p class="note">카드를 클릭하면 답이 뒤집힙니다. 검색어는 개념명, 기업명, 사례명 모두 가능합니다.</p>
+    <div class="controls">
+      <input id="search" placeholder="검색: BCG, 하이트, 디자인 씽킹..." />
+      <select id="catFilter"><option value="">전체 분류</option></select>
+      <button id="shuffleBtn">카드 섞기</button>
+      <button id="revealBtn">정답 모두 보기</button>
+      <button id="resetBtn">초기화</button>
+    </div>
+    <div id="cards" class="cards"><div class="flash-card" data-cat="사례 중심 공부 방식">
+      <div class="card-front"><span>사례 중심 공부 방식</span><p>답안 확장 공식 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: 키워드, 사례, 시사점, 전략대안
+사례: 이 과목은 개념만 쓰면 답안이 건조해지므로, “프레임워크 → 기업 사례 → 시사점” 순서로 한 줄씩 붙이는 방식이 유리합니다.
+답안: 경영·컨설팅 답안은 분석 프레임워크의 구성요소를 제시한 후, 기업 사례를 통해 적용 가능성을 설명하고, 전략적 시사점과 고려사항을 도출하는 방식으로 구성.</pre></div>
+    </div><div class="flash-card" data-cat="경영전략·환경분석">
+      <div class="card-front"><span>경영전략·환경분석</span><p>경영전략 / IT 경영전략 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: 전략, 전술, 기업전략, 사업전략, 기능전략, IT-경영 연계
+사례: PMS는 R&amp;D 프로젝트 관리, PDM은 제품 설계, CRM은 마케팅/영업, MES는 생산/제조 전략을 시스템으로 구현하는 사례로 연결 가능.
+답안: IT 경영전략은 기업의 경영목표와 경쟁전략을 정보시스템, 프로세스, 데이터, IT인프라로 구체화하여 실행력과 경쟁우위를 확보하는 전략 체계.</pre></div>
+    </div><div class="flash-card" data-cat="경영전략·환경분석">
+      <div class="card-front"><span>경영전략·환경분석</span><p>거시환경분석 PEST / STEEP / PESTEL 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: PEST, STEEP, PESTEL, 정치, 경제, 사회
+사례: 산후조리원 대체 헬스케어 ICT 서비스: 여성 사회활동 증가, ICT 컨버전스, 산후조리 비용, 위생·감염 문제, 정부 출산정책을 STEEP 관점으로 분석.
+답안: PESTEL은 기업이 통제하기 어려운 정치·경제·사회·기술·환경·법률 요인을 분석하여 외부 기회와 위협을 도출하고 중장기 전략 방향을 설정하는 거시환경 분석기법.</pre></div>
+    </div><div class="flash-card" data-cat="경영전략·환경분석">
+      <div class="card-front"><span>경영전략·환경분석</span><p>마이클 포터 5 Force 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: 기존경쟁사, 잠재적 경쟁자, 대체재, 구매자, 공급자
+사례: 외식·플랫폼·구독서비스에서 대체재가 많고 구매자 전환비용이 낮으면 가격경쟁 심화. 이때 차별화, 락인, 공급선 다변화 전략 연결 가능.
+답안: 5 Force는 산업 내 경쟁강도와 수익성에 영향을 주는 다섯 경쟁요인을 분석하여 시장 매력도와 경쟁전략 방향을 도출하는 외부환경 분석기법.</pre></div>
+    </div><div class="flash-card" data-cat="경영전략·환경분석">
+      <div class="card-front"><span>경영전략·환경분석</span><p>Value Chain 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: 주활동, 지원활동, 원가우위, 차별화, 프로세스 연계
+사례: 외식업계 사례: 식재료 조달, 조리·운영, 매장 서비스, 브랜드 마케팅, 고객서비스를 연결해 원가절감과 프랜차이즈 차별화 요인을 분석.
+답안: Value Chain은 기업의 활동을 주 활동과 지원활동으로 구분하고 각 활동의 비용·가치창출 요인을 분석하여 원가우위와 차별화 원천을 도출하는 내부역량 분석기법.</pre></div>
+    </div><div class="flash-card" data-cat="경영전략·환경분석">
+      <div class="card-front"><span>경영전략·환경분석</span><p>McKinsey 7S 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: Strategy, System, Structure, Shared Value, Staff, Skill
+사례: 품질 중심 기업문화, 고객서비스 우선 문화, 기술 리더십 조직처럼 조직의 정체성을 설명할 때 Shared Value와 Style 사례로 연결 가능.
+답안: 7S 모델은 조직의 전략 실행력을 좌우하는 7가지 내부 경영요소의 정합성을 진단하여 조직의 강점·약점과 혁신과제를 도출하는 내부역량 분석모델.</pre></div>
+    </div><div class="flash-card" data-cat="경영전략·환경분석">
+      <div class="card-front"><span>경영전략·환경분석</span><p>SWOT / 3C / STP 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: SO, ST, WO, WT, Company, Competitor
+사례: 스타트업 서비스 기획 시 3C로 고객 니즈와 경쟁사 차별점을 확인하고, SWOT으로 전략대안을 정리한 뒤, STP로 목표고객과 포지셔닝 확정.
+답안: SWOT은 내부역량과 외부환경을 연결하여 전략대안을 도출하고, 3C와 STP는 고객·경쟁·자사 관점에서 목표시장을 선택하고 차별적 포지셔닝을 수립하는 마케팅 전략기법.</pre></div>
+    </div><div class="flash-card" data-cat="투자분석·포트폴리오·경쟁전략">
+      <div class="card-front"><span>투자분석·포트폴리오·경쟁전략</span><p>IT투자분석 / 경제성 분석 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: ROI, NPV, IRR, Payback Period, Real Option, Cost Benefit
+사례: 현재가치 사례: 오늘 100만원 규모 프로젝트 후 대금을 3년 뒤 받고 할인율 5% 적용 시 PV = 1,000,000 / (1+0.05)^3 ≒ 853,837원.
+답안: IT투자분석은 정보화 투자에 따른 비용·효과·위험을 사전·중간·사후 관점에서 평가하여 투자 타당성, 우선순위, 성과관리 체계를 확보하는 의사결정 기법.</pre></div>
+    </div><div class="flash-card" data-cat="투자분석·포트폴리오·경쟁전략">
+      <div class="card-front"><span>투자분석·포트폴리오·경쟁전략</span><p>Porter 본원적 경쟁전략 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: 원가주도, 차별화, 집중화, 경쟁우위, 5Force 대응
+사례: 애플은 제품·브랜드·사용자경험 차별화로 가격 프리미엄을 형성하는 차별화전략 사례로 활용 가능.
+답안: 본원적 경쟁전략은 기업이 산업 내 경쟁우위를 확보하기 위해 원가주도, 차별화, 집중화 중 하나의 경쟁방향을 선택하여 자원배분과 실행전략을 정렬하는 방법론.</pre></div>
+    </div><div class="flash-card" data-cat="투자분석·포트폴리오·경쟁전략">
+      <div class="card-front"><span>투자분석·포트폴리오·경쟁전략</span><p>BCG / GE Matrix 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: 시장성장률, 상대시장점유율, Star, Cash Cow, Question Mark, Dog
+사례: LG전자 사례: HA·AC는 Cash Cow, MC·HE는 Question Mark로 분석. MC는 낮은 RMS와 경쟁 심화로 향후 성장률 둔화 시 철수 검토 가능.
+답안: BCG Matrix는 사업부의 시장성장률과 상대시장점유율을 기준으로 사업 포트폴리오를 평가하고 투자·유지·수확·철수 전략을 도출하는 분석기법.</pre></div>
+    </div><div class="flash-card" data-cat="투자분석·포트폴리오·경쟁전략">
+      <div class="card-front"><span>투자분석·포트폴리오·경쟁전략</span><p>ERRC / 블루오션 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: Eliminate, Reduce, Raise, Create, 가치혁신, 블루오션
+사례: 하이트맥주: 기존 사명과 브랜드 이미지를 제거하고, 물이 좋은 맥주라는 청량감과 브랜드화를 통해 새로운 고객층을 창출.
+답안: ERRC는 기존 경쟁요소를 제거·감소·증대·창조 관점으로 재구성하여 경쟁 없는 신규시장과 차별적 고객가치를 만드는 블루오션 전략도구.</pre></div>
+    </div><div class="flash-card" data-cat="투자분석·포트폴리오·경쟁전략">
+      <div class="card-front"><span>투자분석·포트폴리오·경쟁전략</span><p>TAM-SAM-SOM 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: TAM, SAM, SOM, 전체시장, 유효시장, 거점시장
+사례: 헬스케어 앱이라면 전체 디지털 헬스 시장을 TAM, 산모 대상 원격관리 시장을 SAM, 특정 지역 산후관리 고객군을 SOM으로 축소 가능.
+답안: TAM-SAM-SOM은 전체시장, 유효시장, 거점시장을 단계적으로 축소 정의하여 스타트업의 시장규모와 단기 매출 가능성을 추정하는 시장규모 분석 프레임워크.</pre></div>
+    </div><div class="flash-card" data-cat="컨설팅 사고·혁신 방법론">
+      <div class="card-front"><span>컨설팅 사고·혁신 방법론</span><p>Logic Tree / MECE / LISS 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: Logic Tree, MECE, LISS, 이슈트리, 가설트리, 병렬트리
+사례: 시장 진입전략을 단기-중기-장기, 환경분석-자사분석-전략방향-실행계획처럼 순차트리로 작성하면 답안 목차화 가능.
+답안: Logic Tree는 MECE 사고를 바탕으로 문제를 구조적으로 분해하여 핵심 이슈, 원인, 해결대안을 도출하는 컨설팅 분석도구.</pre></div>
+    </div><div class="flash-card" data-cat="컨설팅 사고·혁신 방법론">
+      <div class="card-front"><span>컨설팅 사고·혁신 방법론</span><p>TRIZ 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: 모순, ARIZ, IFR, 40가지 발명원리, 4가지 분리원리
+사례: 역경매는 “반대로 하라” 원리의 경영 사례로, 판매자가 가격을 정하는 방식에서 고객이 가격을 결정하는 방식으로 전환.
+답안: TRIZ는 문제의 핵심 모순을 찾아 발명원리와 분리원리를 적용함으로써 이상적 해결안을 도출하는 창의적 문제해결 방법론.</pre></div>
+    </div><div class="flash-card" data-cat="컨설팅 사고·혁신 방법론">
+      <div class="card-front"><span>컨설팅 사고·혁신 방법론</span><p>Double Diamond / Design Thinking 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: Discover, Define, Develop, Deliver, Empathize, Ideate
+사례: BoA 저축상품은 결제 후 남은 금액을 저축하는 방식으로 사용자 행동을 관찰해 금융상품으로 연결한 디자인 씽킹 사례.
+답안: 디자인 씽킹은 사용자 공감과 문제 재정의를 통해 아이디어를 도출하고 프로토타입과 테스트를 반복하여 인간중심의 혁신 솔루션을 만드는 방법론.</pre></div>
+    </div><div class="flash-card" data-cat="컨설팅 사고·혁신 방법론">
+      <div class="card-front"><span>컨설팅 사고·혁신 방법론</span><p>Hype Cycle 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: Technology Trigger, Peak, Trough, Slope, Plateau, 기대치
+사례: 기술 도입 검토 시 하이프사이클의 위치를 확인하면 “과잉기대 단계인지, 생산성 안정 단계인지”를 근거로 투자 리스크 판단 가능.
+답안: Hype Cycle은 신기술의 기대치와 성숙도 변화를 발생기, 버블기, 각성기, 안정기, 성장기로 설명하여 기술투자 시점과 상용화 가능성을 판단하는 분석모델.</pre></div>
+    </div><div class="flash-card" data-cat="컨설팅 사고·혁신 방법론">
+      <div class="card-front"><span>컨설팅 사고·혁신 방법론</span><p>기술수용주기·캐즘·TAM 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: Chasm, 혁신수용자, 선각수용자, 전기다수, Whole Product, TAM
+사례: 모바일 증강현실 사업은 단순 호기심보다 지속 사용 가능한 유용성을 제공해야 주류시장 진입 가능.
+답안: 캐즘이론은 신기술이 초기시장 이후 주류시장으로 확산되는 과정에서 발생하는 대단절을 설명하고, 완전완비제품과 틈새시장 집중공략으로 이를 극복하는 마케팅 전략이론.</pre></div>
+    </div><div class="flash-card" data-cat="프로세스 혁신·정보화 전략·거버넌스">
+      <div class="card-front"><span>프로세스 혁신·정보화 전략·거버넌스</span><p>PI / BPR / BPM 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: Process Innovation, BPR, BPM, As-Is, To-Be, Process Lifecycle
+사례: 제조기업의 주문-생산-출하 프로세스를 BPM으로 가시화하고, 병목 프로세스는 PI/BPR 과제로 전환하여 개선하는 식으로 사례 연결 가능.
+답안: PI는 전사 프로세스의 효과성 개선, BPR은 핵심 프로세스의 급진적 재설계, BPM은 프로세스 생명주기의 자동화·통합·최적화를 지원하는 프로세스 혁신 접근법.</pre></div>
+    </div><div class="flash-card" data-cat="프로세스 혁신·정보화 전략·거버넌스">
+      <div class="card-front"><span>프로세스 혁신·정보화 전략·거버넌스</span><p>ISP / ISMP / EA / EAP 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: ISP, ISMP, EA, EAP, 환경분석, AS-IS
+사례: 공공 SW 발주에서 불명확한 요구사항으로 과업변경이 반복되는 문제를 ISMP로 완화하고, ISP/EA로 전사 관점 로드맵과 표준성을 확보.
+답안: ISP는 전사 정보화 방향과 로드맵을 수립하고, ISMP는 특정 SW사업 요구사항과 RFP를 상세화하며, EA/EAP는 전사 아키텍처 기반의 일관된 정보화 청사진을 제공.</pre></div>
+    </div><div class="flash-card" data-cat="프로세스 혁신·정보화 전략·거버넌스">
+      <div class="card-front"><span>프로세스 혁신·정보화 전략·거버넌스</span><p>IT Governance / ISO 38500 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: 전략적연계, 가치전달, 위험관리, 자원관리, 성과측정, Evaluate
+사례: IT투자와 경영성과가 연결되지 않는 조직은 IT Governance로 투자 포트폴리오, 위험, 성과지표를 정렬해 의사결정 체계를 확립.
+답안: IT Governance는 기업 전략과 목표에 부합하도록 IT자원과 프로세스를 통제·관리하여 가치전달, 위험관리, 자원최적화, 성과측정을 달성하는 관리체계.</pre></div>
+    </div><div class="flash-card" data-cat="프로세스 혁신·정보화 전략·거버넌스">
+      <div class="card-front"><span>프로세스 혁신·정보화 전략·거버넌스</span><p>COBIT / COBIT 5.0 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: COBIT, PO, AI, DS, ME, EDM
+사례: IT감사·내부통제 고도화 과제에서 COBIT을 적용하면 프로세스별 통제목표, RACI, 성과지표를 기반으로 개선과제를 도출 가능.
+답안: COBIT은 IT Governance 실행과 IT통제 수준 진단을 위해 비즈니스 요구사항, IT프로세스, IT자원을 연결하고 프로세스 성숙도를 평가하는 국제적 통제 프레임워크.</pre></div>
+    </div><div class="flash-card" data-cat="성과관리·아키텍처·통합 시스템">
+      <div class="card-front"><span>성과관리·아키텍처·통합 시스템</span><p>SEM / VBM / BSC 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: SEM, VBM, ABM, BSC, KPI, CSF
+사례: 성과관리 답안에서는 ERP가 내부 운영 데이터를 제공하고, SEM/BSC가 전략 KPI로 전환하여 경영진 의사결정을 지원하는 구조로 사례화 가능.
+답안: SEM은 기업의 비전·목표·전략을 운영성과와 연결하고, VBM·ABM·BSC를 통해 기업가치, 원가, 성과지표를 통합 관리하는 전략경영 지원체계.</pre></div>
+    </div><div class="flash-card" data-cat="성과관리·아키텍처·통합 시스템">
+      <div class="card-front"><span>성과관리·아키텍처·통합 시스템</span><p>ERP / ALM / APM / EAI 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: ERP, XRP, Global ERP, ALM, APM, EAI
+사례: 고객 주문 지연 문제가 발생하는 경우 ERP 업무흐름, EAI 연계구간, APM 응답시간, ALM 변경이력을 함께 추적하는 통합 운영 사례로 답안화 가능.
+답안: ERP는 전사자원 통합, ALM은 개발 생명주기 관리, APM은 사용자 관점 성능관리, EAI는 이기종 애플리케이션 통합을 통해 기업 정보시스템의 운영 효율성과 품질을 높이는 기반 기술.</pre></div>
+    </div><div class="flash-card" data-cat="성과관리·아키텍처·통합 시스템">
+      <div class="card-front"><span>성과관리·아키텍처·통합 시스템</span><p>ILM / MDM / Infonomics 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: ILM, HSM, SRM, Archive, MDM, Repository
+사례: 고객정보가 CRM, ERP, 콜센터에 다르게 저장된 경우 MDM으로 기준정보를 통합해 고객 단일 View를 제공.
+답안: ILM은 데이터 생명주기와 가치에 따라 저장·보호 비용을 최적화하고, MDM은 분산된 기준정보를 통합해 데이터 일관성과 신뢰성을 확보하는 데이터 거버넌스 기반 관리체계.</pre></div>
+    </div><div class="flash-card" data-cat="서비스관리·아웃소싱·연속성">
+      <div class="card-front"><span>서비스관리·아웃소싱·연속성</span><p>ITO/BPO / SLM/SLA/SOW 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: Outsourcing, Total, Selective, Co-sourcing, SLM, SLA
+사례: A기업 홈페이지·포탈·영업관리 시스템의 SLA 지표와 측정방법 사례처럼, 가중치·평가수준·평가결과로 서비스 수준을 정량화 가능.
+답안: SLM은 SLA에서 정의한 서비스 수준을 측정·평가·개선하는 체계이며, SOW는 서비스 제공 범위와 작업 내용을 명확히 하여 공급자와 수요자 간 기대수준 차이를 줄이는 명세서.</pre></div>
+    </div><div class="flash-card" data-cat="서비스관리·아웃소싱·연속성">
+      <div class="card-front"><span>서비스관리·아웃소싱·연속성</span><p>BCM / BCP / DRS 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: BCM, BCP, DRS, BIA, RTO, RPO
+사례: 금융권은 바젤II, 내부통제 강화 요구와 고객신뢰성 확보를 위해 RTO/RPO를 산정하고 핵심 애플리케이션 복구 우선순위를 결정.
+답안: BCP는 재해 발생 시 핵심 업무를 허용 가능한 시간과 데이터 손실 범위 내에서 복구하기 위한 계획이며, DRS는 이를 실행하기 위한 인적·물적 자원과 복구체계.</pre></div>
+    </div><div class="flash-card" data-cat="서비스관리·아웃소싱·연속성">
+      <div class="card-front"><span>서비스관리·아웃소싱·연속성</span><p>RPA 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: RPA, 구조분석, 자동화, 규칙기반, 업무자동화
+사례: 재무 정산, 고객정보 등록, 엑셀 기반 보고서 취합처럼 규칙이 명확한 반복 업무를 RPA로 자동화하는 사례로 답안 연결 가능.
+답안: RPA는 규칙 기반 반복업무를 소프트웨어 로봇으로 자동화하여 업무처리 속도와 정확성을 높이고, 인력은 예외처리와 고부가가치 업무에 집중하도록 지원하는 자동화 기술.</pre></div>
+    </div><div class="flash-card" data-cat="고객·공급망·제조관리">
+      <div class="card-front"><span>고객·공급망·제조관리</span><p>CRM / CDP / X-Commerce 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: CRM, OLAP, DW, Data Mining, CDP, X-Commerce
+사례: 잡지 “행복이 가득한 집” CRM 사례, 삼성몰의 OLAP·DW·Data Mining을 통한 이탈방지와 수요예측 사례로 고객분석 효과 설명 가능.
+답안: CRM은 고객 데이터를 분석하여 고객획득, 유지, 충성도 향상을 지원하고, CDP는 다양한 채널의 고객 데이터를 통합해 개인화와 실시간 마케팅을 가능하게 하는 고객 데이터 기반 경영체계.</pre></div>
+    </div><div class="flash-card" data-cat="고객·공급망·제조관리">
+      <div class="card-front"><span>고객·공급망·제조관리</span><p>SCM / Green SCM / Smart SCM 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: SCM, Green SCM, Customer-oriented SCM, Smart SCM, 수요예측, 공급망 최적화
+사례: 맥도날드는 단순 가격경쟁력 중심 SCM에서 고객 취향 변화를 반영한 맥카페 출시로 고객지향 SCM 사례 제시 가능.
+답안: SCM은 공급망 내 조달·생산·물류·고객정보 흐름을 통합해 비용, 납기, 품질, 유연성을 최적화하는 관리체계이며, 최근에는 친환경·고객지향·실시간 최적화 방향으로 확장.</pre></div>
+    </div><div class="flash-card" data-cat="고객·공급망·제조관리">
+      <div class="card-front"><span>고객·공급망·제조관리</span><p>PLM / MES 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: PLM, PDM, CAD/CAM, BOM, MES, QCDF
+사례: 지멘스는 PLM을 통해 ALM을 강화한 사례로 제품개발과 소프트웨어 개발 생명주기 연계 필요성을 설명 가능.
+답안: PLM은 제품의 기획부터 폐기까지 전체 생명주기를 통합 관리하고, MES는 제조현장의 실시간 데이터를 기반으로 생산활동을 통합·최적화하는 제조 실행 시스템.</pre></div>
+    </div><div class="flash-card" data-cat="준법·디지털·성장·ESG">
+      <div class="card-front"><span>준법·디지털·성장·ESG</span><p>IT Compliance / COSO 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: IT Compliance, SOX, Basel, COSO, Control Environment, Risk Assessment
+사례: 금융·상장기업은 SOX, Basel, 개인정보보호 요구에 대응하기 위해 접근통제, 변경관리, 로그보관, 보고체계를 IT Compliance 관점으로 정비.
+답안: IT Compliance는 기업의 투명성과 리스크 관리를 위해 법·규제·표준 요구사항을 IT통제, 증적관리, 모니터링 체계로 구현하는 의무적 관리활동.</pre></div>
+    </div><div class="flash-card" data-cat="준법·디지털·성장·ESG">
+      <div class="card-front"><span>준법·디지털·성장·ESG</span><p>Digital Transformation 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: Digital Transformation, Data Driven Innovation, Agile, EA, MSA, Digital Twin
+사례: 코닥은 디지털 기술을 보유했지만 비즈니스 모델 전환에 실패한 사례로, DX는 기술도입이 아니라 전략·조직·수익모델 전환이라는 점을 설명 가능.
+답안: 디지털 트랜스포메이션은 디지털 기술을 기반으로 기업의 전략, 조직, 프로세스, 비즈니스 모델, 문화와 시스템을 근본적으로 변화시키는 경영전략.</pre></div>
+    </div><div class="flash-card" data-cat="준법·디지털·성장·ESG">
+      <div class="card-front"><span>준법·디지털·성장·ESG</span><p>Growth Hacking / AARRR / Funnel / A-B Test / Cohort 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: Growth Hacking, AARRR, Funnel, A/B Test, Cohort, Activation
+사례: 호텔 캘리포니아 웹사이트는 예약 하이퍼링크 대신 메인화면 “예약하기” 버튼을 배치해 예약 전환율 32.12% 증가 사례로 Funnel 개선 설명 가능.
+답안: 그로스해킹은 창의적 아이디어를 데이터 기반 가설·측정·검증으로 반복하여 고객 획득, 활성화, 유지, 추천, 매출을 개선하는 성장 중심 마케팅 방법론.</pre></div>
+    </div><div class="flash-card" data-cat="준법·디지털·성장·ESG">
+      <div class="card-front"><span>준법·디지털·성장·ESG</span><p>Lean Startup 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: MVP, Rapid Prototype, Lean Canvas, Pivot, Build, Measure
+사례: 카닥은 자동차 외장수리 견적 서비스를 린 스타트업 방식으로 검증한 사례, 예능 제작도 소비자 반응을 보고 Pivot하는 사례로 연결 가능.
+답안: 린 스타트업은 불확실한 시장에서 MVP를 빠르게 출시하고 고객 반응을 측정·학습하여 피봇 또는 확장을 결정하는 반복적 창업·혁신 방법론.</pre></div>
+    </div><div class="flash-card" data-cat="준법·디지털·성장·ESG">
+      <div class="card-front"><span>준법·디지털·성장·ESG</span><p>ESG / RE100 / ISO26000 / ISO14000 핵심 키워드와 사례는?</p></div>
+      <div class="card-back"><pre>키워드: ESG, Environment, Social, Governance, RE100, ISO26000
+사례: K-RE100은 전기사용량과 무관하게 국내 산업용·일반용 전기소비자가 재생에너지 구매 참여 가능하다는 제도 사례로 활용 가능.
+답안: ESG 경영은 환경, 사회, 지배구조를 기업전략과 성과관리 체계에 통합하여 지속가능성과 기업가치를 높이는 경영 패러다임이며, RE100·ISO26000·ISO14000은 이를 실행하는 대표 기준.</pre></div>
+    </div><div class="flash-card" data-cat="사례은행">
+      <div class="card-front"><span>사례은행</span><p>하이트맥주 사례는 어떤 개념에 연결되는가?</p></div>
+      <div class="card-back"><pre>ERRC 사례. 조선맥주·크라운맥주 이미지 제거, 주류 이미지 감소, 청량감 증대, 하이트 브랜드 창조</pre></div>
+    </div><div class="flash-card" data-cat="사례은행">
+      <div class="card-front"><span>사례은행</span><p>LG전자 사례는 어떤 개념에 연결되는가?</p></div>
+      <div class="card-back"><pre>BCG Matrix 사례. HA·AC는 Cash Cow, MC·HE는 Question Mark로 사업 포트폴리오 평가</pre></div>
+    </div><div class="flash-card" data-cat="사례은행">
+      <div class="card-front"><span>사례은행</span><p>산후조리원 ICT 사례는 어떤 개념에 연결되는가?</p></div>
+      <div class="card-back"><pre>STEEP 사례. 사회활동 증가, ICT 컨버전스, 비용, 위생·감염, 정책요인을 거시환경으로 분석</pre></div>
+    </div><div class="flash-card" data-cat="사례은행">
+      <div class="card-front"><span>사례은행</span><p>Oral-B 사례는 어떤 개념에 연결되는가?</p></div>
+      <div class="card-back"><pre>Design Thinking 사례. 어린이의 약한 악력을 관찰해 잡기 쉬운 칫솔로 개선</pre></div>
+    </div><div class="flash-card" data-cat="사례은행">
+      <div class="card-front"><span>사례은행</span><p>BoA 사례는 어떤 개념에 연결되는가?</p></div>
+      <div class="card-back"><pre>Design Thinking 사례. 결제 후 남은 금액을 자동 저축하는 상품 출시</pre></div>
+    </div><div class="flash-card" data-cat="사례은행">
+      <div class="card-front"><span>사례은행</span><p>현대카드 사례는 어떤 개념에 연결되는가?</p></div>
+      <div class="card-back"><pre>Design Thinking 사례. 카드청구서에서 총사용금액을 큰 글씨로 상단 배치</pre></div>
+    </div><div class="flash-card" data-cat="사례은행">
+      <div class="card-front"><span>사례은행</span><p>자동차 가변 실린더 사례는 어떤 개념에 연결되는가?</p></div>
+      <div class="card-back"><pre>TRIZ 사례. 출력과 연비의 기술적 모순을 필요한 기통만 운영하는 방식으로 해결</pre></div>
+    </div><div class="flash-card" data-cat="사례은행">
+      <div class="card-front"><span>사례은행</span><p>자전거 체인 사례는 어떤 개념에 연결되는가?</p></div>
+      <div class="card-back"><pre>TRIZ 사례. 강하면서 유연해야 하는 물리적 모순을 쇠사슬 구조로 해결</pre></div>
+    </div><div class="flash-card" data-cat="사례은행">
+      <div class="card-front"><span>사례은행</span><p>오바마 캠프 사례는 어떤 개념에 연결되는가?</p></div>
+      <div class="card-back"><pre>A/B Test 사례. 20개월 500회 테스트, 기부 전환율 49%, 가입 전환율 161% 상승</pre></div>
+    </div><div class="flash-card" data-cat="사례은행">
+      <div class="card-front"><span>사례은행</span><p>호텔 캘리포니아 사례는 어떤 개념에 연결되는가?</p></div>
+      <div class="card-back"><pre>Funnel 개선 사례. 예약 버튼을 메인화면에 배치해 예약 전환율 32.12% 증가</pre></div>
+    </div><div class="flash-card" data-cat="사례은행">
+      <div class="card-front"><span>사례은행</span><p>HP 독일 지사 사례는 어떤 개념에 연결되는가?</p></div>
+      <div class="card-back"><pre>Green SCM 사례. 회수·재가공 센터로 제품 재처리·재판매</pre></div>
+    </div><div class="flash-card" data-cat="사례은행">
+      <div class="card-front"><span>사례은행</span><p>노키아 사례는 어떤 개념에 연결되는가?</p></div>
+      <div class="card-back"><pre>고객지향 SCM 사례. 온·오프라인 고객접점 정보를 제품개발에 반영</pre></div>
+    </div><div class="flash-card" data-cat="사례은행">
+      <div class="card-front"><span>사례은행</span><p>맥도날드 사례는 어떤 개념에 연결되는가?</p></div>
+      <div class="card-back"><pre>고객지향 SCM 사례. 고객 취향 변화에 맞춘 맥카페 출시</pre></div>
+    </div><div class="flash-card" data-cat="사례은행">
+      <div class="card-front"><span>사례은행</span><p>코닥 사례는 어떤 개념에 연결되는가?</p></div>
+      <div class="card-back"><pre>Digital Transformation 사례. 디지털 카메라 개발 후 핵심사업 전환 실패</pre></div>
+    </div><div class="flash-card" data-cat="사례은행">
+      <div class="card-front"><span>사례은행</span><p>SK그룹 사례는 어떤 개념에 연결되는가?</p></div>
+      <div class="card-back"><pre>RE100 사례. SK 계열사 8곳의 RE100 가입 신청 사례</pre></div>
+    </div></div>
+  </section>
+</main>
+<button class="top-btn" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+const cards = Array.from(document.querySelectorAll('.flash-card'));
+cards.forEach(c => c.addEventListener('click', () => c.classList.toggle('flipped')));
+const catFilter = document.getElementById('catFilter');
+[...new Set(cards.map(c => c.dataset.cat))].sort().forEach(cat => {
+  const opt = document.createElement('option'); opt.value = cat; opt.textContent = cat; catFilter.appendChild(opt);
+});
+function applyFilter() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const cat = catFilter.value;
+  cards.forEach(c => {
+    const text = c.textContent.toLowerCase();
+    const show = (!q || text.includes(q)) && (!cat || c.dataset.cat === cat);
+    c.style.display = show ? '' : 'none';
+  });
+}
+document.getElementById('search').addEventListener('input', applyFilter);
+catFilter.addEventListener('change', applyFilter);
+document.getElementById('shuffleBtn').addEventListener('click', () => {
+  const wrap = document.getElementById('cards');
+  cards.sort(() => Math.random() - 0.5).forEach(c => wrap.appendChild(c));
+});
+document.getElementById('revealBtn').addEventListener('click', () => cards.forEach(c => c.classList.add('flipped')));
+document.getElementById('resetBtn').addEventListener('click', () => {
+  document.getElementById('search').value=''; catFilter.value=''; cards.forEach(c => { c.style.display=''; c.classList.remove('flipped'); });
+});
+const links = Array.from(document.querySelectorAll('.sidebar nav a'));
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+    }
+  });
+}, {rootMargin:'-35% 0px -60% 0px', threshold:0});
+document.querySelectorAll('section[id]').forEach(s => obs.observe(s));
+</script>
+</body>
+</html>

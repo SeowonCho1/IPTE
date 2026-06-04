@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>SW공학 기술사 분석 키워드 &amp; 암기카드 - 표 수정 / 사이드 목차</title><style>
+:root {
+  --bg:#f8fafc; --paper:#ffffff; --ink:#1f2937; --muted:#64748b; --line:#e2e8f0;
+  --primary:#2563eb; --primary-dark:#1e40af; --soft:#eff6ff; --accent:#7c3aed; --warn:#fff7ed;
+  --sidebar:#ffffff; --dark:#0f172a;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0; font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",Arial,sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.68; word-break:keep-all; overflow-wrap:break-word;
+}
+header {
+  padding:34px 28px; background:linear-gradient(135deg,#111827,#1d4ed8); color:white;
+}
+header > div { max-width:1440px; margin:0 auto; }
+header h1 { margin:0 0 10px; font-size:30px; letter-spacing:-.03em; line-height:1.25; }
+header p { margin:6px 0; opacity:.95; }
+.back-home { display:inline-flex; align-items:center; gap:4px; color:rgba(255,255,255,.92); text-decoration:none; font-size:14px; font-weight:700; margin-bottom:12px; padding:7px 14px; border:1px solid rgba(255,255,255,.35); border-radius:999px; transition:background .15s; }
+.back-home:hover { background:rgba(255,255,255,.15); color:#fff; }
+.layout { max-width:1440px; margin:0 auto; display:grid; grid-template-columns:280px minmax(0, 1fr); gap:24px; padding:24px; }
+.sidebar { position:sticky; top:16px; align-self:start; max-height:calc(100vh - 32px); overflow:auto; background:var(--sidebar); border:1px solid var(--line); border-radius:18px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,.05); }
+.sidebar-title { font-weight:800; color:#0f172a; margin:0 0 12px; display:flex; align-items:center; gap:8px; font-size:16px; }
+.sidebar a { display:block; text-decoration:none; color:#334155; padding:9px 10px; border-radius:10px; font-size:14px; line-height:1.35; margin:2px 0; }
+.sidebar a:hover { background:var(--soft); color:var(--primary-dark); }
+main, .content { min-width:0; }
+.card, .panel, .topic { background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:22px; margin:0 0 20px; box-shadow:0 8px 24px rgba(15,23,42,.05); }
+.panel, .topic, h2, h3 { scroll-margin-top:18px; }
+.mobile-toc { display:none; }
+.section-head { display:flex; justify-content:space-between; gap:14px; align-items:flex-start; flex-wrap:wrap; }
+h1,h2,h3,h4 { letter-spacing:-.025em; line-height:1.28; }
+h2 { margin:26px 0 12px; font-size:25px; color:#111827; border-left:6px solid var(--primary); padding-left:12px; }
+.panel > h2:first-child, .topic > h2:first-child { margin-top:0; }
+h3 { margin:22px 0 8px; font-size:18px; color:#334155; }
+h4 { margin:18px 0 8px; font-size:15px; color:#0f172a; }
+p { margin:9px 0; }
+a { color:var(--primary-dark); }
+.kicker, .tag { display:inline-block; padding:5px 10px; border-radius:999px; background:var(--soft); color:#1d4ed8; font-weight:800; font-size:13px; margin:3px 6px 3px 0; }
+.subtle { color:var(--muted); }
+.note { background:var(--warn); border:1px solid #fed7aa; border-radius:14px; padding:14px; }
+.analysis-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
+.analysis-card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px; margin:0; }
+.analysis-card h3 { margin:0 0 10px; font-size:17px; color:#111827; }
+.chips { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
+.chip { display:inline-block; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:999px; padding:4px 9px; font-size:13px; color:#334155; }
+.one-line, .mnemonic { padding:9px 10px; border-radius:10px; background:#f8fafc; margin-top:8px; }
+.mnemonic { background:#faf5ff; color:#4c1d95; }
+.diagram, pre.diagram { background:#0f172a; color:#e0f2fe; padding:18px; border-radius:14px; overflow:auto; font-family:"D2Coding","SFMono-Regular",Consolas,monospace; font-size:14px; line-height:1.65; white-space:pre; }
+pre.diagram code { color:inherit; background:transparent; padding:0; border:0; }
+pre:not(.diagram) { background:#0f172a; color:#e0f2fe; padding:16px; border-radius:14px; overflow:auto; white-space:pre; }
+code { font-family:"D2Coding","SFMono-Regular",Consolas,monospace; }
+.kw { list-style:none; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; }
+.kw li { border:1px solid var(--line); border-radius:12px; padding:12px; background:#fcfcfd; }
+.kw b { display:block; color:#1d4ed8; margin-bottom:4px; }
+.kw span { color:#334155; }
+blockquote { margin:12px 0; padding:15px 18px; border-left:5px solid var(--accent); background:#faf5ff; border-radius:12px; }
+.table-wrap { width:100%; overflow-x:auto; border:1px solid var(--line); border-radius:14px; margin:8px 0 18px; background:white; }
+table { width:100%; border-collapse:collapse; min-width:680px; background:white; table-layout:auto; }
+th, td { padding:11px 12px; border-bottom:1px solid var(--line); border-right:1px solid var(--line); vertical-align:top; text-align:left; white-space:normal; word-break:keep-all; overflow-wrap:break-word; }
+th:last-child, td:last-child { border-right:0; }
+tr:last-child td { border-bottom:0; }
+th { background:#f1f5f9; color:#0f172a; font-weight:800; }
+tbody tr:nth-child(even) td { background:#fbfdff; }
+ul,ol { padding-left:1.35em; }
+.card-tools, .tools { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 18px; }
+input, select, button { padding:10px 12px; border:1px solid var(--line); border-radius:12px; background:white; font:inherit; }
+button { cursor:pointer; background:#2563eb; color:white; border-color:#2563eb; }
+button.secondary { background:white; color:#1d4ed8; }
+.cards, .flash-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
+.flashcard, .flash { position:relative; min-height:185px; perspective:1000px; cursor:pointer; }
+/* 암기카드 뒤집기 보정: 기존 HTML의 card-front/card-back 구조와 호환 */
+.card-front, .card-back, .front, .back, .face {
+  position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
+  transition:transform .45s ease; transform-style:preserve-3d;
+  background:white; border:1px solid var(--line); border-radius:16px; padding:16px;
+  display:flex; flex-direction:column; justify-content:space-between;
+  box-shadow:0 6px 18px rgba(15,23,42,.05);
+}
+.card-front, .front { border-top:5px solid #2563eb; transform:rotateY(0deg); }
+.card-back, .back { transform:rotateY(180deg); background:#f8fafc; border-top:5px solid #7c3aed; }
+.flashcard.flipped .card-front, .flash.flipped .front { transform:rotateY(180deg); }
+.flashcard.flipped .card-back, .flash.flipped .back { transform:rotateY(360deg); }
+/* inner 구조가 있는 카드도 함께 지원 */
+.inner, .flash-inner { position:relative; width:100%; min-height:185px; transition:transform .45s; transform-style:preserve-3d; }
+.flashcard.flipped .inner, .flash.flipped .flash-inner { transform:rotateY(180deg); }
+.badge { display:inline-block; align-self:flex-start; font-size:12px; padding:3px 8px; background:#e0f2fe; color:#075985; border-radius:999px; margin-bottom:8px; }
+.hidden { display:none !important; }
+.top-button { position:fixed; right:18px; bottom:18px; background:#0f172a; color:#fff; text-decoration:none; border-radius:999px; padding:10px 14px; box-shadow:0 8px 24px rgba(15,23,42,.18); font-size:14px; }
+@media (max-width: 900px) {
+  header { padding:28px 18px; }
+  header h1 { font-size:24px; }
+  .layout { display:block; padding:14px; }
+  .sidebar { display:none; }
+  .mobile-toc { display:block; }
+  .mobile-toc details { border:1px solid var(--line); border-radius:14px; padding:12px; background:white; }
+  .mobile-toc summary { font-weight:800; cursor:pointer; }
+  .mobile-toc a { display:block; padding:8px 4px; color:#334155; text-decoration:none; border-bottom:1px solid #eef2f7; }
+  .card, .panel, .topic { padding:16px; border-radius:16px; }
+  h2 { font-size:20px; }
+  h3 { font-size:16px; }
+  .diagram, pre.diagram, pre:not(.diagram) { font-size:13px; }
+  table { min-width:620px; font-size:14px; }
+  th, td { padding:9px 10px; }
+  .top-button { display:none; }
+}
+@media print {
+  body { background:white; }
+  header { background:#fff; color:#111; border-bottom:2px solid #111; }
+  .layout { display:block; padding:0; }
+  .sidebar, .mobile-toc, .card-tools, .tools, button, input, select, .top-button { display:none !important; }
+  .panel,.topic,.card { break-inside:avoid; box-shadow:none; }
+  .inner, .flash-inner { transform:none !important; }
+  .back { display:none; }
+  .back-home { display:none; }
+}
+</style><link rel="stylesheet" href="../assets/diagrams.css"/>
+</head>
+<body>
+<header id="top"><div><a class="back-home" href="../index.html">← 목차로</a><h1>SW공학 기술사 분석 키워드 &amp; 암기카드</h1><p>정리 기준: 「01. 소프트웨어공학 기본반」 교재 흐름, 기출 출제 주제, 1교시·2교시 답안 확장용</p><p>수정: 표 가독성 보정, PC용 좌측 고정 목차, 모바일 반응형 숨김/접기 목차 처리</p></div></header>
+<div class="layout"><aside class="sidebar"><p class="sidebar-title">📌 목차</p><a href="#0-공부-방식-키워드-암기를-답안으로-바꾸는-법">0. 공부 방식: 키워드 암기를 답안으로 바꾸는 법</a><a href="#1-SW-SW공학-SW-위기-SDLC">1. SW, SW공학, SW 위기, SDLC</a><a href="#2-SDLC-대표-모델">2. SDLC 대표 모델</a><a href="#3-SW-개발방법론">3. SW 개발방법론</a><a href="#4-Agile-Scrum-XP-Kanban">4. Agile, Scrum, XP, Kanban</a><a href="#5-CI-CD-DevOps-DevSecOps-무중단-배포">5. CI/CD, DevOps, DevSecOps, 무중단 배포</a><a href="#6-SW-개발환경과-아키텍처">6. SW 개발환경과 아키텍처</a><a href="#7-프로그래밍-언어">7. 프로그래밍 언어</a><a href="#8-소프트웨어진흥법-SW-발주-PMO">8. 소프트웨어진흥법, SW 발주, PMO</a><a href="#9-요구공학">9. 요구공학</a><a href="#10-SW-품질과-ISO-표준">10. SW 품질과 ISO 표준</a><a href="#11-프로세스-품질-SPICE-CMMI">11. 프로세스 품질, SPICE, CMMI</a><a href="#12-SW-생산성-3R-모듈화">12. SW 생산성, 3R, 모듈화</a><a href="#13-SW-안전성-ISO-IEC-Guide-51-IEC-61508-ISO-26262">13. SW 안전성, ISO/IEC Guide 51, IEC 61508, ISO 26262</a><a href="#14-기술사-답안-템플릿">14. 기술사 답안 템플릿</a><a href="#15-암기-카드">15. 암기 카드</a><a href="#analysis">분석 키워드</a><a href="#flashcards">암기카드</a><a href="#full">전체 정리</a></aside>
+<main class="content"><div class="card mobile-toc"><details><summary>목차 열기</summary><a href="#0-공부-방식-키워드-암기를-답안으로-바꾸는-법">0. 공부 방식: 키워드 암기를 답안으로 바꾸는 법</a><a href="#1-SW-SW공학-SW-위기-SDLC">1. SW, SW공학, SW 위기, SDLC</a><a href="#2-SDLC-대표-모델">2. SDLC 대표 모델</a><a href="#3-SW-개발방법론">3. SW 개발방법론</a><a href="#4-Agile-Scrum-XP-Kanban">4. Agile, Scrum, XP, Kanban</a><a href="#5-CI-CD-DevOps-DevSecOps-무중단-배포">5. CI/CD, DevOps, DevSecOps, 무중단 배포</a><a href="#6-SW-개발환경과-아키텍처">6. SW 개발환경과 아키텍처</a><a href="#7-프로그래밍-언어">7. 프로그래밍 언어</a><a href="#8-소프트웨어진흥법-SW-발주-PMO">8. 소프트웨어진흥법, SW 발주, PMO</a><a href="#9-요구공학">9. 요구공학</a><a href="#10-SW-품질과-ISO-표준">10. SW 품질과 ISO 표준</a><a href="#11-프로세스-품질-SPICE-CMMI">11. 프로세스 품질, SPICE, CMMI</a><a href="#12-SW-생산성-3R-모듈화">12. SW 생산성, 3R, 모듈화</a><a href="#13-SW-안전성-ISO-IEC-Guide-51-IEC-61508-ISO-26262">13. SW 안전성, ISO/IEC Guide 51, IEC 61508, ISO 26262</a><a href="#14-기술사-답안-템플릿">14. 기술사 답안 템플릿</a><a href="#15-암기-카드">15. 암기 카드</a><a href="#analysis">분석 키워드</a><a href="#flashcards">암기카드</a><a href="#full">전체 정리</a></details></div>
+<section class="panel"><span class="kicker">사용법</span><p>① 목차별 <b>분석 키워드</b>로 먼저 암기 포인트 확인 → ② <b>도식</b>으로 흐름 복원 → ③ <b>암기카드</b>를 클릭하며 두음과 답안 문장 연결 훈련.</p><div class="note">기술사 답안 훈련용으로, 단순 요약보다 “키워드 → 한 줄 확장 → 답안 문장” 흐름에 맞춰 구성했습니다.</div></section>
+<section class="panel" id="analysis"><h2>목차별 분석 키워드</h2><div class="analysis-grid">
+<section class="analysis-card" id="analysis-1-SW-SW공학-SW-위기-SDLC">
+<h3>1. SW, SW공학, SW 위기, SDLC</h3>
+<div class="chips"><span class="chip">비가시성</span><span class="chip">복잡성</span><span class="chip">변경성</span><span class="chip">SW 위기</span><span class="chip">SW공학</span><span class="chip">SDLC</span><span class="chip">타요설개테운폐</span></div>
+<div class="one-line"><b>답안 한 줄:</b> SW 특성으로 인한 비용·일정·품질 문제를 SW공학과 SDLC로 체계적 관리</div>
+<div class="mnemonic"><b>암기:</b> 비복비복변순무개 / 타요설개테운폐</div>
+</section>
+<section class="analysis-card" id="analysis-2-SDLC-대표-모델">
+<h3>2. SDLC 대표 모델</h3>
+<div class="chips"><span class="chip">폭포수</span><span class="chip">프로토타입</span><span class="chip">나선형</span><span class="chip">반복적</span><span class="chip">RAD</span><span class="chip">V모델</span><span class="chip">위험·피드백·검증</span></div>
+<div class="one-line"><b>답안 한 줄:</b> 프로젝트 요구 명확도, 위험도, 검증 수준에 따라 생명주기 모델 선택</div>
+<div class="mnemonic"><b>암기:</b> 요구명확=폭포수, 요구불명확=프로토타입, 위험=나선형, 검증=V</div>
+</section>
+<section class="analysis-card" id="analysis-3-개발방법론">
+<h3>3. 개발방법론</h3>
+<div class="chips"><span class="chip">구조적</span><span class="chip">정보공학</span><span class="chip">객체지향</span><span class="chip">CBD</span><span class="chip">Product Line</span><span class="chip">작방산관기도</span><span class="chip">캡추다정상</span></div>
+<div class="one-line"><b>답안 한 줄:</b> SDLC 각 단계를 수행하기 위한 절차·기법·도구·산출물 표준화</div>
+<div class="mnemonic"><b>암기:</b> 작방산관기도 / 캡추다정상</div>
+</section>
+<section class="analysis-card" id="analysis-4-Agile-Scrum-XP-Kanban">
+<h3>4. Agile, Scrum, XP, Kanban</h3>
+<div class="chips"><span class="chip">반복</span><span class="chip">점진</span><span class="chip">피드백</span><span class="chip">변화대응</span><span class="chip">Scrum</span><span class="chip">XP</span><span class="chip">Kanban</span></div>
+<div class="one-line"><b>답안 한 줄:</b> 짧은 반복 주기와 고객 피드백으로 동작 SW를 점진 완성</div>
+<div class="mnemonic"><b>암기:</b> 개변동고 / 용단커피존</div>
+</section>
+<section class="analysis-card" id="analysis-5-CI-CD-DevOps-배포">
+<h3>5. CI/CD, DevOps, 배포</h3>
+<div class="chips"><span class="chip">CI</span><span class="chip">CDelivery</span><span class="chip">CDeployment</span><span class="chip">DevOps</span><span class="chip">CALMS</span><span class="chip">DORA</span><span class="chip">DevSecOps</span><span class="chip">Blue-Green</span><span class="chip">Canary</span></div>
+<div class="one-line"><b>답안 한 줄:</b> CALMS로 Dev·Ops 통합, DORA 4 Metrics로 배포 성과 정량 평가</div>
+<div class="mnemonic"><b>암기:</b> CALMS / DORA: 빈·리·복·실</div>
+</section>
+<section class="analysis-card" id="analysis-6-SW-아키텍처">
+<h3>6. SW 아키텍처</h3>
+<div class="chips"><span class="chip">품질속성</span><span class="chip">아키텍처 스타일</span><span class="chip">설계전술</span><span class="chip">ATAM</span><span class="chip">MSA</span><span class="chip">EDA</span><span class="chip">SAD</span></div>
+<div class="one-line"><b>답안 한 줄:</b> 품질속성을 만족하기 위해 컴포넌트 구조와 관계, 설계 원칙 정의</div>
+<div class="mnemonic"><b>암기:</b> 아동아식품분우분발</div>
+</section>
+<section class="analysis-card" id="analysis-7-프로그래밍-언어">
+<h3>7. 프로그래밍 언어</h3>
+<div class="chips"><span class="chip">C</span><span class="chip">Java</span><span class="chip">Python</span><span class="chip">컴파일</span><span class="chip">인터프리터</span><span class="chip">JVM</span><span class="chip">메모리관리</span></div>
+<div class="one-line"><b>답안 한 줄:</b> 성능·생산성·이식성·유지보수성 기준으로 언어 선택</div>
+<div class="mnemonic"><b>암기:</b> 1GL→2GL→3GL→4GL</div>
+</section>
+<section class="analysis-card" id="analysis-8-SW진흥법-발주-PMO">
+<h3>8. SW진흥법, 발주, PMO</h3>
+<div class="chips"><span class="chip">SW진흥법</span><span class="chip">발주</span><span class="chip">직접구매</span><span class="chip">분할발주</span><span class="chip">GS인증</span><span class="chip">SP인증</span><span class="chip">PMO</span></div>
+<div class="one-line"><b>답안 한 줄:</b> 공공 SW 사업의 공정 발주, 품질 확보, 통합관리를 위한 제도 체계</div>
+<div class="mnemonic"><b>암기:</b> 법→발주→요구→PMO→품질</div>
+</section>
+<section class="analysis-card" id="analysis-9-요구공학">
+<h3>9. 요구공학</h3>
+<div class="chips"><span class="chip">도출</span><span class="chip">분석</span><span class="chip">명세</span><span class="chip">검증</span><span class="chip">관리</span><span class="chip">기능요구</span><span class="chip">비기능요구</span><span class="chip">추적성</span></div>
+<div class="one-line"><b>답안 한 줄:</b> 이해관계자 요구를 수집·분석·명세·검증·관리하여 개발 기준 확립</div>
+<div class="mnemonic"><b>암기:</b> 도분명검관</div>
+</section>
+<section class="analysis-card" id="analysis-10-SW-품질-ISO-표준">
+<h3>10. SW 품질, ISO 표준</h3>
+<div class="chips"><span class="chip">9126</span><span class="chip">14598</span><span class="chip">12119</span><span class="chip">25000</span><span class="chip">25010</span><span class="chip">12207</span><span class="chip">15504</span><span class="chip">9000</span></div>
+<div class="one-line"><b>답안 한 줄:</b> 제품 품질, 평가 절차, 생명주기, 프로세스 능력을 표준 기반으로 관리</div>
+<div class="mnemonic"><b>암기:</b> 기신사효유이 / 요모관측평확</div>
+</section>
+<section class="analysis-card" id="analysis-11-CMMI-SPICE-프로세스">
+<h3>11. CMMI, SPICE, 프로세스</h3>
+<div class="chips"><span class="chip">12207</span><span class="chip">SPICE</span><span class="chip">CMMI</span><span class="chip">능력수준</span><span class="chip">성숙도</span><span class="chip">NPLF</span><span class="chip">초관정관최</span></div>
+<div class="one-line"><b>답안 한 줄:</b> 조직의 SW 프로세스 수행 능력과 성숙도를 평가·개선</div>
+<div class="mnemonic"><b>암기:</b> 기지조 / 초관정관최</div>
+</section>
+<section class="analysis-card" id="analysis-12-생산성-3R-모듈화">
+<h3>12. 생산성, 3R, 모듈화</h3>
+<div class="chips"><span class="chip">Reuse</span><span class="chip">Reengineering</span><span class="chip">Reverse Engineering</span><span class="chip">모듈화</span><span class="chip">응집도</span><span class="chip">결합도</span><span class="chip">정보은닉</span></div>
+<div class="one-line"><b>답안 한 줄:</b> 재사용과 모듈화로 변경 영향 최소화, 생산성·품질 향상</div>
+<div class="mnemonic"><b>암기:</b> 3R / 고응집·저결합</div>
+</section>
+<section class="analysis-card" id="analysis-13-SW-안전성-ISO-26262">
+<h3>13. SW 안전성, ISO 26262</h3>
+<div class="chips"><span class="chip">Guide 51</span><span class="chip">IEC 61508</span><span class="chip">SIL</span><span class="chip">ISO 26262</span><span class="chip">ASIL</span><span class="chip">심노제</span><span class="chip">Fail-Safe</span></div>
+<div class="one-line"><b>답안 한 줄:</b> 위험분석과 안전 등급 기반으로 사람·재산·환경 피해 최소화</div>
+<div class="mnemonic"><b>암기:</b> Guide51→IEC61508→ISO26262→ASIL / 심노제</div>
+</section>
+<section class="analysis-card" id="analysis-14-답안-템플릿">
+<h3>14. 답안 템플릿</h3>
+<div class="chips"><span class="chip">개요</span><span class="chip">도식</span><span class="chip">3단표</span><span class="chip">비교</span><span class="chip">고려사항</span><span class="chip">결론</span></div>
+<div class="one-line"><b>답안 한 줄:</b> 정의·배경에서 시작해 메커니즘, 비교표, 적용 고려사항으로 확장</div>
+<div class="mnemonic"><b>암기:</b> 개요→본론→비교·적용→결론</div>
+</section>
+<section class="analysis-card" id="analysis-15-암기-카드">
+<h3>15. 암기 카드</h3>
+<div class="chips"><span class="chip">질문</span><span class="chip">두음</span><span class="chip">한 줄 확장</span><span class="chip">도식 복원</span><span class="chip">답안 문장</span></div>
+<div class="one-line"><b>답안 한 줄:</b> 두음 암기를 답안 문장과 도식으로 복원하는 반복 훈련</div>
+<div class="mnemonic"><b>암기:</b> 질문→두음→확장→도식→답안</div>
+</section></div></section>
+<section class="panel" id="flashcards"><h2>클릭형 암기카드</h2><input class="search" id="cardSearch" oninput="filterCards()" placeholder="검색: ISO, Agile, ASIL, 모듈화 등"/><div class="tools"><button class="btn" onclick="shuffleCards()">카드 섞기</button><button class="btn" onclick="flipAll(true)">정답 모두 보기</button><button class="btn" onclick="flipAll(false)">질문만 보기</button></div><div class="cards">
+<div class="flashcard" data-a="타당성검토, 요구분석, 설계, 개발, 테스트, 운영 및 유지보수, 폐기" data-m="타요설개테운폐" data-q="SDLC 단계">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>SDLC 단계</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 타요설개테운폐</p>
+<p>타당성검토, 요구분석, 설계, 개발, 테스트, 운영 및 유지보수, 폐기</p>
+</div>
+</div>
+<div class="flashcard" data-a="비가시성, 복잡성, 비마모성, 복제성, 변경성, 순응성, 무형성, 개발 중심" data-m="비복비복변순무개" data-q="SW 특성">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>SW 특성</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 비복비복변순무개</p>
+<p>비가시성, 복잡성, 비마모성, 복제성, 변경성, 순응성, 무형성, 개발 중심</p>
+</div>
+</div>
+<div class="flashcard" data-a="원리, 기법, 언어, 도구, 산출물" data-m="원기언도산" data-q="SW공학 구성요소">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>SW공학 구성요소</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 원기언도산</p>
+<p>원리, 기법, 언어, 도구, 산출물</p>
+</div>
+</div>
+<div class="flashcard" data-a="정형성과 엄격, 관심사의 분리, 모듈화, 추상화, 변화예측, 일반화, 점진화" data-m="정관모추변일점" data-q="SW공학 원리">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>SW공학 원리</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 정관모추변일점</p>
+<p>정형성과 엄격, 관심사의 분리, 모듈화, 추상화, 변화예측, 일반화, 점진화</p>
+</div>
+</div>
+<div class="flashcard" data-a="작업절차, 작업방법, 산출물, 관리, 기법, 도구" data-m="작방산관기도" data-q="개발방법론 구성">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>개발방법론 구성</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 작방산관기도</p>
+<p>작업절차, 작업방법, 산출물, 관리, 기법, 도구</p>
+</div>
+</div>
+<div class="flashcard" data-a="캡슐화, 추상화, 다형성, 정보은닉, 상속" data-m="캡추다정상" data-q="객체지향 원리">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>객체지향 원리</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 캡추다정상</p>
+<p>캡슐화, 추상화, 다형성, 정보은닉, 상속</p>
+</div>
+</div>
+<div class="flashcard" data-a="개인과 상호작용, 변화 대응, 동작하는 SW, 고객 협력" data-m="개변동고" data-q="Agile 핵심가치">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>Agile 핵심가치</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 개변동고</p>
+<p>개인과 상호작용, 변화 대응, 동작하는 SW, 고객 협력</p>
+</div>
+</div>
+<div class="flashcard" data-a="용기, 단순성, 커뮤니케이션, 피드백, 존중" data-m="용단커피존" data-q="XP 가치">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>XP 가치</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 용단커피존</p>
+<p>용기, 단순성, 커뮤니케이션, 피드백, 존중</p>
+</div>
+</div>
+<div class="flashcard" data-a="기능성, 신뢰성, 사용성, 효율성, 유지보수성, 이식성" data-m="기신사효유이" data-q="ISO/IEC 9126 품질특성">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>ISO/IEC 9126 품질특성</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 기신사효유이</p>
+<p>기능성, 신뢰성, 사용성, 효율성, 유지보수성, 이식성</p>
+</div>
+</div>
+<div class="flashcard" data-a="요구사항, 모델, 관리, 측정, 평가, 확장" data-m="요모관측평확" data-q="SQuaRE 구성">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>SQuaRE 구성</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 요모관측평확</p>
+<p>요구사항, 모델, 관리, 측정, 평가, 확장</p>
+</div>
+</div>
+<div class="flashcard" data-a="기능적합성, 성능효율성, 호환성, 상호작용능력, 신뢰성, 보안성, 유지보수성, 유연성, 안전성" data-m="기성호상신보유유안" data-q="ISO/IEC 25010:2023 품질특성">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>ISO/IEC 25010:2023 품질특성</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 기성호상신보유유안</p>
+<p>기능적합성, 성능효율성, 호환성, 상호작용능력, 신뢰성, 보안성, 유지보수성, 유연성, 안전성</p>
+</div>
+</div>
+<div class="flashcard" data-a="기본 생명주기 프로세스, 지원 프로세스, 조직 프로세스" data-m="기지조" data-q="ISO/IEC 12207 프로세스">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>ISO/IEC 12207 프로세스</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 기지조</p>
+<p>기본 생명주기 프로세스, 지원 프로세스, 조직 프로세스</p>
+</div>
+</div>
+<div class="flashcard" data-a="초기, 관리, 정의, 정량관리, 최적화" data-m="초관정관최" data-q="CMMI 성숙도">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>CMMI 성숙도</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 초관정관최</p>
+<p>초기, 관리, 정의, 정량관리, 최적화</p>
+</div>
+</div>
+<div class="flashcard" data-a="Severity 심각도, Exposure 노출도, Controllability 제어가능성" data-m="심노제" data-q="ASIL 결정 지표">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>ASIL 결정 지표</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 심노제</p>
+<p>Severity 심각도, Exposure 노출도, Controllability 제어가능성</p>
+</div>
+</div>
+<div class="flashcard" data-a="응집도는 높게, 결합도는 낮게 설계하여 변경 영향 최소화" data-m="고응집·저결합" data-q="모듈화 좋은 방향">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>모듈화 좋은 방향</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 고응집·저결합</p>
+<p>응집도는 높게, 결합도는 낮게 설계하여 변경 영향 최소화</p>
+</div>
+</div>
+<div class="flashcard" data-a="계획, 개발, 빌드, 테스트, 배포, 운영 전 단계에 보안 자동화 적용" data-m="전 단계 보안" data-q="DevSecOps 적용 위치">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>DevSecOps 적용 위치</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 전 단계 보안</p>
+<p>계획, 개발, 빌드, 테스트, 배포, 운영 전 단계에 보안 자동화 적용</p>
+</div>
+</div>
+<div class="flashcard" data-a="공통 핵심자산 개발, 제품별 조립·확장, 조직적 관리" data-m="Domain·Application·Management" data-q="Product Line 3대 활동">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>Product Line 3대 활동</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> Domain·Application·Management</p>
+<p>공통 핵심자산 개발, 제품별 조립·확장, 조직적 관리</p>
+</div>
+</div>
+<div class="flashcard" data-a="순차 교체, 이중 환경 전환, 일부 사용자 선배포, 기능 플래그 제어" data-m="Rolling·Blue-Green·Canary·Feature Toggle" data-q="무중단 배포 방식">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>무중단 배포 방식</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> Rolling·Blue-Green·Canary·Feature Toggle</p>
+<p>순차 교체, 이중 환경 전환, 일부 사용자 선배포, 기능 플래그 제어</p>
+</div>
+</div>
+<div class="flashcard" data-a="ATAM 소개, 동인, 아키텍처 소개, 접근법 식별, 품질속성 트리, 분석, 우선순위, 분석 반복, 발표" data-m="아동아식품분우분발" data-q="ATAM 9단계">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>ATAM 9단계</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 아동아식품분우분발</p>
+<p>ATAM 소개, 동인, 아키텍처 소개, 접근법 식별, 품질속성 트리, 분석, 우선순위, 분석 반복, 발표</p>
+</div>
+</div>
+<div class="flashcard" data-a="SW 특성으로 인한 비용·일정·품질 문제를 SW공학과 SDLC로 체계적 관리" data-m="비복비복변순무개 / 타요설개테운폐" data-q="1. SW, SW공학, SW 위기, SDLC 핵심 한 줄">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>1. SW, SW공학, SW 위기, SDLC 핵심 한 줄</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 비복비복변순무개 / 타요설개테운폐</p>
+<p>SW 특성으로 인한 비용·일정·품질 문제를 SW공학과 SDLC로 체계적 관리</p>
+</div>
+</div>
+<div class="flashcard" data-a="프로젝트 요구 명확도, 위험도, 검증 수준에 따라 생명주기 모델 선택" data-m="요구명확=폭포수, 요구불명확=프로토타입, 위험=나선형, 검증=V" data-q="2. SDLC 대표 모델 핵심 한 줄">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>2. SDLC 대표 모델 핵심 한 줄</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 요구명확=폭포수, 요구불명확=프로토타입, 위험=나선형, 검증=V</p>
+<p>프로젝트 요구 명확도, 위험도, 검증 수준에 따라 생명주기 모델 선택</p>
+</div>
+</div>
+<div class="flashcard" data-a="SDLC 각 단계를 수행하기 위한 절차·기법·도구·산출물 표준화" data-m="작방산관기도 / 캡추다정상" data-q="3. 개발방법론 핵심 한 줄">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>3. 개발방법론 핵심 한 줄</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 작방산관기도 / 캡추다정상</p>
+<p>SDLC 각 단계를 수행하기 위한 절차·기법·도구·산출물 표준화</p>
+</div>
+</div>
+<div class="flashcard" data-a="짧은 반복 주기와 고객 피드백으로 동작 SW를 점진 완성" data-m="개변동고 / 용단커피존" data-q="4. Agile, Scrum, XP, Kanban 핵심 한 줄">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>4. Agile, Scrum, XP, Kanban 핵심 한 줄</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 개변동고 / 용단커피존</p>
+<p>짧은 반복 주기와 고객 피드백으로 동작 SW를 점진 완성</p>
+</div>
+</div>
+<div class="flashcard" data-a="CALMS(문화·자동화·린·측정·공유) + DORA 4(배포빈도↑, 리드타임↓, MTTR↓, 실패율↓)" data-m="CALMS / 빈·리·복·실" data-q="5. CI/CD, DevOps, 배포 핵심 한 줄">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>5. CI/CD, DevOps, 배포 핵심 한 줄</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> CALMS / DORA: 빈·리·복·실</p>
+<p>CALMS로 Dev·Ops 통합, DORA 4 Metrics로 배포 성과 정량 평가·개선</p>
+</div>
+</div>
+<div class="flashcard" data-a="품질속성을 만족하기 위해 컴포넌트 구조와 관계, 설계 원칙 정의" data-m="아동아식품분우분발" data-q="6. SW 아키텍처 핵심 한 줄">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>6. SW 아키텍처 핵심 한 줄</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 아동아식품분우분발</p>
+<p>품질속성을 만족하기 위해 컴포넌트 구조와 관계, 설계 원칙 정의</p>
+</div>
+</div>
+<div class="flashcard" data-a="성능·생산성·이식성·유지보수성 기준으로 언어 선택" data-m="1GL→2GL→3GL→4GL" data-q="7. 프로그래밍 언어 핵심 한 줄">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>7. 프로그래밍 언어 핵심 한 줄</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 1GL→2GL→3GL→4GL</p>
+<p>성능·생산성·이식성·유지보수성 기준으로 언어 선택</p>
+</div>
+</div>
+<div class="flashcard" data-a="공공 SW 사업의 공정 발주, 품질 확보, 통합관리를 위한 제도 체계" data-m="법→발주→요구→PMO→품질" data-q="8. SW진흥법, 발주, PMO 핵심 한 줄">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>8. SW진흥법, 발주, PMO 핵심 한 줄</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 법→발주→요구→PMO→품질</p>
+<p>공공 SW 사업의 공정 발주, 품질 확보, 통합관리를 위한 제도 체계</p>
+</div>
+</div>
+<div class="flashcard" data-a="이해관계자 요구를 수집·분석·명세·검증·관리하여 개발 기준 확립" data-m="도분명검관" data-q="9. 요구공학 핵심 한 줄">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>9. 요구공학 핵심 한 줄</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 도분명검관</p>
+<p>이해관계자 요구를 수집·분석·명세·검증·관리하여 개발 기준 확립</p>
+</div>
+</div>
+<div class="flashcard" data-a="제품 품질, 평가 절차, 생명주기, 프로세스 능력을 표준 기반으로 관리" data-m="기신사효유이 / 요모관측평확" data-q="10. SW 품질, ISO 표준 핵심 한 줄">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>10. SW 품질, ISO 표준 핵심 한 줄</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 기신사효유이 / 요모관측평확</p>
+<p>제품 품질, 평가 절차, 생명주기, 프로세스 능력을 표준 기반으로 관리</p>
+</div>
+</div>
+<div class="flashcard" data-a="조직의 SW 프로세스 수행 능력과 성숙도를 평가·개선" data-m="기지조 / 초관정관최" data-q="11. CMMI, SPICE, 프로세스 핵심 한 줄">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>11. CMMI, SPICE, 프로세스 핵심 한 줄</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 기지조 / 초관정관최</p>
+<p>조직의 SW 프로세스 수행 능력과 성숙도를 평가·개선</p>
+</div>
+</div>
+<div class="flashcard" data-a="재사용과 모듈화로 변경 영향 최소화, 생산성·품질 향상" data-m="3R / 고응집·저결합" data-q="12. 생산성, 3R, 모듈화 핵심 한 줄">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>12. 생산성, 3R, 모듈화 핵심 한 줄</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 3R / 고응집·저결합</p>
+<p>재사용과 모듈화로 변경 영향 최소화, 생산성·품질 향상</p>
+</div>
+</div>
+<div class="flashcard" data-a="위험분석과 안전 등급 기반으로 사람·재산·환경 피해 최소화" data-m="Guide51→IEC61508→ISO26262→ASIL / 심노제" data-q="13. SW 안전성, ISO 26262 핵심 한 줄">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>13. SW 안전성, ISO 26262 핵심 한 줄</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> Guide51→IEC61508→ISO26262→ASIL / 심노제</p>
+<p>위험분석과 안전 등급 기반으로 사람·재산·환경 피해 최소화</p>
+</div>
+</div>
+<div class="flashcard" data-a="정의·배경에서 시작해 메커니즘, 비교표, 적용 고려사항으로 확장" data-m="개요→본론→비교·적용→결론" data-q="14. 답안 템플릿 핵심 한 줄">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>14. 답안 템플릿 핵심 한 줄</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 개요→본론→비교·적용→결론</p>
+<p>정의·배경에서 시작해 메커니즘, 비교표, 적용 고려사항으로 확장</p>
+</div>
+</div>
+<div class="flashcard" data-a="두음 암기를 답안 문장과 도식으로 복원하는 반복 훈련" data-m="질문→두음→확장→도식→답안" data-q="15. 암기 카드 핵심 한 줄">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>15. 암기 카드 핵심 한 줄</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 질문→두음→확장→도식→답안</p>
+<p>두음 암기를 답안 문장과 도식으로 복원하는 반복 훈련</p>
+</div>
+</div></div></section>
+<section class="panel" id="full"><h2 id="0-공부-방식-키워드-암기를-답안으로-바꾸는-법">0. 공부 방식: 키워드 암기를 답안으로 바꾸는 법</h2>
+<p><strong>도식: 키워드 → 답안 확장 훈련 구조</strong></p>
+<pre class="diagram"><code>[키워드 암기] → [한 줄 확장] → [정의 3줄] → [도식 1개] → [3단표 1개] → [답안 완성]</code></pre>
+<p><em>의미: 키워드를 외운 뒤 바로 길게 쓰려고 하지 말고, 한 줄 확장과 도식을 중간 단계로 두는 훈련 구조</em></p>
+<p><strong>흐름/도식</strong></p>
+<pre class="diagram"><code>키워드 3개 암기
+↓
+키워드별 한 줄 확장
+↓
+정의 3줄 작성
+↓
+도식 1개 작성
+↓
+3단표 1개 작성
+↓
+1교시 30줄 또는 2교시 70줄로 확장</code></pre>
+<div class="table-wrap"><table><thead><tr><th>훈련 단계</th><th>작성 방식</th><th>예시</th></tr></thead><tbody><tr><td>키워드</td><td>단어만 뽑기</td><td>반복, 피드백, 변화대응</td></tr><tr><td>확장 문장</td><td>무엇을 통해, 무엇을 달성</td><td>짧은 반복 개발과 고객 피드백을 통해 요구사항 변화 대응</td></tr><tr><td>정의</td><td>목적, 방식, 효과, 개념명</td><td>요구사항 변화가 큰 환경에서 반복 개발로 제품 적합성 향상</td></tr><tr><td>도식</td><td>입력, 처리, 결과 흐름</td><td>요구사항 → 스프린트 → 리뷰 → 개선</td></tr><tr><td>3단표</td><td>원리, 적용 포인트, 기대효과</td><td>반복 개발, 주기별 구현, 조기 검증</td></tr></tbody></table></div>
+<blockquote><strong>메모</strong> 암기 원칙<br/>번호, 용어, 두음만 외우면 답안이 짧아집니다. 반드시 “키워드 하나당 한 줄 문장”으로 바꾸는 연습을 같이 해야 합니다.</blockquote>
+<h2 id="1-SW-SW공학-SW-위기-SDLC">1. SW, SW공학, SW 위기, SDLC</h2>
+<p><strong>도식: SW공학 기초 흐름</strong></p>
+<pre class="diagram"><code>[SW 특성 (비가시·복잡·변경)] → [SW 위기 (비용·일정·품질)] → [SW공학 (공학적 관리)] → [SDLC (타요설개테운폐)] → [품질·생산성 (일관성·변경대응)]</code></pre>
+<p><em>의미: SW의 특성 때문에 위기가 발생하고, 이를 극복하기 위해 SW공학과 SDLC 적용</em></p>
+<p><code>1교시 빈출</code></p>
+<p><code>기초 개념</code></p>
+<h3 id="1-1-소프트웨어의-개념과-특성">1.1 소프트웨어의 개념과 특성</h3>
+<p><strong>암기/키워드</strong></p>
+<pre class="diagram"><code>암기: 비복비복변순무개
+비가시성, 복잡성, 비마모성, 복제성, 변경성, 순응성, 무형성, 개발 중심</code></pre>
+<div class="table-wrap"><table><thead><tr><th>특성</th><th>키워드 확장</th><th>답안 포인트</th></tr></thead><tbody><tr><td>비가시성</td><td>내부 구조가 눈에 보이지 않아 산출물과 절차로 관리 필요</td><td>문서화, 모델링</td></tr><tr><td>복잡성</td><td>요구사항, 데이터, 인터페이스 증가로 구조적 관리 필요</td><td>모듈화, 추상화</td></tr><tr><td>비마모성</td><td>물리적 마모는 없지만 변경 누적으로 품질 저하 가능</td><td>유지보수, 리팩토링</td></tr><tr><td>변경성</td><td>환경과 요구 변화에 따라 지속적 수정 발생</td><td>형상관리, 변경관리</td></tr><tr><td>무형성</td><td>물리적 형태가 없어 규모와 품질을 메트릭으로 관리</td><td>FP, 품질 측정</td></tr></tbody></table></div>
+<blockquote><strong>답안 문장</strong> 소프트웨어는 컴퓨터를 동작시키는 프로그램과 개발, 운용, 유지보수에 필요한 관련 정보의 집합이다. 비가시성, 복잡성, 변경성, 무형성 등의 특성으로 인해 체계적인 개발 절차, 산출물 관리, 품질 측정이 필요하다.</blockquote>
+<h3 id="1-2-리만의-SW-변화-원리">1.2 리만의 SW 변화 원리</h3>
+<p><strong>암기/키워드</strong></p>
+<pre class="diagram"><code>암기: 4C SIDF
+Continuing Change, Increasing Complexity, Self-Regulation, Organizational Stability, Familiarity, Continuing Growth, Declining Quality, Feedback System</code></pre>
+<div class="table-wrap"><table><thead><tr><th>법칙</th><th>확장 문장</th><th>답안 키워드</th></tr></thead><tbody><tr><td>지속적 변화</td><td>실세계 환경 변화에 맞춰 SW도 지속적으로 변경 필요</td><td>변경관리</td></tr><tr><td>복잡성 증가</td><td>변경이 누적되면 구조 복잡도 증가, 정비 활동 필요</td><td>리팩토링</td></tr><tr><td>지속 성장</td><td>사용자 요구 충족을 위해 기능 확장 지속</td><td>기능 증가</td></tr><tr><td>품질 저하</td><td>유지보수가 부족하면 시간이 지날수록 품질 저하</td><td>기술부채</td></tr><tr><td>피드백 시스템</td><td>운영 결과와 사용자 피드백을 다음 변경에 반영</td><td>진화 관리</td></tr></tbody></table></div>
+<p><strong>흐름/도식</strong></p>
+<pre class="diagram"><code>Change Request → Impact Analysis → Release Planning → System Update → System Release → Feedback</code></pre>
+<h3 id="1-3-SW-위기와-SW공학">1.3 SW 위기와 SW공학</h3>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>핵심 내용</th><th>답안 키워드</th></tr></thead><tbody><tr><td>SW 위기</td><td>규모와 복잡도 증가에 비해 관리 능력 부족으로 비용, 일정, 품질 문제 발생</td><td>비용초과, 일정지연, 품질저하</td></tr><tr><td>극복 방향</td><td>방법론, 도구, 표준, 품질관리 체계 적용</td><td>공표도품</td></tr><tr><td>SW공학</td><td>공학적 원리와 체계적 접근으로 고품질 SW를 경제적으로 생산</td><td>품질, 생산성, 일관성</td></tr></tbody></table></div>
+<blockquote><strong>답안 문장</strong> SW공학은 고품질 소프트웨어를 경제적으로 생산하기 위해 공학적 원리, 과학적 방법, 수학적 기법을 적용하여 개발, 운용, 유지보수, 폐기 전 과정을 체계적으로 관리하는 학문이다.</blockquote>
+<h3 id="1-4-SDLC">1.4 SDLC</h3>
+<p><strong>암기/키워드</strong></p>
+<figure class="svg-diagram" aria-label="SDLC 7단계">
+<svg viewBox="0 0 420 520" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker>
+</defs>
+<rect class="box" x="110" y="10" width="200" height="44" rx="8"/><text class="label" x="210" y="38" text-anchor="middle">타당성 검토</text>
+<line class="arrow-blue" x1="210" y1="54" x2="210" y2="74"/>
+<rect class="box" x="110" y="74" width="200" height="44" rx="8"/><text class="label" x="210" y="102" text-anchor="middle">요구분석</text>
+<line class="arrow-blue" x1="210" y1="118" x2="210" y2="138"/>
+<rect class="box" x="110" y="138" width="200" height="44" rx="8"/><text class="label" x="210" y="166" text-anchor="middle">설계</text>
+<line class="arrow-blue" x1="210" y1="182" x2="210" y2="202"/>
+<rect class="box" x="110" y="202" width="200" height="44" rx="8"/><text class="label" x="210" y="230" text-anchor="middle">개발(구현)</text>
+<line class="arrow-blue" x1="210" y1="246" x2="210" y2="266"/>
+<rect class="box" x="110" y="266" width="200" height="44" rx="8"/><text class="label" x="210" y="294" text-anchor="middle">테스트</text>
+<line class="arrow-blue" x1="210" y1="310" x2="210" y2="330"/>
+<rect class="box-alt" x="110" y="330" width="200" height="44" rx="8"/><text class="label" x="210" y="358" text-anchor="middle">운영·유지보수</text>
+<line class="arrow-blue" x1="210" y1="374" x2="210" y2="394"/>
+<rect class="box-warn" x="110" y="394" width="200" height="44" rx="8"/><text class="label" x="210" y="422" text-anchor="middle">폐기</text>
+<text class="label-sm" x="210" y="470" text-anchor="middle">암기: 타요설개테운폐 — 순차 진행, 단계별 산출물</text>
+</svg>
+<figcaption>SDLC 7단계 순서도</figcaption>
+</figure>
+<pre class="diagram"><code>암기: 타요설개테운폐
+타당성검토, 요구분석, 설계, 개발, 테스트, 운영 및 유지보수, 폐기</code></pre>
+<div class="table-wrap"><table><thead><tr><th>단계</th><th>한 줄 확장</th><th>산출물, 예시</th></tr></thead><tbody><tr><td>타당성검토</td><td>범위, 비용, 일정, 리스크 기반 개발 가능성 검토</td><td>ROI, 일정계획</td></tr><tr><td>요구분석</td><td>기능, 비기능 요구사항 식별 및 상세화</td><td>요구사항정의서</td></tr><tr><td>설계</td><td>요구사항을 만족하는 구조와 인터페이스 정의</td><td>아키텍처, 설계서</td></tr><tr><td>개발</td><td>설계 기준에 따라 코드 작성 및 통합</td><td>소스코드</td></tr><tr><td>테스트</td><td>검증과 확인으로 품질 확보</td><td>단위, 통합, 시스템, 인수</td></tr><tr><td>운영 및 유지보수</td><td>장애 수정, 기능 개선, 환경 변화 대응</td><td>수정, 적응, 완전, 예방</td></tr><tr><td>폐기</td><td>수명 종료 시스템 제거 또는 전환</td><td>단종, 이관</td></tr></tbody></table></div>
+<blockquote><strong>답안 문장</strong> SDLC는 소프트웨어 개발 타당성 검토부터 요구분석, 설계, 개발, 테스트, 운영 및 유지보수, 폐기까지 전 과정을 생명주기로 보고 단계별로 체계화한 모델이다.</blockquote>
+<h2 id="2-SDLC-대표-모델">2. SDLC 대표 모델</h2>
+<p><strong>도식: SDLC 모델 선택 관점</strong></p>
+<pre class="diagram"><code>- 요구 명확 (→ 폭포수)
+- 요구 불명확 (→ 프로토타입)
+- 위험 높음 (→ 나선형)
+- 점진 개선 (→ 반복적)
+- 신속 개발 (→ RAD)
+- 검증 중요 (→ V모델)</code></pre>
+<p><em>의미: 모델명보다 “어떤 프로젝트에 적합한가”를 먼저 연결해 암기</em></p>
+<h4 id="폭포수-모델">폭포수 모델</h4>
+<figure class="svg-diagram" aria-label="폭포수 모델">
+<svg viewBox="0 0 360 430" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker>
+</defs>
+<rect class="box" x="80" y="8" width="200" height="40" rx="8"/><text class="label" x="180" y="34" text-anchor="middle">요구사항 분석</text>
+<line class="arrow-blue" x1="180" y1="48" x2="180" y2="68"/>
+<rect class="box" x="80" y="68" width="200" height="40" rx="8"/><text class="label" x="180" y="94" text-anchor="middle">설계</text>
+<line class="arrow-blue" x1="180" y1="108" x2="180" y2="128"/>
+<rect class="box" x="80" y="128" width="200" height="40" rx="8"/><text class="label" x="180" y="154" text-anchor="middle">구현(코딩)</text>
+<line class="arrow-blue" x1="180" y1="168" x2="180" y2="188"/>
+<rect class="box" x="80" y="188" width="200" height="40" rx="8"/><text class="label" x="180" y="214" text-anchor="middle">테스트</text>
+<line class="arrow-blue" x1="180" y1="228" x2="180" y2="248"/>
+<rect class="box-alt" x="80" y="248" width="200" height="40" rx="8"/><text class="label" x="180" y="274" text-anchor="middle">운영·유지보수</text>
+<polygon points="180,310 130,360 230,360" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+<text class="label-sm" x="180" y="345" text-anchor="middle">순차·문서화</text>
+<text class="label-sm" x="180" y="400" text-anchor="middle">변경 대응 어려움 — 요구가 명확할 때 적합</text>
+</svg>
+<figcaption>폭포수(Waterfall) 모델 — 위에서 아래로 한 방향 진행</figcaption>
+</figure>
+<p>요구사항, 설계, 구현, 테스트, 유지보수를 순차적으로 수행하는 전통적 모델.</p>
+<p>키워드:</p>
+<p>순차, 문서화, 변경 취약</p>
+<h4 id="프로토타입-모델">프로토타입 모델</h4>
+<figure class="svg-diagram" aria-label="프로토타입 모델">
+<svg viewBox="0 0 440 280" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker>
+</defs>
+<rect class="box" x="20" y="100" width="90" height="40" rx="8"/><text class="label" x="65" y="126" text-anchor="middle">요구</text>
+<line class="arrow-blue" x1="110" y1="120" x2="130" y2="120"/>
+<rect class="box-warn" x="130" y="100" width="90" height="40" rx="8"/><text class="label" x="175" y="126" text-anchor="middle">시제품</text>
+<line class="arrow-blue" x1="220" y1="120" x2="240" y2="120"/>
+<rect class="box" x="240" y="100" width="90" height="40" rx="8"/><text class="label" x="285" y="126" text-anchor="middle">평가</text>
+<line class="arrow-blue" x1="330" y1="120" x2="350" y2="120"/>
+<rect class="box-alt" x="350" y="100" width="70" height="40" rx="8"/><text class="label" x="385" y="126" text-anchor="middle">개선</text>
+<path class="dash" d="M385 100 Q385 40 175 40 Q65 40 65 100"/>
+<text class="label-sm" x="220" y="28" text-anchor="middle">피드백 반복 → 요구 구체화</text>
+<text class="label-sm" x="220" y="250" text-anchor="middle">UI·요구 불명확할 때 — 사용자 피드백 중심</text>
+</svg>
+<figcaption>프로토타입 모델 — 시제품으로 요구를 구체화</figcaption>
+</figure>
+<p>시제품을 먼저 만들어 사용자 피드백을 받고 요구사항을 구체화하는 모델.</p>
+<p>키워드:</p>
+<p>사용자 피드백, 요구 도출</p>
+<h4 id="나선형-모델">나선형 모델</h4>
+<figure class="svg-diagram" aria-label="나선형 모델">
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker>
+</defs>
+<circle cx="200" cy="200" r="150" fill="none" stroke="#e2e8f0" stroke-width="2"/>
+<path d="M200 200 L200 50 A150 150 0 0 1 350 200 Z" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<path d="M200 200 L350 200 A150 150 0 0 1 200 350 Z" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+<path d="M200 200 L200 350 A150 150 0 0 1 50 200 Z" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+<path d="M200 200 L50 200 A150 150 0 0 1 200 50 Z" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+<text class="label" x="260" y="115">계획</text>
+<text class="label" x="285" y="230">위험분석</text>
+<text class="label" x="155" y="285">개발·검증</text>
+<text class="label" x="90" y="170">고객평가</text>
+<circle cx="200" cy="200" r="35" fill="#1e293b"/><text class="label-light" x="200" y="205" text-anchor="middle">반복</text>
+<text class="label-sm" x="200" y="375" text-anchor="middle">대규모·고위험 프로젝트 — 매 회전마다 위험 분석</text>
+</svg>
+<figcaption>나선(Spiral) 모델 — 4단계를 나선형으로 반복</figcaption>
+</figure>
+<p>반복 주기마다 위험 분석을 수행하며 점진적으로 시스템 완성.</p>
+<p>키워드:</p>
+<p>위험관리, 대규모</p>
+<h4 id="반복적-모델">반복적 모델</h4>
+<p>핵심 기능부터 반복 개발하며 점진적으로 범위 확장.</p>
+<p>키워드:</p>
+<p>증분, 진화, MVP</p>
+<h4 id="RAD">RAD</h4>
+<p>짧은 기간에 자동화 도구, 프로토타이핑, 사용자 참여를 활용해 신속 개발.</p>
+<p>키워드:</p>
+<p>JRP, JAD, Cutover</p>
+<h4 id="V-모델">V 모델</h4>
+<figure class="svg-diagram" aria-label="V 모델">
+<svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker>
+</defs>
+<text class="label-sm" x="130" y="22" text-anchor="middle">개발(Verification)</text>
+<text class="label-sm" x="390" y="22" text-anchor="middle">테스트(Validation)</text>
+<rect class="box" x="20" y="40" width="130" height="36" rx="6"/><text class="label-sm" x="85" y="63" text-anchor="middle">요구분석</text>
+<rect class="box-test" x="370" y="40" width="130" height="36" rx="6"/><text class="label-sm" x="435" y="63" text-anchor="middle">인수 테스트</text>
+<line class="dash" x1="150" y1="58" x2="370" y2="58"/>
+<rect class="box" x="35" y="90" width="115" height="36" rx="6"/><text class="label-sm" x="92" y="113" text-anchor="middle">시스템 설계</text>
+<rect class="box-test" x="355" y="90" width="130" height="36" rx="6"/><text class="label-sm" x="420" y="113" text-anchor="middle">시스템 테스트</text>
+<line class="dash" x1="150" y1="108" x2="355" y2="108"/>
+<rect class="box" x="50" y="140" width="110" height="36" rx="6"/><text class="label-sm" x="105" y="163" text-anchor="middle">아키텍처 설계</text>
+<rect class="box-test" x="340" y="140" width="130" height="36" rx="6"/><text class="label-sm" x="405" y="163" text-anchor="middle">통합 테스트</text>
+<line class="dash" x1="160" y1="158" x2="340" y2="158"/>
+<rect class="box" x="65" y="190" width="100" height="36" rx="6"/><text class="label-sm" x="115" y="213" text-anchor="middle">모듈 설계</text>
+<rect class="box-test" x="325" y="190" width="130" height="36" rx="6"/><text class="label-sm" x="390" y="213" text-anchor="middle">단위 테스트</text>
+<line class="dash" x1="165" y1="208" x2="325" y2="208"/>
+<polygon points="260,250 220,290 300,290" class="box-dark"/><text class="label-light" x="260" y="278" text-anchor="middle">코딩</text>
+<text class="label-sm" x="260" y="325" text-anchor="middle">좌: 올바르게 만들고 있는가(검증) ↔ 우: 올바른 제품인가(확인)</text>
+</svg>
+<figcaption>V-모델 — 개발 단계와 테스트 단계 1:1 대응</figcaption>
+</figure>
+<p>개발 단계와 테스트 단계를 대응시켜 검증과 확인을 강화.</p>
+<p>키워드:</p>
+<p>Verification, Validation</p>
+<h3 id="2-1-모델-비교-3단표">2.1 모델 비교 3단표</h3>
+<div class="table-wrap"><table><thead><tr><th>모델</th><th>적합 상황</th><th>한계</th></tr></thead><tbody><tr><td>폭포수</td><td>요구사항 명확, 규정과 문서 중요</td><td>변경 대응 어려움</td></tr><tr><td>프로토타입</td><td>요구사항 불명확, UI 확인 필요</td><td>과도한 요구 증가, 문서 부족</td></tr><tr><td>나선형</td><td>대형, 고위험, 기술 불확실성 높음</td><td>관리 복잡, 비용 증가</td></tr><tr><td>반복적</td><td>점진적 개선, 빠른 피드백 필요</td><td>전체 구조 관리 필요</td></tr><tr><td>RAD</td><td>짧은 기간, 사용자 참여 가능</td><td>대규모 복잡 시스템 부적합</td></tr><tr><td>V 모델</td><td>안전, 금융, 의료 등 품질 검증 중요</td><td>변경 유연성 부족</td></tr></tbody></table></div>
+<p><strong>흐름/도식</strong></p>
+<pre class="diagram"><code>폭포수: 요구 → 설계 → 구현 → 테스트 → 운영
+프로토타입: 요구 → 시제품 → 평가 → 개선 → 개발
+나선형: 계획 → 위험분석 → 개발/검증 → 고객평가 → 반복
+V모델: 요구분석 ↔ 인수테스트, 시스템설계 ↔ 시스템테스트, 모듈설계 ↔ 단위테스트</code></pre>
+<h2 id="3-SW-개발방법론">3. SW 개발방법론</h2>
+<p><strong>도식: 개발방법론 발전 흐름과 구성</strong></p>
+<pre class="diagram"><code>[구조적 (기능·DFD)] → [정보공학 (데이터·ISP)] → [객체지향 (객체·UML)] → [CBD (컴포넌트)] → [Product Line (Core Asset)]
+(방법론 구성: 작업절차 → 작업방법 → 산출물 → 관리 → 기법 → 도구)</code></pre>
+<p><em>의미: 개발방법론은 시대별 관심사가 기능 중심에서 데이터, 객체, 컴포넌트, 제품군 재사용으로 확장</em></p>
+<blockquote><strong>답안 문장</strong> SW 개발방법론은 소프트웨어를 체계적으로 개발하기 위한 절차, 기법, 도구, 원칙, 산출물을 표준화한 접근 방식이다. SDLC가 생명주기 틀이라면 개발방법론은 각 단계를 수행하는 구체적 방법이다.</blockquote>
+<h3 id="3-1-주요-구성">3.1 주요 구성</h3>
+<p><strong>암기/키워드</strong></p>
+<pre class="diagram"><code>암기: 작방산관기도
+작업절차, 작업방법, 산출물, 관리, 기법, 도구</code></pre>
+<div class="table-wrap"><table><thead><tr><th>구성</th><th>의미</th><th>예시</th></tr></thead><tbody><tr><td>작업절차</td><td>단계, 활동, 작업의 순서</td><td>분석, 설계, 구현</td></tr><tr><td>작업방법</td><td>단계별 수행 방식과 역할</td><td>R&amp;R, 가이드</td></tr><tr><td>산출물</td><td>각 단계 결과 문서</td><td>요구정의서, 설계서</td></tr><tr><td>관리</td><td>일정, 품질, 인력, 예산 관리</td><td>QA, QC</td></tr><tr><td>기법</td><td>분석, 설계에 사용하는 표현 방법</td><td>DFD, ERD, UML</td></tr><tr><td>도구</td><td>개발과 관리를 지원하는 도구</td><td>CASE, 형상관리</td></tr></tbody></table></div>
+<h3 id="3-2-4대-개발방법론-비교">3.2 4대 개발방법론 비교</h3>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>구조적</th><th>정보공학</th><th>객체지향</th><th>CBD</th></tr></thead><tbody><tr><td>중점</td><td>기능, 프로세스</td><td>데이터</td><td>객체</td><td>컴포넌트</td></tr><tr><td>접근</td><td>Top-down</td><td>Top-down</td><td>Bottom-up</td><td>Bottom-up</td></tr><tr><td>핵심</td><td>분할과 정복, 기능분해</td><td>전사 데이터 구조</td><td>캡슐화, 상속, 다형성</td><td>재사용, 조립</td></tr><tr><td>모델링</td><td>DFD, ERD, STD</td><td>ISP, BAA, BSD, BSC</td><td>UML, 클래스</td><td>컴포넌트 모델</td></tr><tr><td>장점</td><td>체계적 관리</td><td>데이터 일관성</td><td>유지보수성, 재사용성</td><td>생산성, 품질 향상</td></tr><tr><td>한계</td><td>변경 어려움</td><td>초기 비용 높음</td><td>설계 복잡</td><td>표준화, 호환성 필요</td></tr></tbody></table></div>
+<h3 id="3-3-객체지향-핵심-원리">3.3 객체지향 핵심 원리</h3>
+<figure class="svg-diagram" aria-label="객체지향 핵심 원리">
+<svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker>
+</defs>
+<text class="label-sm" x="260" y="20" text-anchor="middle">객체지향 5원리 — 암기: 캡추다정상</text>
+<rect class="box-dark" x="190" y="40" width="140" height="52" rx="8"/><text class="label-light" x="260" y="64" text-anchor="middle">부모 Class</text><text class="label-sm" x="260" y="80" text-anchor="middle" fill="#cbd5e1">공통 속성·행위</text>
+<line class="arrow-blue" x1="230" y1="92" x2="130" y2="118"/>
+<line class="arrow-blue" x1="290" y1="92" x2="390" y2="118"/>
+<rect class="box" x="60" y="118" width="140" height="52" rx="8"/><text class="label" x="130" y="142" text-anchor="middle">자식 A</text><text class="label-sm" x="130" y="158" text-anchor="middle">extends</text>
+<rect class="box-alt" x="320" y="118" width="140" height="52" rx="8"/><text class="label" x="390" y="142" text-anchor="middle">자식 B</text><text class="label-sm" x="390" y="158" text-anchor="middle">override</text>
+<text class="label-sm" x="260" y="108" text-anchor="middle">상속 · 다형성(동일 메시지→다른 동작)</text>
+<rect class="box-warn" x="155" y="195" width="210" height="110" rx="12" stroke-width="2"/>
+<text class="label" x="260" y="218" text-anchor="middle">객체 Object</text>
+<rect fill="#fff" stroke="#ea580c" x="170" y="228" width="180" height="28" rx="4"/><text class="label-sm" x="260" y="247" text-anchor="middle">private 데이터 (정보은닉)</text>
+<rect fill="#fff" stroke="#ea580c" x="170" y="262" width="180" height="28" rx="4"/><text class="label-sm" x="260" y="281" text-anchor="middle">public 메서드 (외부 인터페이스)</text>
+<text class="label-sm" x="260" y="192" text-anchor="middle">캡슐화 = 데이터 + 메서드 한 객체로 묶음</text>
+<rect class="box-test" x="30" y="330" width="110" height="36" rx="8"/><text class="label-sm" x="85" y="353" text-anchor="middle">추상화</text>
+<rect class="box" x="155" y="330" width="110" height="36" rx="8"/><text class="label-sm" x="210" y="353" text-anchor="middle">캡슐화</text>
+<rect class="box-alt" x="280" y="330" width="110" height="36" rx="8"/><text class="label-sm" x="335" y="353" text-anchor="middle">다형성</text>
+<rect class="box-warn" x="405" y="330" width="85" height="36" rx="8"/><text class="label-sm" x="447" y="345" text-anchor="middle">정보</text><text class="label-sm" x="447" y="358" text-anchor="middle">은닉</text>
+<line class="dash" x1="85" y1="330" x2="220" y2="305"/>
+<line class="dash" x1="210" y1="330" x2="240" y2="305"/>
+<line class="dash" x1="335" y1="330" x2="280" y2="305"/>
+<line class="dash" x1="447" y1="330" x2="310" y2="268"/>
+<text class="label-sm" x="260" y="375" text-anchor="middle">추상화: 공통만 추출 · 정보은닉: private / public / protected</text>
+</svg>
+<figcaption>객체지향 구조 — 상속·다형성 + 객체(캡슐화·정보은닉) + 5원리</figcaption>
+</figure>
+<p><strong>암기/키워드</strong></p>
+<pre class="diagram"><code>암기: 캡추다정상
+캡슐화, 추상화, 다형성, 정보은닉, 상속</code></pre>
+<div class="table-wrap"><table><thead><tr><th>원리</th><th>확장 문장</th><th>예시</th></tr></thead><tbody><tr><td>캡슐화</td><td>데이터와 메서드를 하나로 묶어 객체 내부 관리</td><td>class 내부 필드와 메서드</td></tr><tr><td>추상화</td><td>공통 속성만 뽑아 복잡성을 줄임</td><td>인터페이스, 추상 클래스</td></tr><tr><td>다형성</td><td>동일 메시지에 객체별 다른 동작 수행</td><td>오버라이딩</td></tr><tr><td>정보은닉</td><td>내부 구현을 숨기고 필요한 인터페이스만 공개</td><td>private, public, protected</td></tr><tr><td>상속</td><td>기존 클래스 속성과 행위를 확장해 재사용</td><td>extends, implements</td></tr></tbody></table></div>
+<h3 id="3-4-CBD와-Product-Line">3.4 CBD와 Product Line</h3>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>CBD</th><th>Product Line</th></tr></thead><tbody><tr><td>정의</td><td>독립 컴포넌트를 개발, 조립하여 시스템 구축</td><td>공통 핵심자산을 기반으로 유사 제품군을 생산</td></tr><tr><td>핵심</td><td>컴포넌트, 인터페이스, 리포지토리</td><td>Core Asset, 공통성, 변동성</td></tr><tr><td>공학 활동</td><td>컴포넌트 개발과 애플리케이션 조립</td><td>Domain 공학, Application 공학, Management</td></tr><tr><td>효과</td><td>재사용성, 유지보수성, 확장성 향상</td><td>제품군 생산성, 품질, 납기 개선</td></tr><tr><td>한계</td><td>표준화와 호환성 문제</td><td>초기 투자, 공통성 분석 부담</td></tr></tbody></table></div>
+<blockquote><strong>답안 문장</strong> Product Line 방법론은 제품군의 공통성과 변동성을 분석하여 Core Asset을 개발하고, 이를 Application 공학에서 조립, 확장함으로써 유사 제품을 경제적으로 생산하는 전략적 재사용 방법론이다.</blockquote>
+<h2 id="4-Agile-Scrum-XP-Kanban">4. Agile, Scrum, XP, Kanban</h2>
+<p><strong>도식: Agile 반복 개발 흐름</strong></p>
+<pre class="diagram"><code>[Product Backlog] → [Sprint Planning] → [Sprint 개발] → [Daily Scrum] → [Review·Retro] ↺ [피드백 반영]
+- Agile (변화대응)
+- Scrum (스프린트)
+- XP (실천기법)
+- Kanban (흐름관리)</code></pre>
+<p><em>의미: 애자일은 짧은 반복 주기와 피드백 루프를 통해 동작하는 SW를 점진 완성</em></p>
+<h3 id="4-1-Agile">4.1 Agile</h3>
+<p><strong>암기/키워드</strong></p>
+<pre class="diagram"><code>암기: 개인, 변화, 동작SW, 고객협력
+반복, 점진, 피드백, 변화대응, 자율팀</code></pre>
+<blockquote><strong>답안 문장</strong> 애자일은 요구사항 변화가 빈번한 개발 환경에서 짧은 반복 주기, 고객 피드백, 팀 협업을 통해 동작하는 소프트웨어를 점진적으로 완성하는 변화 대응형 개발 접근법이다.</blockquote>
+<div class="table-wrap"><table><thead><tr><th>핵심가치</th><th>답안 확장</th><th>효과</th></tr></thead><tbody><tr><td>개인과 상호작용</td><td>프로세스와 도구보다 팀 소통 중심</td><td>문제 해결 속도 향상</td></tr><tr><td>동작하는 SW</td><td>문서보다 실행 가능한 결과물 우선</td><td>조기 검증</td></tr><tr><td>고객 협력</td><td>계약 협상보다 지속 피드백 반영</td><td>제품 적합성 향상</td></tr><tr><td>변화 대응</td><td>계획 고정보다 요구 변화 수용</td><td>유연성 확보</td></tr></tbody></table></div>
+<h3 id="4-2-XP">4.2 XP</h3>
+<p><strong>암기/키워드</strong></p>
+<pre class="diagram"><code>XP 가치: 용단커피존
+용기, 단순성, 커뮤니케이션, 피드백, 존중</code></pre>
+<div class="table-wrap"><table><thead><tr><th>실천사항</th><th>답안 키워드</th><th>효과</th></tr></thead><tbody><tr><td>Pair Programming</td><td>두 명이 함께 코딩</td><td>결함 조기 발견</td></tr><tr><td>Collective Ownership</td><td>팀 전체 코드 소유</td><td>지식 공유</td></tr><tr><td>Continuous Integration</td><td>자주 통합, 자동 빌드</td><td>통합 리스크 감소</td></tr><tr><td>Test Driven Development</td><td>테스트 먼저 작성</td><td>품질 내재화</td></tr><tr><td>Refactoring</td><td>기능 변경 없이 구조 개선</td><td>기술부채 감소</td></tr></tbody></table></div>
+<h3 id="4-3-Scrum">4.3 Scrum</h3>
+<figure class="svg-diagram" aria-label="Scrum 스프린트">
+<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker>
+</defs>
+<rect class="box" x="10" y="70" width="100" height="44" rx="8"/><text class="label-sm" x="60" y="97" text-anchor="middle">Product</text><text class="label-sm" x="60" y="108" text-anchor="middle">Backlog</text>
+<line class="arrow-blue" x1="110" y1="92" x2="130" y2="92"/>
+<rect class="box-warn" x="130" y="70" width="110" height="44" rx="8"/><text class="label-sm" x="185" y="97" text-anchor="middle">Sprint</text><text class="label-sm" x="185" y="108" text-anchor="middle">Planning</text>
+<line class="arrow-blue" x1="240" y1="92" x2="260" y2="92"/>
+<rect class="box" x="260" y="55" width="90" height="34" rx="6"/><text class="label-sm" x="305" y="76" text-anchor="middle">Daily Scrum</text>
+<rect class="box" x="260" y="95" width="90" height="34" rx="6"/><text class="label-sm" x="305" y="116" text-anchor="middle">개발</text>
+<line class="arrow-blue" x1="350" y1="92" x2="370" y2="92"/>
+<rect class="box-alt" x="370" y="70" width="110" height="44" rx="8"/><text class="label-sm" x="425" y="97" text-anchor="middle">Review</text><text class="label-sm" x="425" y="108" text-anchor="middle">Retro</text>
+<path class="dash" d="M480 92 Q490 160 60 160 Q10 160 10 114"/>
+<text class="label-sm" x="250" y="185" text-anchor="middle">2~4주 스프린트 반복 — Increment 누적</text>
+</svg>
+<figcaption>Scrum 스프린트 흐름</figcaption>
+</figure>
+<p><strong>흐름/도식</strong></p>
+<pre class="diagram"><code>Product Backlog → Sprint Planning → Sprint Backlog → Daily Scrum → Increment → Sprint Review → Retrospective</code></pre>
+<div class="table-wrap"><table><thead><tr><th>구성요소</th><th>의미</th><th>답안 키워드</th></tr></thead><tbody><tr><td>Product Owner</td><td>요구사항 우선순위와 제품 가치 책임</td><td>백로그 관리</td></tr><tr><td>Scrum Master</td><td>장애 제거와 프로세스 촉진</td><td>서번트 리더십</td></tr><tr><td>Development Team</td><td>스프린트 목표 달성</td><td>자율 조직</td></tr><tr><td>Product Backlog</td><td>제품 전체 요구사항 목록</td><td>우선순위</td></tr><tr><td>Sprint Backlog</td><td>스프린트에서 수행할 작업 목록</td><td>단기 계획</td></tr></tbody></table></div>
+<h3 id="4-4-Kanban">4.4 Kanban</h3>
+<blockquote><strong>답안 문장</strong> 칸반은 작업 흐름을 시각화하고 WIP를 제한하여 병목을 줄이고 지속적인 흐름을 개선하는 애자일 방식이다.</blockquote>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>번다운 차트</th><th>누적 흐름도</th></tr></thead><tbody><tr><td>목적</td><td>남은 작업량 감소 추적</td><td>작업 상태별 흐름과 병목 확인</td></tr><tr><td>축</td><td>시간 대비 잔여 작업</td><td>시간 대비 상태별 누적 작업</td></tr><tr><td>활용</td><td>스프린트 진행률 관리</td><td>WIP, 병목, 리드타임 관리</td></tr></tbody></table></div>
+<h2 id="5-CI-CD-DevOps-DevSecOps-무중단-배포">5. CI/CD, DevOps, DevSecOps, 무중단 배포</h2>
+<p><strong>도식: DevOps·DevSecOps 파이프라인</strong></p>
+<figure class="svg-diagram" aria-label="DevOps DevSecOps 파이프라인">
+<svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker>
+</defs>
+<text class="label-sm" x="320" y="18" text-anchor="middle">DevSecOps 파이프라인 (Plan → Monitor)</text>
+<rect class="box" x="8" y="40" width="72" height="36" rx="6"/><text class="label-sm" x="44" y="63" text-anchor="middle">Plan</text>
+<line class="arrow-blue" x1="80" y1="58" x2="88" y2="58"/>
+<rect class="box" x="88" y="40" width="72" height="36" rx="6"/><text class="label-sm" x="124" y="63" text-anchor="middle">Code</text>
+<line class="arrow-blue" x1="160" y1="58" x2="168" y2="58"/>
+<rect class="box" x="168" y="40" width="72" height="36" rx="6"/><text class="label-sm" x="204" y="63" text-anchor="middle">Build</text>
+<line class="arrow-blue" x1="240" y1="58" x2="248" y2="58"/>
+<rect class="box" x="248" y="40" width="72" height="36" rx="6"/><text class="label-sm" x="284" y="63" text-anchor="middle">Test</text>
+<line class="arrow-blue" x1="320" y1="58" x2="328" y2="58"/>
+<rect class="box-warn" x="328" y="40" width="88" height="36" rx="6"/><text class="label-sm" x="372" y="63" text-anchor="middle">Security</text>
+<line class="arrow-blue" x1="416" y1="58" x2="424" y2="58"/>
+<rect class="box-alt" x="424" y="40" width="80" height="36" rx="6"/><text class="label-sm" x="464" y="63" text-anchor="middle">Deploy</text>
+<line class="arrow-blue" x1="504" y1="58" x2="512" y2="58"/>
+<rect class="box-test" x="512" y="40" width="80" height="36" rx="6"/><text class="label-sm" x="552" y="63" text-anchor="middle">Monitor</text>
+<text class="label-sm" x="372" y="105" text-anchor="middle">보안: SAST · SCA/SBOM · DAST · Image Scan · Runtime</text>
+<ellipse cx="120" cy="155" rx="55" ry="28" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text class="label-sm" x="120" y="160" text-anchor="middle">Develop</text>
+<ellipse cx="320" cy="155" rx="55" ry="28" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+<text class="label-sm" x="320" y="160" text-anchor="middle">DevOps</text>
+<ellipse cx="520" cy="155" rx="55" ry="28" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+<text class="label-sm" x="520" y="160" text-anchor="middle">Operate</text>
+<path class="dash" d="M175 155 Q250 120 265 155 Q380 190 395 155 Q470 120 465 155"/>
+<text class="label-sm" x="320" y="192" text-anchor="middle">개발·운영 협업 · 자동화 · 측정 · 지속 개선</text>
+</svg>
+<figcaption>DevOps / DevSecOps — CI/CD 파이프라인 + Dev↔Ops 협업</figcaption>
+</figure>
+<pre class="diagram"><code>[Plan] → [Code] → [Build] → [Test] → [Security Gate] → [Deploy] → [Monitor]
+(보안 삽입: SAST → SCA/SBOM → DAST → Image Scan → Runtime Monitoring)</code></pre>
+<p><em>의미: CI/CD 흐름에 보안을 내재화하면 DevSecOps 답안 구조로 확장 가능</em></p>
+<h3 id="5-1-CI-CD">5.1 CI/CD</h3>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>정의</th><th>핵심 효과</th></tr></thead><tbody><tr><td>CI</td><td>코드를 자주 중앙 저장소에 병합하고 자동 빌드, 테스트 수행</td><td>통합 오류 조기 발견</td></tr><tr><td>CDelivery</td><td>운영 배포 직전까지 항상 배포 가능한 상태 유지</td><td>릴리스 준비 자동화</td></tr><tr><td>CDeployment</td><td>검증된 변경을 운영 환경까지 자동 배포</td><td>배포 속도 향상</td></tr></tbody></table></div>
+<p><strong>흐름/도식</strong></p>
+<pre class="diagram"><code>Commit → Build → Unit Test → Static Analysis → Package → Deploy to Test → Integration Test → Release → Monitor</code></pre>
+<h3 id="5-2-DevOps">5.2 DevOps</h3>
+<figure class="svg-diagram" aria-label="DevOps CALMS">
+<svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" role="img">
+<circle cx="240" cy="150" r="48" fill="#1e293b"/><text class="label-light" x="240" y="148" text-anchor="middle">DevOps</text><text class="label-sm" x="240" y="164" text-anchor="middle" fill="#cbd5e1">CALMS</text>
+<rect class="box-warn" x="195" y="18" width="90" height="44" rx="8"/><text class="label-sm" x="240" y="38" text-anchor="middle">C</text><text class="label-sm" x="240" y="52" text-anchor="middle">Culture 문화</text>
+<rect class="box" x="355" y="55" width="100" height="44" rx="8"/><text class="label-sm" x="405" y="75" text-anchor="middle">A</text><text class="label-sm" x="405" y="89" text-anchor="middle">Automation</text>
+<rect class="box-alt" x="355" y="195" width="100" height="44" rx="8"/><text class="label-sm" x="405" y="215" text-anchor="middle">L</text><text class="label-sm" x="405" y="229" text-anchor="middle">Lean</text>
+<rect class="box-test" x="195" y="232" width="90" height="44" rx="8"/><text class="label-sm" x="240" y="252" text-anchor="middle">M</text><text class="label-sm" x="240" y="266" text-anchor="middle">Measurement</text>
+<rect class="box" x="25" y="195" width="100" height="44" rx="8"/><text class="label-sm" x="75" y="215" text-anchor="middle">S</text><text class="label-sm" x="75" y="229" text-anchor="middle">Sharing</text>
+<line class="dash" x1="240" y1="62" x2="240" y2="102"/><line class="dash" x1="288" y1="150" x2="355" y2="88"/>
+<line class="dash" x1="288" y1="165" x2="355" y2="210"/><line class="dash" x1="240" y1="198" x2="240" y2="232"/>
+<line class="dash" x1="192" y1="165" x2="125" y2="210"/><line class="dash" x1="192" y1="150" x2="125" y2="88"/>
+<text class="label-sm" x="75" y="75" text-anchor="middle">협업·신뢰</text>
+<text class="label-sm" x="405" y="130" text-anchor="middle">CI/CD·IaC</text>
+<text class="label-sm" x="405" y="170" text-anchor="middle">낭비 제거</text>
+<text class="label-sm" x="75" y="170" text-anchor="middle">Postmortem</text>
+<text class="label-sm" x="240" y="292" text-anchor="middle">암기: C-A-L-M-S — DevOps 5대 원칙 (Jez Humble)</text>
+</svg>
+<figcaption>CALMS — Culture · Automation · Lean · Measurement · Sharing</figcaption>
+</figure>
+<figure class="svg-diagram" aria-label="DORA 4 Metrics">
+<svg viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg" role="img">
+<text class="label-sm" x="260" y="18" text-anchor="middle">Google DORA 4 Metrics (DevOps 성과 지표)</text>
+<rect class="box-alt" x="20" y="35" width="230" height="88" rx="10"/><text class="label" x="135" y="58" text-anchor="middle">① Deployment Frequency</text><text class="label-sm" x="135" y="78" text-anchor="middle">배포 빈도</text><text class="label-sm" x="135" y="96" text-anchor="middle">↑ 높을수록 Elite</text><text class="label-sm" x="135" y="112" text-anchor="middle">얼마나 자주 배포하는가</text>
+<rect class="box" x="270" y="35" width="230" height="88" rx="10"/><text class="label" x="385" y="58" text-anchor="middle">② Lead Time for Changes</text><text class="label-sm" x="385" y="78" text-anchor="middle">변경 리드타임</text><text class="label-sm" x="385" y="96" text-anchor="middle">↓ 짧을수록 Elite</text><text class="label-sm" x="385" y="112" text-anchor="middle">커밋→운영 반영까지 시간</text>
+<rect class="box-warn" x="20" y="140" width="230" height="88" rx="10"/><text class="label" x="135" y="163" text-anchor="middle">③ Time to Restore (MTTR)</text><text class="label-sm" x="135" y="183" text-anchor="middle">복구 시간 · MTTR</text><text class="label-sm" x="135" y="201" text-anchor="middle">↓ 짧을수록 Elite</text><text class="label-sm" x="135" y="217" text-anchor="middle">장애 발생→복구까지</text>
+<rect class="box-test" x="270" y="140" width="230" height="88" rx="10"/><text class="label" x="385" y="163" text-anchor="middle">④ Change Failure Rate</text><text class="label-sm" x="385" y="183" text-anchor="middle">변경 실패율</text><text class="label-sm" x="385" y="201" text-anchor="middle">↓ 낮을수록 Elite</text><text class="label-sm" x="385" y="217" text-anchor="middle">배포 후 장애·롤백 비율</text>
+<text class="label-sm" x="260" y="248" text-anchor="middle">암기: 빈·리·복·실 — State of DevOps / Accelerate</text>
+</svg>
+<figcaption>DORA 4대 지표 — 배포·속도·안정성·품질을 정량 평가</figcaption>
+</figure>
+<p><strong>암기/키워드</strong></p>
+<pre class="diagram"><code>CALMS: Culture, Automation, Lean, Measurement, Sharing
+DORA 4: 배포빈도(↑), 리드타임(↓), MTTR(↓), 변경실패율(↓)
+핵심: 개발과 운영의 협업, 자동화, 측정, 공유, 지속적 개선</code></pre>
+<div class="table-wrap"><table><thead><tr><th>핵심 사상</th><th>확장 문장</th><th>적용 포인트</th></tr></thead><tbody><tr><td>Cross Functional Team</td><td>개발, 운영, 품질, 보안을 하나의 흐름으로 연결</td><td>공동 책임</td></tr><tr><td>Automation</td><td>빌드, 테스트, 배포, 인프라 구성을 자동화</td><td>CI/CD, IaC</td></tr><tr><td>Metrics</td><td>서비스 상태와 배포 성과를 정량 측정</td><td>DORA Metrics</td></tr><tr><td>Sharing</td><td>장애와 운영 경험을 공유해 재발 방지</td><td>Postmortem</td></tr></tbody></table></div>
+<h4 id="5-2-1-CALMS">5.2.1 CALMS</h4>
+<div class="table-wrap"><table><thead><tr><th>원칙</th><th>의미</th><th>답안 키워드</th></tr></thead><tbody><tr><td>Culture</td><td>개발·운영 간 협업, 신뢰, 실패 학습 문화</td><td>실패 공유, Blameless Postmortem</td></tr><tr><td>Automation</td><td>반복 작업 자동화로 속도·일관성 확보</td><td>CI/CD, IaC, 테스트 자동화</td></tr><tr><td>Lean</td><td>가치 흐름 중심, 낭비(Waste) 제거</td><td>WIP 제한, 병목 제거</td></tr><tr><td>Measurement</td><td>데이터 기반 개선, 성과 가시화</td><td>DORA 4 Metrics, SLI/SLO</td></tr><tr><td>Sharing</td><td>지식·도구·운영 경험 공유</td><td>ChatOps, 문서화, 장애 리뷰</td></tr></tbody></table></div>
+<h4 id="5-2-2-DORA">5.2.2 DORA Metrics (Google)</h4>
+<div class="table-wrap"><table><thead><tr><th>지표</th><th>질문</th><th>개선 방향</th><th>연관 CALMS</th></tr></thead><tbody><tr><td>Deployment Frequency</td><td>얼마나 자주 배포하는가</td><td>빈도 ↑</td><td>Automation</td></tr><tr><td>Lead Time for Changes</td><td>변경이 운영까지 얼마나 걸리는가</td><td>시간 ↓</td><td>Lean, Automation</td></tr><tr><td>Time to Restore (MTTR)</td><td>장애 후 얼마나 빨리 복구하는가</td><td>복구 ↓</td><td>Sharing, Measurement</td></tr><tr><td>Change Failure Rate</td><td>배포 중 실패·롤백 비율은</td><td>실패율 ↓</td><td>Culture, Automation</td></tr></tbody></table></div>
+<blockquote><strong>답안 문장</strong> DevOps는 CALMS 원칙(문화·자동화·린·측정·공유)으로 개발과 운영을 통합하고, Google DORA 4 Metrics(배포 빈도, 변경 리드타임, 복구 시간, 변경 실패율)로 소프트웨어 전달 성과를 정량 평가·개선한다.</blockquote>
+<h3 id="5-3-DevSecOps-적용-방안">5.3 DevSecOps 적용 방안</h3>
+<div class="table-wrap"><table><thead><tr><th>단계</th><th>보안 활동</th><th>도구, 산출물</th></tr></thead><tbody><tr><td>계획</td><td>보안 요구사항, 위협 모델링</td><td>보안 요구사항 명세</td></tr><tr><td>개발</td><td>시큐어 코딩, SAST</td><td>정적 분석 결과</td></tr><tr><td>빌드</td><td>의존성 취약점, SBOM 생성</td><td>SCA, SBOM</td></tr><tr><td>테스트</td><td>DAST, 침투 테스트</td><td>동적 점검 리포트</td></tr><tr><td>배포</td><td>컨테이너 이미지 스캔, 정책 게이트</td><td>배포 승인 기준</td></tr><tr><td>운영</td><td>모니터링, 로그 분석, 취약점 대응</td><td>SIEM, 알림</td></tr></tbody></table></div>
+<h3 id="5-4-무중단-배포">5.4 무중단 배포</h3>
+<div class="table-wrap"><table><thead><tr><th>방식</th><th>개념</th><th>장점</th><th>한계</th></tr></thead><tbody><tr><td>Rolling</td><td>서버를 순차적으로 교체</td><td>자원 효율</td><td>구버전, 신버전 혼재</td></tr><tr><td>Blue-Green</td><td>두 환경을 준비하고 트래픽 전환</td><td>빠른 롤백</td><td>인프라 비용 증가</td></tr><tr><td>Canary</td><td>일부 사용자에게 먼저 배포</td><td>위험 최소화</td><td>모니터링 필요</td></tr><tr><td>Feature Toggle</td><td>기능 플래그로 활성화 제어</td><td>배포와 출시 분리</td><td>플래그 관리 필요</td></tr></tbody></table></div>
+<h2 id="6-SW-개발환경과-아키텍처">6. SW 개발환경과 아키텍처</h2>
+<p><strong>도식: 아키텍처 설계·평가 루프</strong></p>
+<pre class="diagram"><code>[비즈니스 목표] → [품질속성] → [아키텍처 스타일] → [설계전술] → [ATAM 평가] → [SAD 문서화]</code></pre>
+<p><em>의미: 아키텍처 문제는 “품질속성 → 설계전술 → 평가” 순서로 쓰면 답안 구조가 안정적</em></p>
+<h3 id="6-1-SW-아키텍처-개요">6.1 SW 아키텍처 개요</h3>
+<blockquote><strong>답안 문장</strong> SW 아키텍처는 시스템의 컴포넌트, 컴포넌트 간 관계, 상호작용 방식, 설계 원칙을 정의하여 품질속성과 구조적 일관성을 확보하는 핵심 설계 산출물이다.</blockquote>
+<p><strong>흐름/도식</strong></p>
+<pre class="diagram"><code>비즈니스 목표 → 아키텍처 요구사항 → 품질속성 시나리오 → 설계전술 → 아키텍처 스타일 → 평가 → SAD 작성</code></pre>
+<h3 id="6-2-품질속성과-시나리오">6.2 품질속성과 시나리오</h3>
+<div class="table-wrap"><table><thead><tr><th>품질속성</th><th>질문</th><th>설계 방향</th></tr></thead><tbody><tr><td>가용성</td><td>장애 시 서비스 유지 가능한가</td><td>이중화, 장애감지, 복구</td></tr><tr><td>성능</td><td>응답시간, 처리량을 만족하는가</td><td>캐시, 비동기, 스케일아웃</td></tr><tr><td>보안성</td><td>인가된 사용자만 접근 가능한가</td><td>인증, 권한, 암호화</td></tr><tr><td>변경용이성</td><td>변경 영향 범위가 작은가</td><td>모듈화, 느슨한 결합</td></tr><tr><td>테스트용이성</td><td>검증과 자동화가 쉬운가</td><td>인터페이스 분리, Mock</td></tr></tbody></table></div>
+<h3 id="6-3-아키텍처-스타일">6.3 아키텍처 스타일</h3>
+<div class="table-wrap"><table><thead><tr><th>스타일</th><th>개념</th><th>장점</th><th>한계</th></tr></thead><tbody><tr><td>Layered</td><td>계층별 책임 분리</td><td>유지보수 용이</td><td>성능 저하 가능</td></tr><tr><td>Repository</td><td>중앙 저장소 기반 데이터 공유</td><td>데이터 일관성</td><td>저장소 장애 영향 큼</td></tr><tr><td>MVC</td><td>Model, View, Controller 분리</td><td>UI와 로직 분리</td><td>구조 복잡 가능</td></tr><tr><td>Pipe and Filter</td><td>필터 단위 처리와 파이프 연결</td><td>재사용성</td><td>상태 공유 어려움</td></tr><tr><td>Client-Server</td><td>클라이언트와 서버 역할 분리</td><td>중앙 관리</td><td>서버 병목</td></tr></tbody></table></div>
+<h3 id="6-4-아키텍처-평가">6.4 아키텍처 평가</h3>
+<div class="table-wrap"><table><thead><tr><th>기법</th><th>중점</th><th>답안 포인트</th></tr></thead><tbody><tr><td>SAAM</td><td>변경가능성, 기능성</td><td>시나리오 기반 평가</td></tr><tr><td>ATAM</td><td>품질속성 간 상충관계</td><td>Trade-off, Risk, Sensitivity Point</td></tr><tr><td>CBAM</td><td>비용과 편익</td><td>ROI 기반 의사결정</td></tr><tr><td>ADR</td><td>특정 설계 요소 집중 검토</td><td>개발자 중심 리뷰</td></tr><tr><td>ARID</td><td>중간 설계 산출물 검토</td><td>ATAM과 ADR 혼합</td></tr></tbody></table></div>
+<p><strong>암기/키워드</strong></p>
+<pre class="diagram"><code>ATAM 9단계 암기: 아동아식품분우분발
+ATAM 소개, 비즈니스 동인, 아키텍처 소개, 접근법 식별, 품질속성 유틸리티 트리, 접근법 분석, 시나리오 우선순위, 분석 반복, 결과 발표</code></pre>
+<h3 id="6-5-MSA-서버리스-EDA-클린-아키텍처">6.5 MSA, 서버리스, EDA, 클린 아키텍처</h3>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>MSA</th><th>EDA</th><th>Serverless</th><th>Clean Architecture</th></tr></thead><tbody><tr><td>중심</td><td>독립 서비스</td><td>이벤트</td><td>함수, 클라우드 실행</td><td>도메인 로직</td></tr><tr><td>흐름</td><td>API 동기/비동기 호출</td><td>발행, 구독</td><td>이벤트 기반 함수 실행</td><td>의존성 내부 방향</td></tr><tr><td>장점</td><td>독립 배포, 확장성</td><td>느슨한 결합, 실시간 처리</td><td>서버 관리 감소, 비용 효율</td><td>유지보수성, 테스트 용이</td></tr><tr><td>한계</td><td>분산 복잡성</td><td>흐름 추적 어려움</td><td>콜드스타트, 벤더 종속</td><td>초기 설계 복잡</td></tr></tbody></table></div>
+<blockquote><strong>메모</strong> MSA 답안 포인트<br/>서비스 분리, API Gateway, Service Discovery, Service Mesh, 메시지 브로커, 분산 트랜잭션 SAGA, Circuit Breaker, 모니터링, CI/CD를 함께 써야 답안이 풍부해집니다.</blockquote>
+<h2 id="7-프로그래밍-언어">7. 프로그래밍 언어</h2>
+<p><strong>도식: 프로그래밍 언어 분류와 선택</strong></p>
+<pre class="diagram"><code>[1GL (기계어)] → [2GL (어셈블리)] → [3GL (고급언어)] → [4GL (생산성)]
+- 성능
+- 생산성
+- 유지보수
+- 이식성
+(언어 세대 흐름)
+(선택 기준)</code></pre>
+<p><em>의미: 언어는 세대, 실행 방식, 패러다임, 프로젝트 특성 기준으로 비교</em></p>
+<h3 id="7-1-C와-Java-비교">7.1 C와 Java 비교</h3>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>C</th><th>Java</th></tr></thead><tbody><tr><td>패러다임</td><td>절차적, 구조적</td><td>객체지향</td></tr><tr><td>실행</td><td>컴파일 후 OS 종속 실행</td><td>바이트코드, JVM 실행</td></tr><tr><td>메모리</td><td>포인터, 명시적 해제</td><td>참조, GC 자동 관리</td></tr><tr><td>장점</td><td>시스템 제어, 성능</td><td>플랫폼 독립, 생산성</td></tr><tr><td>활용</td><td>임베디드, 시스템 프로그래밍</td><td>엔터프라이즈, 웹, 백엔드</td></tr></tbody></table></div>
+<h3 id="7-2-Python">7.2 Python</h3>
+<blockquote><strong>답안 문장</strong> Python은 동적 타이핑, 인터프리터 방식, 높은 가독성, 풍부한 라이브러리를 기반으로 데이터분석, AI, 웹개발, 자동화에 널리 활용되는 고급 프로그래밍 언어이다.</blockquote>
+<div class="table-wrap"><table><thead><tr><th>특성</th><th>확장 문장</th><th>활용</th></tr></thead><tbody><tr><td>인터프리터</td><td>한 줄씩 실행하여 빠른 테스트 가능</td><td>자동화, 스크립트</td></tr><tr><td>동적 타이핑</td><td>실행 시점에 자료형 결정</td><td>빠른 개발</td></tr><tr><td>라이브러리</td><td>데이터, AI, 웹 생태계 풍부</td><td>Pandas, Scikit-learn</td></tr><tr><td>가독성</td><td>간결한 문법으로 유지보수 용이</td><td>협업, 교육</td></tr></tbody></table></div>
+<h2 id="8-소프트웨어진흥법-SW-발주-PMO">8. 소프트웨어진흥법, SW 발주, PMO</h2>
+<p><strong>도식: SW 사업 관리 체계</strong></p>
+<pre class="diagram"><code>[SW진흥법] → [발주·계약] → [요구사항 명확화] → [PMO 통제] → [품질·일정·위험관리]</code></pre>
+<p><em>의미: 공공 SW 사업 답안은 법·제도, 발주, PMO, 품질관리 흐름으로 정리</em></p>
+<h3 id="8-1-소프트웨어진흥법">8.1 소프트웨어진흥법</h3>
+<blockquote><strong>답안 문장</strong> 소프트웨어진흥법은 SW 산업 진흥, 공정한 발주 환경 조성, SW 품질 및 안전성 확보, 인력 양성과 공공 SW 사업 선진화를 위한 법적 기반이다.</blockquote>
+<div class="table-wrap"><table><thead><tr><th>영역</th><th>문제</th><th>개선 방향</th></tr></thead><tbody><tr><td>발주관행</td><td>최저가, 불명확한 과업</td><td>품질 중심 평가, 과업범위 명확화</td></tr><tr><td>중소기업</td><td>대기업 중심, 하도급 문제</td><td>참여 확대, 공정계약</td></tr><tr><td>유지보수</td><td>예산 부족, 단기계약</td><td>SLA, 장기 유지보수</td></tr><tr><td>품질관리</td><td>검증 절차 부족</td><td>GS 인증, SP 인증</td></tr><tr><td>보안, 안전</td><td>취약점, 안전성 문제</td><td>개발보안, 안전 가이드</td></tr></tbody></table></div>
+<h3 id="8-2-상용-SW-직접구매와-분할발주">8.2 상용 SW 직접구매와 분할발주</h3>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>상용 SW 직접구매</th><th>분할발주</th></tr></thead><tbody><tr><td>개념</td><td>SI 사업에 포함하지 않고 상용 SW를 직접 구매</td><td>분석, 설계, 개발 등 공정별 또는 기능별 분리 발주</td></tr><tr><td>목적</td><td>품질 보장, 공정 조달, 비용 절감</td><td>리스크 분산, 중소기업 참여 확대</td></tr><tr><td>장점</td><td>우수 상용 SW 활용</td><td>전문성 확보, 품질 향상</td></tr><tr><td>한계</td><td>개별 구매 관리 부담</td><td>계약과 통합 관리 복잡</td></tr></tbody></table></div>
+<h3 id="8-3-GS-인증-SP-인증-PMO">8.3 GS 인증, SP 인증, PMO</h3>
+<div class="table-wrap"><table><thead><tr><th>주제</th><th>정의</th><th>답안 키워드</th></tr></thead><tbody><tr><td>GS 인증</td><td>SW 제품 품질을 객관적으로 평가해 인증하는 제도</td><td>기능, 성능, 보안, 사용성</td></tr><tr><td>SP 인증</td><td>SW 개발 프로세스와 산출물 관리 역량 평가 제도</td><td>프로세스 품질, 등급</td></tr><tr><td>PMO</td><td>공공 SW 사업의 기획, 관리, 품질보증을 전문적으로 지원</td><td>통합관리, 성과관리, 위험관리</td></tr></tbody></table></div>
+<p><strong>암기/키워드</strong></p>
+<pre class="diagram"><code>PMO 유형: Weather Station, Coach, Control Tower
+약한 권한 → 조언 중심 → 통제 중심</code></pre>
+<h2 id="9-요구공학">9. 요구공학</h2>
+<p><strong>도식: 요구공학 처리 흐름</strong></p>
+<pre class="diagram"><code>[요구 도출] → [분석·협상] → [명세화] → [검증] → [요구관리]
+(품질 기준: 정확성, 완전성, 일관성, 추적성, 검증가능성)</code></pre>
+<p><em>의미: 요구공학은 변경관리와 추적성까지 포함해야 답안이 완성됨</em></p>
+<blockquote><strong>답안 문장</strong> 요구공학은 시스템 개발과 변경의 목적을 식별하기 위해 이해관계자의 요구를 수집, 분석, 명세화, 검증, 관리하는 체계적 공정이다.</blockquote>
+<h3 id="9-1-요구사항-분류">9.1 요구사항 분류</h3>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>의미</th><th>예시</th></tr></thead><tbody><tr><td>기능 요구사항</td><td>시스템이 수행해야 할 기능</td><td>로그인, 검색, 결재</td></tr><tr><td>비기능 요구사항</td><td>성능, 보안, 사용성 등 품질 조건</td><td>응답시간, 암호화, 가용성</td></tr><tr><td>제약사항</td><td>기술, 법, 운영 환경 제한</td><td>DBMS 지정, 표준 준수</td></tr></tbody></table></div>
+<h3 id="9-2-요구공학-프로세스">9.2 요구공학 프로세스</h3>
+<p><strong>흐름/도식</strong></p>
+<pre class="diagram"><code>타당성 조사 → 요구사항 도출 → 분석 및 조정 → 명세화 → 검증 → 변경관리</code></pre>
+<div class="table-wrap"><table><thead><tr><th>단계</th><th>주요 활동</th><th>산출물</th></tr></thead><tbody><tr><td>도출</td><td>인터뷰, 설문, 워크숍, 관찰</td><td>요구사항 후보</td></tr><tr><td>분석</td><td>충돌, 중복, 누락, 우선순위 검토</td><td>분석 결과</td></tr><tr><td>명세</td><td>정형화된 요구사항 문서 작성</td><td>SRS</td></tr><tr><td>검증</td><td>정확성, 완전성, 일관성 확인</td><td>검토 결과</td></tr><tr><td>관리</td><td>변경 영향 분석, 추적성 관리</td><td>요구사항 추적표</td></tr></tbody></table></div>
+<h2 id="10-SW-품질과-ISO-표준">10. SW 품질과 ISO 표준</h2>
+<p><strong>도식: SW 품질·ISO 표준 맵</strong></p>
+<pre class="diagram"><code>[ISO/IEC 9126 (품질모델)] + [ISO/IEC 14598 (평가절차)] + [ISO/IEC 12119 (패키지 SW)] → [ISO/IEC 25000 (SQuaRE)]
+- 12207 (생명주기)
+- 15504 (프로세스 능력)
+- 9000 (품질경영)
+- 25010 (품질특성)</code></pre>
+<p><em>의미: ISO 표준은 제품 품질, 평가, 패키지 품질, 생명주기, 프로세스 능력으로 분류해 암기</em></p>
+<p><code>ISO 집중</code></p>
+<p><code>기출 빈출</code></p>
+<h3 id="10-1-SW-품질-개요">10.1 SW 품질 개요</h3>
+<blockquote><strong>답안 문장</strong> SW 품질은 명시적 요구와 묵시적 요구를 만족시키는 소프트웨어 제품의 기능 및 특성이다. 사용자 관점에서는 유용성, 신뢰성, 사용 편의성이 중요하고, 개발자 관점에서는 유지보수성과 구조적 품질이 중요하다.</blockquote>
+<div class="table-wrap"><table><thead><tr><th>품질활동</th><th>의미</th><th>키워드</th></tr></thead><tbody><tr><td>품질계획</td><td>품질 표준과 적용 방법 결정</td><td>Plan</td></tr><tr><td>품질보증</td><td>프로세스가 기준을 따르는지 확인</td><td>QA</td></tr><tr><td>품질통제</td><td>결과물이 요구 품질을 만족하는지 검사</td><td>QC</td></tr><tr><td>품질개선</td><td>결함 원인 제거와 프로세스 개선</td><td>PDCA</td></tr></tbody></table></div>
+<h3 id="10-2-ISO-품질-표준-전체-맵">10.2 ISO 품질 표준 전체 맵</h3>
+<div class="table-wrap"><table><thead><tr><th>표준</th><th>한 줄 암기</th><th>답안 포인트</th></tr></thead><tbody><tr><td>ISO/IEC 9126</td><td>제품 품질 특성</td><td>기능성, 신뢰성, 사용성, 효율성, 유지보수성, 이식성</td></tr><tr><td>ISO/IEC 14598</td><td>제품 품질 평가 절차</td><td>반복성, 재현성, 공정성, 객관성</td></tr><tr><td>ISO/IEC 12119</td><td>패키지 SW 품질 요구 및 시험</td><td>제품설명서, 사용자문서, 프로그램과 데이터</td></tr><tr><td>ISO/IEC 25000</td><td>SQuaRE 통합 품질 표준</td><td>품질 요구사항, 모델, 측정, 평가</td></tr><tr><td>ISO/IEC 25010:2023</td><td>ICT 제품 및 SW 품질 모델</td><td>안전성 추가, 사용성 개편</td></tr><tr><td>ISO/IEC 12207</td><td>SW 생명주기 프로세스</td><td>획득, 공급, 개발, 운영, 유지보수</td></tr><tr><td>ISO/IEC 15504 SPICE</td><td>프로세스 능력 평가</td><td>프로세스 차원, 수행능력 차원</td></tr><tr><td>ISO/IEC 33000</td><td>15504 개정, 프로세스 평가 프레임워크</td><td>모듈형, 성숙도, 다양한 산업 적용</td></tr></tbody></table></div>
+<h3 id="10-3-ISO-IEC-9126">10.3 ISO/IEC 9126</h3>
+<p><strong>암기/키워드</strong></p>
+<pre class="diagram"><code>암기: 기신사효유이
+기능성, 신뢰성, 사용성, 효율성, 유지보수성, 이식성</code></pre>
+<div class="table-wrap"><table><thead><tr><th>특성</th><th>의미</th><th>부특성 예시</th></tr></thead><tbody><tr><td>기능성</td><td>요구 기능을 제공하는 능력</td><td>적합성, 정확성, 상호운용성, 보안성</td></tr><tr><td>신뢰성</td><td>규정 조건에서 성능 유지</td><td>성숙성, 오류허용성, 회복성</td></tr><tr><td>사용성</td><td>사용자가 이해하고 사용하기 쉬운 정도</td><td>이해성, 학습성, 운용성</td></tr><tr><td>효율성</td><td>자원 대비 성능 수준</td><td>시간반응성, 자원효율성</td></tr><tr><td>유지보수성</td><td>변경과 수정이 쉬운 정도</td><td>분석성, 변경성, 안정성, 시험성</td></tr><tr><td>이식성</td><td>다른 환경으로 이전 가능성</td><td>적응성, 설치성, 대체성</td></tr></tbody></table></div>
+<h3 id="10-4-ISO-IEC-25000-SQuaRE">10.4 ISO/IEC 25000 SQuaRE</h3>
+<p><strong>암기/키워드</strong></p>
+<pre class="diagram"><code>암기: 요모관측평확
+품질 요구사항, 품질 모델, 품질 관리, 품질 측정, 품질 평가, 확장</code></pre>
+<blockquote><strong>답안 문장</strong> ISO/IEC 25000은 기존 제품 품질 모델, 평가 절차, 패키지 SW 품질 기준을 통합하여 소프트웨어 품질 요구사항 정의부터 측정, 평가까지 일관된 기준을 제공하는 SQuaRE 표준이다.</blockquote>
+<div class="table-wrap"><table><thead><tr><th>구성</th><th>의미</th><th>답안 키워드</th></tr></thead><tbody><tr><td>2500n 관리</td><td>SQuaRE 구조와 관리</td><td>품질관리</td></tr><tr><td>2501n 모델</td><td>제품 품질, 사용 품질 모델</td><td>품질특성</td></tr><tr><td>2502n 측정</td><td>품질 메트릭과 측정 방법</td><td>정량화</td></tr><tr><td>2503n 요구사항</td><td>품질 요구사항 명세</td><td>품질 요구 정의</td></tr><tr><td>2504n 평가</td><td>품질 평가 절차와 기준</td><td>평가 프로세스</td></tr></tbody></table></div>
+<h3 id="10-5-ISO-IEC-25010-2023-품질-특성">10.5 ISO/IEC 25010:2023 품질 특성</h3>
+<p><strong>암기/키워드</strong></p>
+<pre class="diagram"><code>암기: 기성호상신보유유안
+기능적합성, 성능효율성, 호환성, 상호작용능력, 신뢰성, 보안성, 유지보수성, 유연성, 안전성</code></pre>
+<div class="table-wrap"><table><thead><tr><th>특성</th><th>한 줄 의미</th></tr></thead><tbody><tr><td>기능적합성</td><td>필요한 기능을 정확히 제공</td></tr><tr><td>성능효율성</td><td>응답시간, 처리량, 자원 효율 만족</td></tr><tr><td>호환성</td><td>다른 시스템과 공존, 연동 가능</td></tr><tr><td>상호작용능력</td><td>사용자와 효과적으로 상호작용</td></tr><tr><td>신뢰성</td><td>장애 없이 안정적으로 동작</td></tr><tr><td>보안성</td><td>데이터와 시스템 보호</td></tr><tr><td>유지보수성</td><td>분석, 변경, 테스트가 쉬움</td></tr><tr><td>유연성</td><td>환경 변화와 확장에 적응</td></tr><tr><td>안전성</td><td>사람, 재산, 환경 피해 방지</td></tr></tbody></table></div>
+<h2 id="11-프로세스-품질-SPICE-CMMI">11. 프로세스 품질, SPICE, CMMI</h2>
+<p><strong>도식: 프로세스 품질 성숙도 구조</strong></p>
+<pre class="diagram"><code>[프로세스 차원] × [수행능력 차원] → [능력수준 0~5]
+[초기] → [관리] → [정의] → [정량] → [최적화]
+(SPICE 2차원)
+(CMMI 성숙도)</code></pre>
+<p><em>의미: SPICE는 프로세스별 능력 평가, CMMI는 조직 성숙도 개선 관점으로 비교</em></p>
+<h3 id="11-1-ISO-IEC-12207">11.1 ISO/IEC 12207</h3>
+<p><strong>암기/키워드</strong></p>
+<pre class="diagram"><code>암기: 기지조
+기본 생명주기 프로세스, 지원 프로세스, 조직 프로세스</code></pre>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>프로세스</th><th>답안 포인트</th></tr></thead><tbody><tr><td>기본</td><td>획득, 공급, 개발, 운영, 유지보수</td><td>SDLC 핵심 활동</td></tr><tr><td>지원</td><td>문서화, 형상관리, 품질보증, 검증, 확인, 합동검토, 감사, 문제해결</td><td>품질과 통제</td></tr><tr><td>조직</td><td>관리, 기반구조, 훈련, 개선</td><td>조직 역량 강화</td></tr></tbody></table></div>
+<h3 id="11-2-ISO-IEC-15504-SPICE">11.2 ISO/IEC 15504 SPICE</h3>
+<blockquote><strong>답안 문장</strong> SPICE는 SW 생명주기 프로세스의 개선과 능력 평가를 위한 국제 표준으로, 프로세스 차원과 수행능력 차원을 이용해 조직의 프로세스 역량을 평가한다.</blockquote>
+<div class="table-wrap"><table><thead><tr><th>차원</th><th>의미</th><th>키워드</th></tr></thead><tbody><tr><td>프로세스 차원</td><td>수행해야 할 프로세스 영역과 목적 정의</td><td>5개 그룹, 세부 프로세스</td></tr><tr><td>수행능력 차원</td><td>각 프로세스의 능력 수준 평가</td><td>Capability Level 0~5</td></tr><tr><td>평정 방법</td><td>N, P, L, F 기준으로 달성률 판정</td><td>0~15, 16~50, 51~85, 86~100</td></tr></tbody></table></div>
+<h3 id="11-3-CMM-CMMI">11.3 CMM, CMMI</h3>
+<figure class="svg-diagram" aria-label="CMMI 성숙도 5단계">
+<svg viewBox="0 0 420 340" xmlns="http://www.w3.org/2000/svg" role="img">
+<text class="label-sm" x="210" y="18" text-anchor="middle">CMMI 성숙도 — 암기: 초관정관최</text>
+<rect class="box-warn" x="60" y="260" width="300" height="44" rx="8"/><text class="label" x="210" y="280" text-anchor="middle">1 Initial</text><text class="label-sm" x="210" y="296" text-anchor="middle">초기 — 개인 역량, 비정형</text>
+<rect class="box" x="80" y="210" width="260" height="40" rx="8"/><text class="label-sm" x="210" y="235" text-anchor="middle">2 Managed · 관리 — 프로젝트 단위</text>
+<rect class="box" x="100" y="162" width="220" height="40" rx="8"/><text class="label-sm" x="210" y="187" text-anchor="middle">3 Defined · 정의 — 조직 표준</text>
+<rect class="box-alt" x="120" y="114" width="180" height="40" rx="8"/><text class="label-sm" x="210" y="139" text-anchor="middle">4 Quant · 정량관리</text>
+<rect class="box-test" x="140" y="66" width="140" height="40" rx="8"/><text class="label-sm" x="210" y="91" text-anchor="middle">5 Optimizing · 최적화</text>
+<line class="arrow-blue" x1="210" y1="106" x2="210" y2="114"/>
+<line class="arrow-blue" x1="210" y1="154" x2="210" y2="162"/>
+<line class="arrow-blue" x1="210" y1="202" x2="210" y2="210"/>
+<line class="arrow-blue" x1="210" y1="250" x2="210" y2="260"/>
+<text class="label-sm" x="210" y="330" text-anchor="middle">SPICE: 프로세스×능력 2차원 · CMMI: 조직 성숙도</text>
+</svg>
+<figcaption>CMMI 성숙도 5단계 (계단식 상승)</figcaption>
+</figure>
+<p><strong>암기/키워드</strong></p>
+<pre class="diagram"><code>CMMI 성숙도: 초관정관최
+1 초기, 2 관리, 3 정의, 4 정량관리, 5 최적화</code></pre>
+<div class="table-wrap"><table><thead><tr><th>수준</th><th>의미</th><th>답안 키워드</th></tr></thead><tbody><tr><td>1 Initial</td><td>개인 역량 의존, 비정형</td><td>혼란</td></tr><tr><td>2 Managed</td><td>프로젝트 단위 관리</td><td>요구, 일정, 형상</td></tr><tr><td>3 Defined</td><td>조직 표준 프로세스 정의</td><td>표준화</td></tr><tr><td>4 Quantitatively Managed</td><td>정량 데이터 기반 관리</td><td>측정, 통계</td></tr><tr><td>5 Optimizing</td><td>지속적 개선과 혁신</td><td>원인분석, 개선</td></tr></tbody></table></div>
+<h3 id="11-4-CMMI-2-0">11.4 CMMI 2.0</h3>
+<div class="table-wrap"><table><thead><tr><th>변화 방향</th><th>내용</th></tr></thead><tbody><tr><td>성과 중심</td><td>프로세스 준수보다 가치와 성과 강조</td></tr><tr><td>최신 트렌드 반영</td><td>Agile, DevOps, Security 등 반영</td></tr><tr><td>도메인 구조</td><td>Development, Service, Supplier 등 도메인 확장</td></tr><tr><td>평가 체계</td><td>Practice Area와 Capability Level 중심</td></tr></tbody></table></div>
+<h2 id="12-SW-생산성-3R-모듈화">12. SW 생산성, 3R, 모듈화</h2>
+<p><strong>도식: 생산성 향상 구조</strong></p>
+<pre class="diagram"><code>[Reuse (재사용)] → [Reverse Engineering (분석)] → [Reengineering (개선)] → [모듈화 (고응집·저결합)] → [생산성·품질 향상]</code></pre>
+<p><em>의미: 3R과 모듈화는 기존 자산 활용과 변경 영향 최소화를 통한 생산성 향상 관점으로 연결</em></p>
+<h3 id="12-1-SW-재사용-원리-3R">12.1 SW 재사용 원리 3R</h3>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>의미</th><th>답안 포인트</th></tr></thead><tbody><tr><td>Reuse</td><td>기존 SW 자산을 그대로 또는 일부 활용</td><td>생산성, 품질 향상</td></tr><tr><td>Reengineering</td><td>기존 시스템을 분석하고 개선해 새 구조로 재구현</td><td>역공학, 순공학</td></tr><tr><td>Reverse Engineering</td><td>기존 코드에서 설계, 구조, 요구 정보를 추출</td><td>분석, 문서화</td></tr></tbody></table></div>
+<h3 id="12-2-모듈화">12.2 모듈화</h3>
+<blockquote><strong>답안 문장</strong> 모듈화는 복잡한 시스템을 기능 단위 모듈로 분해하여 변경 영향 범위를 줄이고, 재사용성, 유지보수성, 이해성을 높이는 설계 원리이다.</blockquote>
+<blockquote><strong>메모</strong> 핵심 원칙<br/>좋은 모듈화 = 높은 응집도 + 낮은 결합도</blockquote>
+<h4 id="응집도-순서">응집도 순서</h4>
+<p><strong>암기/키워드</strong></p>
+<pre class="diagram"><code>낮음 → 높음
+우연적 → 논리적 → 시간적 → 절차적 → 통신적 → 순차적 → 기능적</code></pre>
+<h4 id="결합도-순서">결합도 순서</h4>
+<p><strong>암기/키워드</strong></p>
+<pre class="diagram"><code>낮음 → 높음
+자료 → 스탬프 → 제어 → 외부 → 공통 → 내용</code></pre>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>좋은 방향</th><th>이유</th></tr></thead><tbody><tr><td>응집도</td><td>높을수록 좋음</td><td>한 모듈이 하나의 책임에 집중</td></tr><tr><td>결합도</td><td>낮을수록 좋음</td><td>모듈 간 변경 영향 최소화</td></tr><tr><td>정보은닉</td><td>내부 구현 은폐</td><td>인터페이스 중심 변경 관리</td></tr><tr><td>추상화</td><td>핵심 개념 중심 표현</td><td>복잡도 감소</td></tr></tbody></table></div>
+<h2 id="13-SW-안전성-ISO-IEC-Guide-51-IEC-61508-ISO-26262">13. SW 안전성, ISO/IEC Guide 51, IEC 61508, ISO 26262</h2>
+<p><strong>도식: 안전 표준 계층과 ASIL 산정</strong></p>
+<pre class="diagram"><code>[ISO/IEC Guide 51 (안전 일반 원칙)] → [IEC 61508 (기능안전·SIL)] → [ISO 26262 (자동차 기능안전)] → [ASIL (심각도·노출도·제어가능성)]
+(ASIL 산정: Hazard 식별 → S/E/C 평가 → ASIL A~D → 안전 요구사항 → 검증 수준 결정)</code></pre>
+<p><em>의미: 안전성 답안은 표준 계층과 위험분석 흐름을 함께 그리면 가시성 확보</em></p>
+<p><code>안전 표준</code></p>
+<p><code>ISO 26262 기출</code></p>
+<h3 id="13-1-SW-안전성">13.1 SW 안전성</h3>
+<blockquote><strong>답안 문장</strong> SW 안전성은 소프트웨어 결함을 사전에 예방하고, 결함 발생 시에도 사람, 환경, 재산에 대한 피해를 최소화하도록 보장하는 품질 속성이다.</blockquote>
+<p><strong>흐름/도식</strong></p>
+<pre class="diagram"><code>위험원 식별 → 위험 분석 → 안전 요구사항 → 설계/구현 → 검증/확인 → 운영 모니터링</code></pre>
+<h3 id="13-2-안전-표준-관계">13.2 안전 표준 관계</h3>
+<div class="table-wrap"><table><thead><tr><th>표준</th><th>성격</th><th>한 줄 암기</th></tr></thead><tbody><tr><td>ISO/IEC Guide 51</td><td>안전성 일반 지침</td><td>위험 감소 원칙의 뿌리</td></tr><tr><td>IEC 61508</td><td>전기, 전자, 프로그램 가능 전자 시스템 기능안전 표준</td><td>전 산업 기능안전 기본 표준</td></tr><tr><td>ISO 26262</td><td>자동차 전기, 전자 시스템 기능안전 표준</td><td>IEC 61508의 자동차 특화</td></tr><tr><td>ASIL</td><td>자동차 안전 무결성 수준</td><td>심각도, 노출도, 제어가능성 기반 등급</td></tr></tbody></table></div>
+<p><strong>흐름/도식</strong></p>
+<pre class="diagram"><code>ISO/IEC Guide 51
+↓
+IEC 61508: 기능안전 기본 프레임워크, SIL
+↓
+ISO 26262: 자동차 기능안전 생명주기
+↓
+ASIL: 자동차 위험도 기반 안전 요구수준</code></pre>
+<h3 id="13-3-IEC-61508과-SIL">13.3 IEC 61508과 SIL</h3>
+<blockquote><strong>답안 문장</strong> IEC 61508은 전기, 전자, 프로그램 가능 전자 시스템의 기능안전을 확보하기 위해 위험 분석, 안전 요구사항, 안전 무결성 수준, 검증 활동을 정의한 범용 기능안전 표준이다.</blockquote>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>내용</th><th>키워드</th></tr></thead><tbody><tr><td>대상</td><td>전기, 전자, 프로그램 가능 전자 시스템</td><td>E/E/PE</td></tr><tr><td>목적</td><td>안전 기능 실패로 인한 위험 감소</td><td>위험 저감</td></tr><tr><td>등급</td><td>SIL 1~4</td><td>SIL 4 최고</td></tr><tr><td>절차</td><td>위험원 식별, 위험 분석, 안전 요구 도출, 검증</td><td>Safety Life Cycle</td></tr></tbody></table></div>
+<h3 id="13-4-ISO-26262과-ASIL">13.4 ISO 26262과 ASIL</h3>
+<blockquote><strong>답안 문장</strong> ISO 26262는 IEC 61508의 기능안전 개념을 자동차 분야에 적용하여 차량 전기, 전자 시스템의 위험을 분석하고, ASIL 등급에 따라 안전 요구사항, 설계, 구현, 검증 수준을 차등 적용하는 자동차 기능안전 표준이다.</blockquote>
+<p><strong>암기/키워드</strong></p>
+<pre class="diagram"><code>ASIL 결정 지표: 심노제
+심각도 Severity, 노출도 Exposure, 제어가능성 Controllability</code></pre>
+<div class="table-wrap"><table><thead><tr><th>지표</th><th>의미</th><th>예시</th></tr></thead><tbody><tr><td>Severity</td><td>사고 발생 시 피해 심각도</td><td>부상, 사망, 재산 피해</td></tr><tr><td>Exposure</td><td>위험 상황에 노출되는 빈도</td><td>주행 환경, 발생 빈도</td></tr><tr><td>Controllability</td><td>운전자가 위험을 제어할 수 있는 정도</td><td>회피 가능성</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>ASIL 등급</th><th>의미</th><th>적용 기법 예시</th></tr></thead><tbody><tr><td>ASIL A</td><td>낮은 안전 요구</td><td>기본 테스트, 리뷰</td></tr><tr><td>ASIL B</td><td>중간 안전 요구</td><td>요구사항 기반 테스트</td></tr><tr><td>ASIL C</td><td>높은 안전 요구</td><td>정적 분석, 구조적 테스트</td></tr><tr><td>ASIL D</td><td>가장 높은 안전 요구</td><td>MC/DC, 이중화, Fail-Safe, 결함 허용</td></tr></tbody></table></div>
+<h2 id="14-기술사-답안-템플릿">14. 기술사 답안 템플릿</h2>
+<p><strong>도식: 기술사 답안 전개 프레임</strong></p>
+<pre class="diagram"><code>[1. 개요 (정의·배경)] → [2. 본론 (메커니즘·도식)] → [3. 비교·적용 (3단표)] → [4. 결론 (고려·전망)]</code></pre>
+<p><em>의미: 1교시는 3단락, 2교시는 4단락 구조로 확장</em></p>
+<h3 id="14-1-1교시형-기본-구조">14.1 1교시형 기본 구조</h3>
+<p><strong>흐름/도식</strong></p>
+<pre class="diagram"><code>1. 개념 및 등장배경
+- 정의 2~3줄
+- 필요성 3개
+2. 핵심 구성, 메커니즘, 비교
+- 도식 1개
+- 3단표 1개
+- 키워드 5~7개
+3. 적용 고려사항, 발전방향
+- 한계 3개
+- 대응방향 3개
+- 결론 2줄</code></pre>
+<h3 id="14-2-2교시형-기본-구조">14.2 2교시형 기본 구조</h3>
+<p><strong>흐름/도식</strong></p>
+<pre class="diagram"><code>1. 개요
+가. 정의
+나. 필요성
+다. 전체 구조도
+2. 핵심 메커니즘
+가. 구성요소
+나. 처리흐름
+다. 주요 기법
+3. 비교 및 적용 방안
+가. 비교표
+나. 적용 고려사항
+다. 기대효과
+4. 결론
+- 한계
+- 대응방향
+- 발전방향</code></pre>
+<h3 id="14-3-키워드-확장-공식">14.3 키워드 확장 공식</h3>
+<div class="table-wrap"><table><thead><tr><th>공식</th><th>예시</th></tr></thead><tbody><tr><td>개념명은 A를 위해 B를 적용하여 C를 달성하는 기술</td><td>애자일은 변화 대응을 위해 반복 개발과 고객 피드백을 적용하여 제품 적합성을 높이는 개발 방법론</td></tr><tr><td>A 증가 → 기존 방식 한계 → B 필요</td><td>요구사항 변경 증가 → 계획 중심 개발 한계 → 반복, 점진 개발 필요</td></tr><tr><td>입력 → 처리 → 검증 → 개선</td><td>요구사항 → 스프린트 개발 → 리뷰 → 개선사항 반영</td></tr></tbody></table></div>
+<h2 id="15-암기-카드">15. 암기 카드</h2>
+<p><strong>도식: 암기 카드 활용 루틴</strong></p>
+<pre class="diagram"><code>[질문 보기] → [두음 떠올리기] → [한 줄 확장] → [도식으로 복원] → [답안 문장 작성]</code></pre>
+<p><em>의미: 카드는 정답 확인용이 아니라, 두음을 답안 문장으로 바꾸는 훈련용</em></p>
+<ul><li><strong>Q1. SDLC 단계 암기?</strong></li></ul>
+<p>- 정답: 타요설개테운폐: 타당성검토, 요구분석, 설계, 개발, 테스트, 운영 및 유지보수, 폐기</p>
+<ul><li><strong>Q2. ISO/IEC 9126 품질특성?</strong></li></ul>
+<p>- 정답: 기신사효유이: 기능성, 신뢰성, 사용성, 효율성, 유지보수성, 이식성</p>
+<ul><li><strong>Q3. SQuaRE 구성 암기?</strong></li></ul>
+<p>- 정답: 요모관측평확: 요구사항, 모델, 관리, 측정, 평가, 확장</p>
+<ul><li><strong>Q4. ASIL 결정 지표?</strong></li></ul>
+<p>- 정답: 심노제: Severity 심각도, Exposure 노출도, Controllability 제어가능성</p>
+<ul><li><strong>Q5. 모듈화의 좋은 방향?</strong></li></ul>
+<p>- 정답: 높은 응집도, 낮은 결합도</p>
+<ul><li><strong>Q6. CMMI 성숙도 5단계?</strong></li></ul>
+<p>- 정답: 초관정관최: 초기, 관리, 정의, 정량관리, 최적화</p>
+<ul><li><strong>Q7. DevSecOps 보안 삽입 위치?</strong></li></ul>
+<p>- 정답: 계획, 개발, 빌드, 테스트, 배포, 운영 전 단계에 보안 자동화 적용</p>
+<ul><li><strong>Q8. Product Line 3대 활동?</strong></li></ul>
+<p>- 정답: Domain 공학, Application 공학, Management</p></section>
+</main></div><script>
+function filterCards(){
+  const q=document.getElementById('cardSearch').value.toLowerCase();
+  document.querySelectorAll('.flashcard').forEach(c=>{
+    const txt=(c.dataset.q+' '+c.dataset.m+' '+c.dataset.a).toLowerCase();
+    c.classList.toggle('hidden', !txt.includes(q));
+  });
+}
+function flipAll(on){document.querySelectorAll('.flashcard').forEach(c=>c.classList.toggle('flipped',on));}
+function shuffleCards(){const grid=document.querySelector('.cards'); [...grid.children].sort(()=>Math.random()-.5).forEach(x=>grid.appendChild(x));}
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.flashcard').forEach(c=>{
+    c.setAttribute('tabindex','0');
+    c.setAttribute('role','button');
+    c.addEventListener('click',()=>c.classList.toggle('flipped'));
+    c.addEventListener('keydown',(e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); c.classList.toggle('flipped'); }});
+  });
+});
+</script><a class="top-button" href="#top">↑ 위로</a></body></html>

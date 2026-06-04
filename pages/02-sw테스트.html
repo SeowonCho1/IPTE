@@ -1,0 +1,978 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SW 테스트 기술사 분석 키워드 & 암기카드 - 표 수정 / 사이드 목차</title>
+<style>
+:root {
+  --bg:#f8fafc; --paper:#ffffff; --ink:#1f2937; --muted:#64748b; --line:#e2e8f0;
+  --primary:#2563eb; --primary-dark:#1e40af; --soft:#eff6ff; --accent:#7c3aed; --warn:#fff7ed;
+  --sidebar:#ffffff;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0; font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",Arial,sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.65; word-break:keep-all; overflow-wrap:break-word;
+}
+header {
+  padding:34px 28px; background:linear-gradient(135deg,#1d4ed8,#7c3aed); color:white;
+}
+header h1 { margin:0 0 10px; font-size:30px; letter-spacing:-.03em; }
+header p { margin:6px 0; opacity:.95; }
+.back-home { display:inline-flex; align-items:center; gap:4px; color:rgba(255,255,255,.92); text-decoration:none; font-size:14px; font-weight:700; margin-bottom:12px; padding:7px 14px; border:1px solid rgba(255,255,255,.35); border-radius:999px; transition:background .15s; }
+.back-home:hover { background:rgba(255,255,255,.15); color:#fff; }
+.layout { max-width:1440px; margin:0 auto; display:grid; grid-template-columns:280px minmax(0, 1fr); gap:24px; padding:24px; }
+.sidebar { position:sticky; top:16px; align-self:start; max-height:calc(100vh - 32px); overflow:auto; background:var(--sidebar); border:1px solid var(--line); border-radius:18px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,.05); }
+.sidebar-title { font-weight:800; color:#0f172a; margin:0 0 12px; display:flex; align-items:center; gap:8px; }
+.sidebar a { display:block; text-decoration:none; color:#334155; padding:9px 10px; border-radius:10px; font-size:14px; line-height:1.35; margin:2px 0; }
+.sidebar a:hover { background:var(--soft); color:var(--primary-dark); }
+.content { min-width:0; }
+.card, .topic { background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:22px; margin:0 0 20px; box-shadow:0 8px 24px rgba(15,23,42,.05); }
+.topic { scroll-margin-top:18px; }
+.mobile-toc { display:none; }
+.section-head { display:flex; justify-content:space-between; gap:14px; align-items:flex-start; flex-wrap:wrap; }
+h2 { margin:0 0 12px; font-size:25px; color:#111827; border-left:6px solid var(--primary); padding-left:12px; letter-spacing:-.03em; }
+h3 { margin:22px 0 8px; font-size:17px; color:#334155; }
+h4 { margin:18px 0 8px; font-size:15px; color:#0f172a; }
+.tag { display:inline-block; padding:5px 10px; border-radius:999px; background:var(--soft); color:#1d4ed8; font-size:13px; margin:3px; }
+.diagram { background:#0f172a; color:#e0f2fe; padding:18px; border-radius:14px; overflow:auto; font-family:"D2Coding","SFMono-Regular",Consolas,monospace; font-size:14px; line-height:1.65; white-space:pre; }
+.kw { list-style:none; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; }
+.kw li { border:1px solid var(--line); border-radius:12px; padding:12px; background:#fcfcfd; }
+.kw b { display:block; color:#1d4ed8; margin-bottom:4px; }
+.kw span { color:#334155; }
+blockquote { margin:0; padding:15px 18px; border-left:5px solid var(--accent); background:#faf5ff; border-radius:12px; }
+.table-wrap { width:100%; overflow-x:auto; border:1px solid var(--line); border-radius:14px; margin:8px 0 18px; }
+table { width:100%; border-collapse:collapse; min-width:680px; background:white; table-layout:auto; }
+th, td { padding:11px 12px; border-bottom:1px solid var(--line); border-right:1px solid var(--line); vertical-align:top; text-align:left; white-space:normal; word-break:keep-all; overflow-wrap:break-word; }
+th:last-child, td:last-child { border-right:0; }
+tr:last-child td { border-bottom:0; }
+th { background:#f1f5f9; color:#0f172a; font-weight:800; }
+tbody tr:nth-child(even) td { background:#fbfdff; }
+.note { background:var(--warn); border-color:#fed7aa; }
+.card-tools { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 18px; }
+input, select, button { padding:10px 12px; border:1px solid var(--line); border-radius:12px; background:white; font:inherit; }
+button { cursor:pointer; background:#2563eb; color:white; border-color:#2563eb; }
+button.secondary { background:white; color:#1d4ed8; }
+.flash-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
+.flash { min-height:165px; perspective:1000px; cursor:pointer; }
+.flash-inner { position:relative; width:100%; min-height:165px; transition:transform .45s; transform-style:preserve-3d; }
+.flash.flipped .flash-inner { transform:rotateY(180deg); }
+.face { position:absolute; inset:0; backface-visibility:hidden; background:white; border:1px solid var(--line); border-radius:16px; padding:16px; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 6px 18px rgba(15,23,42,.05); }
+.front { border-top:5px solid #2563eb; }
+.back { transform:rotateY(180deg); background:#f8fafc; border-top:5px solid #7c3aed; }
+.badge { display:inline-block; align-self:flex-start; font-size:12px; padding:3px 8px; background:#e0e7ff; color:#3730a3; border-radius:999px; margin-bottom:8px; }
+.small { color:var(--muted); font-size:13px; }
+.top-button { position:fixed; right:18px; bottom:18px; z-index:20; text-decoration:none; color:white; background:var(--primary); padding:10px 12px; border-radius:999px; box-shadow:0 8px 20px rgba(37,99,235,.3); font-size:14px; }
+@media (max-width: 900px) {
+  header { padding:28px 18px; }
+  header h1 { font-size:24px; }
+  .layout { display:block; padding:14px; }
+  .sidebar { display:none; }
+  .mobile-toc { display:block; }
+  .mobile-toc details { border:1px solid var(--line); border-radius:14px; padding:12px; background:white; }
+  .mobile-toc summary { font-weight:800; cursor:pointer; }
+  .mobile-toc a { display:block; padding:8px 4px; color:#334155; text-decoration:none; border-bottom:1px solid #eef2f7; }
+  .card, .topic { padding:16px; border-radius:16px; }
+  h2 { font-size:20px; }
+  .diagram { font-size:13px; }
+  table { min-width:620px; font-size:14px; }
+  th, td { padding:9px 10px; }
+  .top-button { display:none; }
+}
+@media print {
+  body { background:white; }
+  header { background:#fff; color:#111; border-bottom:2px solid #111; }
+  .layout { display:block; padding:0; }
+  .sidebar, .mobile-toc, .card-tools, button, input, select, .top-button { display:none !important; }
+  .topic,.card { break-inside:avoid; box-shadow:none; }
+  .flash-inner { transform:none !important; }
+  .back { display:none; }
+  .back-home { display:none; }
+}
+</style>
+<link rel="stylesheet" href="../assets/diagrams.css"/>
+</head>
+<body>
+<header id="top">
+  <div style="max-width:1440px;margin:0 auto;">
+    <a class="back-home" href="../index.html">← 목차로</a>
+    <h1>SW 테스트 기술사 분석 키워드 & 암기카드</h1>
+    <p>정리 기준: 「02. SW테스트 기본반」 교재 흐름, 기출 출제 주제, 1교시·2교시 답안 확장용</p>
+    <p>수정: 표 깨짐 보정, 3단표 재구성, PC용 좌측 고정 목차, 모바일 반응형 숨김 처리</p>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar">
+    <p class="sidebar-title">📌 목차</p>
+    <a href="#s0">0. 기출 분석 및 공부 방식</a><a href="#s1">1. SW 테스트 개요와 7원리</a><a href="#s2">2. 테스트 구성: 정책, MTP, TMO, 테스트 생명주기</a><a href="#s3">3. 테스트 프로세스: Basis, Case, Bed, Oracle, 완료조건</a><a href="#s4">4. 임베디드 환경 테스트와 V-모델</a><a href="#s5">5. 테스트 분류 체계</a><a href="#s6">6. 정적 테스트: 리뷰, 인스펙션, 동료검토</a><a href="#s7">7. 명세기반 테스트 설계기법</a><a href="#s8">8. 구조기반 테스트와 커버리지</a><a href="#s9">9. 경험기반 테스트: 탐색적, 오류추정, 애드혹</a><a href="#s10">10. 기능 테스트 레벨: 단위, 통합, 시스템, 인수</a><a href="#s11">11. 비기능 테스트: 성능, 몽키, 사용성</a><a href="#s12">12. 전략적 테스트: RBT, Mutation, Back-to-Back, MBT</a><a href="#s13">13. 테스트 자동화, Shift Left/Right, DevTestOps</a><a href="#s14">14. 테스트 성숙도와 표준: TMMi, ISO 29119, ISO 33063</a><a href="#s15">15. AI 소프트웨어 테스트 보강 포인트</a><a href="#s16">16. 기술사 답안 템플릿</a>
+  </aside>
+  <main class="content">
+    <div class="card mobile-toc">
+      <details>
+        <summary>목차 열기</summary>
+        <a href="#s0">0. 기출 분석 및 공부 방식</a><a href="#s1">1. SW 테스트 개요와 7원리</a><a href="#s2">2. 테스트 구성: 정책, MTP, TMO, 테스트 생명주기</a><a href="#s3">3. 테스트 프로세스: Basis, Case, Bed, Oracle, 완료조건</a><a href="#s4">4. 임베디드 환경 테스트와 V-모델</a><a href="#s5">5. 테스트 분류 체계</a><a href="#s6">6. 정적 테스트: 리뷰, 인스펙션, 동료검토</a><a href="#s7">7. 명세기반 테스트 설계기법</a><a href="#s8">8. 구조기반 테스트와 커버리지</a><a href="#s9">9. 경험기반 테스트: 탐색적, 오류추정, 애드혹</a><a href="#s10">10. 기능 테스트 레벨: 단위, 통합, 시스템, 인수</a><a href="#s11">11. 비기능 테스트: 성능, 몽키, 사용성</a><a href="#s12">12. 전략적 테스트: RBT, Mutation, Back-to-Back, MBT</a><a href="#s13">13. 테스트 자동화, Shift Left/Right, DevTestOps</a><a href="#s14">14. 테스트 성숙도와 표준: TMMi, ISO 29119, ISO 33063</a><a href="#s15">15. AI 소프트웨어 테스트 보강 포인트</a><a href="#s16">16. 기술사 답안 템플릿</a>
+      </details>
+    </div>
+    <div class="card note">
+      <b>사용 방법</b><br>
+      1) 왼쪽 목차로 단원 이동 → 2) 도식으로 흐름 암기 → 3) 분석 키워드로 한 줄 확장 → 4) 정리표로 답안 구조화 → 5) 암기카드로 복원 연습
+    </div>
+    
+<section id="s0" class="topic">
+  <div class="section-head">
+    <h2>0. 기출 분석 및 공부 방식</h2>
+    <div><span class="tag">기출맵</span><span class="tag">답안확장</span></div>
+  </div>
+  <h3>도식</h3>
+  <pre class="diagram">[기출문제]
+   ↓
+[반복 출제 키워드]
+   ↓
+[정의 3줄 + 도식 1개 + 3단표]
+   ↓
+[1교시 30줄 / 2교시 70줄 답안 확장]</pre>
+  <h3>분석 키워드</h3>
+  <ul class="kw"><li><b>빈출 축</b><span>테스트 7원리, 블랙박스/화이트박스, 명세·구조·경험 기반, 통합테스트, 성능테스트, 회귀/몽키, 인수테스트, ISO 29119, AI 테스트</span></li><li><b>작성 방식</b><span>정의 → 필요성 → 도식 → 비교표 → 적용 고려사항 순서로 전개</span></li><li><b>암기 방식</b><span>두음 암기 후 반드시 한 줄 확장 문장으로 복원</span></li></ul>
+  <h3>답안 확장 문장</h3>
+  <blockquote>SW 테스트 단원은 결함 발견 메커니즘, 테스트 프로세스, 설계기법, 테스트 레벨, 비기능 테스트, 표준으로 나누면 답안 확장이 쉽습니다.</blockquote>
+  <h3>정리표</h3>
+  <h4>기출 대응 정리</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>핵심 주제</th><th>답안 포인트</th></tr></thead><tbody><tr><td>원리</td><td>테스트 7원리, 조기 테스트, 결함 집중</td><td>정의 + 원리별 의미 + 적용 방향</td></tr><tr><td>기법</td><td>명세기반, 구조기반, 경험기반</td><td>비교표 + 대표 기법 + 적용 예시</td></tr><tr><td>레벨</td><td>단위, 통합, 시스템, 인수</td><td>흐름도 + Driver/Stub + 단계별 목적</td></tr><tr><td>전략</td><td>RBT, Mutation, MBT, 자동화</td><td>절차 + 효과 + 한계</td></tr><tr><td>표준</td><td>TMMi, ISO 29119, ISO 33063</td><td>구성요소 + 적용 의미</td></tr></tbody></table></div>
+</section>
+
+<section id="s1" class="topic">
+  <div class="section-head">
+    <h2>1. SW 테스트 개요와 7원리</h2>
+    <div><span class="tag">1교시</span><span class="tag">기초</span></div>
+  </div>
+  <h3>도식</h3>
+<figure class="svg-diagram" aria-label="Error Fault Failure">
+<svg viewBox="0 0 480 130" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker>
+</defs>
+<rect class="box-warn" x="10" y="45" width="80" height="40" rx="8"/><text class="label-sm" x="50" y="70" text-anchor="middle">Error</text><text class="label-sm" x="50" y="82" text-anchor="middle">실수</text>
+<line class="arrow-blue" x1="90" y1="65" x2="100" y2="65"/>
+<rect class="box" x="100" y="45" width="90" height="40" rx="8"/><text class="label-sm" x="145" y="65" text-anchor="middle">Fault/Defect</text><text class="label-sm" x="145" y="78" text-anchor="middle">결함</text>
+<line class="arrow-blue" x1="190" y1="65" x2="200" y2="65"/>
+<rect class="box-alt" x="200" y="45" width="80" height="40" rx="8"/><text class="label-sm" x="240" y="70" text-anchor="middle">Failure</text><text class="label-sm" x="240" y="82" text-anchor="middle">장애</text>
+<line class="arrow-blue" x1="280" y1="65" x2="290" y2="65"/>
+<rect class="box-test" x="290" y="45" width="80" height="40" rx="8"/><text class="label-sm" x="330" y="70" text-anchor="middle">Test</text><text class="label-sm" x="330" y="82" text-anchor="middle">결함발견</text>
+<line class="arrow-blue" x1="370" y1="65" x2="380" y2="65"/>
+<rect class="box-dark" x="380" y="45" width="90" height="40" rx="8"/><text class="label-light" x="425" y="70" text-anchor="middle">Debug</text><text class="label-sm" x="425" y="82" text-anchor="middle" fill="#cbd5e1">수정</text>
+<text class="label-sm" x="240" y="22" text-anchor="middle">실수 → 결함 → 실행장애 → 테스트(발견) → 디버깅(수정)</text>
+<text class="label-sm" x="240" y="118" text-anchor="middle">테스트 목적: 무결함 증명 X · 결함 존재 증명 O</text>
+</svg>
+<figcaption>Error → Fault → Failure → Test → Debug</figcaption>
+</figure>
+  <figure class="svg-diagram" aria-label="테스트 7원리">
+<svg viewBox="0 0 560 150" xmlns="http://www.w3.org/2000/svg" role="img">
+<text class="label-sm" x="280" y="16" text-anchor="middle">테스트 7원리 — 암기: 결·완·초·집·살·정·오</text>
+<rect class="box" x="8" y="30" width="72" height="36" rx="6"/><text class="label-sm" x="44" y="52" text-anchor="middle">결함존재</text>
+<rect class="box" x="86" y="30" width="72" height="36" rx="6"/><text class="label-sm" x="122" y="52" text-anchor="middle">완벽불가</text>
+<rect class="box-warn" x="164" y="30" width="72" height="36" rx="6"/><text class="label-sm" x="200" y="52" text-anchor="middle">초기시작</text>
+<rect class="box-alt" x="242" y="30" width="72" height="36" rx="6"/><text class="label-sm" x="278" y="52" text-anchor="middle">결함집중</text>
+<rect class="box-test" x="320" y="30" width="72" height="36" rx="6"/><text class="label-sm" x="356" y="52" text-anchor="middle">살충제</text>
+<rect class="box" x="398" y="30" width="72" height="36" rx="6"/><text class="label-sm" x="434" y="52" text-anchor="middle">정황의존</text>
+<rect class="box-dark" x="476" y="30" width="76" height="36" rx="6"/><text class="label-light" x="514" y="52" text-anchor="middle">오류부재</text>
+<text class="label-sm" x="44" y="82" text-anchor="middle">증명O</text>
+<text class="label-sm" x="200" y="82" text-anchor="middle">비용↓</text>
+<text class="label-sm" x="278" y="82" text-anchor="middle">Pareto</text>
+<text class="label-sm" x="356" y="82" text-anchor="middle">케이스갱신</text>
+<text class="label-sm" x="514" y="82" text-anchor="middle">궤변주의</text>
+<text class="label-sm" x="280" y="130" text-anchor="middle">답안: 각 원리 정의 + 한 줄 적용 (조기테스트·위험모듈 집중 등)</text>
+</svg>
+<figcaption>SW 테스트 7원리 한눈에</figcaption>
+</figure>
+  <pre class="diagram">[Error: 사람의 실수]
+        ↓
+[Fault / Defect / Bug: 제품 결함]
+        ↓
+[Failure: 실행 중 장애]
+        ↓
+[테스트: 결함 발견] → [디버깅: 원인 분석·수정]</pre>
+  <h3>분석 키워드</h3>
+  <ul class="kw"><li><b>정의</b><span>사람의 실수로 발생한 결함을 찾아 장애를 예방하는 품질 확인 메커니즘</span></li><li><b>목적</b><span>잔존 결함 발견, 명세 충족 확인, 사용자·비즈니스 요구 충족, 결함 예방</span></li><li><b>7원리</b><span>결함 존재 증명, 완벽 테스팅 불가, 초기 테스팅, 결함 집중, 살충제 패러독스, 정황 의존성, 오류 부재 궤변</span></li><li><b>품질척도</b><span>작동성, 관찰성, 조종성, 분해성, 단순성, 안전성, 이해성</span></li></ul>
+  <h3>답안 확장 문장</h3>
+  <blockquote>SW 테스트는 소프트웨어의 품질과 사용자 요구 충족 여부를 확인하기 위해 결함을 발견하는 활동이며, 무결함 증명이 아니라 결함 존재 증명을 목적으로 합니다.</blockquote>
+  <h3>정리표</h3>
+  <h4>테스트 7원리</h4><div class="table-wrap"><table><thead><tr><th>암기</th><th>원리</th><th>답안 확장</th></tr></thead><tbody><tr><td>결</td><td>결함 존재 증명</td><td>테스트는 결함이 있음을 보일 수 있으나, 결함이 없음을 증명하지는 못함</td></tr><tr><td>완</td><td>완벽한 테스팅 불가능</td><td>모든 입력과 경로 테스트는 자원 한계로 불가능, 우선순위 기반 접근 필요</td></tr><tr><td>초</td><td>초기 테스팅 시작</td><td>개발 초기부터 리뷰와 테스트 설계 수행 시 수정 비용 감소</td></tr><tr><td>집</td><td>결함 집중</td><td>소수 모듈에 다수 결함 집중, 위험 모듈 중심 테스트 필요</td></tr><tr><td>살</td><td>살충제 패러독스</td><td>동일 테스트 반복 시 결함 탐지율 감소, 테스트 케이스 개선 필요</td></tr><tr><td>정</td><td>정황 의존성</td><td>도메인, 위험, 환경에 따라 테스트 전략 차별화 필요</td></tr><tr><td>오</td><td>오류 부재의 궤변</td><td>결함이 적어도 사용자 요구를 만족하지 못하면 품질 확보 실패</td></tr></tbody></table></div><h4>테스트와 디버깅 비교</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>테스트</th><th>디버깅</th></tr></thead><tbody><tr><td>목적</td><td>결함 발견</td><td>결함 원인 분석 및 코드 수정</td></tr><tr><td>수행 주체</td><td>테스터, QA, 개발자</td><td>주로 개발자</td></tr><tr><td>산출물</td><td>결함 리포트, 테스트 결과</td><td>수정 코드, 원인 분석</td></tr><tr><td>관점</td><td>품질 확인</td><td>문제 해결</td></tr></tbody></table></div>
+</section>
+
+<section id="s2" class="topic">
+  <div class="section-head">
+    <h2>2. 테스트 구성: 정책, MTP, TMO, 테스트 생명주기</h2>
+    <div><span class="tag">프로세스</span><span class="tag">MTP</span><span class="tag">TMO</span></div>
+  </div>
+  <h3>도식</h3>
+<figure class="svg-diagram" aria-label="테스트 생명주기">
+<svg viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker>
+</defs>
+<rect class="box-warn" x="10" y="55" width="90" height="44" rx="8"/><text class="label-sm" x="55" y="75" text-anchor="middle">테스트</text><text class="label-sm" x="55" y="89" text-anchor="middle">정책</text>
+<line class="arrow-blue" x1="100" y1="77" x2="115" y2="77"/>
+<rect class="box" x="115" y="55" width="90" height="44" rx="8"/><text class="label-sm" x="160" y="82" text-anchor="middle">MTP</text>
+<line class="arrow-blue" x1="205" y1="77" x2="220" y2="77"/>
+<rect class="box-alt" x="220" y="55" width="90" height="44" rx="8"/><text class="label-sm" x="265" y="82" text-anchor="middle">TMO</text>
+<line class="arrow-blue" x1="310" y1="77" x2="325" y2="77"/>
+<rect class="box-test" x="325" y="40" width="220" height="74" rx="10"/><text class="label-sm" x="435" y="62" text-anchor="middle">테스트 생명주기</text>
+<text class="label-sm" x="435" y="78" text-anchor="middle">계획/제어 → 분석/설계</text>
+<text class="label-sm" x="435" y="92" text-anchor="middle">구현/실행 → 평가/리포팅</text>
+<text class="label-sm" x="435" y="106" text-anchor="middle">→ 마감</text>
+<text class="label-sm" x="280" y="145" text-anchor="middle">MTP: 목표·범위·전략·리스크 · TMO: Non / Internal / External</text>
+</svg>
+<figcaption>테스트 정책 → MTP → TMO → 생명주기 5단계</figcaption>
+</figure>
+  <pre class="diagram">[테스트 정책]
+     ↓
+[MTP: Master Test Plan]
+     ├─ 테스트 조직
+     ├─ 테스트 전략
+     ├─ 테스트 설계기법
+     └─ 테스트 계획·케이스·프로시저·완료조건
+
+[계획/제어] → [분석/설계] → [구현/실행] → [평가/리포팅] → [마감]</pre>
+  <h3>분석 키워드</h3>
+  <ul class="kw"><li><b>테스트 정책</b><span>테스트 목적과 방향을 설정하는 상위 원칙</span></li><li><b>MTP</b><span>전체 테스트 목표, 범위, 전략, 리스크, 환경, 일정, 자원, 기준을 정의한 총괄 계획서</span></li><li><b>TMO</b><span>테스트 전략 수립, 교육, 품질 향상, 리스크 관리를 담당하는 테스트 총괄 조직</span></li><li><b>생명주기</b><span>계획/제어, 분석/설계, 구현/실행, 완료조건 평가/리포팅, 마감</span></li></ul>
+  <h3>답안 확장 문장</h3>
+  <blockquote>테스트 구성은 테스트 정책을 기반으로 MTP를 수립하고, TMO를 통해 전략·조직·설계기법·실행절차·완료조건을 관리하는 체계입니다.</blockquote>
+  <h3>정리표</h3>
+  <h4>MTP 핵심 요소</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>핵심 내용</th><th>답안 키워드</th></tr></thead><tbody><tr><td>목표/범위</td><td>테스트의 목적, 대상, 제외 범위 정의</td><td>테스트 목표, 범위</td></tr><tr><td>전략/접근</td><td>테스트 레벨, 유형, 설계기법, 자동화 방향 정의</td><td>전략, 접근방식</td></tr><tr><td>리스크</td><td>품질·일정·자원 리스크 식별 및 완화전략 수립</td><td>리스크 분석</td></tr><tr><td>환경/자원</td><td>테스트 환경, 데이터, 인력, 역할 정의</td><td>테스트베드, R&amp;R</td></tr><tr><td>일정/기준</td><td>마일스톤, 시작/종료 조건, 보고 기준 정의</td><td>완료조건, 산출물</td></tr></tbody></table></div><h4>TMO 유형 비교</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>Non TMO</th><th>Internal TMO</th><th>External TMO</th></tr></thead><tbody><tr><td>구조</td><td>별도 테스트 조직 없음</td><td>수행사 또는 고객사 내부 TMO 구성</td><td>외부 전문 테스트 조직 운영</td></tr><tr><td>적합 대상</td><td>소규모 프로젝트</td><td>중간 규모 또는 내부 통제 필요 프로젝트</td><td>대규모, 고위험 프로젝트</td></tr><tr><td>장점</td><td>비용 절감</td><td>업무 이해도와 조율 용이</td><td>전문성, 객관성, 품질 향상</td></tr><tr><td>한계</td><td>품질 저하 위험</td><td>기술적 균형 조율 필요</td><td>비용 증가, 협업 조정 필요</td></tr></tbody></table></div>
+</section>
+
+<section id="s3" class="topic">
+  <div class="section-head">
+    <h2>3. 테스트 프로세스: Basis, Case, Bed, Oracle, 완료조건</h2>
+    <div><span class="tag">테스트케이스</span><span class="tag">오라클</span></div>
+  </div>
+  <h3>도식</h3>
+<figure class="svg-diagram" aria-label="테스트 프로세스">
+<svg viewBox="0 0 380 420" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker>
+</defs>
+<rect class="box" x="90" y="10" width="200" height="40" rx="8"/><text class="label" x="190" y="36" text-anchor="middle">Test Basis</text>
+<line class="arrow-blue" x1="190" y1="50" x2="190" y2="70"/>
+<rect class="box" x="70" y="70" width="240" height="40" rx="8"/><text class="label-sm" x="190" y="96" text-anchor="middle">Test Case → Suite → Procedure</text>
+<line class="arrow-blue" x1="190" y1="110" x2="190" y2="130"/>
+<rect class="box-warn" x="50" y="130" width="280" height="40" rx="8"/><text class="label-sm" x="190" y="156" text-anchor="middle">Test Bed (Target·Harness·Driver·Stub)</text>
+<line class="arrow-blue" x1="190" y1="170" x2="190" y2="190"/>
+<rect class="box" x="60" y="190" width="260" height="40" rx="8"/><text class="label-sm" x="190" y="216" text-anchor="middle">Test Log / Incident / Report</text>
+<line class="arrow-blue" x1="190" y1="230" x2="190" y2="250"/>
+<rect class="box-test" x="80" y="250" width="220" height="40" rx="8"/><text class="label-sm" x="190" y="276" text-anchor="middle">Oracle 비교 → 완료조건 판단</text>
+<text class="label-sm" x="190" y="330" text-anchor="middle">Basis → Case → Bed → 실행 → Oracle → Exit</text>
+</svg>
+<figcaption>테스트 프로세스 흐름</figcaption>
+</figure>
+  <pre class="diagram">[Test Basis]
+    ↓
+[Test Case] → [Test Suite] → [Test Procedure / Script]
+    ↓
+[Test Bed: Target·Harness·Driver·Stub]
+    ↓
+[Test Log / Incident Report / Test Report]
+    ↓
+[Test Oracle 비교] → [완료조건 판단]</pre>
+  <h3>분석 키워드</h3>
+  <ul class="kw"><li><b>Test Basis</b><span>요구사항, 설계문서, 인터페이스 명세서 등 테스트 케이스 기반 자료</span></li><li><b>Test Case</b><span>입력값, 실행조건, 기대결과로 구성된 테스트 실행 최소 단위</span></li><li><b>Test Bed</b><span>테스트 대상, Harness, Driver, Stub, 데이터, 환경, 로그/리포트 포함 실행 환경</span></li><li><b>Oracle</b><span>예상 결과와 실제 결과를 비교하여 참/거짓 판단</span></li><li><b>완료조건</b><span>테스트 완전성, 목적, 기준, 커버리지, 리스크, 스케줄 기반 종료 판단</span></li></ul>
+  <h3>답안 확장 문장</h3>
+  <blockquote>테스트 프로세스는 테스트 베이시스를 기반으로 케이스를 설계하고, 테스트베드에서 실행한 결과를 오라클과 완료조건으로 판단하는 흐름입니다.</blockquote>
+  <h3>정리표</h3>
+  <h4>테스트 케이스 구성요소: 식·항·입·출·환·특·의</h4><div class="table-wrap"><table><thead><tr><th>암기</th><th>구성요소</th><th>설명</th></tr></thead><tbody><tr><td>식</td><td>식별자</td><td>테스트 케이스를 식별하는 고유 ID</td></tr><tr><td>항</td><td>테스트 항목</td><td>테스트 대상 기능, 모듈, 화면</td></tr><tr><td>입</td><td>입력명세</td><td>입력값, 조건, 사전 데이터</td></tr><tr><td>출</td><td>출력명세</td><td>기대 결과, 출력값, 상태 변화</td></tr><tr><td>환</td><td>환경설정</td><td>H/W, S/W, 브라우저, 네트워크 등 실행 환경</td></tr><tr><td>특</td><td>특수절차요구</td><td>특별히 필요한 테스트 수행 절차</td></tr><tr><td>의</td><td>의존성 기술</td><td>선행/후행 테스트 케이스 관계</td></tr></tbody></table></div><h4>테스트 케이스 작성원칙</h4><div class="table-wrap"><table><thead><tr><th>원칙</th><th>의미</th><th>답안 키워드</th></tr></thead><tbody><tr><td>명확성</td><td>누가 수행해도 혼동 없이 실행 가능</td><td>명확한 언어</td></tr><tr><td>재현 가능성</td><td>동일 조건 반복 시 동일 결과 도출</td><td>반복 가능</td></tr><tr><td>독립성</td><td>다른 테스트에 의존하지 않음</td><td>독립 실행</td></tr><tr><td>완전성</td><td>기능과 예외 케이스를 충분히 포함</td><td>요구사항 검증</td></tr><tr><td>추적 가능성</td><td>요구사항과 테스트 결과 매핑 가능</td><td>Traceability</td></tr><tr><td>단순성</td><td>불필요한 복잡성 제거</td><td>간결한 절차</td></tr><tr><td>예외 처리</td><td>정상 흐름뿐 아니라 Edge Case 검증</td><td>예외 검증</td></tr><tr><td>자동화 가능성</td><td>자동화에 적합한 구조로 작성</td><td>CI/CD 연계</td></tr></tbody></table></div><h4>테스트 오라클 유형</h4><div class="table-wrap"><table><thead><tr><th>유형</th><th>개념</th><th>활용 포인트</th></tr></thead><tbody><tr><td>참 오라클</td><td>모든 입력에 대한 정확한 기대 결과 제공</td><td>수학, 암호화 등 제한적 도메인</td></tr><tr><td>샘플링 오라클</td><td>대표 입력에 대해서만 기대 결과 제공</td><td>현실적으로 많이 활용</td></tr><tr><td>휴리스틱 오라클</td><td>경험과 규칙으로 기대 결과 추정</td><td>AI/ML, 복잡 도메인</td></tr><tr><td>일관성 검사 오라클</td><td>이전 실행 결과와 비교</td><td>회귀 테스트, 반복 실행</td></tr><tr><td>완전 오라클</td><td>모든 동작을 완벽 검증하는 이상적 오라클</td><td>현실적 구현 어려움</td></tr><tr><td>자동 생성 오라클</td><td>자동화 환경에서 기대 결과 생성</td><td>자동화 테스트 연계</td></tr></tbody></table></div><h4>테스트 완료조건: 완·목·기·커·리·스</h4><div class="table-wrap"><table><thead><tr><th>암기</th><th>조건</th><th>판단 기준</th></tr></thead><tbody><tr><td>완</td><td>테스트 완전성</td><td>계획된 테스트 케이스 실행률, 요구사항 충족률</td></tr><tr><td>목</td><td>테스트 목적</td><td>프로젝트 목표와 품질 목표 충족</td></tr><tr><td>기</td><td>테스트 기준</td><td>성공률, 결과 문서화 여부</td></tr><tr><td>커</td><td>테스트 커버리지</td><td>코드, 기능, 경로, 요구사항 커버리지</td></tr><tr><td>리</td><td>테스트 리스크</td><td>치명 결함 해결, 잔존 결함 허용 기준</td></tr><tr><td>스</td><td>테스트 스케줄</td><td>일정 내 종료, 고객 승인</td></tr></tbody></table></div>
+</section>
+
+<section id="s4" class="topic">
+  <div class="section-head">
+    <h2>4. 임베디드 환경 테스트와 V-모델</h2>
+    <div><span class="tag">임베디드</span><span class="tag">V모델</span></div>
+  </div>
+  <h3>도식</h3>
+<figure class="svg-diagram" aria-label="V 모델">
+<svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker>
+</defs>
+<text class="label-sm" x="130" y="22" text-anchor="middle">개발(Verification)</text>
+<text class="label-sm" x="390" y="22" text-anchor="middle">테스트(Validation)</text>
+<rect class="box" x="20" y="40" width="130" height="36" rx="6"/><text class="label-sm" x="85" y="63" text-anchor="middle">요구분석</text>
+<rect class="box-test" x="370" y="40" width="130" height="36" rx="6"/><text class="label-sm" x="435" y="63" text-anchor="middle">인수 테스트</text>
+<line class="dash" x1="150" y1="58" x2="370" y2="58"/>
+<rect class="box" x="35" y="90" width="115" height="36" rx="6"/><text class="label-sm" x="92" y="113" text-anchor="middle">시스템 설계</text>
+<rect class="box-test" x="355" y="90" width="130" height="36" rx="6"/><text class="label-sm" x="420" y="113" text-anchor="middle">시스템 테스트</text>
+<line class="dash" x1="150" y1="108" x2="355" y2="108"/>
+<rect class="box" x="50" y="140" width="110" height="36" rx="6"/><text class="label-sm" x="105" y="163" text-anchor="middle">아키텍처 설계</text>
+<rect class="box-test" x="340" y="140" width="130" height="36" rx="6"/><text class="label-sm" x="405" y="163" text-anchor="middle">통합 테스트</text>
+<line class="dash" x1="160" y1="158" x2="340" y2="158"/>
+<rect class="box" x="65" y="190" width="100" height="36" rx="6"/><text class="label-sm" x="115" y="213" text-anchor="middle">모듈 설계</text>
+<rect class="box-test" x="325" y="190" width="130" height="36" rx="6"/><text class="label-sm" x="390" y="213" text-anchor="middle">단위 테스트</text>
+<line class="dash" x1="165" y1="208" x2="325" y2="208"/>
+<polygon points="260,250 220,290 300,290" class="box-dark"/><text class="label-light" x="260" y="278" text-anchor="middle">코딩</text>
+<text class="label-sm" x="260" y="325" text-anchor="middle">좌: 올바르게 만들고 있는가(검증) ↔ 우: 올바른 제품인가(확인)</text>
+</svg>
+<figcaption>V-모델 — 개발 단계와 테스트 단계 1:1 대응</figcaption>
+</figure>
+  <pre class="diagram">[요구사항 분석] ↔ [인수 테스트]
+[시스템 설계]   ↔ [시스템 테스트]
+[아키텍처 설계] ↔ [통합 테스트]
+[모듈 설계]     ↔ [단위 테스트]
+        [코딩]
+
+[Model] → [Prototype] → [Final Product]  (Multiple-V)</pre>
+  <h3>분석 키워드</h3>
+  <ul class="kw"><li><b>V-모델</b><span>개발 산출물과 대응 테스트를 병행하여 검증과 확인을 강화</span></li><li><b>Verification</b><span>Are we building the product right? 산출물이 이전 단계 요구에 부합하는지 확인</span></li><li><b>Validation</b><span>Are we building the right product? 고객 요구 충족 확인</span></li><li><b>DESS-V</b><span>임베디드 HW/SW 동시 개발 및 통합 검증 확장 V모델</span></li><li><b>Multiple-V</b><span>모델, 프로토타입, 최종 제품 단계로 다층 검증</span></li><li><b>Record &amp; Replay</b><span>사용자 이벤트 기록 후 동일 동작 재실행</span></li></ul>
+  <h3>답안 확장 문장</h3>
+  <blockquote>임베디드 테스트는 HW와 SW가 밀접하게 연동되므로 V-모델, DESS-V, Multiple-V, HIL/SIL/PIL, Record &amp; Replay를 활용해 단계별 검증과 실시간 동작 검증을 수행합니다.</blockquote>
+  <h3>정리표</h3>
+  <h4>임베디드 테스트 기법 정리</h4><div class="table-wrap"><table><thead><tr><th>기법</th><th>핵심</th><th>활용</th></tr></thead><tbody><tr><td>V-모델</td><td>개발 단계별 대응 테스트</td><td>안전·임베디드 시스템</td></tr><tr><td>DESS-V</td><td>HW/SW 동시 검증</td><td>자동차 ECU, 의료기기</td></tr><tr><td>Multiple-V</td><td>Model → Prototype → Final Product 다층 검증</td><td>펌웨어, 반도체</td></tr><tr><td>HIL/SIL/PIL</td><td>하드웨어/소프트웨어/프로세서 루프 검증</td><td>제어 소프트웨어</td></tr><tr><td>Record &amp; Replay</td><td>이벤트 기록 및 재실행</td><td>GUI, 임베디드 자동화</td></tr><tr><td>ICE/JTAG/ROM</td><td>실시간 디버깅과 메모리 분석</td><td>임베디드 디버깅</td></tr></tbody></table></div><h4>검증과 확인 비교</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>검증 Verification</th><th>확인 Validation</th></tr></thead><tbody><tr><td>질문</td><td>제품을 올바르게 만들고 있는가?</td><td>올바른 제품을 만들고 있는가?</td></tr><tr><td>초점</td><td>산출물의 요구사항 부합성</td><td>고객 요구와 사용 목적 충족</td></tr><tr><td>활동</td><td>리뷰, 검사, 단계별 검증</td><td>시스템/인수 테스트</td></tr><tr><td>관점</td><td>개발자·품질 관점</td><td>사용자·고객 관점</td></tr></tbody></table></div>
+</section>
+
+<section id="s5" class="topic">
+  <div class="section-head">
+    <h2>5. 테스트 분류 체계</h2>
+    <div><span class="tag">분류</span><span class="tag">비교</span></div>
+  </div>
+  <h3>도식</h3>
+<figure class="svg-diagram" aria-label="테스트 분류">
+<svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg" role="img">
+<text class="label-sm" x="260" y="18" text-anchor="middle">테스트 분류 5축 — 답안에 분류 기준별 비교표 병행</text>
+<rect class="box-dark" x="210" y="35" width="100" height="36" rx="8"/><text class="label-light" x="260" y="58" text-anchor="middle">테스트</text>
+<line class="dash" x1="260" y1="71" x2="80" y2="100"/><line class="dash" x1="260" y1="71" x2="180" y2="100"/>
+<line class="dash" x1="260" y1="71" x2="260" y2="100"/><line class="dash" x1="260" y1="71" x2="340" y2="100"/>
+<line class="dash" x1="260" y1="71" x2="440" y2="100"/>
+<rect class="box" x="20" y="100" width="120" height="50" rx="8"/><text class="label-sm" x="80" y="122" text-anchor="middle">실행 여부</text><text class="label-sm" x="80" y="138" text-anchor="middle">정적 / 동적</text>
+<rect class="box-warn" x="150" y="100" width="120" height="50" rx="8"/><text class="label-sm" x="210" y="122" text-anchor="middle">접근법</text><text class="label-sm" x="210" y="138" text-anchor="middle">블랙 / 화이트</text>
+<rect class="box-alt" x="280" y="100" width="120" height="50" rx="8"/><text class="label-sm" x="340" y="122" text-anchor="middle">설계 근원</text><text class="label-sm" x="340" y="138" text-anchor="middle">명세·구조·경험</text>
+<rect class="box-test" x="410" y="100" width="100" height="50" rx="8"/><text class="label-sm" x="460" y="122" text-anchor="middle">레벨</text><text class="label-sm" x="460" y="138" text-anchor="middle">단·통·시·인</text>
+<rect class="box" x="170" y="175" width="180" height="50" rx="8"/><text class="label-sm" x="260" y="197" text-anchor="middle">목적</text><text class="label-sm" x="260" y="213" text-anchor="middle">기능 / 비기능 / 확인 / 회귀</text>
+<line class="dash" x1="260" y1="225" x2="260" y2="250"/>
+<rect fill="#f1f5f9" stroke="#94a3b8" x="60" y="250" width="400" height="36" rx="6"/><text class="label-sm" x="260" y="272" text-anchor="middle">혼동 주의: 블랙박스≠명세기반만 · 화이트박스≠구조기반만</text>
+</svg>
+<figcaption>테스트 분류 체계 5가지 관점</figcaption>
+</figure>
+  <pre class="diagram">[프로그램 실행 여부] 정적 테스트 / 동적 테스트
+[접근법] 블랙박스 / 화이트박스
+[설계 근원] 명세기반 / 구조기반 / 경험기반
+[레벨] 단위 / 통합 / 시스템 / 인수
+[목적] 기능 / 비기능 / 확인 / 회귀</pre>
+  <h3>분석 키워드</h3>
+  <ul class="kw"><li><b>정적 테스트</b><span>소프트웨어 실행 없이 문서, 코드, 설계 산출물 검토</span></li><li><b>동적 테스트</b><span>실행 결과를 기반으로 기능, 성능, 보안 검증</span></li><li><b>블랙박스</b><span>내부 구조를 보지 않고 입력과 출력 중심으로 기능 검증</span></li><li><b>화이트박스</b><span>코드와 내부 구조를 기반으로 논리와 경로 검증</span></li><li><b>명세/구조/경험</b><span>요구사항 기반, 코드 구조 기반, 테스터 경험 기반</span></li></ul>
+  <h3>답안 확장 문장</h3>
+  <blockquote>테스트는 실행 여부, 접근법, 설계 근원, 테스트 레벨, 목적에 따라 분류하며, 분류 기준을 혼동하지 않고 비교표로 제시하는 것이 중요합니다.</blockquote>
+  <h3>정리표</h3>
+  <h4>테스트 분류 기준</h4><div class="table-wrap"><table><thead><tr><th>분류 기준</th><th>유형</th><th>핵심 의미</th></tr></thead><tbody><tr><td>프로그램 실행 여부</td><td>정적 / 동적</td><td>실행 없이 검토 / 실행 결과 검증</td></tr><tr><td>접근법</td><td>블랙박스 / 화이트박스</td><td>입출력 중심 / 내부 구조 중심</td></tr><tr><td>설계 근원</td><td>명세 / 구조 / 경험</td><td>요구사항 / 코드 / 경험 기반</td></tr><tr><td>레벨</td><td>단위 / 통합 / 시스템 / 인수</td><td>모듈부터 사용자 승인까지 단계별 검증</td></tr><tr><td>목적</td><td>기능 / 비기능 / 확인 / 회귀</td><td>기능 검증, 품질특성, 수정 확인, 변경 영향 확인</td></tr></tbody></table></div><h4>정적 테스트와 동적 테스트 비교</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>정적 테스트</th><th>동적 테스트</th></tr></thead><tbody><tr><td>정의</td><td>소프트웨어 실행 없이 산출물 검토</td><td>소프트웨어를 실행하여 결과 검증</td></tr><tr><td>대상</td><td>요구사항, 설계서, 코드, 인터페이스 명세</td><td>실행 파일, 시스템, 사용자 환경</td></tr><tr><td>기법</td><td>리뷰, 워크스루, 인스펙션, 정적 분석</td><td>기능, 성능, 보안, 회귀 테스트</td></tr><tr><td>장점</td><td>초기 결함 발견, 수정비용 감소</td><td>실제 동작 결함 확인</td></tr><tr><td>한계</td><td>실행 시 결함 검출 어려움</td><td>후반 결함 발견 시 비용 증가</td></tr></tbody></table></div>
+</section>
+
+<section id="s6" class="topic">
+  <div class="section-head">
+    <h2>6. 정적 테스트: 리뷰, 인스펙션, 동료검토</h2>
+    <div><span class="tag">정적테스트</span><span class="tag">리뷰</span></div>
+  </div>
+  <h3>도식</h3>
+<figure class="svg-diagram" aria-label="인스펙션 절차">
+<svg viewBox="0 0 480 120" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker>
+</defs>
+<rect class="box" x="5" y="35" width="68" height="40" rx="6"/><text class="label-sm" x="39" y="60" text-anchor="middle">계획</text>
+<line class="arrow-blue" x1="73" y1="55" x2="83" y2="55"/>
+<rect class="box" x="83" y="35" width="68" height="40" rx="6"/><text class="label-sm" x="117" y="60" text-anchor="middle">교육</text>
+<line class="arrow-blue" x1="151" y1="55" x2="161" y2="55"/>
+<rect class="box" x="161" y="35" width="68" height="40" rx="6"/><text class="label-sm" x="195" y="60" text-anchor="middle">준비</text>
+<line class="arrow-blue" x1="229" y1="55" x2="239" y2="55"/>
+<rect class="box-warn" x="239" y="35" width="68" height="40" rx="6"/><text class="label-sm" x="273" y="60" text-anchor="middle">회의</text>
+<line class="arrow-blue" x1="307" y1="55" x2="317" y2="55"/>
+<rect class="box" x="317" y="35" width="68" height="40" rx="6"/><text class="label-sm" x="351" y="60" text-anchor="middle">수정</text>
+<line class="arrow-blue" x1="385" y1="55" x2="395" y2="55"/>
+<rect class="box-alt" x="395" y="35" width="80" height="40" rx="6"/><text class="label-sm" x="435" y="60" text-anchor="middle">후속조치</text>
+<text class="label-sm" x="240" y="105" text-anchor="middle">회의: 결함 기록만 — 현장 해결 금지</text>
+</svg>
+<figcaption>인스펙션 6단계 절차</figcaption>
+</figure>
+<figure class="svg-diagram" aria-label="리뷰 공식성">
+<svg viewBox="0 0 520 90" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker>
+</defs>
+<text class="label-sm" x="260" y="16" text-anchor="middle">정적 테스트 — 리뷰 공식성 ↑ (답안 비교표용)</text>
+<rect class="box" x="10" y="30" width="88" height="40" rx="6"/><text class="label-sm" x="54" y="55" text-anchor="middle">비공식</text>
+<line class="arrow-blue" x1="98" y1="50" x2="108" y2="50"/>
+<rect class="box" x="108" y="30" width="88" height="40" rx="6"/><text class="label-sm" x="152" y="55" text-anchor="middle">워크스루</text>
+<line class="arrow-blue" x1="196" y1="50" x2="206" y2="50"/>
+<rect class="box-warn" x="206" y="30" width="88" height="40" rx="6"/><text class="label-sm" x="250" y="55" text-anchor="middle">기술리뷰</text>
+<line class="arrow-blue" x1="294" y1="50" x2="304" y2="50"/>
+<rect class="box-alt" x="304" y="30" width="88" height="40" rx="6"/><text class="label-sm" x="348" y="55" text-anchor="middle">인스펙션</text>
+<line class="arrow-blue" x1="392" y1="50" x2="402" y2="50"/>
+<rect class="box-test" x="402" y="30" width="88" height="40" rx="6"/><text class="label-sm" x="446" y="55" text-anchor="middle">감사</text>
+</svg>
+<figcaption>리뷰 유형 — 공식성 낮음 → 높음</figcaption>
+</figure>
+  <pre class="diagram">[산출물 준비]
+   ↓
+[리뷰 유형 선택]
+   ├─ 비공식 리뷰
+   ├─ 워크스루
+   ├─ 기술 리뷰
+   ├─ 인스펙션
+   └─ 감사
+   ↓
+[결함 기록] → [수정] → [후속조치]</pre>
+  <h3>분석 키워드</h3>
+  <ul class="kw"><li><b>정적 테스트</b><span>실행 없이 문서나 코드 검토로 오류를 찾는 테스트</span></li><li><b>리뷰</b><span>공식성 수준에 따라 비공식 리뷰, 워크스루, 기술 리뷰, 인스펙션, 감사로 구분</span></li><li><b>인스펙션</b><span>역할과 절차, 체크리스트 기반의 공식 리뷰</span></li><li><b>동료검토</b><span>동료들이 사전 정의 절차에 따라 산출물을 검토하는 품질 보증 활동</span></li></ul>
+  <h3>답안 확장 문장</h3>
+  <blockquote>정적 테스트는 개발 초기 산출물을 대상으로 결함을 예방하는 활동이며, 인스펙션처럼 공식 절차와 기록을 갖출수록 품질 개선 효과가 커집니다.</blockquote>
+  <h3>정리표</h3>
+  <h4>리뷰 유형 비교</h4><div class="table-wrap"><table><thead><tr><th>유형</th><th>공식성</th><th>핵심 포인트</th></tr></thead><tbody><tr><td>비공식 리뷰</td><td>낮음</td><td>빠른 피드백, 문서화 선택적</td></tr><tr><td>워크스루</td><td>반공식</td><td>작성자가 설명하고 참석자가 피드백</td></tr><tr><td>기술 리뷰</td><td>반공식~공식</td><td>기술 전문가 중심 검토</td></tr><tr><td>인스펙션</td><td>공식</td><td>체크리스트, 역할, 결함 기록, 재검토</td></tr><tr><td>감사</td><td>가장 공식</td><td>외부 감사, 규정 준수 검토</td></tr></tbody></table></div><h4>인스펙션 절차</h4><div class="table-wrap"><table><thead><tr><th>단계</th><th>활동</th><th>핵심</th></tr></thead><tbody><tr><td>계획</td><td>범위, 목표, 참여자 선정</td><td>사전 준비</td></tr><tr><td>사전 교육</td><td>절차와 기준 교육</td><td>공통 이해</td></tr><tr><td>준비</td><td>문서 검토, 체크리스트 분석</td><td>개별 검토</td></tr><tr><td>회의</td><td>결함 식별, 피드백</td><td>해결 시도 금지, 기록 집중</td></tr><tr><td>수정</td><td>식별 결함 수정</td><td>Rework</td></tr><tr><td>후속 조치</td><td>수정 결과 검토, 승인</td><td>Follow-up</td></tr></tbody></table></div><h4>리뷰 적용기법</h4><div class="table-wrap"><table><thead><tr><th>기법</th><th>의미</th><th>활용</th></tr></thead><tbody><tr><td>애드혹 기반</td><td>안내 없이 비구조적 검토</td><td>비공식 리뷰</td></tr><tr><td>체크리스트 기반</td><td>정의된 체크리스트로 검토</td><td>인스펙션, 기술 리뷰</td></tr><tr><td>시나리오 기반</td><td>특정 결함 탐지 시나리오 활용</td><td>워크스루, 기능 검토</td></tr><tr><td>관점 기반</td><td>사용자, 개발자, 운영자 등 관점별 검토</td><td>품질검토</td></tr><tr><td>역할 기반</td><td>개별 이해관계자 역할 관점 검토</td><td>감사, 인스펙션</td></tr></tbody></table></div>
+</section>
+
+<section id="s7" class="topic">
+  <div class="section-head">
+    <h2>7. 명세기반 테스트 설계기법</h2>
+    <div><span class="tag">블랙박스</span><span class="tag">명세기반</span></div>
+  </div>
+  <h3>도식</h3>
+<figure class="svg-diagram" aria-label="명세기반 블랙박스">
+<svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker>
+</defs>
+<rect class="box" x="180" y="10" width="140" height="36" rx="8"/><text class="label-sm" x="250" y="33" text-anchor="middle">요구사항·명세서</text>
+<line class="arrow-blue" x1="250" y1="46" x2="250" y2="58"/>
+<rect class="box-warn" x="160" y="58" width="180" height="32" rx="8"/><text class="label-sm" x="250" y="78" text-anchor="middle">입력·조건·상태·시나리오 분석</text>
+<line class="arrow-blue" x1="250" y1="90" x2="250" y2="102"/>
+<text class="label-sm" x="250" y="118" text-anchor="middle">블랙박스 설계기법 — 암기: 동·경·결·상·유·페·직·원·분</text>
+<rect class="box-alt" x="15" y="130" width="88" height="36" rx="6"/><text class="label-sm" x="59" y="152" text-anchor="middle">동등분할</text>
+<rect class="box-alt" x="108" y="130" width="88" height="36" rx="6"/><text class="label-sm" x="152" y="152" text-anchor="middle">경계값</text>
+<rect class="box-alt" x="201" y="130" width="88" height="36" rx="6"/><text class="label-sm" x="245" y="152" text-anchor="middle">결정테이블</text>
+<rect class="box-alt" x="294" y="130" width="88" height="36" rx="6"/><text class="label-sm" x="338" y="152" text-anchor="middle">상태전이</text>
+<rect class="box-alt" x="387" y="130" width="98" height="36" rx="6"/><text class="label-sm" x="436" y="152" text-anchor="middle">유스케이스</text>
+<rect class="box" x="80" y="178" width="100" height="32" rx="6"/><text class="label-sm" x="130" y="198" text-anchor="middle">페어와이즈</text>
+<rect class="box" x="200" y="178" width="100" height="32" rx="6"/><text class="label-sm" x="250" y="198" text-anchor="middle">직교배열</text>
+<rect class="box" x="320" y="178" width="100" height="32" rx="6"/><text class="label-sm" x="370" y="198" text-anchor="middle">원인-결과</text>
+</svg>
+<figcaption>명세기반(블랙박스) 테스트 설계기법</figcaption>
+</figure>
+  <pre class="diagram">[요구사항/명세서]
+   ↓
+[입력·조건·상태·시나리오 분석]
+   ↓
+[테스트 케이스 도출]
+   ├─ 동등분할
+   ├─ 경계값 분석
+   ├─ 결정 테이블
+   ├─ 상태전이
+   ├─ 유스케이스
+   ├─ 페어와이즈 / 직교배열
+   └─ 원인-결과 / 분류트리</pre>
+  <h3>분석 키워드</h3>
+  <ul class="kw"><li><b>동등분할</b><span>입력값을 동질 그룹으로 나누고 대표값 테스트</span></li><li><b>경계값 분석</b><span>오류가 많은 경계 근처 값을 집중 테스트</span></li><li><b>결정 테이블</b><span>조건과 행위의 조합을 표로 정리하여 테스트 케이스 도출</span></li><li><b>상태전이</b><span>상태, 이벤트, 전이, 가드, 액션 기반 검증</span></li><li><b>유스케이스</b><span>사용자 시나리오, 기본 흐름, 대체 흐름 기반 테스트</span></li><li><b>조합 테스트</b><span>입력 변수 조합을 최소 테스트 세트로 검증</span></li></ul>
+  <h3>답안 확장 문장</h3>
+  <blockquote>명세기반 테스트는 요구사항과 기능 명세서를 기반으로 입력, 출력, 조건, 상태, 시나리오를 분석하여 테스트 케이스를 도출하는 블랙박스 중심 설계기법입니다.</blockquote>
+  <h3>정리표</h3>
+  <h4>명세기반 기법: 동·경·결·상·유·페·직·원·분</h4><div class="table-wrap"><table><thead><tr><th>암기</th><th>기법</th><th>핵심</th></tr></thead><tbody><tr><td>동</td><td>동등분할</td><td>입력값을 유효/무효 동등 클래스로 나누고 대표값 테스트</td></tr><tr><td>경</td><td>경계값 분석</td><td>최소값, 최대값, 경계 안팎 값 집중 검증</td></tr><tr><td>결</td><td>결정 테이블</td><td>조건 조합과 결과를 표로 정리</td></tr><tr><td>상</td><td>상태전이</td><td>상태 변화와 유효/무효 전이 검증</td></tr><tr><td>유</td><td>유스케이스</td><td>사용자 시나리오, 기본/대체 흐름 검증</td></tr><tr><td>페</td><td>페어와이즈</td><td>2개 변수 조합을 최소 1회 이상 포함</td></tr><tr><td>직</td><td>직교배열</td><td>균형 잡힌 조합으로 효율적 테스트</td></tr><tr><td>원</td><td>원인-결과 그래프</td><td>입력 원인과 출력 결과의 논리 관계 표현</td></tr><tr><td>분</td><td>분류트리</td><td>입력 조건을 트리 구조로 분류하고 조합</td></tr></tbody></table></div><h4>경계값 분석 유형: 싱·로·오·로·라</h4><div class="table-wrap"><table><thead><tr><th>유형</th><th>설명</th><th>포인트</th></tr></thead><tbody><tr><td>Single Fault Based</td><td>min, min+1, normal, max-1, max 테스트</td><td>기본 경계값</td></tr><tr><td>Robustness</td><td>min-1, max+1 등 예외 값 포함</td><td>강건성</td></tr><tr><td>Worst Case</td><td>여러 변수의 극단값 조합</td><td>극단 조합</td></tr><tr><td>Robust Worst Case</td><td>Worst Case + 경계 밖 값</td><td>가장 철저</td></tr><tr><td>Random</td><td>범위 내 무작위 값 테스트</td><td>무작위 검증</td></tr></tbody></table></div><h4>상태전이 구성요소: 상·전·이·가·액·초·종</h4><div class="table-wrap"><table><thead><tr><th>암기</th><th>요소</th><th>의미</th></tr></thead><tbody><tr><td>상</td><td>상태 State</td><td>시스템이 이벤트를 기다리는 모드</td></tr><tr><td>전</td><td>전이 Transition</td><td>이벤트에 의해 상태 변경</td></tr><tr><td>이</td><td>이벤트 Event</td><td>전이를 유발하는 요인</td></tr><tr><td>가</td><td>가드 Guard</td><td>전이가 발생하는 조건</td></tr><tr><td>액</td><td>액션 Action</td><td>전이 시 수행 동작</td></tr><tr><td>초</td><td>초기 상태</td><td>시스템 시작 상태</td></tr><tr><td>종</td><td>종료 상태</td><td>시스템 종료 상태</td></tr></tbody></table></div><h4>페어와이즈와 직교배열 비교</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>페어와이즈</th><th>직교배열</th></tr></thead><tbody><tr><td>원리</td><td>두 변수 조합을 최소 1회 포함</td><td>행과 열이 균형 있게 조합되도록 배열</td></tr><tr><td>장점</td><td>테스트 케이스 수 감소</td><td>통계적 균형과 커버리지 강화</td></tr><tr><td>한계</td><td>모든 결함 조합 발견 보장 어려움</td><td>상대적으로 케이스 수 증가</td></tr><tr><td>활용</td><td>입력 조합이 많은 일반 기능</td><td>품질 중요, 균형 조합 필요한 시스템</td></tr></tbody></table></div>
+</section>
+
+<section id="s8" class="topic">
+  <div class="section-head">
+    <h2>8. 구조기반 테스트와 커버리지</h2>
+    <div><span class="tag">화이트박스</span><span class="tag">커버리지</span></div>
+  </div>
+  <h3>도식</h3>
+<figure class="svg-diagram" aria-label="커버리지 피라미드">
+<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img">
+<polygon points="200,20 360,250 40,250" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+<polygon points="200,55 320,250 80,250" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<polygon points="200,95 280,250 120,250" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+<polygon points="200,140 240,250 160,250" fill="#1d4ed8" stroke="#1e40af" stroke-width="1.5"/>
+<text class="label-sm" x="200" y="42" text-anchor="middle">MCC / MC/DC</text>
+<text class="label-sm" x="200" y="82" text-anchor="middle">C/DC · CC</text>
+<text class="label-sm" x="200" y="125" text-anchor="middle">DC (분기)</text>
+<text class="label-light" x="200" y="175" text-anchor="middle">SC</text>
+<text class="label-sm" x="200" y="265" text-anchor="middle">강도 ↑ · 비용 ↑ · 화이트박스 · McCabe V(G)=E-N+2</text>
+</svg>
+<figcaption>구조기반 커버리지 강도 — 문장(SC) → 분기(DC) → MC/DC</figcaption>
+</figure>
+  <pre class="diagram">[소스 코드 / 제어 흐름]
+   ↓
+[CFG 작성]
+   ↓
+[복잡도·경로·조건 분석]
+   ↓
+[테스트 케이스 설계]
+   ↓
+[커버리지 측정]
+
+문장 → 결정/조건 → 조건·결정 → MC/DC → 다중조건</pre>
+  <h3>분석 키워드</h3>
+  <ul class="kw"><li><b>화이트박스</b><span>코드 내부 구조, 제어 흐름, 데이터 흐름을 기반으로 검증</span></li><li><b>기본경로 테스트</b><span>회전복잡도만큼 독립 경로 테스트 케이스 도출</span></li><li><b>McCabe 복잡도</b><span>V(G)=E-N+2P 또는 분기 수+1</span></li><li><b>커버리지</b><span>테스트가 코드나 요구사항의 어느 정도를 검증했는지 수치화</span></li><li><b>MC/DC</b><span>개별 조건이 전체 결정에 독립적으로 영향을 주는지 검증</span></li></ul>
+  <h3>답안 확장 문장</h3>
+  <blockquote>구조기반 테스트는 내부 코드 구조를 분석하여 문장, 결정, 조건, 경로, 데이터 흐름 커버리지를 측정하고 미테스트 영역을 보완하는 화이트박스 테스트입니다.</blockquote>
+  <h3>정리표</h3>
+  <h4>구조기반 테스트 기법</h4><div class="table-wrap"><table><thead><tr><th>기법</th><th>설명</th><th>핵심</th></tr></thead><tbody><tr><td>경로 커버리지</td><td>가능한 실행 경로를 테스트</td><td>모든 경로</td></tr><tr><td>기본경로 테스트</td><td>독립 경로를 찾아 최소 테스트 케이스 도출</td><td>McCabe 복잡도</td></tr><tr><td>제어 흐름 테스트</td><td>조건문, 반복문, 분기 흐름 검증</td><td>CFG</td></tr><tr><td>데이터 흐름 테스트</td><td>변수 정의와 사용 관계 검증</td><td>DEF-USE</td></tr><tr><td>루프 테스트</td><td>반복문 경계와 종료 조건 검증</td><td>무한루프 방지</td></tr></tbody></table></div><h4>커버리지 강도 비교</h4><div class="table-wrap"><table><thead><tr><th>커버리지</th><th>검증 내용</th><th>특징</th></tr></thead><tbody><tr><td>문장 커버리지 SC</td><td>모든 실행 문장 1회 이상 실행</td><td>가장 기본, 달성 쉬움</td></tr><tr><td>결정/분기 커버리지 DC</td><td>모든 결정의 True/False 실행</td><td>분기 검증</td></tr><tr><td>조건 커버리지 CC</td><td>개별 조건의 True/False 실행</td><td>개별 조건 검증</td></tr><tr><td>조건/결정 C/DC</td><td>조건과 결정 결과 모두 검증</td><td>DC + CC</td></tr><tr><td>MC/DC</td><td>각 조건이 결정 결과에 독립 영향 확인</td><td>안전 Critical 시스템</td></tr><tr><td>다중조건 MCC</td><td>모든 조건 조합 검증</td><td>강력하지만 케이스 폭증</td></tr></tbody></table></div><h4>데이터 흐름 레이블</h4><div class="table-wrap"><table><thead><tr><th>기호</th><th>의미</th><th>예시</th></tr></thead><tbody><tr><td>def</td><td>변수에 값이 정의됨</td><td>x = 10</td></tr><tr><td>c-use</td><td>계산식에서 변수 사용</td><td>z = x + y</td></tr><tr><td>p-use</td><td>조건식에서 변수 사용</td><td>if (x &gt; 5)</td></tr><tr><td>kill</td><td>변수 소멸 또는 더 이상 사용 안 함</td><td>함수 종료</td></tr><tr><td>du-path</td><td>정의에서 사용까지의 경로</td><td>def → use 경로</td></tr></tbody></table></div>
+</section>
+
+<section id="s9" class="topic">
+  <div class="section-head">
+    <h2>9. 경험기반 테스트: 탐색적, 오류추정, 애드혹</h2>
+    <div><span class="tag">경험기반</span><span class="tag">탐색적</span></div>
+  </div>
+  <h3>도식</h3>
+<figure class="svg-diagram" aria-label="경험기반 테스트">
+<svg viewBox="0 0 480 120" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker>
+</defs>
+<rect class="box-dark" x="180" y="10" width="120" height="36" rx="8"/><text class="label-light" x="240" y="33" text-anchor="middle">테스터 경험</text>
+<line class="arrow-blue" x1="240" y1="46" x2="240" y2="56"/>
+<rect class="box-warn" x="160" y="56" width="160" height="28" rx="6"/><text class="label-sm" x="240" y="74" text-anchor="middle">오류 가능 영역 추정</text>
+<rect class="box-alt" x="20" y="92" width="100" height="24" rx="5"/><text class="label-sm" x="70" y="108" text-anchor="middle">탐색적</text>
+<rect class="box" x="130" y="92" width="100" height="24" rx="5"/><text class="label-sm" x="180" y="108" text-anchor="middle">오류추정</text>
+<rect class="box-test" x="240" y="92" width="100" height="24" rx="5"/><text class="label-sm" x="290" y="108" text-anchor="middle">체크리스트</text>
+<rect class="box-warn" x="350" y="92" width="110" height="24" rx="5"/><text class="label-sm" x="405" y="108" text-anchor="middle">애드혹</text>
+<text class="label-sm" x="240" y="118" text-anchor="middle">탐·분·체·특·오·혹 · 차터·타임박싱·노트·회고</text>
+</svg>
+<figcaption>경험기반 — 탐색적 vs 애드혹(계획 없음)</figcaption>
+</figure>
+  <pre class="diagram">[테스터 경험·도메인 지식]
+   ↓
+[오류 가능 영역 추정]
+   ├─ 탐색적 테스트: 차터·타임박싱·노트·회고
+   ├─ 오류 추정: 과거 결함 패턴 기반
+   ├─ 체크리스트 기반
+   └─ 애드혹: 즉흥·비정형 테스트</pre>
+  <h3>분석 키워드</h3>
+  <ul class="kw"><li><b>경험기반</b><span>테스터 경험, 직관, 도메인 지식 활용</span></li><li><b>탐색적 테스트</b><span>테스트 설계, 수행, 기록, 학습을 동시에 진행</span></li><li><b>오류 추정</b><span>과거 결함 사례와 개발자 실수 패턴 기반 테스트</span></li><li><b>애드혹</b><span>사전 계획 없이 즉흥적으로 예상치 못한 결함 탐색</span></li><li><b>몽키 테스트</b><span>무작위 입력으로 안정성, 예외 상황 검증</span></li></ul>
+  <h3>답안 확장 문장</h3>
+  <blockquote>경험기반 테스트는 명세가 부족하거나 예상치 못한 결함을 찾을 때 효과적이며, 숙련된 테스터의 경험과 도메인 지식이 품질을 좌우합니다.</blockquote>
+  <h3>정리표</h3>
+  <h4>경험기반 기법: 탐·분·체·특·오·혹</h4><div class="table-wrap"><table><thead><tr><th>암기</th><th>기법</th><th>핵심</th></tr></thead><tbody><tr><td>탐</td><td>탐색적 테스트</td><td>차터 기반으로 설계·수행·기록·학습 동시 진행</td></tr><tr><td>분</td><td>분류트리</td><td>입력 조건을 트리로 분류하고 조합</td></tr><tr><td>체</td><td>체크리스트 기반</td><td>정의된 점검 목록 기반 테스트</td></tr><tr><td>특</td><td>특성 테스트</td><td>품질 특성 기반 테스트</td></tr><tr><td>오</td><td>오류 추정</td><td>경험과 과거 결함으로 오류 가능 영역 집중</td></tr><tr><td>혹</td><td>애드혹 테스트</td><td>계획 없이 즉흥적 결함 탐색</td></tr></tbody></table></div><h4>탐색적 테스트 구성요소: 차·박·노·디</h4><div class="table-wrap"><table><thead><tr><th>요소</th><th>의미</th><th>답안 포인트</th></tr></thead><tbody><tr><td>테스트 차터</td><td>목표와 범위 설정</td><td>방향성 제공</td></tr><tr><td>타임 박싱</td><td>정해진 시간 내 집중 테스트</td><td>효율성</td></tr><tr><td>테스트 노트</td><td>수행 과정과 결함 기록</td><td>재현성</td></tr><tr><td>요약 회고</td><td>결과 공유와 개선 논의</td><td>지식 공유</td></tr></tbody></table></div><h4>애드혹 vs 탐색적 테스트</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>애드혹 테스트</th><th>탐색적 테스트</th></tr></thead><tbody><tr><td>계획</td><td>거의 없음</td><td>차터 기반 방향 존재</td></tr><tr><td>방식</td><td>무작위, 즉흥적</td><td>경험적이지만 구조화</td></tr><tr><td>문서화</td><td>대체로 없음</td><td>노트, 결함 중심 기록</td></tr><tr><td>장점</td><td>빠른 결함 발견</td><td>학습 기반 결함 탐색</td></tr><tr><td>한계</td><td>재현성과 분석 어려움</td><td>테스터 역량 의존</td></tr></tbody></table></div>
+</section>
+
+<section id="s10" class="topic">
+  <div class="section-head">
+    <h2>10. 기능 테스트 레벨: 단위, 통합, 시스템, 인수</h2>
+    <div><span class="tag">테스트레벨</span><span class="tag">기능테스트</span></div>
+  </div>
+  <h3>도식</h3>
+<figure class="svg-diagram" aria-label="테스트 레벨">
+<svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" role="img">
+<polygon points="200,20 370,280 30,280" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+<polygon points="200,70 320,260 80,260" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<polygon points="200,120 270,240 130,240" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+<polygon points="200,170 220,220 180,220" fill="#1d4ed8" stroke="#1e40af" stroke-width="1.5"/>
+<text class="label" x="200" y="55" text-anchor="middle">인수 테스트</text>
+<text class="label-sm" x="200" y="100" text-anchor="middle">시스템 테스트</text>
+<text class="label-sm" x="200" y="155" text-anchor="middle">통합 테스트</text>
+<text class="label-light" x="200" y="200" text-anchor="middle">단위</text>
+<text class="label-sm" x="200" y="300" text-anchor="middle">아래→위로 확장 · Driver(상향) / Stub(하향)</text>
+</svg>
+<figcaption>기능 테스트 레벨 — 단위 → 통합 → 시스템 → 인수</figcaption>
+</figure>
+<figure class="svg-diagram" aria-label="통합 테스트 방식">
+<svg viewBox="0 0 520 180" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker>
+</defs>
+<text class="label-sm" x="260" y="18" text-anchor="middle">통합 테스트 방식 — 암기: 백·빅·상·하·샌</text>
+<rect class="box" x="15" y="40" width="85" height="50" rx="8"/><text class="label-sm" x="57" y="62" text-anchor="middle">빅뱅</text><text class="label-sm" x="57" y="78" text-anchor="middle">일괄</text>
+<rect class="box-warn" x="110" y="40" width="85" height="50" rx="8"/><text class="label-sm" x="152" y="62" text-anchor="middle">상향식</text><text class="label-sm" x="152" y="78" text-anchor="middle">+Driver</text>
+<rect class="box-alt" x="205" y="40" width="85" height="50" rx="8"/><text class="label-sm" x="247" y="62" text-anchor="middle">하향식</text><text class="label-sm" x="247" y="78" text-anchor="middle">+Stub</text>
+<rect class="box-test" x="300" y="40" width="85" height="50" rx="8"/><text class="label-sm" x="342" y="62" text-anchor="middle">샌드위치</text><text class="label-sm" x="342" y="78" text-anchor="middle">상+하</text>
+<rect class="box-dark" x="395" y="40" width="85" height="50" rx="8"/><text class="label-light" x="437" y="68" text-anchor="middle">백본</text>
+<rect class="box" x="80" y="110" width="70" height="36" rx="6"/><text class="label-sm" x="115" y="132" text-anchor="middle">모듈A</text>
+<rect class="box" x="160" y="110" width="70" height="36" rx="6"/><text class="label-sm" x="195" y="132" text-anchor="middle">모듈B</text>
+<rect class="box" x="240" y="110" width="70" height="36" rx="6"/><text class="label-sm" x="275" y="132" text-anchor="middle">모듈C</text>
+<line class="arrow-blue" x1="150" y1="128" x2="160" y2="128"/><line class="arrow-blue" x1="230" y1="128" x2="240" y2="128"/>
+<text class="label-sm" x="380" y="132" text-anchor="middle">인터페이스·데이터흐름 검증</text>
+<text class="label-sm" x="260" y="168" text-anchor="middle">상향: 하위→상위 · 하향: 상위→하위 · Driver/Stub 역할 구분</text>
+</svg>
+<figcaption>통합 테스트 5방식 + Driver/Stub</figcaption>
+</figure>
+  <pre class="diagram">[단위 테스트]
+   ↓ 모듈·함수·클래스 검증
+[통합 테스트]
+   ↓ 인터페이스·상호작용 검증
+[시스템 테스트]
+   ↓ 전체 시스템 요구사항 검증
+[인수 테스트]
+   ↓ 사용자·고객 승인 판단</pre>
+  <h3>분석 키워드</h3>
+  <ul class="kw"><li><b>단위 테스트</b><span>가장 작은 단위인 함수, 모듈, 클래스 독립 검증</span></li><li><b>통합 테스트</b><span>개별 모듈 결합 후 인터페이스와 데이터 흐름 검증</span></li><li><b>시스템 테스트</b><span>전체 시스템이 기능·비기능 요구사항을 만족하는지 검증</span></li><li><b>인수 테스트</b><span>사용자, 고객 또는 권한자가 인수 여부를 판단하는 테스트</span></li><li><b>Driver/Stub</b><span>상향식은 Driver, 하향식은 Stub 활용</span></li></ul>
+  <h3>답안 확장 문장</h3>
+  <blockquote>기능 테스트 레벨은 단위, 통합, 시스템, 인수 순서로 확장되며, 낮은 수준에서는 코드 정확성, 높은 수준에서는 사용자 요구와 비즈니스 적합성을 검증합니다.</blockquote>
+  <h3>정리표</h3>
+  <h4>테스트 레벨 비교</h4><div class="table-wrap"><table><thead><tr><th>레벨</th><th>목적</th><th>대표 기법/포인트</th></tr></thead><tbody><tr><td>단위 테스트</td><td>개별 모듈, 함수, 클래스 검증</td><td>JUnit, Mock, Driver, Stub</td></tr><tr><td>통합 테스트</td><td>모듈 간 인터페이스와 데이터 흐름 검증</td><td>빅뱅, 상향식, 하향식, 샌드위치</td></tr><tr><td>시스템 테스트</td><td>전체 시스템 기능·비기능 요구 검증</td><td>성능, 보안, 회복, 스모크</td></tr><tr><td>인수 테스트</td><td>고객 요구 충족 및 승인 판단</td><td>사용자, 운영, 계약, 규정, 알파, 베타</td></tr></tbody></table></div><h4>통합 테스트 방식: 백·빅·상·하·샌</h4><div class="table-wrap"><table><thead><tr><th>방식</th><th>개념</th><th>장점</th><th>한계</th></tr></thead><tbody><tr><td>백본</td><td>핵심 기능 모듈 먼저 통합</td><td>핵심 기능 조기 검증</td><td>보조 모듈 검증 지연</td></tr><tr><td>빅뱅</td><td>모든 모듈을 한 번에 통합</td><td>빠른 전체 확인</td><td>원인 추적 어려움</td></tr><tr><td>상향식</td><td>하위 모듈부터 통합</td><td>하위 안정성 확보</td><td>상위 검증 지연, Driver 필요</td></tr><tr><td>하향식</td><td>상위 모듈부터 통합</td><td>시스템 흐름 조기 확인</td><td>하위 검증 지연, Stub 필요</td></tr><tr><td>샌드위치</td><td>상향식+하향식 혼합</td><td>균형 있는 접근</td><td>관리 복잡</td></tr></tbody></table></div><h4>인수 테스트 유형: 사·운·계·규·알·베</h4><div class="table-wrap"><table><thead><tr><th>유형</th><th>의미</th><th>포인트</th></tr></thead><tbody><tr><td>사용자 인수</td><td>비즈니스 사용자가 적정성 확인</td><td>UAT</td></tr><tr><td>운영상 인수</td><td>운영자가 백업/복구/보안 등 운영 적합성 확인</td><td>운영 준비성</td></tr><tr><td>계약 인수</td><td>계약상 인수 조건 충족 확인</td><td>계약 기준</td></tr><tr><td>규정 인수</td><td>법률, 지침, 안전 규정 준수 확인</td><td>컴플라이언스</td></tr><tr><td>알파</td><td>개발 환경에서 제한 사용자 테스트</td><td>내부 중심</td></tr><tr><td>베타</td><td>실사용 환경에서 외부 사용자 테스트</td><td>시장 피드백</td></tr></tbody></table></div>
+</section>
+
+<section id="s11" class="topic">
+  <div class="section-head">
+    <h2>11. 비기능 테스트: 성능, 몽키, 사용성</h2>
+    <div><span class="tag">비기능</span><span class="tag">성능테스트</span></div>
+  </div>
+  <h3>도식</h3>
+<figure class="svg-diagram" aria-label="성능 테스트">
+<svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" role="img">
+<text class="label-sm" x="260" y="18" text-anchor="middle">비기능·성능 테스트 — TPS = 동시사용자 / (응답+Think)</text>
+<rect class="box-alt" x="20" y="40" width="110" height="50" rx="8"/><text class="label-sm" x="75" y="60" text-anchor="middle">부하 Load</text><text class="label-sm" x="75" y="78" text-anchor="middle">정상 부하</text>
+<rect class="box-warn" x="145" y="40" width="110" height="50" rx="8"/><text class="label-sm" x="200" y="60" text-anchor="middle">스트레스</text><text class="label-sm" x="200" y="78" text-anchor="middle">한계 초과</text>
+<rect class="box" x="270" y="40" width="110" height="50" rx="8"/><text class="label-sm" x="325" y="60" text-anchor="middle">내구성</text><text class="label-sm" x="325" y="78" text-anchor="middle">장시간</text>
+<rect class="box-test" x="395" y="40" width="110" height="50" rx="8"/><text class="label-sm" x="450" y="60" text-anchor="middle">볼륨</text><text class="label-sm" x="450" y="78" text-anchor="middle">대량 데이터</text>
+<rect class="box-dark" x="20" y="110" width="150" height="44" rx="8"/><text class="label-light" x="95" y="130" text-anchor="middle">몽키 Monkey</text><text class="label-sm" x="95" y="146" text-anchor="middle" fill="#cbd5e1">무작위·예외탐색</text>
+<rect class="box" x="185" y="110" width="150" height="44" rx="8"/><text class="label-sm" x="260" y="130" text-anchor="middle">회귀 Regression</text><text class="label-sm" x="260" y="146" text-anchor="middle">변경 영향 확인</text>
+<rect class="box-alt" x="350" y="110" width="155" height="44" rx="8"/><text class="label-sm" x="427" y="130" text-anchor="middle">사용성 Usability</text><text class="label-sm" x="427" y="146" text-anchor="middle">효과·효율·만족</text>
+<text class="label-sm" x="260" y="188" text-anchor="middle">성능: Response Time · Throughput · TPS · Concurrent User</text>
+</svg>
+<figcaption>성능·비기능 테스트 유형</figcaption>
+</figure>
+  <pre class="diagram">[비기능 요구사항]
+   ├─ 성능: 응답시간·처리량·TPS
+   ├─ 부하/스트레스/내구성/볼륨
+   ├─ 몽키: 무작위 입력 안정성 확인
+   └─ 사용성: 효과성·효율성·만족도</pre>
+  <h3>분석 키워드</h3>
+  <ul class="kw"><li><b>성능 테스트</b><span>동시접속, 데이터 유입, 실행시간, 반응시간 등 시스템 능력 검증</span></li><li><b>TPS</b><span>Concurrent User / (Response Time + Think Time)</span></li><li><b>부하 테스트</b><span>정상 사용량에서 안정성과 응답속도 평가</span></li><li><b>스트레스 테스트</b><span>최대 용량 이상 부하에서 시스템 반응 검증</span></li><li><b>몽키 테스트</b><span>무작위 입력과 극단 조작으로 예외 상황 안정성 확인</span></li><li><b>사용성 테스트</b><span>사용자가 쉽게 이해하고 효율적으로 사용할 수 있는지 평가</span></li></ul>
+  <h3>답안 확장 문장</h3>
+  <blockquote>비기능 테스트는 시스템이 무엇을 수행하는지가 아니라 얼마나 잘 수행하는지를 검증하며, 성능·안정성·사용성·보안 등 품질 특성을 대상으로 합니다.</blockquote>
+  <h3>정리표</h3>
+  <h4>성능 테스트 유형: 단·복·임 / 루·스·확·가·티 / 부·스·내·볼</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>유형</th><th>의미</th></tr></thead><tbody><tr><td>목적 기반</td><td>단위 성능 테스트</td><td>업무 또는 API 단위 응답시간 측정</td></tr><tr><td>목적 기반</td><td>복합 성능 테스트</td><td>실제 사용자 패턴과 가중치 반영</td></tr><tr><td>목적 기반</td><td>임계 성능 테스트</td><td>시스템 최대 성능 한계 측정</td></tr><tr><td>병목 탐색</td><td>루프백 테스트</td><td>특정 구간 이후 트랜잭션 차단 후 병목 식별</td></tr><tr><td>병목 탐색</td><td>스파이크 테스트</td><td>짧은 시간 급격한 트래픽 증가 검증</td></tr><tr><td>병목 탐색</td><td>확장성 테스트</td><td>자원 확장 시 성능 증가 여부 검증</td></tr><tr><td>병목 탐색</td><td>가용성 테스트</td><td>장시간 가동 중 장애와 복구 능력 확인</td></tr><tr><td>병목 탐색</td><td>티어 테스트</td><td>애플리케이션, DB, 네트워크 등 티어별 병목 확인</td></tr><tr><td>부하 관리</td><td>부하 테스트</td><td>정상 부하에서 성능과 안정성 평가</td></tr><tr><td>부하 관리</td><td>스트레스 테스트</td><td>한계 초과 부하에서 반응 확인</td></tr><tr><td>부하 관리</td><td>내구성 테스트</td><td>장시간 지속 부하에서 안정성 확인</td></tr><tr><td>데이터 처리</td><td>볼륨 테스트</td><td>대량 데이터 처리 성능 검증</td></tr></tbody></table></div><h4>성능 지표와 계산</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>의미</th><th>공식/포인트</th></tr></thead><tbody><tr><td>Response Time</td><td>요청 후 응답까지 걸린 시간</td><td>응답시간</td></tr><tr><td>Think Time</td><td>사용자 다음 요청 전 대기 시간</td><td>대기시간</td></tr><tr><td>Concurrent User</td><td>특정 시점 접속 사용자</td><td>Active + InActive</td></tr><tr><td>TPS</td><td>초당 트랜잭션 처리량</td><td>동시사용자 / (응답시간 + 대기시간)</td></tr><tr><td>Virtual User</td><td>부하를 생성하는 가상 사용자</td><td>목표 TPS × 요청 간격</td></tr></tbody></table></div><h4>몽키·고릴라·회귀 비교</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>몽키 테스트</th><th>고릴라 테스트</th><th>회귀 테스트</th></tr></thead><tbody><tr><td>목적</td><td>예상치 못한 오류와 충돌 발견</td><td>특정 기능의 견고성 확인</td><td>변경 후 기존 기능 영향 확인</td></tr><tr><td>방식</td><td>무작위 입력, 극단 조작</td><td>특정 기능 반복 집중 테스트</td><td>기존 테스트 시나리오 재수행</td></tr><tr><td>대상</td><td>시스템 전체, UI, API</td><td>특정 기능/모듈</td><td>변경 영향 범위와 핵심 기능</td></tr><tr><td>장점</td><td>예외 상황 탐색</td><td>기능 내구성 확인</td><td>Side Effect 확인</td></tr><tr><td>한계</td><td>재현 어려움</td><td>전체 시스템 검증 부족</td><td>테스트 범위 선정 필요</td></tr></tbody></table></div><h4>사용성 테스트 방법론</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>내용</th><th>예시</th></tr></thead><tbody><tr><td>정성적 방법</td><td>사용자 경험과 피드백 중심 분석</td><td>인터뷰, 관찰, Think Aloud</td></tr><tr><td>정량적 방법</td><td>수치 기반 사용성 측정</td><td>작업 성공률, 소요시간, 오류율</td></tr><tr><td>평가 기준</td><td>효과성, 효율성, 만족도</td><td>ISO 9241-11 관점</td></tr><tr><td>목적</td><td>UI/UX 개선, 접근성 검증</td><td>사용자 경험 향상</td></tr></tbody></table></div>
+</section>
+
+<section id="s12" class="topic">
+  <div class="section-head">
+    <h2>12. 전략적 테스트: RBT, Mutation, Back-to-Back, MBT</h2>
+    <div><span class="tag">전략적 테스트</span><span class="tag">RBT</span></div>
+  </div>
+  <h3>도식</h3>
+<figure class="svg-diagram" aria-label="전략적 테스트">
+<svg viewBox="0 0 540 170" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker>
+</defs>
+<text class="label-sm" x="270" y="16" text-anchor="middle">전략적 테스트 4대 기법</text>
+<rect class="box-warn" x="10" y="35" width="120" height="70" rx="8"/><text class="label-sm" x="70" y="55" text-anchor="middle">RBT</text><text class="label-sm" x="70" y="72" text-anchor="middle">위험식별</text><text class="label-sm" x="70" y="86" text-anchor="middle">→우선순위</text><text class="label-sm" x="70" y="98" text-anchor="middle">→집중</text>
+<rect class="box" x="145" y="35" width="120" height="70" rx="8"/><text class="label-sm" x="205" y="55" text-anchor="middle">Mutation</text><text class="label-sm" x="205" y="72" text-anchor="middle">변이생성</text><text class="label-sm" x="205" y="86" text-anchor="middle">→테스트</text><text class="label-sm" x="205" y="98" text-anchor="middle">→Score</text>
+<rect class="box-alt" x="280" y="35" width="120" height="70" rx="8"/><text class="label-sm" x="340" y="55" text-anchor="middle">Back-to-Back</text><text class="label-sm" x="340" y="72" text-anchor="middle">2시스템</text><text class="label-sm" x="340" y="86" text-anchor="middle">결과비교</text>
+<rect class="box-test" x="415" y="35" width="115" height="70" rx="8"/><text class="label-sm" x="472" y="55" text-anchor="middle">MBT</text><text class="label-sm" x="472" y="72" text-anchor="middle">모델→</text><text class="label-sm" x="472" y="86" text-anchor="middle">케이스자동</text>
+<text class="label-sm" x="270" y="155" text-anchor="middle">답안: 개념 + 절차 + 효과 + 한계 (자원 제한 시 RBT 우선)</text>
+</svg>
+<figcaption>RBT · Mutation · Back-to-Back · MBT</figcaption>
+</figure>
+  <pre class="diagram">[위험·변경·모델·결함 주입]
+   ├─ RBT: 위험 식별 → 분석 → 우선순위 → 집중 테스트
+   ├─ Mutation: 변이 생성 → 테스트 실행 → 변이 검출률 평가
+   ├─ Back-to-Back: 두 시스템 결과 비교
+   └─ MBT: 모델 기반 테스트 케이스 자동 생성</pre>
+  <h3>분석 키워드</h3>
+  <ul class="kw"><li><b>RBT</b><span>위험도가 높은 영역에 테스트 자원을 집중하는 전략</span></li><li><b>Mutation Test</b><span>인위적 결함 변이를 삽입하여 테스트 케이스 검출 능력 평가</span></li><li><b>Back-to-Back</b><span>동일 입력에 대한 기존/신규 또는 두 구현 결과 비교</span></li><li><b>MBT</b><span>시스템 모델에서 테스트 케이스를 자동 생성</span></li><li><b>Canary Test</b><span>일부 사용자에게 먼저 배포하여 위험을 점진적으로 검증</span></li></ul>
+  <h3>답안 확장 문장</h3>
+  <blockquote>전략적 테스트는 제한된 자원에서 테스트 효과를 높이기 위해 위험, 변경 영향, 모델, 결함 주입, 운영 배포 전략을 활용합니다.</blockquote>
+  <h3>정리표</h3>
+  <h4>전략적 테스트 비교</h4><div class="table-wrap"><table><thead><tr><th>기법</th><th>개념</th><th>기대효과</th><th>한계</th></tr></thead><tbody><tr><td>RBT</td><td>위험 기반 우선순위 테스트</td><td>고위험 결함 조기 발견</td><td>위험 분석 정확도 필요</td></tr><tr><td>Mutation Test</td><td>결함 변이를 삽입해 테스트 케이스 강도 평가</td><td>테스트 품질 측정</td><td>변이 수 증가 시 비용 증가</td></tr><tr><td>Back-to-Back</td><td>두 시스템 결과 비교</td><td>정확성 검증, 회귀 검증</td><td>참값 판단 어려움 가능</td></tr><tr><td>MBT</td><td>모델로부터 테스트 케이스 자동 생성</td><td>자동화, 일관성</td><td>모델 품질 의존</td></tr><tr><td>Canary Test</td><td>일부 사용자·환경에 점진 배포</td><td>운영 위험 최소화</td><td>모니터링 체계 필요</td></tr></tbody></table></div><h4>Mutation Test 절차</h4><div class="table-wrap"><table><thead><tr><th>단계</th><th>활동</th><th>핵심</th></tr></thead><tbody><tr><td>원본 분석</td><td>테스트 대상 코드와 기준 테스트 준비</td><td>Base Program</td></tr><tr><td>변이 생성</td><td>연산자, 조건, 상수 등 변경</td><td>Mutant</td></tr><tr><td>테스트 수행</td><td>기존 테스트 케이스로 원본과 변이 실행</td><td>Test Suite</td></tr><tr><td>결과 비교</td><td>변이가 실패하면 검출 성공</td><td>Killed Mutant</td></tr><tr><td>점수 산정</td><td>검출된 변이 비율 계산</td><td>Mutation Score</td></tr></tbody></table></div>
+</section>
+
+<section id="s13" class="topic">
+  <div class="section-head">
+    <h2>13. 테스트 자동화, Shift Left/Right, DevTestOps</h2>
+    <div><span class="tag">자동화</span><span class="tag">DevTestOps</span></div>
+  </div>
+  <h3>도식</h3>
+<figure class="svg-diagram" aria-label="Shift Left Right">
+<svg viewBox="0 0 560 150" xmlns="http://www.w3.org/2000/svg" role="img">
+<line x1="40" y1="80" x2="520" y2="80" stroke="#cbd5e1" stroke-width="3"/>
+<text class="label-sm" x="280" y="25" text-anchor="middle">Shift Left ←—— 개발 생명주기 ——→ Shift Right</text>
+<rect class="box-warn" x="50" y="45" width="130" height="44" rx="8"/><text class="label-sm" x="115" y="65" text-anchor="middle">Shift Left</text><text class="label-sm" x="115" y="80" text-anchor="middle">리뷰·SAST·단위</text>
+<rect class="box" x="215" y="45" width="130" height="44" rx="8"/><text class="label-sm" x="280" y="65" text-anchor="middle">CI/CD</text><text class="label-sm" x="280" y="80" text-anchor="middle">자동빌드·테스트</text>
+<rect class="box-alt" x="380" y="45" width="130" height="44" rx="8"/><text class="label-sm" x="445" y="65" text-anchor="middle">Shift Right</text><text class="label-sm" x="445" y="80" text-anchor="middle">모니터·카나리</text>
+<ellipse cx="280" cy="115" rx="100" ry="22" fill="#f0fdf4" stroke="#16a34a"/><text class="label-sm" x="280" y="120" text-anchor="middle">DevTestOps 품질 내재화</text>
+<text class="label-sm" x="280" y="145" text-anchor="middle">Left=조기결함·비용↓ · Right=실사용피드백 · 자동화≠품질보장</text>
+</svg>
+<figcaption>Shift Left / Shift Right / DevTestOps</figcaption>
+</figure>
+  <pre class="diagram">[요구사항 단계] Shift Left: 리뷰·정적분석·단위테스트 자동화
+        ↓
+[개발/빌드] CI: 자동 빌드·테스트·커버리지
+        ↓
+[배포/운영] Shift Right: 모니터링·A/B·카나리·운영 피드백
+        ↓
+[DevTestOps] 개발·테스트·운영 품질 내재화</pre>
+  <h3>분석 키워드</h3>
+  <ul class="kw"><li><b>테스트 자동화</b><span>반복 가능한 테스트를 도구로 실행하고 결과를 자동 수집</span></li><li><b>Shift Left</b><span>개발 초기부터 테스트와 품질 활동 수행</span></li><li><b>Shift Right</b><span>운영 환경의 모니터링과 실사용 피드백으로 품질 검증</span></li><li><b>DevTestOps</b><span>개발, 테스트, 운영을 통합하여 품질 활동을 파이프라인에 내재화</span></li><li><b>자동화 한계</b><span>테스트 설계 품질, 유지보수 비용, 오라클 문제 고려 필요</span></li></ul>
+  <h3>답안 확장 문장</h3>
+  <blockquote>테스트 자동화는 반복성과 속도를 높이지만, 자동화 자체가 품질을 보장하지 않으므로 적합한 범위 선정, 유지보수, 결과 분석 체계가 필요합니다.</blockquote>
+  <h3>정리표</h3>
+  <h4>자동화 적용 대상</h4><div class="table-wrap"><table><thead><tr><th>대상</th><th>적합성</th><th>포인트</th></tr></thead><tbody><tr><td>단위 테스트</td><td>매우 높음</td><td>빠른 실행, CI 필수</td></tr><tr><td>회귀 테스트</td><td>높음</td><td>반복 수행 효과 큼</td></tr><tr><td>성능 테스트</td><td>중간~높음</td><td>부하 생성과 지표 수집 자동화</td></tr><tr><td>UI 테스트</td><td>중간</td><td>변경에 취약, 유지보수 고려</td></tr><tr><td>탐색적 테스트</td><td>낮음</td><td>사람의 경험과 직관 필요</td></tr><tr><td>사용성 테스트</td><td>낮음~중간</td><td>정량 지표 일부 자동화 가능</td></tr></tbody></table></div><h4>Shift Left / Shift Right 비교</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>Shift Left</th><th>Shift Right</th></tr></thead><tbody><tr><td>시점</td><td>개발 초기</td><td>배포 후 운영 환경</td></tr><tr><td>목적</td><td>결함 조기 발견, 수정비용 절감</td><td>실사용 기반 품질 확인</td></tr><tr><td>기법</td><td>리뷰, 정적분석, 단위테스트, SAST</td><td>모니터링, 카나리, A/B, 로그 분석</td></tr><tr><td>장점</td><td>초기 품질 내재화</td><td>현실 사용 패턴 반영</td></tr><tr><td>한계</td><td>운영 이슈 반영 부족</td><td>사용자 영향 관리 필요</td></tr></tbody></table></div>
+</section>
+
+<section id="s14" class="topic">
+  <div class="section-head">
+    <h2>14. 테스트 성숙도와 표준: TMMi, ISO 29119, ISO 33063</h2>
+    <div><span class="tag">표준</span><span class="tag">TMMi</span><span class="tag">ISO</span></div>
+  </div>
+  <h3>도식</h3>
+<figure class="svg-diagram" aria-label="TMMi 성숙도">
+<svg viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg" role="img">
+<text class="label-sm" x="210" y="18" text-anchor="middle">TMMi 5단계 + ISO 29119 (버·프·독·기·키)</text>
+<rect class="box-warn" x="60" y="210" width="300" height="36" rx="8"/><text class="label-sm" x="210" y="232" text-anchor="middle">1 Initial — 비정형</text>
+<rect class="box" x="80" y="170" width="260" height="32" rx="8"/><text class="label-sm" x="210" y="190" text-anchor="middle">2 Managed — 프로젝트 관리</text>
+<rect class="box-alt" x="100" y="132" width="220" height="32" rx="8"/><text class="label-sm" x="210" y="152" text-anchor="middle">3 Defined — 조직 표준</text>
+<rect class="box-test" x="120" y="94" width="180" height="32" rx="8"/><text class="label-sm" x="210" y="114" text-anchor="middle">4 Measured — 측정</text>
+<rect class="box-dark" x="140" y="56" width="140" height="32" rx="8"/><text class="label-light" x="210" y="76" text-anchor="middle">5 Optimization</text>
+<rect fill="#f1f5f9" stroke="#94a3b8" x="30" y="252" width="360" height="24" rx="4"/><text class="label-sm" x="210" y="268" text-anchor="middle">ISO29119: 개념·프로세스·문서·기법·키워드</text>
+</svg>
+<figcaption>TMMi 성숙도 + ISO/IEC/IEEE 29119 구성</figcaption>
+</figure>
+  <pre class="diagram">[테스트 프로세스 개선]
+   ├─ TMMi: 성숙도 기반 테스트 개선
+   ├─ ISO/IEC/IEEE 29119: 테스트 프로세스·문서·기법 표준
+   ├─ ISO/IEC 20246: 리뷰 프로세스
+   └─ ISO/IEC 33063: 테스트 프로세스 평가 모델</pre>
+  <h3>분석 키워드</h3>
+  <ul class="kw"><li><b>TMMi</b><span>테스트 계획, 명세, 실행, 기록, 마감 활동의 성숙도 모델</span></li><li><b>ISO 29119</b><span>SW 테스팅 프로세스, 문서, 기법, 키워드 기반 테스트 국제 표준</span></li><li><b>ISO 20246</b><span>산출물 리뷰와 정적 테스트 관련 표준</span></li><li><b>ISO 33063</b><span>테스트 프로세스 평가 모델</span></li><li><b>프로세스 개선</b><span>측정, 평가, 개선 활동으로 테스트 역량 향상</span></li></ul>
+  <h3>답안 확장 문장</h3>
+  <blockquote>테스트 표준과 성숙도 모델은 조직의 테스트 활동을 개인 역량 의존에서 표준 프로세스와 측정 기반 개선 체계로 전환시키는 기준입니다.</blockquote>
+  <h3>정리표</h3>
+  <h4>TMMi 성숙도 개요</h4><div class="table-wrap"><table><thead><tr><th>레벨</th><th>의미</th><th>답안 키워드</th></tr></thead><tbody><tr><td>1 Initial</td><td>비정형, 개인 역량 의존</td><td>혼돈</td></tr><tr><td>2 Managed</td><td>프로젝트 단위 테스트 관리</td><td>정책, 계획, 모니터링</td></tr><tr><td>3 Defined</td><td>조직 표준 테스트 프로세스 정의</td><td>조직 테스트 프로세스</td></tr><tr><td>4 Measured</td><td>측정 기반 테스트 품질 관리</td><td>측정, 평가</td></tr><tr><td>5 Optimization</td><td>결함 예방과 지속적 개선</td><td>최적화, 개선</td></tr></tbody></table></div><h4>ISO/IEC/IEEE 29119 구성: 버·프·독·기·키</h4><div class="table-wrap"><table><thead><tr><th>파트</th><th>구성</th><th>내용</th></tr></thead><tbody><tr><td>Part 1</td><td>Concepts &amp; Definitions</td><td>개념과 용어 정의</td></tr><tr><td>Part 2</td><td>Test Processes</td><td>조직/관리/동적 테스트 프로세스</td></tr><tr><td>Part 3</td><td>Test Documentation</td><td>테스트 문서와 산출물</td></tr><tr><td>Part 4</td><td>Test Techniques</td><td>테스트 설계 기법</td></tr><tr><td>Part 5</td><td>Keyword-Driven Testing</td><td>키워드 기반 테스트</td></tr></tbody></table></div><h4>표준 비교</h4><div class="table-wrap"><table><thead><tr><th>표준</th><th>초점</th><th>활용</th></tr></thead><tbody><tr><td>TMMi</td><td>테스트 성숙도와 개선</td><td>조직 테스트 역량 향상</td></tr><tr><td>ISO 29119</td><td>테스트 프로세스·문서·기법 표준화</td><td>테스트 체계 수립</td></tr><tr><td>ISO 20246</td><td>리뷰 프로세스</td><td>정적 테스트와 산출물 검토</td></tr><tr><td>ISO 33063</td><td>테스트 프로세스 평가</td><td>프로세스 능력 평가</td></tr></tbody></table></div>
+</section>
+
+<section id="s15" class="topic">
+  <div class="section-head">
+    <h2>15. AI 소프트웨어 테스트 보강 포인트</h2>
+    <div><span class="tag">AI테스트</span><span class="tag">기출</span></div>
+  </div>
+  <h3>도식</h3>
+  <pre class="diagram">[AI 특성: 비결정성·오라클 문제·데이터 의존성]
+   ↓
+[블랙박스] 메타모픽 테스트 / A-B 테스트 / 안전 반경 최대화
+   ↓
+[화이트박스] 뉴런 커버리지 / 임계점 커버리지 / 부호·값 변경 커버리지
+   ↓
+[품질 보증] 데이터 품질 + 모델 성능 + 견고성 + 설명가능성</pre>
+  <h3>분석 키워드</h3>
+  <ul class="kw"><li><b>메타모픽 테스트</b><span>고정 기대값 대신 입력과 출력 간 변성 관계를 이용해 검증</span></li><li><b>뉴런 커버리지</b><span>활성화된 뉴런 비율로 딥러닝 모델 테스트 충실도 측정</span></li><li><b>안전 반경 최대화</b><span>작은 입력 변화에도 예측이 안정적으로 유지되는 영역 확대</span></li><li><b>오라클 문제</b><span>AI 결과의 정확한 기대값 정의가 어려운 문제</span></li><li><b>데이터 품질</b><span>학습·검증 데이터의 편향, 누락, 라벨 오류 관리</span></li></ul>
+  <h3>답안 확장 문장</h3>
+  <blockquote>AI 소프트웨어 테스트는 정확한 기대 결과를 정의하기 어려운 오라클 문제를 해결하기 위해 메타모픽 테스트, 뉴런 커버리지, 견고성 테스트 등을 함께 활용합니다.</blockquote>
+  <h3>정리표</h3>
+  <h4>AI 테스트 기법 정리</h4><div class="table-wrap"><table><thead><tr><th>기법</th><th>개념</th><th>답안 포인트</th></tr></thead><tbody><tr><td>메타모픽 테스트</td><td>기대 결과를 값이 아닌 관계로 정의</td><td>오라클 문제 대응</td></tr><tr><td>뉴런 커버리지</td><td>활성화된 뉴런 수 / 전체 뉴런 수 측정</td><td>화이트박스 AI 테스트</td></tr><tr><td>임계점 커버리지</td><td>임계값 이상 활성화 뉴런 측정</td><td>활성화 강도</td></tr><tr><td>부호/값 변경 커버리지</td><td>뉴런 출력 부호 또는 값 변화 측정</td><td>레이어 영향 분석</td></tr><tr><td>안전 반경 최대화</td><td>입력 변화에도 동일 분류 유지 영역 확대</td><td>견고성, 안전성</td></tr><tr><td>A/B 테스트</td><td>두 모델 또는 기능의 성능을 통계적으로 비교</td><td>운영 검증</td></tr></tbody></table></div><h4>AI 품질 보증 관점</h4><div class="table-wrap"><table><thead><tr><th>관점</th><th>검증 내용</th><th>예시</th></tr></thead><tbody><tr><td>데이터</td><td>편향, 누락, 라벨 오류, 대표성</td><td>데이터 프로파일링</td></tr><tr><td>모델</td><td>정확도, 재현율, 민감도, 과적합</td><td>성능 평가</td></tr><tr><td>견고성</td><td>노이즈와 적대적 입력에 대한 안정성</td><td>Robustness</td></tr><tr><td>설명가능성</td><td>판단 근거 이해 가능성</td><td>XAI</td></tr><tr><td>운영</td><td>데이터 드리프트, 모델 성능 저하</td><td>모니터링</td></tr></tbody></table></div>
+</section>
+
+<section id="s16" class="topic">
+  <div class="section-head">
+    <h2>16. 기술사 답안 템플릿</h2>
+    <div><span class="tag">답안작성</span><span class="tag">템플릿</span></div>
+  </div>
+  <h3>도식</h3>
+  <pre class="diagram">[1. 개요: 정의·배경]
+   ↓
+[2. 본론: 메커니즘·도식]
+   ↓
+[3. 비교·적용: 3단표]
+   ↓
+[4. 결론: 고려사항·발전방향]</pre>
+  <h3>분석 키워드</h3>
+  <ul class="kw"><li><b>1교시</b><span>정의 3줄 + 도식 1개 + 3단표 + 고려사항</span></li><li><b>2교시</b><span>개요, 메커니즘, 비교/적용, 결론의 4단락 구성</span></li><li><b>명사형 종결</b><span>품질 향상, 결함 조기 발견, 변경 영향 최소화</span></li><li><b>도식화</b><span>입력 → 처리 → 검증 → 개선 구조 활용</span></li><li><b>3단표</b><span>구분 / 핵심 내용 / 적용 포인트 형태</span></li></ul>
+  <h3>답안 확장 문장</h3>
+  <blockquote>테스트 답안은 용어 설명만 쓰면 짧아지므로, 항상 프로세스 흐름도와 비교표를 붙여 답안 밀도를 높이는 방식이 좋습니다.</blockquote>
+  <h3>정리표</h3>
+  <h4>1교시형 구조</h4><div class="table-wrap"><table><thead><tr><th>단락</th><th>구성</th><th>분량</th></tr></thead><tbody><tr><td>1. 개요</td><td>정의, 등장배경, 필요성</td><td>5~7줄</td></tr><tr><td>2. 본론</td><td>도식, 핵심 원리, 비교표, 절차</td><td>18~20줄</td></tr><tr><td>3. 결론</td><td>적용 고려사항, 기대효과, 발전방향</td><td>5~7줄</td></tr></tbody></table></div><h4>2교시형 구조</h4><div class="table-wrap"><table><thead><tr><th>단락</th><th>구성</th><th>포인트</th></tr></thead><tbody><tr><td>1. 개요</td><td>정의, 필요성, 전체 구조도</td><td>문제 배경 제시</td></tr><tr><td>2. 핵심 메커니즘</td><td>구성요소, 처리흐름, 주요 기법</td><td>본론 중심</td></tr><tr><td>3. 비교 및 적용</td><td>비교표, 적용 방안, 기대효과</td><td>3단표 활용</td></tr><tr><td>4. 결론</td><td>한계, 고려사항, 발전방향</td><td>실무 적용 관점</td></tr></tbody></table></div><h4>키워드 확장 공식</h4><div class="table-wrap"><table><thead><tr><th>공식</th><th>예시</th></tr></thead><tbody><tr><td>개념명은 A를 위해 B를 적용하여 C를 달성하는 기술</td><td>테스트는 결함 발견을 위해 입력과 기대결과를 비교하여 품질을 확인하는 활동</td></tr><tr><td>A 증가 → 기존 방식 한계 → B 필요</td><td>복잡도 증가 → 전체 테스트 불가능 → 위험 기반 테스트 필요</td></tr><tr><td>입력 → 처리 → 검증 → 개선</td><td>요구사항 → 테스트 케이스 → 실행 → 결함 보고 → 회귀 테스트</td></tr></tbody></table></div>
+</section>
+
+    <section id="cards" class="card">
+      <h2>암기 카드</h2>
+      <div class="card-tools">
+        <input id="search" placeholder="카드 검색">
+        <select id="filter"><option value="all">전체 분류</option><option value="AI">AI</option><option value="경험기반">경험기반</option><option value="구조기반">구조기반</option><option value="기초">기초</option><option value="레벨">레벨</option><option value="명세기반">명세기반</option><option value="비기능">비기능</option><option value="성능">성능</option><option value="정적테스트">정적테스트</option><option value="표준">표준</option><option value="프로세스">프로세스</option></select>
+        <button id="shuffle">카드 섞기</button>
+        <button id="showAll" class="secondary">정답 모두 보기</button>
+      </div>
+      <div class="flash-grid" id="flashGrid">
+<div class="flash" data-cat="기초" data-text="테스트 7원리 암기 결완초집살정오: 결함 존재 증명, 완벽 테스팅 불가, 초기 테스팅, 결함 집중, 살충제 패러독스, 정황 의존성, 오류 부재 궤변 기초">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">기초</span><strong>테스트 7원리 암기</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>결완초집살정오: 결함 존재 증명, 완벽 테스팅 불가, 초기 테스팅, 결함 집중, 살충제 패러독스, 정황 의존성, 오류 부재 궤변</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="기초" data-text="error, fault, failure 차이 error는 사람의 실수, fault/defect/bug는 제품 결함, failure는 실행 중 장애 현상 기초">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">기초</span><strong>Error, Fault, Failure 차이</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>Error는 사람의 실수, Fault/Defect/Bug는 제품 결함, Failure는 실행 중 장애 현상</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="프로세스" data-text="테스트 케이스 구성요소 식항입출환특의: 식별자, 테스트 항목, 입력명세, 출력명세, 환경설정, 특수절차요구, 의존성 기술 프로세스">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">프로세스</span><strong>테스트 케이스 구성요소</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>식항입출환특의: 식별자, 테스트 항목, 입력명세, 출력명세, 환경설정, 특수절차요구, 의존성 기술</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="프로세스" data-text="테스트 완료조건 완목기커리스: 완전성, 목적, 기준, 커버리지, 리스크, 스케줄 프로세스">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">프로세스</span><strong>테스트 완료조건</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>완목기커리스: 완전성, 목적, 기준, 커버리지, 리스크, 스케줄</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="프로세스" data-text="테스트 오라클 유형 참샘휴일완자: 참, 샘플링, 휴리스틱, 일관성 검사, 완전, 자동 생성 오라클 프로세스">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">프로세스</span><strong>테스트 오라클 유형</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>참샘휴일완자: 참, 샘플링, 휴리스틱, 일관성 검사, 완전, 자동 생성 오라클</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="정적테스트" data-text="리뷰 유형 비공식 리뷰, 워크스루, 기술 리뷰, 인스펙션, 감사 정적테스트">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">정적테스트</span><strong>리뷰 유형</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>비공식 리뷰, 워크스루, 기술 리뷰, 인스펙션, 감사</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="정적테스트" data-text="인스펙션 절차 계획 → 사전 교육 → 준비 → 인스펙션 회의 → 수정 → 후속 조치 정적테스트">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">정적테스트</span><strong>인스펙션 절차</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>계획 → 사전 교육 → 준비 → 인스펙션 회의 → 수정 → 후속 조치</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="명세기반" data-text="명세기반 테스트 기법 동경결상유페직원분: 동등분할, 경계값, 결정테이블, 상태전이, 유스케이스, 페어와이즈, 직교배열, 원인-결과, 분류트리 명세기반">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">명세기반</span><strong>명세기반 테스트 기법</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>동경결상유페직원분: 동등분할, 경계값, 결정테이블, 상태전이, 유스케이스, 페어와이즈, 직교배열, 원인-결과, 분류트리</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="명세기반" data-text="상태전이 구성요소 상전이가액초종: 상태, 전이, 이벤트, 가드, 액션, 초기상태, 종료상태 명세기반">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">명세기반</span><strong>상태전이 구성요소</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>상전이가액초종: 상태, 전이, 이벤트, 가드, 액션, 초기상태, 종료상태</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="명세기반" data-text="경계값 분석 유형 싱로오로라: single fault, robustness, worst case, robust worst case, random 명세기반">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">명세기반</span><strong>경계값 분석 유형</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>싱로오로라: Single Fault, Robustness, Worst Case, Robust Worst Case, Random</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="구조기반" data-text="구조기반 커버리지 강도 문장 → 결정/조건 → 조건/결정 → mc/dc → 다중조건 구조기반">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">구조기반</span><strong>구조기반 커버리지 강도</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>문장 → 결정/조건 → 조건/결정 → MC/DC → 다중조건</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="구조기반" data-text="mccabe 복잡도 공식 v(g)=e-n+2p, 또는 분기 수 + 1, 또는 폐쇄 영역 수 + 1 구조기반">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">구조기반</span><strong>McCabe 복잡도 공식</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>V(G)=E-N+2P, 또는 분기 수 + 1, 또는 폐쇄 영역 수 + 1</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="구조기반" data-text="mc/dc 의미 각 개별 조건이 전체 결정 결과에 독립적으로 영향을 주도록 테스트 구조기반">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">구조기반</span><strong>MC/DC 의미</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>각 개별 조건이 전체 결정 결과에 독립적으로 영향을 주도록 테스트</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="경험기반" data-text="탐색적 테스트 구성요소 차박노디: 테스트 차터, 타임 박싱, 테스트 노트, 요약 회고 경험기반">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">경험기반</span><strong>탐색적 테스트 구성요소</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>차박노디: 테스트 차터, 타임 박싱, 테스트 노트, 요약 회고</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="경험기반" data-text="경험기반 테스트 기법 탐분체특오혹: 탐색적, 분류트리, 체크리스트, 특성, 오류 추정, 애드혹 경험기반">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">경험기반</span><strong>경험기반 테스트 기법</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>탐분체특오혹: 탐색적, 분류트리, 체크리스트, 특성, 오류 추정, 애드혹</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="레벨" data-text="통합 테스트 방식 백빅상하샌: 백본, 빅뱅, 상향식, 하향식, 샌드위치 레벨">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">레벨</span><strong>통합 테스트 방식</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>백빅상하샌: 백본, 빅뱅, 상향식, 하향식, 샌드위치</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="레벨" data-text="driver와 stub 상향식 테스트는 driver 필요, 하향식 테스트는 stub 필요 레벨">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">레벨</span><strong>Driver와 Stub</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>상향식 테스트는 Driver 필요, 하향식 테스트는 Stub 필요</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="레벨" data-text="인수 테스트 유형 사운계규알베: 사용자, 운영상, 계약, 규정, 알파, 베타 테스트 레벨">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">레벨</span><strong>인수 테스트 유형</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>사운계규알베: 사용자, 운영상, 계약, 규정, 알파, 베타 테스트</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="레벨" data-text="시스템 테스트 유형 회안강성구스: 회복, 안전, 강도, 성능, 구조, 스모크 테스트 레벨">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">레벨</span><strong>시스템 테스트 유형</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>회안강성구스: 회복, 안전, 강도, 성능, 구조, 스모크 테스트</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="성능" data-text="tps 공식 tps = concurrent user / (response time + think time) 성능">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">성능</span><strong>TPS 공식</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>TPS = Concurrent User / (Response Time + Think Time)</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="성능" data-text="성능 테스트 유형 단복임 / 루스확가티 / 부스내볼: 단위·복합·임계, 루프백·스파이크·확장성·가용성·티어, 부하·스트레스·내구성·볼륨 성능">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">성능</span><strong>성능 테스트 유형</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>단복임 / 루스확가티 / 부스내볼: 단위·복합·임계, 루프백·스파이크·확장성·가용성·티어, 부하·스트레스·내구성·볼륨</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="비기능" data-text="몽키 vs 고릴라 몽키는 무작위 입력으로 전체 안정성 확인, 고릴라는 특정 기능 반복 집중 테스트 비기능">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">비기능</span><strong>몽키 vs 고릴라</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>몽키는 무작위 입력으로 전체 안정성 확인, 고릴라는 특정 기능 반복 집중 테스트</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="표준" data-text="tmmi 성숙도 1 initial, 2 managed, 3 defined, 4 measured, 5 optimization 표준">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">표준</span><strong>TMMi 성숙도</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>1 Initial, 2 Managed, 3 Defined, 4 Measured, 5 Optimization</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="표준" data-text="iso 29119 구성 버프독기키: 개념/정의, 프로세스, 문서, 기법, 키워드 기반 테스트 표준">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">표준</span><strong>ISO 29119 구성</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>버프독기키: 개념/정의, 프로세스, 문서, 기법, 키워드 기반 테스트</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div>
+<div class="flash" data-cat="AI" data-text="ai 테스트 핵심 메타모픽 테스트, 뉴런 커버리지, 안전 반경 최대화, 오라클 문제 대응 ai">
+  <div class="flash-inner">
+    <div class="face front"><span class="badge">AI</span><strong>AI 테스트 핵심</strong><span class="small">클릭해서 정답 보기</span></div>
+    <div class="face back"><span class="badge">정답</span><p>메타모픽 테스트, 뉴런 커버리지, 안전 반경 최대화, 오라클 문제 대응</p><span class="small">다시 클릭하면 질문으로 돌아갑니다</span></div>
+  </div>
+</div></div>
+    </section>
+  </main>
+</div>
+<a class="top-button" href="#top">↑ 위로</a>
+<script>
+const grid = document.getElementById('flashGrid');
+const cards = Array.from(document.querySelectorAll('.flash'));
+cards.forEach(card => card.addEventListener('click', () => card.classList.toggle('flipped')));
+function applyFilter() {
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  const f = document.getElementById('filter').value;
+  cards.forEach(card => {
+    const okText = !q || card.dataset.text.includes(q);
+    const okCat = f === 'all' || card.dataset.cat === f;
+    card.style.display = okText && okCat ? '' : 'none';
+  });
+}
+document.getElementById('search').addEventListener('input', applyFilter);
+document.getElementById('filter').addEventListener('change', applyFilter);
+document.getElementById('shuffle').addEventListener('click', () => {
+  const shuffled = cards.slice().sort(() => Math.random() - .5);
+  shuffled.forEach(c => grid.appendChild(c));
+});
+document.getElementById('showAll').addEventListener('click', () => {
+  const allOpen = cards.every(c => c.classList.contains('flipped'));
+  cards.forEach(c => c.classList.toggle('flipped', !allOpen));
+});
+</script>
+</body>
+</html>

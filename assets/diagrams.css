@@ -1,0 +1,35 @@
+.svg-diagram {
+  width: 100%;
+  max-width: 720px;
+  margin: 14px 0 18px;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  overflow-x: auto;
+}
+.svg-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: 280px;
+}
+.svg-diagram figcaption {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #64748b;
+  text-align: center;
+  line-height: 1.5;
+}
+.svg-diagram .box { fill: #eff6ff; stroke: #2563eb; stroke-width: 1.5; }
+.svg-diagram .box-alt { fill: #f0fdf4; stroke: #16a34a; stroke-width: 1.5; }
+.svg-diagram .box-warn { fill: #fff7ed; stroke: #ea580c; stroke-width: 1.5; }
+.svg-diagram .box-test { fill: #faf5ff; stroke: #7c3aed; stroke-width: 1.5; }
+.svg-diagram .box-dark { fill: #1e293b; stroke: #0f172a; stroke-width: 1.5; }
+.svg-diagram .label { font: 600 13px "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; fill: #0f172a; }
+.svg-diagram .label-sm { font: 500 11px "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; fill: #475569; }
+.svg-diagram .label-light { font: 600 12px "Malgun Gothic", sans-serif; fill: #fff; }
+.svg-diagram .arrow { stroke: #64748b; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+.svg-diagram .arrow-blue { stroke: #2563eb; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead-blue); }
+.svg-diagram .dash { stroke: #94a3b8; stroke-width: 1.2; stroke-dasharray: 5 4; fill: none; }
