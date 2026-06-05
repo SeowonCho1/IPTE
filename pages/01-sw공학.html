@@ -116,12 +116,201 @@ button.secondary { background:white; color:#1d4ed8; }
   .back-home { display:none; }
 }
 </style><link rel="stylesheet" href="../assets/diagrams.css"/>
+<link rel="stylesheet" href="../assets/mnemonic-book.css"/>
 </head>
 <body>
 <header id="top"><div><a class="back-home" href="../index.html">← 목차로</a><h1>SW공학 기술사 분석 키워드 &amp; 암기카드</h1><p>정리 기준: 「01. 소프트웨어공학 기본반」 교재 흐름, 기출 출제 주제, 1교시·2교시 답안 확장용</p><p>수정: 표 가독성 보정, PC용 좌측 고정 목차, 모바일 반응형 숨김/접기 목차 처리</p></div></header>
-<div class="layout"><aside class="sidebar"><p class="sidebar-title">📌 목차</p><a href="#0-공부-방식-키워드-암기를-답안으로-바꾸는-법">0. 공부 방식: 키워드 암기를 답안으로 바꾸는 법</a><a href="#1-SW-SW공학-SW-위기-SDLC">1. SW, SW공학, SW 위기, SDLC</a><a href="#2-SDLC-대표-모델">2. SDLC 대표 모델</a><a href="#3-SW-개발방법론">3. SW 개발방법론</a><a href="#4-Agile-Scrum-XP-Kanban">4. Agile, Scrum, XP, Kanban</a><a href="#5-CI-CD-DevOps-DevSecOps-무중단-배포">5. CI/CD, DevOps, DevSecOps, 무중단 배포</a><a href="#6-SW-개발환경과-아키텍처">6. SW 개발환경과 아키텍처</a><a href="#7-프로그래밍-언어">7. 프로그래밍 언어</a><a href="#8-소프트웨어진흥법-SW-발주-PMO">8. 소프트웨어진흥법, SW 발주, PMO</a><a href="#9-요구공학">9. 요구공학</a><a href="#10-SW-품질과-ISO-표준">10. SW 품질과 ISO 표준</a><a href="#11-프로세스-품질-SPICE-CMMI">11. 프로세스 품질, SPICE, CMMI</a><a href="#12-SW-생산성-3R-모듈화">12. SW 생산성, 3R, 모듈화</a><a href="#13-SW-안전성-ISO-IEC-Guide-51-IEC-61508-ISO-26262">13. SW 안전성, ISO/IEC Guide 51, IEC 61508, ISO 26262</a><a href="#14-기술사-답안-템플릿">14. 기술사 답안 템플릿</a><a href="#15-암기-카드">15. 암기 카드</a><a href="#analysis">분석 키워드</a><a href="#flashcards">암기카드</a><a href="#full">전체 정리</a></aside>
-<main class="content"><div class="card mobile-toc"><details><summary>목차 열기</summary><a href="#0-공부-방식-키워드-암기를-답안으로-바꾸는-법">0. 공부 방식: 키워드 암기를 답안으로 바꾸는 법</a><a href="#1-SW-SW공학-SW-위기-SDLC">1. SW, SW공학, SW 위기, SDLC</a><a href="#2-SDLC-대표-모델">2. SDLC 대표 모델</a><a href="#3-SW-개발방법론">3. SW 개발방법론</a><a href="#4-Agile-Scrum-XP-Kanban">4. Agile, Scrum, XP, Kanban</a><a href="#5-CI-CD-DevOps-DevSecOps-무중단-배포">5. CI/CD, DevOps, DevSecOps, 무중단 배포</a><a href="#6-SW-개발환경과-아키텍처">6. SW 개발환경과 아키텍처</a><a href="#7-프로그래밍-언어">7. 프로그래밍 언어</a><a href="#8-소프트웨어진흥법-SW-발주-PMO">8. 소프트웨어진흥법, SW 발주, PMO</a><a href="#9-요구공학">9. 요구공학</a><a href="#10-SW-품질과-ISO-표준">10. SW 품질과 ISO 표준</a><a href="#11-프로세스-품질-SPICE-CMMI">11. 프로세스 품질, SPICE, CMMI</a><a href="#12-SW-생산성-3R-모듈화">12. SW 생산성, 3R, 모듈화</a><a href="#13-SW-안전성-ISO-IEC-Guide-51-IEC-61508-ISO-26262">13. SW 안전성, ISO/IEC Guide 51, IEC 61508, ISO 26262</a><a href="#14-기술사-답안-템플릿">14. 기술사 답안 템플릿</a><a href="#15-암기-카드">15. 암기 카드</a><a href="#analysis">분석 키워드</a><a href="#flashcards">암기카드</a><a href="#full">전체 정리</a></details></div>
+<div class="layout"><aside class="sidebar"><p class="sidebar-title">📌 목차</p><a href="#mnemonic-book">📖 두음 모음집</a><a href="#0-공부-방식-키워드-암기를-답안으로-바꾸는-법">0. 공부 방식: 키워드 암기를 답안으로 바꾸는 법</a><a href="#1-SW-SW공학-SW-위기-SDLC">1. SW, SW공학, SW 위기, SDLC</a><a href="#2-SDLC-대표-모델">2. SDLC 대표 모델</a><a href="#3-SW-개발방법론">3. SW 개발방법론</a><a href="#4-Agile-Scrum-XP-Kanban">4. Agile, Scrum, XP, Kanban</a><a href="#5-CI-CD-DevOps-DevSecOps-무중단-배포">5. CI/CD, DevOps, DevSecOps, 무중단 배포</a><a href="#6-SW-개발환경과-아키텍처">6. SW 개발환경과 아키텍처</a><a href="#7-프로그래밍-언어">7. 프로그래밍 언어</a><a href="#8-소프트웨어진흥법-SW-발주-PMO">8. 소프트웨어진흥법, SW 발주, PMO</a><a href="#9-요구공학">9. 요구공학</a><a href="#10-SW-품질과-ISO-표준">10. SW 품질과 ISO 표준</a><a href="#11-프로세스-품질-SPICE-CMMI">11. 프로세스 품질, SPICE, CMMI</a><a href="#12-SW-생산성-3R-모듈화">12. SW 생산성, 3R, 모듈화</a><a href="#13-SW-안전성-ISO-IEC-Guide-51-IEC-61508-ISO-26262">13. SW 안전성, ISO/IEC Guide 51, IEC 61508, ISO 26262</a><a href="#14-기술사-답안-템플릿">14. 기술사 답안 템플릿</a><a href="#15-암기-카드">15. 암기 카드</a><a href="#analysis">분석 키워드</a><a href="#flashcards">암기카드</a><a href="#full">전체 정리</a></aside>
+<main class="content"><div class="card mobile-toc"><details><summary>목차 열기</summary><a href="#mnemonic-book">📖 두음 모음집</a><a href="#0-공부-방식-키워드-암기를-답안으로-바꾸는-법">0. 공부 방식: 키워드 암기를 답안으로 바꾸는 법</a><a href="#1-SW-SW공학-SW-위기-SDLC">1. SW, SW공학, SW 위기, SDLC</a><a href="#2-SDLC-대표-모델">2. SDLC 대표 모델</a><a href="#3-SW-개발방법론">3. SW 개발방법론</a><a href="#4-Agile-Scrum-XP-Kanban">4. Agile, Scrum, XP, Kanban</a><a href="#5-CI-CD-DevOps-DevSecOps-무중단-배포">5. CI/CD, DevOps, DevSecOps, 무중단 배포</a><a href="#6-SW-개발환경과-아키텍처">6. SW 개발환경과 아키텍처</a><a href="#7-프로그래밍-언어">7. 프로그래밍 언어</a><a href="#8-소프트웨어진흥법-SW-발주-PMO">8. 소프트웨어진흥법, SW 발주, PMO</a><a href="#9-요구공학">9. 요구공학</a><a href="#10-SW-품질과-ISO-표준">10. SW 품질과 ISO 표준</a><a href="#11-프로세스-품질-SPICE-CMMI">11. 프로세스 품질, SPICE, CMMI</a><a href="#12-SW-생산성-3R-모듈화">12. SW 생산성, 3R, 모듈화</a><a href="#13-SW-안전성-ISO-IEC-Guide-51-IEC-61508-ISO-26262">13. SW 안전성, ISO/IEC Guide 51, IEC 61508, ISO 26262</a><a href="#14-기술사-답안-템플릿">14. 기술사 답안 템플릿</a><a href="#15-암기-카드">15. 암기 카드</a><a href="#analysis">분석 키워드</a><a href="#flashcards">암기카드</a><a href="#full">전체 정리</a></details></div>
 <section class="panel"><span class="kicker">사용법</span><p>① 목차별 <b>분석 키워드</b>로 먼저 암기 포인트 확인 → ② <b>도식</b>으로 흐름 복원 → ③ <b>암기카드</b>를 클릭하며 두음과 답안 문장 연결 훈련.</p><div class="note">기술사 답안 훈련용으로, 단순 요약보다 “키워드 → 한 줄 확장 → 답안 문장” 흐름에 맞춰 구성했습니다.</div></section>
+<!-- MNEMONIC_BOOK -->
+<section class="panel mnemonic-book-section" id="mnemonic-book">
+<h2>📖 두음 모음집 — SW공학</h2>
+<p class="subtle">두음 → 출처(몇 장) → 풀이 → 설명을 단계별로 접었다 펼칠 수 있습니다.</p>
+<input class="mn-filter" type="search" placeholder="두음 검색 (예: 작방, 결완, 기신…)" oninput="filterMnemonics(this)"/>
+<details class="mnemonic-book" open>
+<summary>📖 전체 두음 목록 접기/펼치기</summary>
+<div class="mnemonic-list">
+<details class="mnemonic-item">
+<summary><span class="mn-from">1. SW·SDLC</span><span class="mn-key">타요설개테운폐</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 타(당성) · 요(구) · 설(계) · 개(발) · 테(스트) · 운(영) · 폐(기)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>SW 생명주기 7단계 순서입니다. 타당성검토부터 폐기까지 전 과정을 체계적으로 관리한다는 답안 골격에 씁니다.</p>
+<p><a href="#1-4-SDLC">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">1. SW 특성</span><span class="mn-key">비복비복변순무개</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 비(가시) · 복(잡) · 비(마모) · 복(제) · 변(경) · 순(응) · 무(형) · 개(발중심)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>소프트웨어의 대표 특성 두음입니다. 비가시·복잡·변경 때문에 문서화·모듈화·형상관리·품질 측정이 필요하다는 논리로 연결합니다.</p>
+<p><a href="#1-1-소프트웨어의-개념과-특성">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">3. SW 개발방법론</span><span class="mn-key">작방산관기도</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 작(업절차) · 방(법) · 산(출물) · 관(리) · 기(법) · 도(구)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>개발방법론의 6대 구성요소입니다. SDLC 단계를 <em>어떤 순서·방식</em>으로 수행하고, <em>무엇을 산출</em>하며, <em>어떻게 관리</em>할지, <em>기법·도구</em>까지 표준화한 것이 방법론입니다. 구조적·OO·CBD 비교 답안의 공통 틀입니다.</p>
+<p><a href="#3-1-주요-구성">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">3. 객체지향</span><span class="mn-key">캡추다정상</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 캡(슐화) · 추(상화) · 다(형성) · 정(보은닉) · 상(속)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>객체지향 5대 원리(캡추다정상)입니다. 변경 영향 최소화·재사용·유지보수성 답안에 필수 키워드로 연결합니다.</p>
+<p><a href="#3-3-객체지향-핵심-원리">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">4. Agile</span><span class="mn-key">개변동고</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 개(인과 상호작용) · 변(화 대응) · 동(작하는 SW) · 고(객 협력)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>애자일 선언 4가지 핵심 가치(왼쪽 우선)입니다. 계획·문서보다 사람·변화·동작 SW·고객 협력을 강조합니다.</p>
+<p><a href="#4-1-Agile">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">4. XP</span><span class="mn-key">용단커피존</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 용(기) · 단(순성) · 커(뮤니케이션) · 피(드백) · 존(중)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>익스트림 프로그래밍(XP) 5가지 가치입니다. 페어 프로그래밍·TDD·CI와 함께 씁니다.</p>
+<p><a href="#4-2-XP">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">5. DevOps</span><span class="mn-key">CALMS / 빈·리·복·실</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> CALMS: Culture·Automation·Lean·Measurement·Sharing / DORA: 빈(도) · 리(드타임) · 복(구) · 실(패율)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>DevOps는 CALMS 5원칙으로 Dev·Ops를 통합하고, DORA 4 Metrics로 배포 성과를 정량 평가합니다.</p>
+<p><a href="#5-2-1-CALMS">→ CALMS 본문</a> · <a href="#5-2-2-DORA">→ DORA 본문</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">5. IaC</span><span class="mn-key">코드·버전·멱등·GitOps</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 코드 정의 · Git 버전관리 · 멱등 적용 · GitOps 자동 반영</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>Infrastructure as Code 핵심입니다. 인프라를 코드로 관리해 재현성·일관성을 확보하고 CI/CD·GitOps와 결합합니다.</p>
+<p><a href="#5-2-3-IaC">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">6. ATAM</span><span class="mn-key">아동아식품분우분발</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 아(TAM소개) · 동(인) · 아(키텍처소개) · 식(별) · 품(질속성트리) · 분(석) · 우(선순위) · 분(석반복) · 발(표)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>아키텍처 평가 기법 ATAM 9단계 순서입니다. 품질속성 Trade-off 분석 답안 구조로 활용합니다.</p>
+<p><a href="#6-4-아키텍처-평가">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">9. 요구공학</span><span class="mn-key">도분명검관</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 도(출) · 분(석) · 명(세) · 검(증) · 관(리)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>요구공학 5대 프로세스입니다. 이해관계자 요구를 수집·분석·명세·검증·변경관리하는 흐름입니다.</p>
+<p><a href="#9-2-요구공학-프로세스">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">10. ISO 9126</span><span class="mn-key">기신사효유이</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 기(능) · 신(뢰) · 사(용) · 효(율) · 유(지보수) · 이(식)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>구 ISO/IEC 9126 제품 품질 6특성입니다. 25010으로 확장·개편되었으나 기출 암기용으로 자주 나옵니다.</p>
+<p><a href="#10-3-ISO-IEC-9126">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">10. ISO 25010</span><span class="mn-key">기성호상신보유유안</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 기능적합 · 성능효율 · 호환 · 상호작용 · 신뢰 · 보안 · 유지보수 · 유연 · 안전</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>ISO/IEC 25010:2023 품질 모델 9특성입니다. 비기능 요구·테스트(SW테스트)와 1:1 연결됩니다.</p>
+<p><a href="#10-5-ISO-IEC-25010-2023-품질-특성">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">10. SQuaRE</span><span class="mn-key">요모관측평확</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 요(구) · 모(델) · 관(리) · 측(정) · 평(가) · 확(장)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>ISO/IEC 25000 SQuaRE 시리즈 구성입니다. 9126·14598·12119를 통합한 품질 표준 체계입니다.</p>
+<p><a href="#10-4-ISO-IEC-25000-SQuaRE">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">11. 프로세스 품질</span><span class="mn-key">기지조 / 초관정관최</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 기지조: 기(본)·지(원)·조(직) 프로세스 / 초관정관최: CMMI 1~5단계</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>12207 생명주기 프로세스 분류와 CMMI 성숙도 5단계입니다. SPICE·TMMi(SW테스트)와 성숙도 비교 답안에 활용합니다.</p>
+<p><a href="#11-1-ISO-IEC-12207">→ 기지조(12207)</a> · <a href="#11-3-CMM-CMMI">→ 초관정관최(CMMI)</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">12. 모듈화</span><span class="mn-key">고응집·저결합</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 응집도는 높게, 결합도는 낮게</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>모듈화·설계 원칙의 핵심 한 줄입니다. 변경 영향 최소화·유지보수성 답안의 결론 문장으로 씁니다.</p>
+<p><a href="#12-2-모듈화">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">13. ASIL</span><span class="mn-key">심노제</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 심(각도 Severity) · 노(출도 Exposure) · 제(어가능성 Controllability)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>자동차 기능안전 ISO 26262에서 ASIL 등급을 정하는 3가지 지표입니다.</p>
+<p><a href="#13-4-ISO-26262과-ASIL">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+</div>
+</details>
+</section>
+
 <section class="panel" id="analysis"><h2>목차별 분석 키워드</h2><div class="analysis-grid">
 <section class="analysis-card" id="analysis-1-SW-SW공학-SW-위기-SDLC">
 <h3>1. SW, SW공학, SW 위기, SDLC</h3>
@@ -149,9 +338,9 @@ button.secondary { background:white; color:#1d4ed8; }
 </section>
 <section class="analysis-card" id="analysis-5-CI-CD-DevOps-배포">
 <h3>5. CI/CD, DevOps, 배포</h3>
-<div class="chips"><span class="chip">CI</span><span class="chip">CDelivery</span><span class="chip">CDeployment</span><span class="chip">DevOps</span><span class="chip">CALMS</span><span class="chip">DORA</span><span class="chip">DevSecOps</span><span class="chip">Blue-Green</span><span class="chip">Canary</span></div>
-<div class="one-line"><b>답안 한 줄:</b> CALMS로 Dev·Ops 통합, DORA 4 Metrics로 배포 성과 정량 평가</div>
-<div class="mnemonic"><b>암기:</b> CALMS / DORA: 빈·리·복·실</div>
+<div class="chips"><span class="chip">CI</span><span class="chip">CDelivery</span><span class="chip">CDeployment</span><span class="chip">DevOps</span><span class="chip">CALMS</span><span class="chip">DORA</span><span class="chip">IaC</span><span class="chip">GitOps</span><span class="chip">DevSecOps</span><span class="chip">Blue-Green</span><span class="chip">Canary</span></div>
+<div class="one-line"><b>답안 한 줄:</b> CALMS로 Dev·Ops 통합, IaC로 인프라 자동화, DORA 4 Metrics로 배포 성과 정량 평가</div>
+<div class="mnemonic"><b>암기:</b> CALMS / IaC: 코드·버전·멱등 / DORA: 빈·리·복·실</div>
 </section>
 <section class="analysis-card" id="analysis-6-SW-아키텍처">
 <h3>6. SW 아키텍처</h3>
@@ -179,14 +368,14 @@ button.secondary { background:white; color:#1d4ed8; }
 </section>
 <section class="analysis-card" id="analysis-10-SW-품질-ISO-표준">
 <h3>10. SW 품질, ISO 표준</h3>
-<div class="chips"><span class="chip">9126</span><span class="chip">14598</span><span class="chip">12119</span><span class="chip">25000</span><span class="chip">25010</span><span class="chip">12207</span><span class="chip">15504</span><span class="chip">9000</span></div>
-<div class="one-line"><b>답안 한 줄:</b> 제품 품질, 평가 절차, 생명주기, 프로세스 능력을 표준 기반으로 관리</div>
+<div class="chips"><span class="chip">9126</span><span class="chip">14598</span><span class="chip">12119</span><span class="chip">25000</span><span class="chip">25010</span><span class="chip">12207</span><span class="chip">15504</span><span class="chip">29119</span><span class="chip">TMMi</span><span class="chip">9000</span></div>
+<div class="one-line"><b>답안 한 줄:</b> 제품 품질(25000), 프로세스(12207·CMMI), 테스트(29119·TMMi) 3축으로 품질관리 — SW테스트와 연계</div>
 <div class="mnemonic"><b>암기:</b> 기신사효유이 / 요모관측평확</div>
 </section>
 <section class="analysis-card" id="analysis-11-CMMI-SPICE-프로세스">
 <h3>11. CMMI, SPICE, 프로세스</h3>
-<div class="chips"><span class="chip">12207</span><span class="chip">SPICE</span><span class="chip">CMMI</span><span class="chip">능력수준</span><span class="chip">성숙도</span><span class="chip">NPLF</span><span class="chip">초관정관최</span></div>
-<div class="one-line"><b>답안 한 줄:</b> 조직의 SW 프로세스 수행 능력과 성숙도를 평가·개선</div>
+<div class="chips"><span class="chip">12207</span><span class="chip">SPICE</span><span class="chip">CMMI</span><span class="chip">TMMi</span><span class="chip">능력수준</span><span class="chip">성숙도</span><span class="chip">NPLF</span><span class="chip">초관정관최</span></div>
+<div class="one-line"><b>답안 한 줄:</b> SPICE·CMMI(조직·프로세스) ↔ TMMi(테스트 성숙) — 2차원·성숙도 비교</div>
 <div class="mnemonic"><b>암기:</b> 기지조 / 초관정관최</div>
 </section>
 <section class="analysis-card" id="analysis-12-생산성-3R-모듈화">
@@ -500,6 +689,18 @@ button.secondary { background:white; color:#1d4ed8; }
 <div class="badge">A</div>
 <p><b>암기키:</b> CALMS / DORA: 빈·리·복·실</p>
 <p>CALMS로 Dev·Ops 통합, DORA 4 Metrics로 배포 성과 정량 평가·개선</p>
+</div>
+</div>
+<div class="flashcard" data-a="인프라를 코드로 정의·버전관리·자동 프로비저닝하여 재현성·일관성·감사 추적 확보. DevOps Automation(CALMS)의 핵심 실천" data-m="코드·버전·멱등·GitOps" data-q="IaC (Infrastructure as Code)란?">
+<div class="card-front">
+<div class="badge">Q</div>
+<h3>IaC (Infrastructure as Code)란?</h3>
+<p class="hint">클릭하면 정답 표시</p>
+</div>
+<div class="card-back">
+<div class="badge">A</div>
+<p><b>암기키:</b> 코드·버전·멱등·GitOps</p>
+<p>인프라를 코드로 정의·버전관리·자동 프로비저닝. 재현성·일관성·감사 추적 확보 (Terraform, Ansible 등)</p>
 </div>
 </div>
 <div class="flashcard" data-a="품질속성을 만족하기 위해 컴포넌트 구조와 관계, 설계 원칙 정의" data-m="아동아식품분우분발" data-q="6. SW 아키텍처 핵심 한 줄">
@@ -987,6 +1188,8 @@ V모델: 요구분석 ↔ 인수테스트, 시스템설계 ↔ 시스템테스�
 <p><strong>암기/키워드</strong></p>
 <pre class="diagram"><code>CALMS: Culture, Automation, Lean, Measurement, Sharing
 DORA 4: 배포빈도(↑), 리드타임(↓), MTTR(↓), 변경실패율(↓)
+IaC: 코드로 인프라 정의 → Git 버전관리 → CI/CD 자동 프로비저닝 (멱등성·재현성)
+GitOps: Git을 단일 진실 공급원(Single Source of Truth), PR 기반 인프라·배포
 핵심: 개발과 운영의 협업, 자동화, 측정, 공유, 지속적 개선</code></pre>
 <div class="table-wrap"><table><thead><tr><th>핵심 사상</th><th>확장 문장</th><th>적용 포인트</th></tr></thead><tbody><tr><td>Cross Functional Team</td><td>개발, 운영, 품질, 보안을 하나의 흐름으로 연결</td><td>공동 책임</td></tr><tr><td>Automation</td><td>빌드, 테스트, 배포, 인프라 구성을 자동화</td><td>CI/CD, IaC</td></tr><tr><td>Metrics</td><td>서비스 상태와 배포 성과를 정량 측정</td><td>DORA Metrics</td></tr><tr><td>Sharing</td><td>장애와 운영 경험을 공유해 재발 방지</td><td>Postmortem</td></tr></tbody></table></div>
 <h4 id="5-2-1-CALMS">5.2.1 CALMS</h4>
@@ -994,6 +1197,13 @@ DORA 4: 배포빈도(↑), 리드타임(↓), MTTR(↓), 변경실패율(↓)
 <h4 id="5-2-2-DORA">5.2.2 DORA Metrics (Google)</h4>
 <div class="table-wrap"><table><thead><tr><th>지표</th><th>질문</th><th>개선 방향</th><th>연관 CALMS</th></tr></thead><tbody><tr><td>Deployment Frequency</td><td>얼마나 자주 배포하는가</td><td>빈도 ↑</td><td>Automation</td></tr><tr><td>Lead Time for Changes</td><td>변경이 운영까지 얼마나 걸리는가</td><td>시간 ↓</td><td>Lean, Automation</td></tr><tr><td>Time to Restore (MTTR)</td><td>장애 후 얼마나 빨리 복구하는가</td><td>복구 ↓</td><td>Sharing, Measurement</td></tr><tr><td>Change Failure Rate</td><td>배포 중 실패·롤백 비율은</td><td>실패율 ↓</td><td>Culture, Automation</td></tr></tbody></table></div>
 <blockquote><strong>답안 문장</strong> DevOps는 CALMS 원칙(문화·자동화·린·측정·공유)으로 개발과 운영을 통합하고, Google DORA 4 Metrics(배포 빈도, 변경 리드타임, 복구 시간, 변경 실패율)로 소프트웨어 전달 성과를 정량 평가·개선한다.</blockquote>
+<h4 id="5-2-3-IaC">5.2.3 IaC (Infrastructure as Code)</h4>
+<p><strong>정의:</strong> 서버, 네트워크, 스토리지, 클라우드 리소스 등 <strong>인프라 구성을 코드로 정의·관리</strong>하여 수동 설정 대신 자동화·버전관리·재현 가능한 환경을 만드는 DevOps 실천 방법이다.</p>
+<p><strong>흐름/도식</strong></p>
+<pre class="diagram"><code>[인프라 요구] → [IaC 코드 작성] → [Git 버전관리·코드리뷰] → [CI/CD Plan/Apply] → [환경 프로비저닝] → [Drift 모니터링]
+                ↑ 선언적 정의 · 멱등성(Idempotency) · 재현성 · 감사 추적(Audit Trail)</code></pre>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>내용</th><th>답안 키워드</th></tr></thead><tbody><tr><td>핵심 개념</td><td>인프라를 소프트웨어처럼 코드로 관리</td><td>Infrastructure as Code</td></tr><tr><td>선언적(Declarative)</td><td>원하는 <strong>목표 상태</strong>를 기술, 도구가 현재→목표로 수렴</td><td>Terraform, CloudFormation</td></tr><tr><td>절차적(Imperative)</td><td>설정·배포 <strong>단계(명령)를 순서대로</strong> 실행</td><td>Ansible Playbook, Shell</td></tr><tr><td>멱등성</td><td>동일 코드를 여러 번 적용해도 결과 상태가 일관</td><td>Idempotency</td></tr><tr><td>버전관리</td><td>인프라 변경 이력·롤백·코드 리뷰 가능</td><td>Git, Pull Request</td></tr><tr><td>GitOps</td><td>Git을 단일 진실 공급원(SSOT), PR 승인 후 자동 반영</td><td>Argo CD, Flux</td></tr><tr><td>Drift Detection</td><td>실제 인프라와 코드 정의 간 차이(드리프트) 감지·교정</td><td>Configuration Drift</td></tr><tr><td>DevOps 연계</td><td>CALMS의 <strong>Automation</strong> — CI/CD와 함께 앱·인프라 동시 배포</td><td>Pipeline as Code</td></tr></tbody></table></div>
+<blockquote><strong>답안 문장</strong> IaC(Infrastructure as Code)는 인프라를 코드로 정의·버전관리·자동 프로비저닝하여 환경 재현성·일관성·감사 추적을 확보하고, CI/CD·GitOps와 결합해 DevOps Automation을 실현한다.</blockquote>
 <h3 id="5-3-DevSecOps-적용-방안">5.3 DevSecOps 적용 방안</h3>
 <div class="table-wrap"><table><thead><tr><th>단계</th><th>보안 활동</th><th>도구, 산출물</th></tr></thead><tbody><tr><td>계획</td><td>보안 요구사항, 위협 모델링</td><td>보안 요구사항 명세</td></tr><tr><td>개발</td><td>시큐어 코딩, SAST</td><td>정적 분석 결과</td></tr><tr><td>빌드</td><td>의존성 취약점, SBOM 생성</td><td>SCA, SBOM</td></tr><tr><td>테스트</td><td>DAST, 침투 테스트</td><td>동적 점검 리포트</td></tr><tr><td>배포</td><td>컨테이너 이미지 스캔, 정책 게이트</td><td>배포 승인 기준</td></tr><tr><td>운영</td><td>모니터링, 로그 분석, 취약점 대응</td><td>SIEM, 알림</td></tr></tbody></table></div>
 <h3 id="5-4-무중단-배포">5.4 무중단 배포</h3>
@@ -1060,18 +1270,85 @@ ATAM 소개, 비즈니스 동인, 아키텍처 소개, 접근법 식별, 품질�
 <pre class="diagram"><code>타당성 조사 → 요구사항 도출 → 분석 및 조정 → 명세화 → 검증 → 변경관리</code></pre>
 <div class="table-wrap"><table><thead><tr><th>단계</th><th>주요 활동</th><th>산출물</th></tr></thead><tbody><tr><td>도출</td><td>인터뷰, 설문, 워크숍, 관찰</td><td>요구사항 후보</td></tr><tr><td>분석</td><td>충돌, 중복, 누락, 우선순위 검토</td><td>분석 결과</td></tr><tr><td>명세</td><td>정형화된 요구사항 문서 작성</td><td>SRS</td></tr><tr><td>검증</td><td>정확성, 완전성, 일관성 확인</td><td>검토 결과</td></tr><tr><td>관리</td><td>변경 영향 분석, 추적성 관리</td><td>요구사항 추적표</td></tr></tbody></table></div>
 <h2 id="10-SW-품질과-ISO-표준">10. SW 품질과 ISO 표준</h2>
-<p><strong>도식: SW 품질·ISO 표준 맵</strong></p>
+<p><strong>도식: SW 품질관리 통합 맵</strong> <span class="subtle">(SW테스트 14장 · TMMi · ISO 29119와 연계)</span></p>
+<figure class="svg-diagram" aria-label="SW 품질관리 3축 통합">
+<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs><marker id="arrow-q1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker></defs>
+<text class="label-sm" x="320" y="18" text-anchor="middle">SW 품질관리 3축 — 제품 품질 · 프로세스 품질 · 테스트·검증 (ISO 9000 품질경영 기반)</text>
+<rect fill="#f8fafc" stroke="#94a3b8" x="180" y="28" width="280" height="28" rx="6"/><text class="label-sm" x="320" y="47" text-anchor="middle">품질계획 → QA(프로세스) + QC(결과물) → 품질개선(PDCA)</text>
+<rect class="box-alt" x="20" y="68" width="180" height="130" rx="10"/><text class="label" x="110" y="92" text-anchor="middle">제품 품질</text>
+<text class="label-sm" x="110" y="112" text-anchor="middle">9126 → 25000 SQuaRE</text>
+<text class="label-sm" x="110" y="128" text-anchor="middle">25010 품질특성</text>
+<text class="label-sm" x="110" y="144" text-anchor="middle">기신사효유이 / 기성호상…</text>
+<text class="label-sm" x="110" y="160" text-anchor="middle">2502n 측정 · 2504n 평가</text>
+<text class="label-sm" x="110" y="182" text-anchor="middle">→ QC · 비기능 테스트</text>
+<rect class="box" x="230" y="68" width="180" height="130" rx="10"/><text class="label" x="320" y="92" text-anchor="middle">프로세스 품질</text>
+<text class="label-sm" x="320" y="112" text-anchor="middle">12207 (기지조)</text>
+<text class="label-sm" x="320" y="128" text-anchor="middle">품질보증 · 검증 · 확인</text>
+<text class="label-sm" x="320" y="144" text-anchor="middle">15504 SPICE / 33000</text>
+<text class="label-sm" x="320" y="160" text-anchor="middle">CMMI (초관정관최)</text>
+<text class="label-sm" x="320" y="182" text-anchor="middle">→ QA · 프로세스 준수</text>
+<rect class="box-test" x="440" y="68" width="180" height="130" rx="10"/><text class="label" x="530" y="92" text-anchor="middle">테스트·검증</text>
+<text class="label-sm" x="530" y="112" text-anchor="middle">29119 (버·프·독·기·키)</text>
+<text class="label-sm" x="530" y="128" text-anchor="middle">TMMi (테스트 성숙도)</text>
+<text class="label-sm" x="530" y="144" text-anchor="middle">33063 · 20246(리뷰)</text>
+<text class="label-sm" x="530" y="160" text-anchor="middle">7원리 · V-모델</text>
+<text class="label-sm" x="530" y="182" text-anchor="middle">→ QC · 결함 발견</text>
+<line stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrow-q1)" x1="200" y1="133" x2="228" y2="133"/>
+<line stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrow-q1)" x1="410" y1="133" x2="438" y2="133"/>
+<rect class="box-warn" x="60" y="218" width="240" height="52" rx="8"/><text class="label-sm" x="180" y="240" text-anchor="middle">검증 Verification</text><text class="label-sm" x="180" y="256" text-anchor="middle">올바르게 만들었는가?</text><text class="label-sm" x="180" y="262" text-anchor="middle">리뷰 · 단위 · 통합 · 12207 검증</text>
+<rect class="box-warn" x="340" y="218" width="240" height="52" rx="8"/><text class="label-sm" x="460" y="240" text-anchor="middle">확인 Validation</text><text class="label-sm" x="460" y="256" text-anchor="middle">올바른 제품인가?</text><text class="label-sm" x="460" y="262" text-anchor="middle">시스템 · 인수 · UAT · 12207 확인</text>
+<text class="label-sm" x="320" y="300" text-anchor="middle">25010 품질특성(성능·신뢰·보안…) ↔ SW테스트 비기능·기능 테스트로 검증</text>
+<text class="label-sm" x="320" y="318" text-anchor="middle">CMMI(조직 성숙) ↔ SPICE(프로세스 능력) ↔ TMMi(테스트 성숙) — 11장·SW테스트 14장</text>
+</svg>
+<figcaption>제품·프로세스·테스트 3축 + QA/QC + 검증/확인 연계 (SW공학 ↔ SW테스트)</figcaption>
+</figure>
+<p><strong>도식: ISO 표준 연계 맵</strong></p>
+<figure class="svg-diagram" aria-label="ISO 품질 표준 연계">
+<svg viewBox="0 0 620 260" xmlns="http://www.w3.org/2000/svg" role="img">
+<text class="label-sm" x="310" y="16" text-anchor="middle">ISO SW 품질 표준 진화 · 연계 (SQuaRE 중심)</text>
+<rect class="box-warn" x="20" y="30" width="110" height="36" rx="6"/><text class="label-sm" x="75" y="52" text-anchor="middle">9126</text>
+<rect class="box-warn" x="140" y="30" width="110" height="36" rx="6"/><text class="label-sm" x="195" y="52" text-anchor="middle">14598</text>
+<rect class="box-warn" x="260" y="30" width="110" height="36" rx="6"/><text class="label-sm" x="315" y="52" text-anchor="middle">12119</text>
+<text class="label-sm" x="400" y="52" text-anchor="middle">→</text>
+<rect class="box-alt" x="420" y="24" width="180" height="48" rx="8"/><text class="label" x="510" y="44" text-anchor="middle">25000 SQuaRE</text><text class="label-sm" x="510" y="60" text-anchor="middle">요모관측평확</text>
+<line class="dash" x1="75" y1="66" x2="75" y2="88"/><line class="dash" x1="195" y1="66" x2="195" y2="88"/><line class="dash" x1="315" y1="66" x2="315" y2="88"/>
+<rect class="box-alt" x="20" y="88" width="130" height="40" rx="6"/><text class="label-sm" x="85" y="112" text-anchor="middle">25010 품질모델</text>
+<rect class="box-alt" x="160" y="88" width="130" height="40" rx="6"/><text class="label-sm" x="225" y="112" text-anchor="middle">2502n 측정</text>
+<rect class="box-alt" x="300" y="88" width="130" height="40" rx="6"/><text class="label-sm" x="365" y="112" text-anchor="middle">2504n 평가</text>
+<rect class="box" x="450" y="88" width="150" height="40" rx="6"/><text class="label-sm" x="525" y="112" text-anchor="middle">12207 생명주기</text>
+<rect class="box" x="20" y="148" width="180" height="44" rx="6"/><text class="label-sm" x="110" y="168" text-anchor="middle">15504 SPICE → 33000</text><text class="label-sm" x="110" y="182" text-anchor="middle">프로세스 능력 평가 · CMMI</text>
+<rect class="box-test" x="220" y="148" width="180" height="44" rx="6"/><text class="label-sm" x="310" y="168" text-anchor="middle">29119 테스트 표준</text><text class="label-sm" x="310" y="182" text-anchor="middle">버·프·독·기·키</text>
+<rect class="box-test" x="420" y="148" width="180" height="44" rx="6"/><text class="label-sm" x="510" y="168" text-anchor="middle">TMMi · 33063 · 20246</text><text class="label-sm" x="510" y="182" text-anchor="middle">테스트 성숙·평가·리뷰</text>
+<line class="dash" x1="110" y1="192" x2="110" y2="210"/><line class="dash" x1="310" y1="192" x2="310" y2="210"/><line class="dash" x1="510" y1="192" x2="510" y2="210"/>
+<text class="label-sm" x="310" y="228" text-anchor="middle">12207 지원: 품질보증(QA) · 검증 · 확인 · 합동검토 → SW테스트 프로세스와 1:1 대응</text>
+<text class="label-sm" x="310" y="248" text-anchor="middle">25010 품질특성 정의(SW공학) → 테스트 설계·비기능 테스트(SW테스트)로 충족 여부 확인</text>
+</svg>
+<figcaption>구 표준(9126·14598·12119) → SQuaRE(25000) + 생명주기(12207) + 테스트 표준(29119) 연계</figcaption>
+</figure>
 <pre class="diagram"><code>[ISO/IEC 9126 (품질모델)] + [ISO/IEC 14598 (평가절차)] + [ISO/IEC 12119 (패키지 SW)] → [ISO/IEC 25000 (SQuaRE)]
-- 12207 (생명주기)
-- 15504 (프로세스 능력)
-- 9000 (품질경영)
-- 25010 (품질특성)</code></pre>
+- 12207 (생명주기) — 품질보증·검증·확인
+- 15504 / 33000 (프로세스 능력) — CMMI
+- 29119 / TMMi / 33063 (테스트) — SW테스트 표준
+- 25010 (품질특성) — 기능·비기능 테스트 대상</code></pre>
 <p><em>의미: ISO 표준은 제품 품질, 평가, 패키지 품질, 생명주기, 프로세스 능력으로 분류해 암기</em></p>
 <p><code>ISO 집중</code></p>
 <p><code>기출 빈출</code></p>
 <h3 id="10-1-SW-품질-개요">10.1 SW 품질 개요</h3>
 <blockquote><strong>답안 문장</strong> SW 품질은 명시적 요구와 묵시적 요구를 만족시키는 소프트웨어 제품의 기능 및 특성이다. 사용자 관점에서는 유용성, 신뢰성, 사용 편의성이 중요하고, 개발자 관점에서는 유지보수성과 구조적 품질이 중요하다.</blockquote>
 <div class="table-wrap"><table><thead><tr><th>품질활동</th><th>의미</th><th>키워드</th></tr></thead><tbody><tr><td>품질계획</td><td>품질 표준과 적용 방법 결정</td><td>Plan</td></tr><tr><td>품질보증</td><td>프로세스가 기준을 따르는지 확인</td><td>QA</td></tr><tr><td>품질통제</td><td>결과물이 요구 품질을 만족하는지 검사</td><td>QC</td></tr><tr><td>품질개선</td><td>결함 원인 제거와 프로세스 개선</td><td>PDCA</td></tr></tbody></table></div>
+<figure class="svg-diagram" aria-label="QA QC 검증 확인">
+<svg viewBox="0 0 540 200" xmlns="http://www.w3.org/2000/svg" role="img">
+<text class="label-sm" x="270" y="16" text-anchor="middle">QA/QC ↔ 검증(Verification) / 확인(Validation) — SW테스트와 연결</text>
+<rect class="box" x="30" y="35" width="200" height="56" rx="8"/><text class="label" x="130" y="58" text-anchor="middle">QA 품질보증</text><text class="label-sm" x="130" y="76" text-anchor="middle">프로세스 준수 · CMMI · 12207 QA</text>
+<rect class="box-alt" x="310" y="35" width="200" height="56" rx="8"/><text class="label" x="410" y="58" text-anchor="middle">QC 품질통제</text><text class="label-sm" x="410" y="76" text-anchor="middle">결과물 검사 · 테스트 · 리뷰</text>
+<rect fill="#f1f5f9" stroke="#94a3b8" x="200" y="105" width="140" height="32" rx="6"/><text class="label-sm" x="270" y="125" text-anchor="middle">PDCA 품질개선</text>
+<rect class="box-warn" x="30" y="150" width="220" height="40" rx="8"/><text class="label-sm" x="140" y="168" text-anchor="middle">검증 Verification</text><text class="label-sm" x="140" y="182" text-anchor="middle">단위·통합·정적(리뷰) — SW테스트 s4·s6</text>
+<rect class="box-warn" x="290" y="150" width="220" height="40" rx="8"/><text class="label-sm" x="400" y="168" text-anchor="middle">확인 Validation</text><text class="label-sm" x="400" y="182" text-anchor="middle">시스템·인수 — SW테스트 s10</text>
+<line class="dash" x1="130" y1="91" x2="130" y2="150"/><line class="dash" x1="410" y1="91" x2="410" y2="150"/>
+</svg>
+<figcaption>QA(프로세스) · QC(결과물)와 검증/확인 — 테스트 레벨과 대응</figcaption>
+</figure>
 <h3 id="10-2-ISO-품질-표준-전체-맵">10.2 ISO 품질 표준 전체 맵</h3>
 <div class="table-wrap"><table><thead><tr><th>표준</th><th>한 줄 암기</th><th>답안 포인트</th></tr></thead><tbody><tr><td>ISO/IEC 9126</td><td>제품 품질 특성</td><td>기능성, 신뢰성, 사용성, 효율성, 유지보수성, 이식성</td></tr><tr><td>ISO/IEC 14598</td><td>제품 품질 평가 절차</td><td>반복성, 재현성, 공정성, 객관성</td></tr><tr><td>ISO/IEC 12119</td><td>패키지 SW 품질 요구 및 시험</td><td>제품설명서, 사용자문서, 프로그램과 데이터</td></tr><tr><td>ISO/IEC 25000</td><td>SQuaRE 통합 품질 표준</td><td>품질 요구사항, 모델, 측정, 평가</td></tr><tr><td>ISO/IEC 25010:2023</td><td>ICT 제품 및 SW 품질 모델</td><td>안전성 추가, 사용성 개편</td></tr><tr><td>ISO/IEC 12207</td><td>SW 생명주기 프로세스</td><td>획득, 공급, 개발, 운영, 유지보수</td></tr><tr><td>ISO/IEC 15504 SPICE</td><td>프로세스 능력 평가</td><td>프로세스 차원, 수행능력 차원</td></tr><tr><td>ISO/IEC 33000</td><td>15504 개정, 프로세스 평가 프레임워크</td><td>모듈형, 성숙도, 다양한 산업 적용</td></tr></tbody></table></div>
 <h3 id="10-3-ISO-IEC-9126">10.3 ISO/IEC 9126</h3>
@@ -1091,11 +1368,37 @@ ATAM 소개, 비즈니스 동인, 아키텍처 소개, 접근법 식별, 품질�
 기능적합성, 성능효율성, 호환성, 상호작용능력, 신뢰성, 보안성, 유지보수성, 유연성, 안전성</code></pre>
 <div class="table-wrap"><table><thead><tr><th>특성</th><th>한 줄 의미</th></tr></thead><tbody><tr><td>기능적합성</td><td>필요한 기능을 정확히 제공</td></tr><tr><td>성능효율성</td><td>응답시간, 처리량, 자원 효율 만족</td></tr><tr><td>호환성</td><td>다른 시스템과 공존, 연동 가능</td></tr><tr><td>상호작용능력</td><td>사용자와 효과적으로 상호작용</td></tr><tr><td>신뢰성</td><td>장애 없이 안정적으로 동작</td></tr><tr><td>보안성</td><td>데이터와 시스템 보호</td></tr><tr><td>유지보수성</td><td>분석, 변경, 테스트가 쉬움</td></tr><tr><td>유연성</td><td>환경 변화와 확장에 적응</td></tr><tr><td>안전성</td><td>사람, 재산, 환경 피해 방지</td></tr></tbody></table></div>
 <h2 id="11-프로세스-품질-SPICE-CMMI">11. 프로세스 품질, SPICE, CMMI</h2>
+<p><strong>도식: 프로세스·테스트 성숙도 연계</strong> <span class="subtle">(SW테스트 TMMi · ISO 33063과 대응)</span></p>
+<figure class="svg-diagram" aria-label="CMMI SPICE TMMi 성숙도 비교">
+<svg viewBox="0 0 620 300" xmlns="http://www.w3.org/2000/svg" role="img">
+<text class="label-sm" x="310" y="16" text-anchor="middle">성숙도 모델 병렬 비교 — SW공학(CMMI·SPICE) ↔ SW테스트(TMMi)</text>
+<text class="label" x="110" y="42" text-anchor="middle">CMMI</text><text class="label" x="110" y="56" text-anchor="middle">조직 성숙</text>
+<text class="label" x="310" y="42" text-anchor="middle">SPICE</text><text class="label" x="310" y="56" text-anchor="middle">프로세스 능력</text>
+<text class="label" x="510" y="42" text-anchor="middle">TMMi</text><text class="label" x="510" y="56" text-anchor="middle">테스트 성숙</text>
+<rect class="box-warn" x="40" y="250" width="140" height="28" rx="6"/><text class="label-sm" x="110" y="268" text-anchor="middle">1 Initial</text>
+<rect class="box-warn" x="230" y="250" width="160" height="28" rx="6"/><text class="label-sm" x="310" y="268" text-anchor="middle">0~1 Incomplete·Performed</text>
+<rect class="box-warn" x="440" y="250" width="140" height="28" rx="6"/><text class="label-sm" x="510" y="268" text-anchor="middle">1 Initial</text>
+<rect class="box" x="50" y="210" width="120" height="28" rx="6"/><text class="label-sm" x="110" y="228" text-anchor="middle">2 Managed</text>
+<rect class="box" x="250" y="210" width="120" height="28" rx="6"/><text class="label-sm" x="310" y="228" text-anchor="middle">2 Managed</text>
+<rect class="box" x="450" y="210" width="120" height="28" rx="6"/><text class="label-sm" x="510" y="228" text-anchor="middle">2 Managed</text>
+<rect class="box-alt" x="60" y="170" width="100" height="28" rx="6"/><text class="label-sm" x="110" y="188" text-anchor="middle">3 Defined</text>
+<rect class="box-alt" x="260" y="170" width="100" height="28" rx="6"/><text class="label-sm" x="310" y="188" text-anchor="middle">3 Established</text>
+<rect class="box-alt" x="460" y="170" width="100" height="28" rx="6"/><text class="label-sm" x="510" y="188" text-anchor="middle">3 Defined</text>
+<rect class="box-test" x="70" y="130" width="80" height="28" rx="6"/><text class="label-sm" x="110" y="148" text-anchor="middle">4 Quant</text>
+<rect class="box-test" x="270" y="130" width="80" height="28" rx="6"/><text class="label-sm" x="310" y="148" text-anchor="middle">4 Predictable</text>
+<rect class="box-test" x="470" y="130" width="80" height="28" rx="6"/><text class="label-sm" x="510" y="148" text-anchor="middle">4 Measured</text>
+<rect class="box-dark" x="80" y="90" width="60" height="28" rx="6"/><text class="label-light" x="110" y="108" text-anchor="middle">5 Opt</text>
+<rect class="box-dark" x="280" y="90" width="60" height="28" rx="6"/><text class="label-light" x="310" y="108" text-anchor="middle">5 Opt</text>
+<rect class="box-dark" x="480" y="90" width="60" height="28" rx="6"/><text class="label-light" x="510" y="108" text-anchor="middle">5 Opt</text>
+<line class="dash" x1="180" y1="144" x2="228" y2="144"/><line class="dash" x1="380" y1="144" x2="428" y2="144"/>
+<text class="label-sm" x="310" y="292" text-anchor="middle">12207 프로세스 + 29119 테스트 프로세스 — ISO 33063으로 테스트 프로세스 능력 평가</text>
+</svg>
+<figcaption>CMMI · SPICE · TMMi — 개인 역량 → 표준 → 측정 → 최적화 (답안 비교표 활용)</figcaption>
+</figure>
 <p><strong>도식: 프로세스 품질 성숙도 구조</strong></p>
 <pre class="diagram"><code>[프로세스 차원] × [수행능력 차원] → [능력수준 0~5]
 [초기] → [관리] → [정의] → [정량] → [최적화]
-(SPICE 2차원)
-(CMMI 성숙도)</code></pre>
+(SPICE 2차원) ↔ (TMMi 테스트 성숙) ↔ (CMMI 조직 성숙)</code></pre>
 <p><em>의미: SPICE는 프로세스별 능력 평가, CMMI는 조직 성숙도 개선 관점으로 비교</em></p>
 <h3 id="11-1-ISO-IEC-12207">11.1 ISO/IEC 12207</h3>
 <p><strong>암기/키워드</strong></p>
@@ -1252,4 +1555,13 @@ document.addEventListener('DOMContentLoaded',()=>{
     c.addEventListener('keydown',(e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); c.classList.toggle('flipped'); }});
   });
 });
+
+function filterMnemonics(inp){
+  const q=(inp.value||'').toLowerCase().trim();
+  const list=inp.closest('.mnemonic-book-section');
+  if(!list) return;
+  list.querySelectorAll('.mnemonic-item').forEach(el=>{
+    el.classList.toggle('hidden', q && !el.textContent.toLowerCase().includes(q));
+  });
+}
 </script><a class="top-button" href="#top">↑ 위로</a></body></html>

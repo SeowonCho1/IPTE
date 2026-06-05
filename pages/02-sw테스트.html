@@ -93,6 +93,7 @@ button.secondary { background:white; color:#1d4ed8; }
 }
 </style>
 <link rel="stylesheet" href="../assets/diagrams.css"/>
+<link rel="stylesheet" href="../assets/mnemonic-book.css"/>
 </head>
 <body>
 <header id="top">
@@ -106,12 +107,14 @@ button.secondary { background:white; color:#1d4ed8; }
 <div class="layout">
   <aside class="sidebar">
     <p class="sidebar-title">📌 목차</p>
+    <a href="#mnemonic-book">📖 두음 모음집</a>
     <a href="#s0">0. 기출 분석 및 공부 방식</a><a href="#s1">1. SW 테스트 개요와 7원리</a><a href="#s2">2. 테스트 구성: 정책, MTP, TMO, 테스트 생명주기</a><a href="#s3">3. 테스트 프로세스: Basis, Case, Bed, Oracle, 완료조건</a><a href="#s4">4. 임베디드 환경 테스트와 V-모델</a><a href="#s5">5. 테스트 분류 체계</a><a href="#s6">6. 정적 테스트: 리뷰, 인스펙션, 동료검토</a><a href="#s7">7. 명세기반 테스트 설계기법</a><a href="#s8">8. 구조기반 테스트와 커버리지</a><a href="#s9">9. 경험기반 테스트: 탐색적, 오류추정, 애드혹</a><a href="#s10">10. 기능 테스트 레벨: 단위, 통합, 시스템, 인수</a><a href="#s11">11. 비기능 테스트: 성능, 몽키, 사용성</a><a href="#s12">12. 전략적 테스트: RBT, Mutation, Back-to-Back, MBT</a><a href="#s13">13. 테스트 자동화, Shift Left/Right, DevTestOps</a><a href="#s14">14. 테스트 성숙도와 표준: TMMi, ISO 29119, ISO 33063</a><a href="#s15">15. AI 소프트웨어 테스트 보강 포인트</a><a href="#s16">16. 기술사 답안 템플릿</a>
   </aside>
   <main class="content">
     <div class="card mobile-toc">
       <details>
         <summary>목차 열기</summary>
+        <a href="#mnemonic-book">📖 두음 모음집</a>
         <a href="#s0">0. 기출 분석 및 공부 방식</a><a href="#s1">1. SW 테스트 개요와 7원리</a><a href="#s2">2. 테스트 구성: 정책, MTP, TMO, 테스트 생명주기</a><a href="#s3">3. 테스트 프로세스: Basis, Case, Bed, Oracle, 완료조건</a><a href="#s4">4. 임베디드 환경 테스트와 V-모델</a><a href="#s5">5. 테스트 분류 체계</a><a href="#s6">6. 정적 테스트: 리뷰, 인스펙션, 동료검토</a><a href="#s7">7. 명세기반 테스트 설계기법</a><a href="#s8">8. 구조기반 테스트와 커버리지</a><a href="#s9">9. 경험기반 테스트: 탐색적, 오류추정, 애드혹</a><a href="#s10">10. 기능 테스트 레벨: 단위, 통합, 시스템, 인수</a><a href="#s11">11. 비기능 테스트: 성능, 몽키, 사용성</a><a href="#s12">12. 전략적 테스트: RBT, Mutation, Back-to-Back, MBT</a><a href="#s13">13. 테스트 자동화, Shift Left/Right, DevTestOps</a><a href="#s14">14. 테스트 성숙도와 표준: TMMi, ISO 29119, ISO 33063</a><a href="#s15">15. AI 소프트웨어 테스트 보강 포인트</a><a href="#s16">16. 기술사 답안 템플릿</a>
       </details>
     </div>
@@ -120,6 +123,139 @@ button.secondary { background:white; color:#1d4ed8; }
       1) 왼쪽 목차로 단원 이동 → 2) 도식으로 흐름 암기 → 3) 분석 키워드로 한 줄 확장 → 4) 정리표로 답안 구조화 → 5) 암기카드로 복원 연습
     </div>
     
+<!-- MNEMONIC_BOOK -->
+<section class="panel mnemonic-book-section" id="mnemonic-book">
+<h2>📖 두음 모음집 — SW테스트</h2>
+<p class="subtle">두음 → 출처(몇 장) → 풀이 → 설명을 단계별로 접었다 펼칠 수 있습니다.</p>
+<input class="mn-filter" type="search" placeholder="두음 검색 (예: 작방, 결완, 기신…)" oninput="filterMnemonics(this)"/>
+<details class="mnemonic-book" open>
+<summary>📖 전체 두음 목록 접기/펼치기</summary>
+<div class="mnemonic-list">
+<details class="mnemonic-item">
+<summary><span class="mn-from">1. 테스트 7원리</span><span class="mn-key">결완초집살정오</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 결(함존재) · 완(벽불가) · 초(기테스트) · 집(중) · 살(충제) · 정(황의존) · 오(류부재궤변)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>SW 테스트 7원리 최고 빈출 두음입니다. 각 원리별로 정의+적용 방향 한 줄씩 붙여 답안을 만듭니다.</p>
+<p><a href="#s1-7원리">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">3. 테스트 케이스</span><span class="mn-key">식항입출환특의</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 식(별자) · 항(목) · 입(력) · 출(력) · 환(경) · 특(수절차) · 의(존성)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>테스트 케이스 7대 구성요소입니다. 케이스 설계·명세 답안에서 표로 풀어 씁니다.</p>
+<p><a href="#s3-케이스">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">3. 완료조건</span><span class="mn-key">완목기커리스</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 완(전성) · 목(적) · 기(준) · 커(버리지) · 리(스크) · 스(케줄)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>테스트 종료(Exit) 판단 6가지 기준입니다. MTP·완료조건 답안에 필수입니다.</p>
+<p><a href="#s3-완료조건">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">7. 명세기반</span><span class="mn-key">동경결상유페직원분</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 동(등분할) · 경(계값) · 결(정테이블) · 상(태전이) · 유(스케이스) · 페(어와이즈) · 직(교) · 원(인결과) · 분(류트리)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>블랙박스(명세기반) 설계기법 9종입니다. 기법별 개념·적용 상황 비교표와 함께 씁니다.</p>
+<p><a href="#s7-명세기반">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">9. 경험기반</span><span class="mn-key">탐분체특오혹</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 탐(색적) · 분(류트리) · 체(크리스트) · 특(성) · 오(류추정) · 혹(애드혹)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>경험기반 테스트 6기법입니다. 명세 부족·탐색적 상황 답안에 활용합니다.</p>
+<p><a href="#s9-경험기반">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">10. 통합 테스트</span><span class="mn-key">백빅상하샌</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 백(본) · 빅(뱅) · 상(향식) · 하(향식) · 샌(드위치)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>통합 테스트 5방식입니다. 상향=Stub, 하향=Driver 필요 여부와 함께 비교합니다.</p>
+<p><a href="#s10-통합">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">10. 인수 테스트</span><span class="mn-key">사운계규알베</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 사(용자) · 운(영) · 계(약) · 규(정) · 알(파) · 베(타)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>인수 테스트 유형 6가지입니다. 확인(Validation) 관점 답안에 연결합니다.</p>
+<p><a href="#s10-인수">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">11. 성능 테스트</span><span class="mn-key">단복임 / 루스확가티 / 부스내볼</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 단·복·임(목적) / 루프백·스파이크·확장·가용·티어(병목) / 부하·스트레스·내구·볼륨(부하관리)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>성능 테스트 분류 3축입니다. 비기능 테스트 답안에서 표로 정리합니다.</p>
+<p><a href="#s11-성능">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">14. ISO 29119</span><span class="mn-key">버프독기키</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 버(전개념) · 프(로세스) · 독(문서) · 기(법) · 키(워드)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>ISO/IEC/IEEE 29119 5파트 구성입니다. 테스트 프로세스 국제 표준 답안 골격입니다.</p>
+<p><a href="#s14-29119">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">14. 성숙도</span><span class="mn-key">초관정관최 ↔ TMMi</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> TMMi 1~5: Initial·Managed·Defined·Measured·Optimization (CMMI·SPICE와 병렬 비교)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>테스트 성숙도 모델 TMMi입니다. SW공학 CMMI·SPICE와 단계별 비교표로 쓰면 가산점에 유리합니다.</p>
+<p><a href="#s14-tmmi">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+<details class="mnemonic-item">
+<summary><span class="mn-from">9. 탐색적 테스트</span><span class="mn-key">차박노디</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 차(터) · 박(싱) · 노(트) · 디(브리프)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>탐색적 테스트 4요소입니다. 애드혹과 달리 목표·시간·기록이 있습니다.</p>
+<p><a href="#s9-탐색적">→ 본문 이동</a></p>
+</details>
+</div>
+</details>
+</div>
+</details>
+</section>
+
 <section id="s0" class="topic">
   <div class="section-head">
     <h2>0. 기출 분석 및 공부 방식</h2>
@@ -133,12 +269,28 @@ button.secondary { background:white; color:#1d4ed8; }
 [정의 3줄 + 도식 1개 + 3단표]
    ↓
 [1교시 30줄 / 2교시 70줄 답안 확장]</pre>
+  <h3>SW공학과 품질관리 연계</h3>
+  <p class="small">SW공학 10~11장(ISO 25000 · 12207 · CMMI)과 함께 보면 표준·성숙도·검증/확인이 한 흐름으로 연결됩니다.</p>
+<figure class="svg-diagram" aria-label="품질관리 3축 SW테스트 관점">
+<svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" role="img">
+<text class="label-sm" x="320" y="16" text-anchor="middle">SW 테스트 관점 품질관리 — SW공학 10~11장과 연계</text>
+<rect class="box-alt" x="20" y="35" width="180" height="100" rx="10"/><text class="label" x="110" y="58" text-anchor="middle">제품 품질</text><text class="label-sm" x="110" y="78" text-anchor="middle">ISO 25010 품질특성</text><text class="label-sm" x="110" y="94" text-anchor="middle">→ 기능·비기능 테스트</text><text class="label-sm" x="110" y="110" text-anchor="middle">s5·s10·s11</text>
+<rect class="box" x="230" y="35" width="180" height="100" rx="10"/><text class="label" x="320" y="58" text-anchor="middle">프로세스</text><text class="label-sm" x="320" y="78" text-anchor="middle">12207 · CMMI · SPICE</text><text class="label-sm" x="320" y="94" text-anchor="middle">QA · 검증·확인 프로세스</text><text class="label-sm" x="320" y="110" text-anchor="middle">SW공학 11장</text>
+<rect class="box-test" x="440" y="35" width="180" height="100" rx="10"/><text class="label" x="530" y="58" text-anchor="middle">테스트 표준</text><text class="label-sm" x="530" y="78" text-anchor="middle">29119 · TMMi · 33063</text><text class="label-sm" x="530" y="94" text-anchor="middle">QC · 테스트 성숙도</text><text class="label-sm" x="530" y="110" text-anchor="middle">본 교재 s14</text>
+<rect class="box-warn" x="40" y="155" width="250" height="48" rx="8"/><text class="label-sm" x="165" y="175" text-anchor="middle">검증 Verification (s4 V-모델 · s6 정적)</text><text class="label-sm" x="165" y="192" text-anchor="middle">단위·통합 — 올바르게 만들었는가?</text>
+<rect class="box-warn" x="350" y="155" width="250" height="48" rx="8"/><text class="label-sm" x="475" y="175" text-anchor="middle">확인 Validation (s10 인수)</text><text class="label-sm" x="475" y="192" text-anchor="middle">시스템·인수 — 올바른 제품인가?</text>
+<text class="label-sm" x="320" y="240" text-anchor="middle">12207 지원: 품질보증 · 검증 · 확인 · 합동검토 ↔ MTP · TMO · 테스트 생명주기(s2)</text>
+<text class="label-sm" x="320" y="260" text-anchor="middle">25010 품질특성 정의(SW공학) → 테스트 설계·실행(SW테스트)으로 충족 검증</text>
+<text class="label-sm" x="320" y="280" text-anchor="middle">CMMI · SPICE(조직·프로세스) ↔ TMMi(테스트) — 성숙도 답안은 3모델 비교표</text>
+</svg>
+<figcaption>SW공학(제품·프로세스) ↔ SW테스트(검증·표준) 품질관리 통합</figcaption>
+</figure>
   <h3>분석 키워드</h3>
   <ul class="kw"><li><b>빈출 축</b><span>테스트 7원리, 블랙박스/화이트박스, 명세·구조·경험 기반, 통합테스트, 성능테스트, 회귀/몽키, 인수테스트, ISO 29119, AI 테스트</span></li><li><b>작성 방식</b><span>정의 → 필요성 → 도식 → 비교표 → 적용 고려사항 순서로 전개</span></li><li><b>암기 방식</b><span>두음 암기 후 반드시 한 줄 확장 문장으로 복원</span></li></ul>
   <h3>답안 확장 문장</h3>
   <blockquote>SW 테스트 단원은 결함 발견 메커니즘, 테스트 프로세스, 설계기법, 테스트 레벨, 비기능 테스트, 표준으로 나누면 답안 확장이 쉽습니다.</blockquote>
   <h3>정리표</h3>
-  <h4>기출 대응 정리</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>핵심 주제</th><th>답안 포인트</th></tr></thead><tbody><tr><td>원리</td><td>테스트 7원리, 조기 테스트, 결함 집중</td><td>정의 + 원리별 의미 + 적용 방향</td></tr><tr><td>기법</td><td>명세기반, 구조기반, 경험기반</td><td>비교표 + 대표 기법 + 적용 예시</td></tr><tr><td>레벨</td><td>단위, 통합, 시스템, 인수</td><td>흐름도 + Driver/Stub + 단계별 목적</td></tr><tr><td>전략</td><td>RBT, Mutation, MBT, 자동화</td><td>절차 + 효과 + 한계</td></tr><tr><td>표준</td><td>TMMi, ISO 29119, ISO 33063</td><td>구성요소 + 적용 의미</td></tr></tbody></table></div>
+  <h4>기출 대응 정리</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>핵심 주제</th><th>답안 포인트</th></tr></thead><tbody><tr><td>원리</td><td>테스트 7원리, 조기 테스트, 결함 집중</td><td>정의 + 원리별 의미 + 적용 방향</td></tr><tr><td>기법</td><td>명세기반, 구조기반, 경험기반</td><td>비교표 + 대표 기법 + 적용 예시</td></tr><tr><td>레벨</td><td>단위, 통합, 시스템, 인수</td><td>흐름도 + Driver/Stub + 단계별 목적</td></tr><tr><td>전략</td><td>RBT, Mutation, MBT, 자동화</td><td>절차 + 효과 + 한계</td></tr><tr><td>표준</td><td>TMMi, ISO 29119, ISO 33063</td><td>구성요소 + 적용 의미</td></tr><tr><td>품질연계</td><td>25010·12207·CMMI ↔ 테스트·TMMi</td><td>SW공학 10~11장과 3축 통합 도식 참고</td></tr></tbody></table></div>
 </section>
 
 <section id="s1" class="topic">
@@ -198,7 +350,7 @@ button.secondary { background:white; color:#1d4ed8; }
   <h3>답안 확장 문장</h3>
   <blockquote>SW 테스트는 소프트웨어의 품질과 사용자 요구 충족 여부를 확인하기 위해 결함을 발견하는 활동이며, 무결함 증명이 아니라 결함 존재 증명을 목적으로 합니다.</blockquote>
   <h3>정리표</h3>
-  <h4>테스트 7원리</h4><div class="table-wrap"><table><thead><tr><th>암기</th><th>원리</th><th>답안 확장</th></tr></thead><tbody><tr><td>결</td><td>결함 존재 증명</td><td>테스트는 결함이 있음을 보일 수 있으나, 결함이 없음을 증명하지는 못함</td></tr><tr><td>완</td><td>완벽한 테스팅 불가능</td><td>모든 입력과 경로 테스트는 자원 한계로 불가능, 우선순위 기반 접근 필요</td></tr><tr><td>초</td><td>초기 테스팅 시작</td><td>개발 초기부터 리뷰와 테스트 설계 수행 시 수정 비용 감소</td></tr><tr><td>집</td><td>결함 집중</td><td>소수 모듈에 다수 결함 집중, 위험 모듈 중심 테스트 필요</td></tr><tr><td>살</td><td>살충제 패러독스</td><td>동일 테스트 반복 시 결함 탐지율 감소, 테스트 케이스 개선 필요</td></tr><tr><td>정</td><td>정황 의존성</td><td>도메인, 위험, 환경에 따라 테스트 전략 차별화 필요</td></tr><tr><td>오</td><td>오류 부재의 궤변</td><td>결함이 적어도 사용자 요구를 만족하지 못하면 품질 확보 실패</td></tr></tbody></table></div><h4>테스트와 디버깅 비교</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>테스트</th><th>디버깅</th></tr></thead><tbody><tr><td>목적</td><td>결함 발견</td><td>결함 원인 분석 및 코드 수정</td></tr><tr><td>수행 주체</td><td>테스터, QA, 개발자</td><td>주로 개발자</td></tr><tr><td>산출물</td><td>결함 리포트, 테스트 결과</td><td>수정 코드, 원인 분석</td></tr><tr><td>관점</td><td>품질 확인</td><td>문제 해결</td></tr></tbody></table></div>
+  <h4 id="s1-7원리">테스트 7원리</h4><div class="table-wrap"><table><thead><tr><th>암기</th><th>원리</th><th>답안 확장</th></tr></thead><tbody><tr><td>결</td><td>결함 존재 증명</td><td>테스트는 결함이 있음을 보일 수 있으나, 결함이 없음을 증명하지는 못함</td></tr><tr><td>완</td><td>완벽한 테스팅 불가능</td><td>모든 입력과 경로 테스트는 자원 한계로 불가능, 우선순위 기반 접근 필요</td></tr><tr><td>초</td><td>초기 테스팅 시작</td><td>개발 초기부터 리뷰와 테스트 설계 수행 시 수정 비용 감소</td></tr><tr><td>집</td><td>결함 집중</td><td>소수 모듈에 다수 결함 집중, 위험 모듈 중심 테스트 필요</td></tr><tr><td>살</td><td>살충제 패러독스</td><td>동일 테스트 반복 시 결함 탐지율 감소, 테스트 케이스 개선 필요</td></tr><tr><td>정</td><td>정황 의존성</td><td>도메인, 위험, 환경에 따라 테스트 전략 차별화 필요</td></tr><tr><td>오</td><td>오류 부재의 궤변</td><td>결함이 적어도 사용자 요구를 만족하지 못하면 품질 확보 실패</td></tr></tbody></table></div><h4>테스트와 디버깅 비교</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>테스트</th><th>디버깅</th></tr></thead><tbody><tr><td>목적</td><td>결함 발견</td><td>결함 원인 분석 및 코드 수정</td></tr><tr><td>수행 주체</td><td>테스터, QA, 개발자</td><td>주로 개발자</td></tr><tr><td>산출물</td><td>결함 리포트, 테스트 결과</td><td>수정 코드, 원인 분석</td></tr><tr><td>관점</td><td>품질 확인</td><td>문제 해결</td></tr></tbody></table></div>
 </section>
 
 <section id="s2" class="topic">
@@ -283,7 +435,7 @@ button.secondary { background:white; color:#1d4ed8; }
   <h3>답안 확장 문장</h3>
   <blockquote>테스트 프로세스는 테스트 베이시스를 기반으로 케이스를 설계하고, 테스트베드에서 실행한 결과를 오라클과 완료조건으로 판단하는 흐름입니다.</blockquote>
   <h3>정리표</h3>
-  <h4>테스트 케이스 구성요소: 식·항·입·출·환·특·의</h4><div class="table-wrap"><table><thead><tr><th>암기</th><th>구성요소</th><th>설명</th></tr></thead><tbody><tr><td>식</td><td>식별자</td><td>테스트 케이스를 식별하는 고유 ID</td></tr><tr><td>항</td><td>테스트 항목</td><td>테스트 대상 기능, 모듈, 화면</td></tr><tr><td>입</td><td>입력명세</td><td>입력값, 조건, 사전 데이터</td></tr><tr><td>출</td><td>출력명세</td><td>기대 결과, 출력값, 상태 변화</td></tr><tr><td>환</td><td>환경설정</td><td>H/W, S/W, 브라우저, 네트워크 등 실행 환경</td></tr><tr><td>특</td><td>특수절차요구</td><td>특별히 필요한 테스트 수행 절차</td></tr><tr><td>의</td><td>의존성 기술</td><td>선행/후행 테스트 케이스 관계</td></tr></tbody></table></div><h4>테스트 케이스 작성원칙</h4><div class="table-wrap"><table><thead><tr><th>원칙</th><th>의미</th><th>답안 키워드</th></tr></thead><tbody><tr><td>명확성</td><td>누가 수행해도 혼동 없이 실행 가능</td><td>명확한 언어</td></tr><tr><td>재현 가능성</td><td>동일 조건 반복 시 동일 결과 도출</td><td>반복 가능</td></tr><tr><td>독립성</td><td>다른 테스트에 의존하지 않음</td><td>독립 실행</td></tr><tr><td>완전성</td><td>기능과 예외 케이스를 충분히 포함</td><td>요구사항 검증</td></tr><tr><td>추적 가능성</td><td>요구사항과 테스트 결과 매핑 가능</td><td>Traceability</td></tr><tr><td>단순성</td><td>불필요한 복잡성 제거</td><td>간결한 절차</td></tr><tr><td>예외 처리</td><td>정상 흐름뿐 아니라 Edge Case 검증</td><td>예외 검증</td></tr><tr><td>자동화 가능성</td><td>자동화에 적합한 구조로 작성</td><td>CI/CD 연계</td></tr></tbody></table></div><h4>테스트 오라클 유형</h4><div class="table-wrap"><table><thead><tr><th>유형</th><th>개념</th><th>활용 포인트</th></tr></thead><tbody><tr><td>참 오라클</td><td>모든 입력에 대한 정확한 기대 결과 제공</td><td>수학, 암호화 등 제한적 도메인</td></tr><tr><td>샘플링 오라클</td><td>대표 입력에 대해서만 기대 결과 제공</td><td>현실적으로 많이 활용</td></tr><tr><td>휴리스틱 오라클</td><td>경험과 규칙으로 기대 결과 추정</td><td>AI/ML, 복잡 도메인</td></tr><tr><td>일관성 검사 오라클</td><td>이전 실행 결과와 비교</td><td>회귀 테스트, 반복 실행</td></tr><tr><td>완전 오라클</td><td>모든 동작을 완벽 검증하는 이상적 오라클</td><td>현실적 구현 어려움</td></tr><tr><td>자동 생성 오라클</td><td>자동화 환경에서 기대 결과 생성</td><td>자동화 테스트 연계</td></tr></tbody></table></div><h4>테스트 완료조건: 완·목·기·커·리·스</h4><div class="table-wrap"><table><thead><tr><th>암기</th><th>조건</th><th>판단 기준</th></tr></thead><tbody><tr><td>완</td><td>테스트 완전성</td><td>계획된 테스트 케이스 실행률, 요구사항 충족률</td></tr><tr><td>목</td><td>테스트 목적</td><td>프로젝트 목표와 품질 목표 충족</td></tr><tr><td>기</td><td>테스트 기준</td><td>성공률, 결과 문서화 여부</td></tr><tr><td>커</td><td>테스트 커버리지</td><td>코드, 기능, 경로, 요구사항 커버리지</td></tr><tr><td>리</td><td>테스트 리스크</td><td>치명 결함 해결, 잔존 결함 허용 기준</td></tr><tr><td>스</td><td>테스트 스케줄</td><td>일정 내 종료, 고객 승인</td></tr></tbody></table></div>
+  <h4 id="s3-케이스">테스트 케이스 구성요소: 식·항·입·출·환·특·의</h4><div class="table-wrap"><table><thead><tr><th>암기</th><th>구성요소</th><th>설명</th></tr></thead><tbody><tr><td>식</td><td>식별자</td><td>테스트 케이스를 식별하는 고유 ID</td></tr><tr><td>항</td><td>테스트 항목</td><td>테스트 대상 기능, 모듈, 화면</td></tr><tr><td>입</td><td>입력명세</td><td>입력값, 조건, 사전 데이터</td></tr><tr><td>출</td><td>출력명세</td><td>기대 결과, 출력값, 상태 변화</td></tr><tr><td>환</td><td>환경설정</td><td>H/W, S/W, 브라우저, 네트워크 등 실행 환경</td></tr><tr><td>특</td><td>특수절차요구</td><td>특별히 필요한 테스트 수행 절차</td></tr><tr><td>의</td><td>의존성 기술</td><td>선행/후행 테스트 케이스 관계</td></tr></tbody></table></div><h4>테스트 케이스 작성원칙</h4><div class="table-wrap"><table><thead><tr><th>원칙</th><th>의미</th><th>답안 키워드</th></tr></thead><tbody><tr><td>명확성</td><td>누가 수행해도 혼동 없이 실행 가능</td><td>명확한 언어</td></tr><tr><td>재현 가능성</td><td>동일 조건 반복 시 동일 결과 도출</td><td>반복 가능</td></tr><tr><td>독립성</td><td>다른 테스트에 의존하지 않음</td><td>독립 실행</td></tr><tr><td>완전성</td><td>기능과 예외 케이스를 충분히 포함</td><td>요구사항 검증</td></tr><tr><td>추적 가능성</td><td>요구사항과 테스트 결과 매핑 가능</td><td>Traceability</td></tr><tr><td>단순성</td><td>불필요한 복잡성 제거</td><td>간결한 절차</td></tr><tr><td>예외 처리</td><td>정상 흐름뿐 아니라 Edge Case 검증</td><td>예외 검증</td></tr><tr><td>자동화 가능성</td><td>자동화에 적합한 구조로 작성</td><td>CI/CD 연계</td></tr></tbody></table></div><h4>테스트 오라클 유형</h4><div class="table-wrap"><table><thead><tr><th>유형</th><th>개념</th><th>활용 포인트</th></tr></thead><tbody><tr><td>참 오라클</td><td>모든 입력에 대한 정확한 기대 결과 제공</td><td>수학, 암호화 등 제한적 도메인</td></tr><tr><td>샘플링 오라클</td><td>대표 입력에 대해서만 기대 결과 제공</td><td>현실적으로 많이 활용</td></tr><tr><td>휴리스틱 오라클</td><td>경험과 규칙으로 기대 결과 추정</td><td>AI/ML, 복잡 도메인</td></tr><tr><td>일관성 검사 오라클</td><td>이전 실행 결과와 비교</td><td>회귀 테스트, 반복 실행</td></tr><tr><td>완전 오라클</td><td>모든 동작을 완벽 검증하는 이상적 오라클</td><td>현실적 구현 어려움</td></tr><tr><td>자동 생성 오라클</td><td>자동화 환경에서 기대 결과 생성</td><td>자동화 테스트 연계</td></tr></tbody></table></div><h4 id="s3-완료조건">테스트 완료조건: 완·목·기·커·리·스</h4><div class="table-wrap"><table><thead><tr><th>암기</th><th>조건</th><th>판단 기준</th></tr></thead><tbody><tr><td>완</td><td>테스트 완전성</td><td>계획된 테스트 케이스 실행률, 요구사항 충족률</td></tr><tr><td>목</td><td>테스트 목적</td><td>프로젝트 목표와 품질 목표 충족</td></tr><tr><td>기</td><td>테스트 기준</td><td>성공률, 결과 문서화 여부</td></tr><tr><td>커</td><td>테스트 커버리지</td><td>코드, 기능, 경로, 요구사항 커버리지</td></tr><tr><td>리</td><td>테스트 리스크</td><td>치명 결함 해결, 잔존 결함 허용 기준</td></tr><tr><td>스</td><td>테스트 스케줄</td><td>일정 내 종료, 고객 승인</td></tr></tbody></table></div>
 </section>
 
 <section id="s4" class="topic">
@@ -316,6 +468,20 @@ button.secondary { background:white; color:#1d4ed8; }
 <text class="label-sm" x="260" y="325" text-anchor="middle">좌: 올바르게 만들고 있는가(검증) ↔ 우: 올바른 제품인가(확인)</text>
 </svg>
 <figcaption>V-모델 — 개발 단계와 테스트 단계 1:1 대응</figcaption>
+</figure>
+<figure class="svg-diagram" aria-label="검증 확인 QA QC 연계">
+<svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img">
+<text class="label-sm" x="280" y="16" text-anchor="middle">12207 검증·확인 ↔ 테스트 레벨 · QA/QC (SW공학 10장 연계)</text>
+<rect class="box" x="20" y="35" width="120" height="70" rx="8"/><text class="label-sm" x="80" y="58" text-anchor="middle">요구·설계</text><text class="label-sm" x="80" y="74" text-anchor="middle">리뷰·인스펙션</text><text class="label-sm" x="80" y="90" text-anchor="middle">(s6 정적)</text>
+<rect class="box" x="160" y="35" width="120" height="70" rx="8"/><text class="label-sm" x="220" y="58" text-anchor="middle">모듈·통합</text><text class="label-sm" x="220" y="74" text-anchor="middle">단위·통합</text><text class="label-sm" x="220" y="90" text-anchor="middle">검증 Verification</text>
+<rect class="box-alt" x="300" y="35" width="120" height="70" rx="8"/><text class="label-sm" x="360" y="58" text-anchor="middle">시스템</text><text class="label-sm" x="360" y="74" text-anchor="middle">시스템 테스트</text><text class="label-sm" x="360" y="90" text-anchor="middle">확인 시작</text>
+<rect class="box-warn" x="440" y="35" width="100" height="70" rx="8"/><text class="label-sm" x="490" y="58" text-anchor="middle">인수</text><text class="label-sm" x="490" y="74" text-anchor="middle">UAT</text><text class="label-sm" x="490" y="90" text-anchor="middle">Validation</text>
+<rect fill="#f1f5f9" stroke="#94a3b8" x="80" y="120" width="160" height="36" rx="6"/><text class="label-sm" x="160" y="142" text-anchor="middle">QA: 12207 품질보증·프로세스</text>
+<rect fill="#f1f5f9" stroke="#94a3b8" x="320" y="120" width="160" height="36" rx="6"/><text class="label-sm" x="400" y="142" text-anchor="middle">QC: 테스트·리뷰·결함 관리</text>
+<text class="label-sm" x="280" y="185" text-anchor="middle">V-모델 좌(개발) ↔ 우(테스트) = ISO 12207 검증·확인 프로세스의 단계별 적용</text>
+<text class="label-sm" x="280" y="200" text-anchor="middle">25010 품질특성(SW공학) → 각 레벨 테스트로 충족 여부 확인</text>
+</svg>
+<figcaption>V-모델 + 검증/확인 + QA/QC — SW공학·SW테스트 교차 지점</figcaption>
 </figure>
   <pre class="diagram">[요구사항 분석] ↔ [인수 테스트]
 [시스템 설계]   ↔ [시스템 테스트]
@@ -477,7 +643,7 @@ button.secondary { background:white; color:#1d4ed8; }
   <h3>답안 확장 문장</h3>
   <blockquote>명세기반 테스트는 요구사항과 기능 명세서를 기반으로 입력, 출력, 조건, 상태, 시나리오를 분석하여 테스트 케이스를 도출하는 블랙박스 중심 설계기법입니다.</blockquote>
   <h3>정리표</h3>
-  <h4>명세기반 기법: 동·경·결·상·유·페·직·원·분</h4><div class="table-wrap"><table><thead><tr><th>암기</th><th>기법</th><th>핵심</th></tr></thead><tbody><tr><td>동</td><td>동등분할</td><td>입력값을 유효/무효 동등 클래스로 나누고 대표값 테스트</td></tr><tr><td>경</td><td>경계값 분석</td><td>최소값, 최대값, 경계 안팎 값 집중 검증</td></tr><tr><td>결</td><td>결정 테이블</td><td>조건 조합과 결과를 표로 정리</td></tr><tr><td>상</td><td>상태전이</td><td>상태 변화와 유효/무효 전이 검증</td></tr><tr><td>유</td><td>유스케이스</td><td>사용자 시나리오, 기본/대체 흐름 검증</td></tr><tr><td>페</td><td>페어와이즈</td><td>2개 변수 조합을 최소 1회 이상 포함</td></tr><tr><td>직</td><td>직교배열</td><td>균형 잡힌 조합으로 효율적 테스트</td></tr><tr><td>원</td><td>원인-결과 그래프</td><td>입력 원인과 출력 결과의 논리 관계 표현</td></tr><tr><td>분</td><td>분류트리</td><td>입력 조건을 트리 구조로 분류하고 조합</td></tr></tbody></table></div><h4>경계값 분석 유형: 싱·로·오·로·라</h4><div class="table-wrap"><table><thead><tr><th>유형</th><th>설명</th><th>포인트</th></tr></thead><tbody><tr><td>Single Fault Based</td><td>min, min+1, normal, max-1, max 테스트</td><td>기본 경계값</td></tr><tr><td>Robustness</td><td>min-1, max+1 등 예외 값 포함</td><td>강건성</td></tr><tr><td>Worst Case</td><td>여러 변수의 극단값 조합</td><td>극단 조합</td></tr><tr><td>Robust Worst Case</td><td>Worst Case + 경계 밖 값</td><td>가장 철저</td></tr><tr><td>Random</td><td>범위 내 무작위 값 테스트</td><td>무작위 검증</td></tr></tbody></table></div><h4>상태전이 구성요소: 상·전·이·가·액·초·종</h4><div class="table-wrap"><table><thead><tr><th>암기</th><th>요소</th><th>의미</th></tr></thead><tbody><tr><td>상</td><td>상태 State</td><td>시스템이 이벤트를 기다리는 모드</td></tr><tr><td>전</td><td>전이 Transition</td><td>이벤트에 의해 상태 변경</td></tr><tr><td>이</td><td>이벤트 Event</td><td>전이를 유발하는 요인</td></tr><tr><td>가</td><td>가드 Guard</td><td>전이가 발생하는 조건</td></tr><tr><td>액</td><td>액션 Action</td><td>전이 시 수행 동작</td></tr><tr><td>초</td><td>초기 상태</td><td>시스템 시작 상태</td></tr><tr><td>종</td><td>종료 상태</td><td>시스템 종료 상태</td></tr></tbody></table></div><h4>페어와이즈와 직교배열 비교</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>페어와이즈</th><th>직교배열</th></tr></thead><tbody><tr><td>원리</td><td>두 변수 조합을 최소 1회 포함</td><td>행과 열이 균형 있게 조합되도록 배열</td></tr><tr><td>장점</td><td>테스트 케이스 수 감소</td><td>통계적 균형과 커버리지 강화</td></tr><tr><td>한계</td><td>모든 결함 조합 발견 보장 어려움</td><td>상대적으로 케이스 수 증가</td></tr><tr><td>활용</td><td>입력 조합이 많은 일반 기능</td><td>품질 중요, 균형 조합 필요한 시스템</td></tr></tbody></table></div>
+  <h4 id="s7-명세기반">명세기반 기법: 동·경·결·상·유·페·직·원·분</h4><div class="table-wrap"><table><thead><tr><th>암기</th><th>기법</th><th>핵심</th></tr></thead><tbody><tr><td>동</td><td>동등분할</td><td>입력값을 유효/무효 동등 클래스로 나누고 대표값 테스트</td></tr><tr><td>경</td><td>경계값 분석</td><td>최소값, 최대값, 경계 안팎 값 집중 검증</td></tr><tr><td>결</td><td>결정 테이블</td><td>조건 조합과 결과를 표로 정리</td></tr><tr><td>상</td><td>상태전이</td><td>상태 변화와 유효/무효 전이 검증</td></tr><tr><td>유</td><td>유스케이스</td><td>사용자 시나리오, 기본/대체 흐름 검증</td></tr><tr><td>페</td><td>페어와이즈</td><td>2개 변수 조합을 최소 1회 이상 포함</td></tr><tr><td>직</td><td>직교배열</td><td>균형 잡힌 조합으로 효율적 테스트</td></tr><tr><td>원</td><td>원인-결과 그래프</td><td>입력 원인과 출력 결과의 논리 관계 표현</td></tr><tr><td>분</td><td>분류트리</td><td>입력 조건을 트리 구조로 분류하고 조합</td></tr></tbody></table></div><h4>경계값 분석 유형: 싱·로·오·로·라</h4><div class="table-wrap"><table><thead><tr><th>유형</th><th>설명</th><th>포인트</th></tr></thead><tbody><tr><td>Single Fault Based</td><td>min, min+1, normal, max-1, max 테스트</td><td>기본 경계값</td></tr><tr><td>Robustness</td><td>min-1, max+1 등 예외 값 포함</td><td>강건성</td></tr><tr><td>Worst Case</td><td>여러 변수의 극단값 조합</td><td>극단 조합</td></tr><tr><td>Robust Worst Case</td><td>Worst Case + 경계 밖 값</td><td>가장 철저</td></tr><tr><td>Random</td><td>범위 내 무작위 값 테스트</td><td>무작위 검증</td></tr></tbody></table></div><h4>상태전이 구성요소: 상·전·이·가·액·초·종</h4><div class="table-wrap"><table><thead><tr><th>암기</th><th>요소</th><th>의미</th></tr></thead><tbody><tr><td>상</td><td>상태 State</td><td>시스템이 이벤트를 기다리는 모드</td></tr><tr><td>전</td><td>전이 Transition</td><td>이벤트에 의해 상태 변경</td></tr><tr><td>이</td><td>이벤트 Event</td><td>전이를 유발하는 요인</td></tr><tr><td>가</td><td>가드 Guard</td><td>전이가 발생하는 조건</td></tr><tr><td>액</td><td>액션 Action</td><td>전이 시 수행 동작</td></tr><tr><td>초</td><td>초기 상태</td><td>시스템 시작 상태</td></tr><tr><td>종</td><td>종료 상태</td><td>시스템 종료 상태</td></tr></tbody></table></div><h4>페어와이즈와 직교배열 비교</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>페어와이즈</th><th>직교배열</th></tr></thead><tbody><tr><td>원리</td><td>두 변수 조합을 최소 1회 포함</td><td>행과 열이 균형 있게 조합되도록 배열</td></tr><tr><td>장점</td><td>테스트 케이스 수 감소</td><td>통계적 균형과 커버리지 강화</td></tr><tr><td>한계</td><td>모든 결함 조합 발견 보장 어려움</td><td>상대적으로 케이스 수 증가</td></tr><tr><td>활용</td><td>입력 조합이 많은 일반 기능</td><td>품질 중요, 균형 조합 필요한 시스템</td></tr></tbody></table></div>
 </section>
 
 <section id="s8" class="topic">
@@ -554,7 +720,7 @@ button.secondary { background:white; color:#1d4ed8; }
   <h3>답안 확장 문장</h3>
   <blockquote>경험기반 테스트는 명세가 부족하거나 예상치 못한 결함을 찾을 때 효과적이며, 숙련된 테스터의 경험과 도메인 지식이 품질을 좌우합니다.</blockquote>
   <h3>정리표</h3>
-  <h4>경험기반 기법: 탐·분·체·특·오·혹</h4><div class="table-wrap"><table><thead><tr><th>암기</th><th>기법</th><th>핵심</th></tr></thead><tbody><tr><td>탐</td><td>탐색적 테스트</td><td>차터 기반으로 설계·수행·기록·학습 동시 진행</td></tr><tr><td>분</td><td>분류트리</td><td>입력 조건을 트리로 분류하고 조합</td></tr><tr><td>체</td><td>체크리스트 기반</td><td>정의된 점검 목록 기반 테스트</td></tr><tr><td>특</td><td>특성 테스트</td><td>품질 특성 기반 테스트</td></tr><tr><td>오</td><td>오류 추정</td><td>경험과 과거 결함으로 오류 가능 영역 집중</td></tr><tr><td>혹</td><td>애드혹 테스트</td><td>계획 없이 즉흥적 결함 탐색</td></tr></tbody></table></div><h4>탐색적 테스트 구성요소: 차·박·노·디</h4><div class="table-wrap"><table><thead><tr><th>요소</th><th>의미</th><th>답안 포인트</th></tr></thead><tbody><tr><td>테스트 차터</td><td>목표와 범위 설정</td><td>방향성 제공</td></tr><tr><td>타임 박싱</td><td>정해진 시간 내 집중 테스트</td><td>효율성</td></tr><tr><td>테스트 노트</td><td>수행 과정과 결함 기록</td><td>재현성</td></tr><tr><td>요약 회고</td><td>결과 공유와 개선 논의</td><td>지식 공유</td></tr></tbody></table></div><h4>애드혹 vs 탐색적 테스트</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>애드혹 테스트</th><th>탐색적 테스트</th></tr></thead><tbody><tr><td>계획</td><td>거의 없음</td><td>차터 기반 방향 존재</td></tr><tr><td>방식</td><td>무작위, 즉흥적</td><td>경험적이지만 구조화</td></tr><tr><td>문서화</td><td>대체로 없음</td><td>노트, 결함 중심 기록</td></tr><tr><td>장점</td><td>빠른 결함 발견</td><td>학습 기반 결함 탐색</td></tr><tr><td>한계</td><td>재현성과 분석 어려움</td><td>테스터 역량 의존</td></tr></tbody></table></div>
+  <h4 id="s9-경험기반">경험기반 기법: 탐·분·체·특·오·혹</h4><div class="table-wrap"><table><thead><tr><th>암기</th><th>기법</th><th>핵심</th></tr></thead><tbody><tr><td>탐</td><td>탐색적 테스트</td><td>차터 기반으로 설계·수행·기록·학습 동시 진행</td></tr><tr><td>분</td><td>분류트리</td><td>입력 조건을 트리로 분류하고 조합</td></tr><tr><td>체</td><td>체크리스트 기반</td><td>정의된 점검 목록 기반 테스트</td></tr><tr><td>특</td><td>특성 테스트</td><td>품질 특성 기반 테스트</td></tr><tr><td>오</td><td>오류 추정</td><td>경험과 과거 결함으로 오류 가능 영역 집중</td></tr><tr><td>혹</td><td>애드혹 테스트</td><td>계획 없이 즉흥적 결함 탐색</td></tr></tbody></table></div><h4 id="s9-탐색적">탐색적 테스트 구성요소: 차·박·노·디</h4><div class="table-wrap"><table><thead><tr><th>요소</th><th>의미</th><th>답안 포인트</th></tr></thead><tbody><tr><td>테스트 차터</td><td>목표와 범위 설정</td><td>방향성 제공</td></tr><tr><td>타임 박싱</td><td>정해진 시간 내 집중 테스트</td><td>효율성</td></tr><tr><td>테스트 노트</td><td>수행 과정과 결함 기록</td><td>재현성</td></tr><tr><td>요약 회고</td><td>결과 공유와 개선 논의</td><td>지식 공유</td></tr></tbody></table></div><h4>애드혹 vs 탐색적 테스트</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>애드혹 테스트</th><th>탐색적 테스트</th></tr></thead><tbody><tr><td>계획</td><td>거의 없음</td><td>차터 기반 방향 존재</td></tr><tr><td>방식</td><td>무작위, 즉흥적</td><td>경험적이지만 구조화</td></tr><tr><td>문서화</td><td>대체로 없음</td><td>노트, 결함 중심 기록</td></tr><tr><td>장점</td><td>빠른 결함 발견</td><td>학습 기반 결함 탐색</td></tr><tr><td>한계</td><td>재현성과 분석 어려움</td><td>테스터 역량 의존</td></tr></tbody></table></div>
 </section>
 
 <section id="s10" class="topic">
@@ -611,7 +777,7 @@ button.secondary { background:white; color:#1d4ed8; }
   <h3>답안 확장 문장</h3>
   <blockquote>기능 테스트 레벨은 단위, 통합, 시스템, 인수 순서로 확장되며, 낮은 수준에서는 코드 정확성, 높은 수준에서는 사용자 요구와 비즈니스 적합성을 검증합니다.</blockquote>
   <h3>정리표</h3>
-  <h4>테스트 레벨 비교</h4><div class="table-wrap"><table><thead><tr><th>레벨</th><th>목적</th><th>대표 기법/포인트</th></tr></thead><tbody><tr><td>단위 테스트</td><td>개별 모듈, 함수, 클래스 검증</td><td>JUnit, Mock, Driver, Stub</td></tr><tr><td>통합 테스트</td><td>모듈 간 인터페이스와 데이터 흐름 검증</td><td>빅뱅, 상향식, 하향식, 샌드위치</td></tr><tr><td>시스템 테스트</td><td>전체 시스템 기능·비기능 요구 검증</td><td>성능, 보안, 회복, 스모크</td></tr><tr><td>인수 테스트</td><td>고객 요구 충족 및 승인 판단</td><td>사용자, 운영, 계약, 규정, 알파, 베타</td></tr></tbody></table></div><h4>통합 테스트 방식: 백·빅·상·하·샌</h4><div class="table-wrap"><table><thead><tr><th>방식</th><th>개념</th><th>장점</th><th>한계</th></tr></thead><tbody><tr><td>백본</td><td>핵심 기능 모듈 먼저 통합</td><td>핵심 기능 조기 검증</td><td>보조 모듈 검증 지연</td></tr><tr><td>빅뱅</td><td>모든 모듈을 한 번에 통합</td><td>빠른 전체 확인</td><td>원인 추적 어려움</td></tr><tr><td>상향식</td><td>하위 모듈부터 통합</td><td>하위 안정성 확보</td><td>상위 검증 지연, Driver 필요</td></tr><tr><td>하향식</td><td>상위 모듈부터 통합</td><td>시스템 흐름 조기 확인</td><td>하위 검증 지연, Stub 필요</td></tr><tr><td>샌드위치</td><td>상향식+하향식 혼합</td><td>균형 있는 접근</td><td>관리 복잡</td></tr></tbody></table></div><h4>인수 테스트 유형: 사·운·계·규·알·베</h4><div class="table-wrap"><table><thead><tr><th>유형</th><th>의미</th><th>포인트</th></tr></thead><tbody><tr><td>사용자 인수</td><td>비즈니스 사용자가 적정성 확인</td><td>UAT</td></tr><tr><td>운영상 인수</td><td>운영자가 백업/복구/보안 등 운영 적합성 확인</td><td>운영 준비성</td></tr><tr><td>계약 인수</td><td>계약상 인수 조건 충족 확인</td><td>계약 기준</td></tr><tr><td>규정 인수</td><td>법률, 지침, 안전 규정 준수 확인</td><td>컴플라이언스</td></tr><tr><td>알파</td><td>개발 환경에서 제한 사용자 테스트</td><td>내부 중심</td></tr><tr><td>베타</td><td>실사용 환경에서 외부 사용자 테스트</td><td>시장 피드백</td></tr></tbody></table></div>
+  <h4>테스트 레벨 비교</h4><div class="table-wrap"><table><thead><tr><th>레벨</th><th>목적</th><th>대표 기법/포인트</th></tr></thead><tbody><tr><td>단위 테스트</td><td>개별 모듈, 함수, 클래스 검증</td><td>JUnit, Mock, Driver, Stub</td></tr><tr><td>통합 테스트</td><td>모듈 간 인터페이스와 데이터 흐름 검증</td><td>빅뱅, 상향식, 하향식, 샌드위치</td></tr><tr><td>시스템 테스트</td><td>전체 시스템 기능·비기능 요구 검증</td><td>성능, 보안, 회복, 스모크</td></tr><tr><td>인수 테스트</td><td>고객 요구 충족 및 승인 판단</td><td>사용자, 운영, 계약, 규정, 알파, 베타</td></tr></tbody></table></div><h4 id="s10-통합">통합 테스트 방식: 백·빅·상·하·샌</h4><div class="table-wrap"><table><thead><tr><th>방식</th><th>개념</th><th>장점</th><th>한계</th></tr></thead><tbody><tr><td>백본</td><td>핵심 기능 모듈 먼저 통합</td><td>핵심 기능 조기 검증</td><td>보조 모듈 검증 지연</td></tr><tr><td>빅뱅</td><td>모든 모듈을 한 번에 통합</td><td>빠른 전체 확인</td><td>원인 추적 어려움</td></tr><tr><td>상향식</td><td>하위 모듈부터 통합</td><td>하위 안정성 확보</td><td>상위 검증 지연, Driver 필요</td></tr><tr><td>하향식</td><td>상위 모듈부터 통합</td><td>시스템 흐름 조기 확인</td><td>하위 검증 지연, Stub 필요</td></tr><tr><td>샌드위치</td><td>상향식+하향식 혼합</td><td>균형 있는 접근</td><td>관리 복잡</td></tr></tbody></table></div><h4 id="s10-인수">인수 테스트 유형: 사·운·계·규·알·베</h4><div class="table-wrap"><table><thead><tr><th>유형</th><th>의미</th><th>포인트</th></tr></thead><tbody><tr><td>사용자 인수</td><td>비즈니스 사용자가 적정성 확인</td><td>UAT</td></tr><tr><td>운영상 인수</td><td>운영자가 백업/복구/보안 등 운영 적합성 확인</td><td>운영 준비성</td></tr><tr><td>계약 인수</td><td>계약상 인수 조건 충족 확인</td><td>계약 기준</td></tr><tr><td>규정 인수</td><td>법률, 지침, 안전 규정 준수 확인</td><td>컴플라이언스</td></tr><tr><td>알파</td><td>개발 환경에서 제한 사용자 테스트</td><td>내부 중심</td></tr><tr><td>베타</td><td>실사용 환경에서 외부 사용자 테스트</td><td>시장 피드백</td></tr></tbody></table></div>
 </section>
 
 <section id="s11" class="topic">
@@ -644,7 +810,7 @@ button.secondary { background:white; color:#1d4ed8; }
   <h3>답안 확장 문장</h3>
   <blockquote>비기능 테스트는 시스템이 무엇을 수행하는지가 아니라 얼마나 잘 수행하는지를 검증하며, 성능·안정성·사용성·보안 등 품질 특성을 대상으로 합니다.</blockquote>
   <h3>정리표</h3>
-  <h4>성능 테스트 유형: 단·복·임 / 루·스·확·가·티 / 부·스·내·볼</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>유형</th><th>의미</th></tr></thead><tbody><tr><td>목적 기반</td><td>단위 성능 테스트</td><td>업무 또는 API 단위 응답시간 측정</td></tr><tr><td>목적 기반</td><td>복합 성능 테스트</td><td>실제 사용자 패턴과 가중치 반영</td></tr><tr><td>목적 기반</td><td>임계 성능 테스트</td><td>시스템 최대 성능 한계 측정</td></tr><tr><td>병목 탐색</td><td>루프백 테스트</td><td>특정 구간 이후 트랜잭션 차단 후 병목 식별</td></tr><tr><td>병목 탐색</td><td>스파이크 테스트</td><td>짧은 시간 급격한 트래픽 증가 검증</td></tr><tr><td>병목 탐색</td><td>확장성 테스트</td><td>자원 확장 시 성능 증가 여부 검증</td></tr><tr><td>병목 탐색</td><td>가용성 테스트</td><td>장시간 가동 중 장애와 복구 능력 확인</td></tr><tr><td>병목 탐색</td><td>티어 테스트</td><td>애플리케이션, DB, 네트워크 등 티어별 병목 확인</td></tr><tr><td>부하 관리</td><td>부하 테스트</td><td>정상 부하에서 성능과 안정성 평가</td></tr><tr><td>부하 관리</td><td>스트레스 테스트</td><td>한계 초과 부하에서 반응 확인</td></tr><tr><td>부하 관리</td><td>내구성 테스트</td><td>장시간 지속 부하에서 안정성 확인</td></tr><tr><td>데이터 처리</td><td>볼륨 테스트</td><td>대량 데이터 처리 성능 검증</td></tr></tbody></table></div><h4>성능 지표와 계산</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>의미</th><th>공식/포인트</th></tr></thead><tbody><tr><td>Response Time</td><td>요청 후 응답까지 걸린 시간</td><td>응답시간</td></tr><tr><td>Think Time</td><td>사용자 다음 요청 전 대기 시간</td><td>대기시간</td></tr><tr><td>Concurrent User</td><td>특정 시점 접속 사용자</td><td>Active + InActive</td></tr><tr><td>TPS</td><td>초당 트랜잭션 처리량</td><td>동시사용자 / (응답시간 + 대기시간)</td></tr><tr><td>Virtual User</td><td>부하를 생성하는 가상 사용자</td><td>목표 TPS × 요청 간격</td></tr></tbody></table></div><h4>몽키·고릴라·회귀 비교</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>몽키 테스트</th><th>고릴라 테스트</th><th>회귀 테스트</th></tr></thead><tbody><tr><td>목적</td><td>예상치 못한 오류와 충돌 발견</td><td>특정 기능의 견고성 확인</td><td>변경 후 기존 기능 영향 확인</td></tr><tr><td>방식</td><td>무작위 입력, 극단 조작</td><td>특정 기능 반복 집중 테스트</td><td>기존 테스트 시나리오 재수행</td></tr><tr><td>대상</td><td>시스템 전체, UI, API</td><td>특정 기능/모듈</td><td>변경 영향 범위와 핵심 기능</td></tr><tr><td>장점</td><td>예외 상황 탐색</td><td>기능 내구성 확인</td><td>Side Effect 확인</td></tr><tr><td>한계</td><td>재현 어려움</td><td>전체 시스템 검증 부족</td><td>테스트 범위 선정 필요</td></tr></tbody></table></div><h4>사용성 테스트 방법론</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>내용</th><th>예시</th></tr></thead><tbody><tr><td>정성적 방법</td><td>사용자 경험과 피드백 중심 분석</td><td>인터뷰, 관찰, Think Aloud</td></tr><tr><td>정량적 방법</td><td>수치 기반 사용성 측정</td><td>작업 성공률, 소요시간, 오류율</td></tr><tr><td>평가 기준</td><td>효과성, 효율성, 만족도</td><td>ISO 9241-11 관점</td></tr><tr><td>목적</td><td>UI/UX 개선, 접근성 검증</td><td>사용자 경험 향상</td></tr></tbody></table></div>
+  <h4 id="s11-성능">성능 테스트 유형: 단·복·임 / 루·스·확·가·티 / 부·스·내·볼</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>유형</th><th>의미</th></tr></thead><tbody><tr><td>목적 기반</td><td>단위 성능 테스트</td><td>업무 또는 API 단위 응답시간 측정</td></tr><tr><td>목적 기반</td><td>복합 성능 테스트</td><td>실제 사용자 패턴과 가중치 반영</td></tr><tr><td>목적 기반</td><td>임계 성능 테스트</td><td>시스템 최대 성능 한계 측정</td></tr><tr><td>병목 탐색</td><td>루프백 테스트</td><td>특정 구간 이후 트랜잭션 차단 후 병목 식별</td></tr><tr><td>병목 탐색</td><td>스파이크 테스트</td><td>짧은 시간 급격한 트래픽 증가 검증</td></tr><tr><td>병목 탐색</td><td>확장성 테스트</td><td>자원 확장 시 성능 증가 여부 검증</td></tr><tr><td>병목 탐색</td><td>가용성 테스트</td><td>장시간 가동 중 장애와 복구 능력 확인</td></tr><tr><td>병목 탐색</td><td>티어 테스트</td><td>애플리케이션, DB, 네트워크 등 티어별 병목 확인</td></tr><tr><td>부하 관리</td><td>부하 테스트</td><td>정상 부하에서 성능과 안정성 평가</td></tr><tr><td>부하 관리</td><td>스트레스 테스트</td><td>한계 초과 부하에서 반응 확인</td></tr><tr><td>부하 관리</td><td>내구성 테스트</td><td>장시간 지속 부하에서 안정성 확인</td></tr><tr><td>데이터 처리</td><td>볼륨 테스트</td><td>대량 데이터 처리 성능 검증</td></tr></tbody></table></div><h4>성능 지표와 계산</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>의미</th><th>공식/포인트</th></tr></thead><tbody><tr><td>Response Time</td><td>요청 후 응답까지 걸린 시간</td><td>응답시간</td></tr><tr><td>Think Time</td><td>사용자 다음 요청 전 대기 시간</td><td>대기시간</td></tr><tr><td>Concurrent User</td><td>특정 시점 접속 사용자</td><td>Active + InActive</td></tr><tr><td>TPS</td><td>초당 트랜잭션 처리량</td><td>동시사용자 / (응답시간 + 대기시간)</td></tr><tr><td>Virtual User</td><td>부하를 생성하는 가상 사용자</td><td>목표 TPS × 요청 간격</td></tr></tbody></table></div><h4>몽키·고릴라·회귀 비교</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>몽키 테스트</th><th>고릴라 테스트</th><th>회귀 테스트</th></tr></thead><tbody><tr><td>목적</td><td>예상치 못한 오류와 충돌 발견</td><td>특정 기능의 견고성 확인</td><td>변경 후 기존 기능 영향 확인</td></tr><tr><td>방식</td><td>무작위 입력, 극단 조작</td><td>특정 기능 반복 집중 테스트</td><td>기존 테스트 시나리오 재수행</td></tr><tr><td>대상</td><td>시스템 전체, UI, API</td><td>특정 기능/모듈</td><td>변경 영향 범위와 핵심 기능</td></tr><tr><td>장점</td><td>예외 상황 탐색</td><td>기능 내구성 확인</td><td>Side Effect 확인</td></tr><tr><td>한계</td><td>재현 어려움</td><td>전체 시스템 검증 부족</td><td>테스트 범위 선정 필요</td></tr></tbody></table></div><h4>사용성 테스트 방법론</h4><div class="table-wrap"><table><thead><tr><th>구분</th><th>내용</th><th>예시</th></tr></thead><tbody><tr><td>정성적 방법</td><td>사용자 경험과 피드백 중심 분석</td><td>인터뷰, 관찰, Think Aloud</td></tr><tr><td>정량적 방법</td><td>수치 기반 사용성 측정</td><td>작업 성공률, 소요시간, 오류율</td></tr><tr><td>평가 기준</td><td>효과성, 효율성, 만족도</td><td>ISO 9241-11 관점</td></tr><tr><td>목적</td><td>UI/UX 개선, 접근성 검증</td><td>사용자 경험 향상</td></tr></tbody></table></div>
 </section>
 
 <section id="s12" class="topic">
@@ -720,6 +886,28 @@ button.secondary { background:white; color:#1d4ed8; }
     <div><span class="tag">표준</span><span class="tag">TMMi</span><span class="tag">ISO</span></div>
   </div>
   <h3>도식</h3>
+  <p class="small">SW공학 10~11장(25000 · 12207 · CMMI)과 연계 — TMMi·29119는 테스트 영역 표준·성숙도</p>
+<figure class="svg-diagram" aria-label="25010 품질특성과 테스트 매핑">
+<svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" role="img">
+<text class="label-sm" x="300" y="16" text-anchor="middle">ISO 25010 품질특성(SW공학) → 테스트 유형(SW테스트) 매핑</text>
+<rect class="box-alt" x="20" y="35" width="260" height="36" rx="6"/><text class="label-sm" x="150" y="58" text-anchor="middle">25010: 기능·성능·보안·신뢰·유지보수…</text>
+<text class="label-sm" x="300" y="58" text-anchor="middle">→</text>
+<rect class="box-test" x="320" y="35" width="260" height="36" rx="6"/><text class="label-sm" x="450" y="58" text-anchor="middle">기능(s7~9) · 비기능(s11) · 인수(s10)</text>
+<rect class="box" x="20" y="85" width="130" height="32" rx="6"/><text class="label-sm" x="85" y="105" text-anchor="middle">기능적합성</text>
+<rect class="box" x="160" y="85" width="130" height="32" rx="6"/><text class="label-sm" x="225" y="105" text-anchor="middle">성능효율성</text>
+<rect class="box" x="300" y="85" width="130" height="32" rx="6"/><text class="label-sm" x="365" y="105" text-anchor="middle">보안성</text>
+<rect class="box" x="440" y="85" width="130" height="32" rx="6"/><text class="label-sm" x="505" y="105" text-anchor="middle">신뢰성·가용성</text>
+<rect class="box-warn" x="20" y="130" width="130" height="32" rx="6"/><text class="label-sm" x="85" y="150" text-anchor="middle">기능 테스트</text>
+<rect class="box-warn" x="160" y="130" width="130" height="32" rx="6"/><text class="label-sm" x="225" y="150" text-anchor="middle">성능·부하</text>
+<rect class="box-warn" x="300" y="130" width="130" height="32" rx="6"/><text class="label-sm" x="365" y="150" text-anchor="middle">보안 테스트</text>
+<rect class="box-warn" x="440" y="130" width="130" height="32" rx="6"/><text class="label-sm" x="505" y="150" text-anchor="middle">회귀·장애복구</text>
+<line class="dash" x1="85" y1="117" x2="85" y2="130"/><line class="dash" x1="225" y1="117" x2="225" y2="130"/>
+<line class="dash" x1="365" y1="117" x2="365" y2="130"/><line class="dash" x1="505" y1="117" x2="505" y2="130"/>
+<text class="label-sm" x="300" y="190" text-anchor="middle">9126(기신사효유이) → 25010(기성호상…) 진화 · 품질 모델 정의는 SW공학, 검증 실행은 SW테스트</text>
+<text class="label-sm" x="300" y="208" text-anchor="middle">29119=테스트 프로세스 표준 · TMMi=테스트 성숙 · 33063=테스트 프로세스 평가(SPICE 계열)</text>
+</svg>
+<figcaption>제품 품질 모델(25010)과 테스트 활동의 1:1 대응</figcaption>
+</figure>
 <figure class="svg-diagram" aria-label="TMMi 성숙도">
 <svg viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg" role="img">
 <text class="label-sm" x="210" y="18" text-anchor="middle">TMMi 5단계 + ISO 29119 (버·프·독·기·키)</text>
@@ -742,7 +930,7 @@ button.secondary { background:white; color:#1d4ed8; }
   <h3>답안 확장 문장</h3>
   <blockquote>테스트 표준과 성숙도 모델은 조직의 테스트 활동을 개인 역량 의존에서 표준 프로세스와 측정 기반 개선 체계로 전환시키는 기준입니다.</blockquote>
   <h3>정리표</h3>
-  <h4>TMMi 성숙도 개요</h4><div class="table-wrap"><table><thead><tr><th>레벨</th><th>의미</th><th>답안 키워드</th></tr></thead><tbody><tr><td>1 Initial</td><td>비정형, 개인 역량 의존</td><td>혼돈</td></tr><tr><td>2 Managed</td><td>프로젝트 단위 테스트 관리</td><td>정책, 계획, 모니터링</td></tr><tr><td>3 Defined</td><td>조직 표준 테스트 프로세스 정의</td><td>조직 테스트 프로세스</td></tr><tr><td>4 Measured</td><td>측정 기반 테스트 품질 관리</td><td>측정, 평가</td></tr><tr><td>5 Optimization</td><td>결함 예방과 지속적 개선</td><td>최적화, 개선</td></tr></tbody></table></div><h4>ISO/IEC/IEEE 29119 구성: 버·프·독·기·키</h4><div class="table-wrap"><table><thead><tr><th>파트</th><th>구성</th><th>내용</th></tr></thead><tbody><tr><td>Part 1</td><td>Concepts &amp; Definitions</td><td>개념과 용어 정의</td></tr><tr><td>Part 2</td><td>Test Processes</td><td>조직/관리/동적 테스트 프로세스</td></tr><tr><td>Part 3</td><td>Test Documentation</td><td>테스트 문서와 산출물</td></tr><tr><td>Part 4</td><td>Test Techniques</td><td>테스트 설계 기법</td></tr><tr><td>Part 5</td><td>Keyword-Driven Testing</td><td>키워드 기반 테스트</td></tr></tbody></table></div><h4>표준 비교</h4><div class="table-wrap"><table><thead><tr><th>표준</th><th>초점</th><th>활용</th></tr></thead><tbody><tr><td>TMMi</td><td>테스트 성숙도와 개선</td><td>조직 테스트 역량 향상</td></tr><tr><td>ISO 29119</td><td>테스트 프로세스·문서·기법 표준화</td><td>테스트 체계 수립</td></tr><tr><td>ISO 20246</td><td>리뷰 프로세스</td><td>정적 테스트와 산출물 검토</td></tr><tr><td>ISO 33063</td><td>테스트 프로세스 평가</td><td>프로세스 능력 평가</td></tr></tbody></table></div>
+  <h4 id="s14-tmmi">TMMi 성숙도 개요</h4><div class="table-wrap"><table><thead><tr><th>레벨</th><th>의미</th><th>답안 키워드</th></tr></thead><tbody><tr><td>1 Initial</td><td>비정형, 개인 역량 의존</td><td>혼돈</td></tr><tr><td>2 Managed</td><td>프로젝트 단위 테스트 관리</td><td>정책, 계획, 모니터링</td></tr><tr><td>3 Defined</td><td>조직 표준 테스트 프로세스 정의</td><td>조직 테스트 프로세스</td></tr><tr><td>4 Measured</td><td>측정 기반 테스트 품질 관리</td><td>측정, 평가</td></tr><tr><td>5 Optimization</td><td>결함 예방과 지속적 개선</td><td>최적화, 개선</td></tr></tbody></table></div><h4 id="s14-29119">ISO/IEC/IEEE 29119 구성: 버·프·독·기·키</h4><div class="table-wrap"><table><thead><tr><th>파트</th><th>구성</th><th>내용</th></tr></thead><tbody><tr><td>Part 1</td><td>Concepts &amp; Definitions</td><td>개념과 용어 정의</td></tr><tr><td>Part 2</td><td>Test Processes</td><td>조직/관리/동적 테스트 프로세스</td></tr><tr><td>Part 3</td><td>Test Documentation</td><td>테스트 문서와 산출물</td></tr><tr><td>Part 4</td><td>Test Techniques</td><td>테스트 설계 기법</td></tr><tr><td>Part 5</td><td>Keyword-Driven Testing</td><td>키워드 기반 테스트</td></tr></tbody></table></div><h4>표준 비교</h4><div class="table-wrap"><table><thead><tr><th>표준</th><th>초점</th><th>활용</th></tr></thead><tbody><tr><td>TMMi</td><td>테스트 성숙도와 개선</td><td>조직 테스트 역량 향상</td></tr><tr><td>ISO 29119</td><td>테스트 프로세스·문서·기법 표준화</td><td>테스트 체계 수립</td></tr><tr><td>ISO 20246</td><td>리뷰 프로세스</td><td>정적 테스트와 산출물 검토</td></tr><tr><td>ISO 33063</td><td>테스트 프로세스 평가</td><td>프로세스 능력 평가</td></tr></tbody></table></div>
 </section>
 
 <section id="s15" class="topic">
@@ -973,6 +1161,15 @@ document.getElementById('showAll').addEventListener('click', () => {
   const allOpen = cards.every(c => c.classList.contains('flipped'));
   cards.forEach(c => c.classList.toggle('flipped', !allOpen));
 });
+
+function filterMnemonics(inp){
+  const q=(inp.value||'').toLowerCase().trim();
+  const list=inp.closest('.mnemonic-book-section');
+  if(!list) return;
+  list.querySelectorAll('.mnemonic-item').forEach(el=>{
+    el.classList.toggle('hidden', q && !el.textContent.toLowerCase().includes(q));
+  });
+}
 </script>
 </body>
 </html>
