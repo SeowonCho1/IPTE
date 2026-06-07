@@ -112,11 +112,11 @@ td:first-child { font-weight:800; width:18%; color:#1f2937; background:#fafafa; 
   </div>
 <!-- MNEMONIC_BOOK -->
 <section class="panel mnemonic-book-section" id="mnemonic-book">
-<h2>📖 두음 모음집 — 경영컨설팅</h2>
+<details class="mnemonic-book-wrap" open>
+<summary><span class="mn-wrap-title">📖 두음 모음집 — 경영컨설팅</span><span class="mn-wrap-hint">전체 접기/펼치기</span></summary>
+<div class="mnemonic-book-body">
 <p class="subtle">두음 → 출처(몇 장) → 풀이 → 설명을 단계별로 접었다 펼칠 수 있습니다.</p>
 <input class="mn-filter" type="search" placeholder="두음 검색 (예: 작방, 결완, 기신…)" oninput="filterMnemonics(this)"/>
-<details class="mnemonic-book" open>
-<summary>📖 전체 두음 목록 접기/펼치기</summary>
 <div class="mnemonic-list">
 <details class="mnemonic-item">
 <summary><span class="mn-from">0. 답안 확장</span><span class="mn-key">키-사-시</span></summary>
@@ -239,6 +239,7 @@ td:first-child { font-weight:800; width:18%; color:#1f2937; background:#fafafa; 
 </details>
 </div>
 </details>
+</div>
 </div>
 </details>
 </section>
