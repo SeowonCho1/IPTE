@@ -1,128 +1,32 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SW 테스트 기술사 분석 키워드 & 암기카드 - 표 수정 / 사이드 목차</title>
-<style>
-:root {
-  --bg:#f8fafc; --paper:#ffffff; --ink:#1f2937; --muted:#64748b; --line:#e2e8f0;
-  --primary:#2563eb; --primary-dark:#1e40af; --soft:#eff6ff; --accent:#7c3aed; --warn:#fff7ed;
-  --sidebar:#ffffff;
-}
-* { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body {
-  margin:0; font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",Arial,sans-serif;
-  background:var(--bg); color:var(--ink); line-height:1.65; word-break:keep-all; overflow-wrap:break-word;
-}
-header {
-  padding:34px 28px; background:linear-gradient(135deg,#1d4ed8,#7c3aed); color:white;
-}
-header h1 { margin:0 0 10px; font-size:30px; letter-spacing:-.03em; }
-header p { margin:6px 0; opacity:.95; }
-.back-home { display:inline-flex; align-items:center; gap:4px; color:rgba(255,255,255,.92); text-decoration:none; font-size:14px; font-weight:700; margin-bottom:12px; padding:7px 14px; border:1px solid rgba(255,255,255,.35); border-radius:999px; transition:background .15s; }
-.back-home:hover { background:rgba(255,255,255,.15); color:#fff; }
-.layout { max-width:1440px; margin:0 auto; display:grid; grid-template-columns:280px minmax(0, 1fr); gap:24px; padding:24px; }
-.sidebar { position:sticky; top:16px; align-self:start; max-height:calc(100vh - 32px); overflow:auto; background:var(--sidebar); border:1px solid var(--line); border-radius:18px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,.05); }
-.sidebar-title { font-weight:800; color:#0f172a; margin:0 0 12px; display:flex; align-items:center; gap:8px; }
-.sidebar a { display:block; text-decoration:none; color:#334155; padding:9px 10px; border-radius:10px; font-size:14px; line-height:1.35; margin:2px 0; }
-.sidebar a:hover { background:var(--soft); color:var(--primary-dark); }
-.content { min-width:0; }
-.card, .topic { background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:22px; margin:0 0 20px; box-shadow:0 8px 24px rgba(15,23,42,.05); }
-.topic { scroll-margin-top:18px; }
-.mobile-toc { display:none; }
-.section-head { display:flex; justify-content:space-between; gap:14px; align-items:flex-start; flex-wrap:wrap; }
-h2 { margin:0 0 12px; font-size:25px; color:#111827; border-left:6px solid var(--primary); padding-left:12px; letter-spacing:-.03em; }
-h3 { margin:22px 0 8px; font-size:17px; color:#334155; }
-h4 { margin:18px 0 8px; font-size:15px; color:#0f172a; }
-.tag { display:inline-block; padding:5px 10px; border-radius:999px; background:var(--soft); color:#1d4ed8; font-size:13px; margin:3px; }
-.diagram { background:#0f172a; color:#e0f2fe; padding:18px; border-radius:14px; overflow:auto; font-family:"D2Coding","SFMono-Regular",Consolas,monospace; font-size:14px; line-height:1.65; white-space:pre; }
-.kw { list-style:none; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; }
-.kw li { border:1px solid var(--line); border-radius:12px; padding:12px; background:#fcfcfd; }
-.kw b { display:block; color:#1d4ed8; margin-bottom:4px; }
-.kw span { color:#334155; }
-blockquote { margin:0; padding:15px 18px; border-left:5px solid var(--accent); background:#faf5ff; border-radius:12px; }
-.table-wrap { width:100%; overflow-x:auto; border:1px solid var(--line); border-radius:14px; margin:8px 0 18px; }
-table { width:100%; border-collapse:collapse; min-width:680px; background:white; table-layout:auto; }
-th, td { padding:11px 12px; border-bottom:1px solid var(--line); border-right:1px solid var(--line); vertical-align:top; text-align:left; white-space:normal; word-break:keep-all; overflow-wrap:break-word; }
-th:last-child, td:last-child { border-right:0; }
-tr:last-child td { border-bottom:0; }
-th { background:#f1f5f9; color:#0f172a; font-weight:800; }
-tbody tr:nth-child(even) td { background:#fbfdff; }
-.note { background:var(--warn); border-color:#fed7aa; }
-.card-tools { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 18px; }
-input, select, button { padding:10px 12px; border:1px solid var(--line); border-radius:12px; background:white; font:inherit; }
-button { cursor:pointer; background:#2563eb; color:white; border-color:#2563eb; }
-button.secondary { background:white; color:#1d4ed8; }
-.flash-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
-.flash { min-height:165px; perspective:1000px; cursor:pointer; }
-.flash-inner { position:relative; width:100%; min-height:165px; transition:transform .45s; transform-style:preserve-3d; }
-.flash.flipped .flash-inner { transform:rotateY(180deg); }
-.face { position:absolute; inset:0; backface-visibility:hidden; background:white; border:1px solid var(--line); border-radius:16px; padding:16px; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 6px 18px rgba(15,23,42,.05); }
-.front { border-top:5px solid #2563eb; }
-.back { transform:rotateY(180deg); background:#f8fafc; border-top:5px solid #7c3aed; }
-.badge { display:inline-block; align-self:flex-start; font-size:12px; padding:3px 8px; background:#e0e7ff; color:#3730a3; border-radius:999px; margin-bottom:8px; }
-.small { color:var(--muted); font-size:13px; }
-.top-button { position:fixed; right:18px; bottom:18px; z-index:20; text-decoration:none; color:white; background:var(--primary); padding:10px 12px; border-radius:999px; box-shadow:0 8px 20px rgba(37,99,235,.3); font-size:14px; }
-@media (max-width: 900px) {
-  header { padding:28px 18px; }
-  header h1 { font-size:24px; }
-  .layout { display:block; padding:14px; }
-  .sidebar { display:none; }
-  .mobile-toc { display:block; }
-  .mobile-toc details { border:1px solid var(--line); border-radius:14px; padding:12px; background:white; }
-  .mobile-toc summary { font-weight:800; cursor:pointer; }
-  .mobile-toc a { display:block; padding:8px 4px; color:#334155; text-decoration:none; border-bottom:1px solid #eef2f7; }
-  .card, .topic { padding:16px; border-radius:16px; }
-  h2 { font-size:20px; }
-  .diagram { font-size:13px; }
-  table { min-width:620px; font-size:14px; }
-  th, td { padding:9px 10px; }
-  .top-button { display:none; }
-}
-@media print {
-  body { background:white; }
-  header { background:#fff; color:#111; border-bottom:2px solid #111; }
-  .layout { display:block; padding:0; }
-  .sidebar, .mobile-toc, .card-tools, button, input, select, .top-button { display:none !important; }
-  .topic,.card { break-inside:avoid; box-shadow:none; }
-  .flash-inner { transform:none !important; }
-  .back { display:none; }
-  .back-home { display:none; }
-}
-</style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SW 테스트 기술사 분석 키워드 & 암기카드</title>
+<link rel="stylesheet" href="../assets/study-page.css"/>
 <link rel="stylesheet" href="../assets/diagrams.css"/>
 <link rel="stylesheet" href="../assets/mnemonic-book.css"/>
 </head>
 <body>
-<header id="top">
-  <div style="max-width:1440px;margin:0 auto;">
-    <a class="back-home" href="../index.html">← 목차로</a>
+<aside class="sidebar">
+  <a class="back-home" href="../index.html">← 목차로</a>
+  <h1>SW테스트<br>기술사 정리</h1>
+  <p class="sub">키워드 + 도식 + 암기카드</p>
+  <nav><a href="#mnemonic-book">📖 두음 모음집</a><a href="#s0">0. 기출 분석 및 공부 방식</a><a href="#s1">1. SW 테스트 개요와 7원리</a><a href="#s2">2. 테스트 구성: 정책, MTP, TMO, 테스트 생명주기</a><a href="#s3">3. 테스트 프로세스: Basis, Case, Bed, Oracle, 완료조건</a><a href="#s4">4. 임베디드 환경 테스트와 V-모델</a><a href="#s5">5. 테스트 분류 체계</a><a href="#s6">6. 정적 테스트: 리뷰, 인스펙션, 동료검토</a><a href="#s7">7. 명세기반 테스트 설계기법</a><a href="#s8">8. 구조기반 테스트와 커버리지</a><a href="#s9">9. 경험기반 테스트: 탐색적, 오류추정, 애드혹</a><a href="#s10">10. 기능 테스트 레벨: 단위, 통합, 시스템, 인수</a><a href="#s11">11. 비기능 테스트: 성능, 몽키, 사용성</a><a href="#s12">12. 전략적 테스트: RBT, Mutation, Back-to-Back, MBT</a><a href="#s13">13. 테스트 자동화, Shift Left/Right, DevTestOps</a><a href="#s14">14. 테스트 성숙도와 표준: TMMi, ISO 29119, ISO 33063</a><a href="#s15">15. AI 소프트웨어 테스트 보강 포인트</a><a href="#s16">16. 기술사 답안 템플릿</a></nav>
+</aside>
+<main class="main">
+  <a class="back-home back-home-main" href="../index.html">← 목차로</a>
+  <details class="mobile-toc"><summary>목차 열기</summary><div class="toc-links"><a href="#mnemonic-book">📖 두음 모음집</a><a href="#s0">0. 기출 분석 및 공부 방식</a><a href="#s1">1. SW 테스트 개요와 7원리</a><a href="#s2">2. 테스트 구성: 정책, MTP, TMO, 테스트 생명주기</a><a href="#s3">3. 테스트 프로세스: Basis, Case, Bed, Oracle, 완료조건</a><a href="#s4">4. 임베디드 환경 테스트와 V-모델</a><a href="#s5">5. 테스트 분류 체계</a><a href="#s6">6. 정적 테스트: 리뷰, 인스펙션, 동료검토</a><a href="#s7">7. 명세기반 테스트 설계기법</a><a href="#s8">8. 구조기반 테스트와 커버리지</a><a href="#s9">9. 경험기반 테스트: 탐색적, 오류추정, 애드혹</a><a href="#s10">10. 기능 테스트 레벨: 단위, 통합, 시스템, 인수</a><a href="#s11">11. 비기능 테스트: 성능, 몽키, 사용성</a><a href="#s12">12. 전략적 테스트: RBT, Mutation, Back-to-Back, MBT</a><a href="#s13">13. 테스트 자동화, Shift Left/Right, DevTestOps</a><a href="#s14">14. 테스트 성숙도와 표준: TMMi, ISO 29119, ISO 33063</a><a href="#s15">15. AI 소프트웨어 테스트 보강 포인트</a><a href="#s16">16. 기술사 답안 템플릿</a></div></details>
+  <div class="hero">
     <h1>SW 테스트 기술사 분석 키워드 & 암기카드</h1>
-    <p>정리 기준: 「02. SW테스트 기본반」 교재 흐름, 기출 출제 주제, 1교시·2교시 답안 확장용</p>
-    <p>수정: 표 깨짐 보정, 3단표 재구성, PC용 좌측 고정 목차, 모바일 반응형 숨김 처리</p>
+    <p>「02. SW테스트 기본반」 교재 흐름 · 기출 주제 · 1·2교시 답안 확장용</p>
+    <p class="note">PC: 왼쪽 고정 목차 / 모바일: 상단 접기형 목차 / 표: 가로 스크롤 지원</p>
   </div>
-</header>
-<div class="layout">
-  <aside class="sidebar">
-    <p class="sidebar-title">📌 목차</p>
-    <a href="#mnemonic-book">📖 두음 모음집</a>
-    <a href="#s0">0. 기출 분석 및 공부 방식</a><a href="#s1">1. SW 테스트 개요와 7원리</a><a href="#s2">2. 테스트 구성: 정책, MTP, TMO, 테스트 생명주기</a><a href="#s3">3. 테스트 프로세스: Basis, Case, Bed, Oracle, 완료조건</a><a href="#s4">4. 임베디드 환경 테스트와 V-모델</a><a href="#s5">5. 테스트 분류 체계</a><a href="#s6">6. 정적 테스트: 리뷰, 인스펙션, 동료검토</a><a href="#s7">7. 명세기반 테스트 설계기법</a><a href="#s8">8. 구조기반 테스트와 커버리지</a><a href="#s9">9. 경험기반 테스트: 탐색적, 오류추정, 애드혹</a><a href="#s10">10. 기능 테스트 레벨: 단위, 통합, 시스템, 인수</a><a href="#s11">11. 비기능 테스트: 성능, 몽키, 사용성</a><a href="#s12">12. 전략적 테스트: RBT, Mutation, Back-to-Back, MBT</a><a href="#s13">13. 테스트 자동화, Shift Left/Right, DevTestOps</a><a href="#s14">14. 테스트 성숙도와 표준: TMMi, ISO 29119, ISO 33063</a><a href="#s15">15. AI 소프트웨어 테스트 보강 포인트</a><a href="#s16">16. 기술사 답안 템플릿</a>
-  </aside>
-  <main class="content">
-    <div class="card mobile-toc">
-      <details>
-        <summary>목차 열기</summary>
-        <a href="#mnemonic-book">📖 두음 모음집</a>
-        <a href="#s0">0. 기출 분석 및 공부 방식</a><a href="#s1">1. SW 테스트 개요와 7원리</a><a href="#s2">2. 테스트 구성: 정책, MTP, TMO, 테스트 생명주기</a><a href="#s3">3. 테스트 프로세스: Basis, Case, Bed, Oracle, 완료조건</a><a href="#s4">4. 임베디드 환경 테스트와 V-모델</a><a href="#s5">5. 테스트 분류 체계</a><a href="#s6">6. 정적 테스트: 리뷰, 인스펙션, 동료검토</a><a href="#s7">7. 명세기반 테스트 설계기법</a><a href="#s8">8. 구조기반 테스트와 커버리지</a><a href="#s9">9. 경험기반 테스트: 탐색적, 오류추정, 애드혹</a><a href="#s10">10. 기능 테스트 레벨: 단위, 통합, 시스템, 인수</a><a href="#s11">11. 비기능 테스트: 성능, 몽키, 사용성</a><a href="#s12">12. 전략적 테스트: RBT, Mutation, Back-to-Back, MBT</a><a href="#s13">13. 테스트 자동화, Shift Left/Right, DevTestOps</a><a href="#s14">14. 테스트 성숙도와 표준: TMMi, ISO 29119, ISO 33063</a><a href="#s15">15. AI 소프트웨어 테스트 보강 포인트</a><a href="#s16">16. 기술사 답안 템플릿</a>
-      </details>
-    </div>
-    <div class="card note">
+<section class="panel"><div class="note">
       <b>사용 방법</b><br>
       1) 왼쪽 목차로 단원 이동 → 2) 도식으로 흐름 암기 → 3) 분석 키워드로 한 줄 확장 → 4) 정리표로 답안 구조화 → 5) 암기카드로 복원 연습
-    </div>
-    
+    </div></section>
 <!-- MNEMONIC_BOOK -->
 <section class="panel mnemonic-book-section" id="mnemonic-book">
 <details class="mnemonic-book-wrap" open>
@@ -1349,9 +1253,8 @@ button.secondary { background:white; color:#1d4ed8; }
   </div>
 </div></div>
     </section>
-  </main>
-</div>
-<a class="top-button" href="#top">↑ 위로</a>
+</main>
+<button class="top-btn" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 위로</button>
 <script>
 const grid = document.getElementById('flashGrid');
 const cards = Array.from(document.querySelectorAll('.flash'));
@@ -1384,6 +1287,18 @@ function filterMnemonics(inp){
     el.classList.toggle('hidden', q && !el.textContent.toLowerCase().includes(q));
   });
 }
+const navLinks = Array.from(document.querySelectorAll('.sidebar nav a'));
+if (navLinks.length) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-35% 0px -60% 0px', threshold: 0 });
+  document.querySelectorAll('section[id], article[id]').forEach(s => obs.observe(s));
+}
+
 </script>
 </body>
 </html>

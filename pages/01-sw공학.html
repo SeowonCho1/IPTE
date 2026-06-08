@@ -1,127 +1,28 @@
-<!DOCTYPE html>
-
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>SW공학 기술사 분석 키워드 &amp; 암기카드 - 표 수정 / 사이드 목차</title><style>
-:root {
-  --bg:#f8fafc; --paper:#ffffff; --ink:#1f2937; --muted:#64748b; --line:#e2e8f0;
-  --primary:#2563eb; --primary-dark:#1e40af; --soft:#eff6ff; --accent:#7c3aed; --warn:#fff7ed;
-  --sidebar:#ffffff; --dark:#0f172a;
-}
-* { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body {
-  margin:0; font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",Arial,sans-serif;
-  background:var(--bg); color:var(--ink); line-height:1.68; word-break:keep-all; overflow-wrap:break-word;
-}
-header {
-  padding:34px 28px; background:linear-gradient(135deg,#111827,#1d4ed8); color:white;
-}
-header > div { max-width:1440px; margin:0 auto; }
-header h1 { margin:0 0 10px; font-size:30px; letter-spacing:-.03em; line-height:1.25; }
-header p { margin:6px 0; opacity:.95; }
-.back-home { display:inline-flex; align-items:center; gap:4px; color:rgba(255,255,255,.92); text-decoration:none; font-size:14px; font-weight:700; margin-bottom:12px; padding:7px 14px; border:1px solid rgba(255,255,255,.35); border-radius:999px; transition:background .15s; }
-.back-home:hover { background:rgba(255,255,255,.15); color:#fff; }
-.layout { max-width:1440px; margin:0 auto; display:grid; grid-template-columns:280px minmax(0, 1fr); gap:24px; padding:24px; }
-.sidebar { position:sticky; top:16px; align-self:start; max-height:calc(100vh - 32px); overflow:auto; background:var(--sidebar); border:1px solid var(--line); border-radius:18px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,.05); }
-.sidebar-title { font-weight:800; color:#0f172a; margin:0 0 12px; display:flex; align-items:center; gap:8px; font-size:16px; }
-.sidebar a { display:block; text-decoration:none; color:#334155; padding:9px 10px; border-radius:10px; font-size:14px; line-height:1.35; margin:2px 0; }
-.sidebar a:hover { background:var(--soft); color:var(--primary-dark); }
-main, .content { min-width:0; }
-.card, .panel, .topic { background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:22px; margin:0 0 20px; box-shadow:0 8px 24px rgba(15,23,42,.05); }
-.panel, .topic, h2, h3 { scroll-margin-top:18px; }
-.mobile-toc { display:none; }
-.section-head { display:flex; justify-content:space-between; gap:14px; align-items:flex-start; flex-wrap:wrap; }
-h1,h2,h3,h4 { letter-spacing:-.025em; line-height:1.28; }
-h2 { margin:26px 0 12px; font-size:25px; color:#111827; border-left:6px solid var(--primary); padding-left:12px; }
-.panel > h2:first-child, .topic > h2:first-child { margin-top:0; }
-h3 { margin:22px 0 8px; font-size:18px; color:#334155; }
-h4 { margin:18px 0 8px; font-size:15px; color:#0f172a; }
-p { margin:9px 0; }
-a { color:var(--primary-dark); }
-.kicker, .tag { display:inline-block; padding:5px 10px; border-radius:999px; background:var(--soft); color:#1d4ed8; font-weight:800; font-size:13px; margin:3px 6px 3px 0; }
-.subtle { color:var(--muted); }
-.note { background:var(--warn); border:1px solid #fed7aa; border-radius:14px; padding:14px; }
-.analysis-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
-.analysis-card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px; margin:0; }
-.analysis-card h3 { margin:0 0 10px; font-size:17px; color:#111827; }
-.chips { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
-.chip { display:inline-block; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:999px; padding:4px 9px; font-size:13px; color:#334155; }
-.one-line, .mnemonic { padding:9px 10px; border-radius:10px; background:#f8fafc; margin-top:8px; }
-.mnemonic { background:#faf5ff; color:#4c1d95; }
-.diagram, pre.diagram { background:#0f172a; color:#e0f2fe; padding:18px; border-radius:14px; overflow:auto; font-family:"D2Coding","SFMono-Regular",Consolas,monospace; font-size:14px; line-height:1.65; white-space:pre; }
-pre.diagram code { color:inherit; background:transparent; padding:0; border:0; }
-pre:not(.diagram) { background:#0f172a; color:#e0f2fe; padding:16px; border-radius:14px; overflow:auto; white-space:pre; }
-code { font-family:"D2Coding","SFMono-Regular",Consolas,monospace; }
-.kw { list-style:none; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; }
-.kw li { border:1px solid var(--line); border-radius:12px; padding:12px; background:#fcfcfd; }
-.kw b { display:block; color:#1d4ed8; margin-bottom:4px; }
-.kw span { color:#334155; }
-blockquote { margin:12px 0; padding:15px 18px; border-left:5px solid var(--accent); background:#faf5ff; border-radius:12px; }
-.table-wrap { width:100%; overflow-x:auto; border:1px solid var(--line); border-radius:14px; margin:8px 0 18px; background:white; }
-table { width:100%; border-collapse:collapse; min-width:680px; background:white; table-layout:auto; }
-th, td { padding:11px 12px; border-bottom:1px solid var(--line); border-right:1px solid var(--line); vertical-align:top; text-align:left; white-space:normal; word-break:keep-all; overflow-wrap:break-word; }
-th:last-child, td:last-child { border-right:0; }
-tr:last-child td { border-bottom:0; }
-th { background:#f1f5f9; color:#0f172a; font-weight:800; }
-tbody tr:nth-child(even) td { background:#fbfdff; }
-ul,ol { padding-left:1.35em; }
-.card-tools, .tools { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 18px; }
-input, select, button { padding:10px 12px; border:1px solid var(--line); border-radius:12px; background:white; font:inherit; }
-button { cursor:pointer; background:#2563eb; color:white; border-color:#2563eb; }
-button.secondary { background:white; color:#1d4ed8; }
-.cards, .flash-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
-.flashcard, .flash { position:relative; min-height:185px; perspective:1000px; cursor:pointer; }
-/* 암기카드 뒤집기 보정: 기존 HTML의 card-front/card-back 구조와 호환 */
-.card-front, .card-back, .front, .back, .face {
-  position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
-  transition:transform .45s ease; transform-style:preserve-3d;
-  background:white; border:1px solid var(--line); border-radius:16px; padding:16px;
-  display:flex; flex-direction:column; justify-content:space-between;
-  box-shadow:0 6px 18px rgba(15,23,42,.05);
-}
-.card-front, .front { border-top:5px solid #2563eb; transform:rotateY(0deg); }
-.card-back, .back { transform:rotateY(180deg); background:#f8fafc; border-top:5px solid #7c3aed; }
-.flashcard.flipped .card-front, .flash.flipped .front { transform:rotateY(180deg); }
-.flashcard.flipped .card-back, .flash.flipped .back { transform:rotateY(360deg); }
-/* inner 구조가 있는 카드도 함께 지원 */
-.inner, .flash-inner { position:relative; width:100%; min-height:185px; transition:transform .45s; transform-style:preserve-3d; }
-.flashcard.flipped .inner, .flash.flipped .flash-inner { transform:rotateY(180deg); }
-.badge { display:inline-block; align-self:flex-start; font-size:12px; padding:3px 8px; background:#e0f2fe; color:#075985; border-radius:999px; margin-bottom:8px; }
-.hidden { display:none !important; }
-.top-button { position:fixed; right:18px; bottom:18px; background:#0f172a; color:#fff; text-decoration:none; border-radius:999px; padding:10px 14px; box-shadow:0 8px 24px rgba(15,23,42,.18); font-size:14px; }
-@media (max-width: 900px) {
-  header { padding:28px 18px; }
-  header h1 { font-size:24px; }
-  .layout { display:block; padding:14px; }
-  .sidebar { display:none; }
-  .mobile-toc { display:block; }
-  .mobile-toc details { border:1px solid var(--line); border-radius:14px; padding:12px; background:white; }
-  .mobile-toc summary { font-weight:800; cursor:pointer; }
-  .mobile-toc a { display:block; padding:8px 4px; color:#334155; text-decoration:none; border-bottom:1px solid #eef2f7; }
-  .card, .panel, .topic { padding:16px; border-radius:16px; }
-  h2 { font-size:20px; }
-  h3 { font-size:16px; }
-  .diagram, pre.diagram, pre:not(.diagram) { font-size:13px; }
-  table { min-width:620px; font-size:14px; }
-  th, td { padding:9px 10px; }
-  .top-button { display:none; }
-}
-@media print {
-  body { background:white; }
-  header { background:#fff; color:#111; border-bottom:2px solid #111; }
-  .layout { display:block; padding:0; }
-  .sidebar, .mobile-toc, .card-tools, .tools, button, input, select, .top-button { display:none !important; }
-  .panel,.topic,.card { break-inside:avoid; box-shadow:none; }
-  .inner, .flash-inner { transform:none !important; }
-  .back { display:none; }
-  .back-home { display:none; }
-}
-</style><link rel="stylesheet" href="../assets/diagrams.css"/>
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SW공학 기술사 분석 키워드 & 암기카드</title>
+<link rel="stylesheet" href="../assets/study-page.css"/>
+<link rel="stylesheet" href="../assets/diagrams.css"/>
 <link rel="stylesheet" href="../assets/mnemonic-book.css"/>
 </head>
 <body>
-<header id="top"><div><a class="back-home" href="../index.html">← 목차로</a><h1>SW공학 기술사 분석 키워드 &amp; 암기카드</h1><p>정리 기준: 「01. 소프트웨어공학 기본반」 교재 흐름, 기출 출제 주제, 1교시·2교시 답안 확장용</p><p>수정: 표 가독성 보정, PC용 좌측 고정 목차, 모바일 반응형 숨김/접기 목차 처리</p></div></header>
-<div class="layout"><aside class="sidebar"><p class="sidebar-title">📌 목차</p><a href="#mnemonic-book">📖 두음 모음집</a><a href="#0-공부-방식-키워드-암기를-답안으로-바꾸는-법">0. 공부 방식: 키워드 암기를 답안으로 바꾸는 법</a><a href="#1-SW-SW공학-SW-위기-SDLC">1. SW, SW공학, SW 위기, SDLC</a><a href="#2-SDLC-대표-모델">2. SDLC 대표 모델</a><a href="#3-SW-개발방법론">3. SW 개발방법론</a><a href="#4-Agile-Scrum-XP-Kanban">4. Agile, Scrum, XP, Kanban</a><a href="#5-CI-CD-DevOps-DevSecOps-무중단-배포">5. CI/CD, DevOps, DevSecOps, 무중단 배포</a><a href="#6-SW-개발환경과-아키텍처">6. SW 개발환경과 아키텍처</a><a href="#7-프로그래밍-언어">7. 프로그래밍 언어</a><a href="#8-소프트웨어진흥법-SW-발주-PMO">8. 소프트웨어진흥법, SW 발주, PMO</a><a href="#9-요구공학">9. 요구공학</a><a href="#10-SW-품질과-ISO-표준">10. SW 품질과 ISO 표준</a><a href="#11-프로세스-품질-SPICE-CMMI">11. 프로세스 품질, SPICE, CMMI</a><a href="#12-SW-생산성-3R-모듈화">12. SW 생산성, 3R, 모듈화</a><a href="#13-SW-안전성-ISO-IEC-Guide-51-IEC-61508-ISO-26262">13. SW 안전성, ISO/IEC Guide 51, IEC 61508, ISO 26262</a><a href="#14-기술사-답안-템플릿">14. 기술사 답안 템플릿</a><a href="#15-암기-카드">15. 암기 카드</a><a href="#analysis">분석 키워드</a><a href="#flashcards">암기카드</a><a href="#full">전체 정리</a></aside>
-<main class="content"><div class="card mobile-toc"><details><summary>목차 열기</summary><a href="#mnemonic-book">📖 두음 모음집</a><a href="#0-공부-방식-키워드-암기를-답안으로-바꾸는-법">0. 공부 방식: 키워드 암기를 답안으로 바꾸는 법</a><a href="#1-SW-SW공학-SW-위기-SDLC">1. SW, SW공학, SW 위기, SDLC</a><a href="#2-SDLC-대표-모델">2. SDLC 대표 모델</a><a href="#3-SW-개발방법론">3. SW 개발방법론</a><a href="#4-Agile-Scrum-XP-Kanban">4. Agile, Scrum, XP, Kanban</a><a href="#5-CI-CD-DevOps-DevSecOps-무중단-배포">5. CI/CD, DevOps, DevSecOps, 무중단 배포</a><a href="#6-SW-개발환경과-아키텍처">6. SW 개발환경과 아키텍처</a><a href="#7-프로그래밍-언어">7. 프로그래밍 언어</a><a href="#8-소프트웨어진흥법-SW-발주-PMO">8. 소프트웨어진흥법, SW 발주, PMO</a><a href="#9-요구공학">9. 요구공학</a><a href="#10-SW-품질과-ISO-표준">10. SW 품질과 ISO 표준</a><a href="#11-프로세스-품질-SPICE-CMMI">11. 프로세스 품질, SPICE, CMMI</a><a href="#12-SW-생산성-3R-모듈화">12. SW 생산성, 3R, 모듈화</a><a href="#13-SW-안전성-ISO-IEC-Guide-51-IEC-61508-ISO-26262">13. SW 안전성, ISO/IEC Guide 51, IEC 61508, ISO 26262</a><a href="#14-기술사-답안-템플릿">14. 기술사 답안 템플릿</a><a href="#15-암기-카드">15. 암기 카드</a><a href="#analysis">분석 키워드</a><a href="#flashcards">암기카드</a><a href="#full">전체 정리</a></details></div>
+<aside class="sidebar">
+  <a class="back-home" href="../index.html">← 목차로</a>
+  <h1>SW공학<br>기술사 정리</h1>
+  <p class="sub">키워드 + 도식 + 암기카드</p>
+  <nav><a href="#mnemonic-book">📖 두음 모음집</a><a href="#0-공부-방식-키워드-암기를-답안으로-바꾸는-법">0. 공부 방식: 키워드 암기를 답안으로 바꾸는 법</a><a href="#1-SW-SW공학-SW-위기-SDLC">1. SW, SW공학, SW 위기, SDLC</a><a href="#2-SDLC-대표-모델">2. SDLC 대표 모델</a><a href="#3-SW-개발방법론">3. SW 개발방법론</a><a href="#4-Agile-Scrum-XP-Kanban">4. Agile, Scrum, XP, Kanban</a><a href="#5-CI-CD-DevOps-DevSecOps-무중단-배포">5. CI/CD, DevOps, DevSecOps, 무중단 배포</a><a href="#6-SW-개발환경과-아키텍처">6. SW 개발환경과 아키텍처</a><a href="#7-프로그래밍-언어">7. 프로그래밍 언어</a><a href="#8-소프트웨어진흥법-SW-발주-PMO">8. 소프트웨어진흥법, SW 발주, PMO</a><a href="#9-요구공학">9. 요구공학</a><a href="#10-SW-품질과-ISO-표준">10. SW 품질과 ISO 표준</a><a href="#11-프로세스-품질-SPICE-CMMI">11. 프로세스 품질, SPICE, CMMI</a><a href="#12-SW-생산성-3R-모듈화">12. SW 생산성, 3R, 모듈화</a><a href="#13-SW-안전성-ISO-IEC-Guide-51-IEC-61508-ISO-26262">13. SW 안전성, ISO/IEC Guide 51, IEC 61508, ISO 26262</a><a href="#14-기술사-답안-템플릿">14. 기술사 답안 템플릿</a><a href="#15-암기-카드">15. 암기 카드</a><a href="#analysis">분석 키워드</a><a href="#flashcards">암기카드</a><a href="#full">전체 정리</a></nav>
+</aside>
+<main class="main">
+  <a class="back-home back-home-main" href="../index.html">← 목차로</a>
+  <details class="mobile-toc"><summary>목차 열기</summary><div class="toc-links"><a href="#mnemonic-book">📖 두음 모음집</a><a href="#0-공부-방식-키워드-암기를-답안으로-바꾸는-법">0. 공부 방식: 키워드 암기를 답안으로 바꾸는 법</a><a href="#1-SW-SW공학-SW-위기-SDLC">1. SW, SW공학, SW 위기, SDLC</a><a href="#2-SDLC-대표-모델">2. SDLC 대표 모델</a><a href="#3-SW-개발방법론">3. SW 개발방법론</a><a href="#4-Agile-Scrum-XP-Kanban">4. Agile, Scrum, XP, Kanban</a><a href="#5-CI-CD-DevOps-DevSecOps-무중단-배포">5. CI/CD, DevOps, DevSecOps, 무중단 배포</a><a href="#6-SW-개발환경과-아키텍처">6. SW 개발환경과 아키텍처</a><a href="#7-프로그래밍-언어">7. 프로그래밍 언어</a><a href="#8-소프트웨어진흥법-SW-발주-PMO">8. 소프트웨어진흥법, SW 발주, PMO</a><a href="#9-요구공학">9. 요구공학</a><a href="#10-SW-품질과-ISO-표준">10. SW 품질과 ISO 표준</a><a href="#11-프로세스-품질-SPICE-CMMI">11. 프로세스 품질, SPICE, CMMI</a><a href="#12-SW-생산성-3R-모듈화">12. SW 생산성, 3R, 모듈화</a><a href="#13-SW-안전성-ISO-IEC-Guide-51-IEC-61508-ISO-26262">13. SW 안전성, ISO/IEC Guide 51, IEC 61508, ISO 26262</a><a href="#14-기술사-답안-템플릿">14. 기술사 답안 템플릿</a><a href="#15-암기-카드">15. 암기 카드</a><a href="#analysis">분석 키워드</a><a href="#flashcards">암기카드</a><a href="#full">전체 정리</a></div></details>
+  <div class="hero">
+    <h1>SW공학 기술사 분석 키워드 & 암기카드</h1>
+    <p>「01. 소프트웨어공학 기본반」 교재 흐름 · 기출 주제 · 1·2교시 답안 확장용</p>
+    <p class="note">PC: 왼쪽 고정 목차 / 모바일: 상단 접기형 목차 / 표: 가로 스크롤 지원</p>
+  </div>
 <section class="panel"><span class="kicker">사용법</span><p>① 목차별 <b>분석 키워드</b>로 먼저 암기 포인트 확인 → ② <b>도식</b>으로 흐름 복원 → ③ <b>암기카드</b>를 클릭하며 두음과 답안 문장 연결 훈련.</p><div class="note">기술사 답안 훈련용으로, 단순 요약보다 “키워드 → 한 줄 확장 → 답안 문장” 흐름에 맞춰 구성했습니다.</div></section>
 <!-- MNEMONIC_BOOK -->
 <section class="panel mnemonic-book-section" id="mnemonic-book">
@@ -1910,7 +1811,9 @@ ASIL: 자동차 위험도 기반 안전 요구수준</code></pre>
 <p>- 정답: 계획, 개발, 빌드, 테스트, 배포, 운영 전 단계에 보안 자동화 적용</p>
 <ul><li><strong>Q8. Product Line 3대 활동?</strong></li></ul>
 <p>- 정답: Domain 공학, Application 공학, Management</p></section>
-</main></div><script>
+</main>
+<button class="top-btn" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 위로</button>
+<script>
 function filterCards(){
   const q=document.getElementById('cardSearch').value.toLowerCase();
   document.querySelectorAll('.flashcard').forEach(c=>{
@@ -1937,4 +1840,18 @@ function filterMnemonics(inp){
     el.classList.toggle('hidden', q && !el.textContent.toLowerCase().includes(q));
   });
 }
-</script><a class="top-button" href="#top">↑ 위로</a></body></html>
+const navLinks = Array.from(document.querySelectorAll('.sidebar nav a'));
+if (navLinks.length) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-35% 0px -60% 0px', threshold: 0 });
+  document.querySelectorAll('section[id], article[id]').forEach(s => obs.observe(s));
+}
+
+</script>
+</body>
+</html>
