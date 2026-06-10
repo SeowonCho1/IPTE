@@ -38,6 +38,9 @@ a { color:inherit; text-decoration:none; }
 .chips { display:flex; flex-wrap:wrap; gap:6px; margin:12px 0 14px; }
 .chips span { background:#eef2ff; color:#3730a3; border:1px solid #c7d2fe; padding:4px 9px; border-radius:999px; font-size:13px; font-weight:650; }
 .diagram { background:#0f172a; color:#e0f2fe; border-radius:14px; padding:14px 16px; margin:14px 0; overflow:auto; }
+.formula-box { background:#0f172a; color:#e0f2fe; border-radius:14px; padding:14px 16px; margin:12px 0 4px; overflow:auto; border:1px solid #1e3a5f; }
+.formula-box strong { display:block; color:#7dd3fc; margin-bottom:10px; font-size:0.95rem; }
+.formula-box pre { margin:0; font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace; font-size:13px; line-height:1.7; white-space:pre-wrap; }
 .diagram pre { margin:0; font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace; font-size:14px; line-height:1.6; }
 .table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:12px; margin:14px 0; }
 table { border-collapse:collapse; width:100%; min-width:720px; background:#fff; }
@@ -49,8 +52,56 @@ td:first-child { font-weight:800; width:18%; color:#1f2937; background:#fafafa; 
 .case-box, .answer-box { border-radius:12px; padding:14px 16px; margin:12px 0 0; }
 .case-box { background:#ecfdf5; border-left:5px solid var(--green); }
 .answer-box { background:#eff6ff; border-left:5px solid var(--accent); }
-.case-box strong, .answer-box strong { display:block; margin-bottom:4px; }
-.case-box p, .answer-box p { margin:0; }
+.answer-outline { background:#f8fafc; border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin:14px 0 0; }
+.answer-outline strong { display:block; margin-bottom:8px; color:#1e3a8a; }
+.answer-outline ol, .answer-outline ul { margin:6px 0 0; padding-left:1.4em; }
+.answer-outline li { margin:4px 0; font-size:14px; }
+.effect-box { background:#ecfdf5; border-left:5px solid var(--green); border-radius:12px; padding:14px 16px; margin:12px 0 0; }
+.limit-box { background:#fff7ed; border-left:5px solid var(--amber); border-radius:12px; padding:14px 16px; margin:12px 0 0; }
+.effect-box strong, .limit-box strong { display:block; margin-bottom:4px; }
+.effect-box p, .limit-box p { margin:0; font-size:14px; }
+.topic-card blockquote { margin:14px 0 0; padding:14px 16px; border-left:5px solid #7c3aed; background:#faf5ff; border-radius:12px; font-size:14px; }
+.topic-card blockquote strong { display:block; margin-bottom:6px; color:#5b21b6; }
+.exam-tag { display:inline-block; padding:3px 8px; border-radius:999px; background:#fef3c7; color:#92400e; font-size:12px; font-weight:700; margin-right:6px; }
+.topic-depth-wrap, .answer-extra-wrap {
+  margin:14px 0 0; border:1px solid var(--line); border-radius:12px; background:#fff; overflow:hidden;
+}
+.topic-depth-wrap summary, .answer-extra-wrap summary {
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:12px 16px; cursor:pointer; font-weight:800; background:#f8fafc; list-style:none;
+}
+.topic-depth-wrap summary::-webkit-details-marker, .answer-extra-wrap summary::-webkit-details-marker { display:none; }
+.depth-title, .answer-extra-title { color:#1e3a8a; font-size:15px; }
+.depth-hint, .answer-extra-hint { color:#64748b; font-size:12px; font-weight:600; }
+.topic-depth-body { padding:4px 16px 16px; }
+.topic-depth-body .depth-sub { margin:16px 0 8px; font-size:15px; color:#0f172a; }
+.topic-depth-body .depth-sub:first-child { margin-top:8px; }
+.topic-depth-body .table-wrap { margin:0 0 8px; }
+.answer-extra-wrap .answer-extra { padding:0 16px 16px; border-top:1px solid var(--line); }
+.answer-extra-wrap[open] summary, .topic-depth-wrap[open] summary { border-bottom:1px solid var(--line); }
+.template-card { background:#fff; border:1px solid var(--line); border-radius:18px; padding:22px; margin:20px 0 24px; box-shadow:0 4px 18px rgba(15,23,42,.05); }
+.template-card h3 { margin:0 0 12px; font-size:20px; }
+.exam-sample { background:#fffbeb; border:1px solid #fde68a; border-radius:12px; padding:14px 16px; margin:12px 0; }
+.exam-sample pre { margin:0; white-space:pre-wrap; font-family:inherit; font-size:14px; line-height:1.75; color:#1f2937; background:transparent; }
+.exam-sample .table-wrap { margin-top:12px; }
+.exam-sample .table-wrap table { min-width:480px; }
+.exam-type-block { margin:28px 0 40px; }
+.exam-type-title { display:flex; align-items:center; gap:10px; margin:0 0 8px; font-size:1.15rem; color:#0f172a; }
+.exam-badge { display:inline-block; padding:3px 11px; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:-.02em; }
+.exam-badge-1 { background:#dbeafe; color:#1e40af; }
+.exam-badge-2 { background:#fce7f3; color:#9d174d; }
+.exam-practice-item { background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px 22px; margin:18px 0; box-shadow:0 2px 12px rgba(15,23,42,.04); }
+.exam-practice-head { margin-bottom:10px; }
+.exam-num { display:inline-block; background:#0f172a; color:#fff; font-size:13px; font-weight:700; padding:4px 12px; border-radius:8px; }
+.exam-practice-q p { margin:0 0 8px; font-size:15px; line-height:1.65; }
+.exam-sub-q { margin:8px 0 0 18px; padding:0; font-size:14px; line-height:1.7; color:#334155; }
+.exam-sub-q li { margin:4px 0; }
+.exam-answer-wrap { margin-top:14px; border-top:1px dashed #e2e8f0; padding-top:12px; }
+.exam-answer-wrap summary { cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 14px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; font-weight:600; color:#0f172a; }
+.exam-answer-wrap summary::-webkit-details-marker { display:none; }
+.exam-answer-wrap[open] summary { border-bottom-left-radius:0; border-bottom-right-radius:0; border-bottom-color:transparent; background:#eff6ff; }
+.exam-answer-wrap .exam-sample { margin:0; border-top-left-radius:0; border-top-right-radius:0; border-top:none; }
+.exam-answer-hint { font-size:12px; font-weight:500; color:#64748b; }
 .case-bank { background:#fff; border:1px solid var(--line); border-radius:18px; padding:20px; margin-bottom:22px; }
 .case-bank h3 { margin:0 0 14px; }
 .case-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }

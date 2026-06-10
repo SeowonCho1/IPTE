@@ -161,11 +161,11 @@ DIAGRAMS = {
     "porter5": f'''<figure class="svg-diagram" aria-label="포터 5 Forces">
 <svg viewBox="0 0 420 380" xmlns="http://www.w3.org/2000/svg" role="img">
 <rect class="box-dark" x="150" y="150" width="120" height="60" rx="10"/><text class="label-light" x="210" y="185" text-anchor="middle">기존</text><text class="label-light" x="210" y="198" text-anchor="middle">경쟁사</text>
-<rect class="box-warn" x="160" y="20" width="100" height="44" rx="8"/><text class="label-sm" x="210" y="47" text-anchor="middle">신규 진입자</text>
+<rect class="box-warn" x="150" y="16" width="120" height="50" rx="8"/><text class="label-sm" x="210" y="40" text-anchor="middle">잠재적</text><text class="label-sm" x="210" y="54" text-anchor="middle">경쟁자</text>
 <rect class="box" x="160" y="300" width="100" height="44" rx="8"/><text class="label-sm" x="210" y="327" text-anchor="middle">대체재</text>
 <rect class="box-alt" x="20" y="158" width="100" height="44" rx="8"/><text class="label-sm" x="70" y="185" text-anchor="middle">구매자</text>
 <rect class="box-test" x="300" y="158" width="100" height="44" rx="8"/><text class="label-sm" x="350" y="185" text-anchor="middle">공급자</text>
-<line class="arrow" x1="210" y1="64" x2="210" y2="150"/>
+<line class="arrow" x1="210" y1="66" x2="210" y2="150"/>
 <line class="arrow" x1="210" y1="210" x2="210" y2="300"/>
 <line class="arrow" x1="120" y1="180" x2="150" y2="180"/>
 <line class="arrow" x1="300" y1="180" x2="270" y2="180"/>
