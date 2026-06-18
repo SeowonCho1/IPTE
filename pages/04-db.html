@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DB 기술사 분석 키워드 &amp; 암기카드</title>
+<link rel="stylesheet" href="../assets/study-page.css"/>
+<link rel="stylesheet" href="../assets/diagrams.css"/>
+<link rel="stylesheet" href="../assets/mnemonic-book.css"/>
+</head>
+<body>
+<aside class="sidebar">
+  <a class="back-home" href="../index.html">← 목차로</a>
+  <h1>DB<br>기술사 정리</h1>
+  <p class="sub">키워드 + 도식 + 암기카드</p>
+  <nav><a href="#mnemonic-book">📖 두음 모음집</a><a href="#study">0. 기출 분석 및 공부 방식</a><a href="#overview">1. Database·DBS 개요</a><a href="#dbms">2. DBMS</a><a href="#model">3. 데이터 모델</a><a href="#sql">4. SQL·DBL</a><a href="#design">5. 데이터베이스 설계</a><a href="#tx">6. 트랜잭션·회복·동시성</a><a href="#quality">7. 데이터 품질관리</a><a href="#nosql">8. NoSQL</a><a href="#answer-template">9. 기술사 답안 템플릿</a><a href="#flashcards">10. 암기카드</a><a href="#past-exams">11. 기출문제</a></nav>
+</aside>
+<main class="main">
+  <a class="back-home back-home-main" href="../index.html">← 목차로</a>
+  <details class="mobile-toc"><summary>목차 열기</summary><div class="toc-links"><a href="#mnemonic-book">📖 두음 모음집</a><a href="#study">0. 기출 분석 및 공부 방식</a><a href="#overview">1. Database·DBS 개요</a><a href="#dbms">2. DBMS</a><a href="#model">3. 데이터 모델</a><a href="#sql">4. SQL·DBL</a><a href="#design">5. 데이터베이스 설계</a><a href="#tx">6. 트랜잭션·회복·동시성</a><a href="#quality">7. 데이터 품질관리</a><a href="#nosql">8. NoSQL</a><a href="#answer-template">9. 기술사 답안 템플릿</a><a href="#flashcards">10. 암기카드</a><a href="#past-exams">11. 기출문제</a></div></details>
+  <div class="hero">
+    <h1>DB 기술사 분석 키워드 &amp; 암기카드</h1>
+    <p>「04. NewDB 기본반」 교재 흐름 · 기출 주제 · 1·2교시 답안 확장용</p>
+    <p class="note">PC: 왼쪽 고정 목차 / 모바일: 상단 접기형 목차 / 표: 가로 스크롤 지원</p>
+  </div>
+<section class="panel"><span class="kicker">사용법</span><p>① <b>두음 모음집</b>으로 암기 포인트 확인 → ② <b>도식·표</b>로 흐름 복원 → ③ <b>답안 확장 문장</b>으로 1·2교시 연습 → ④ <b>암기카드·기출</b>로 복원 훈련.</p><div class="note">「04. NewDB 기본반」 교재(179p) 흐름 기준 · 기출 131~135회 연계</div></section>
+<!-- MNEMONIC_BOOK -->
+<section class="panel mnemonic-book-section" id="mnemonic-book">
+<details class="mnemonic-book-wrap" open>
+<summary><span class="mn-wrap-title">📖 두음 모음집 — DB</span><span class="mn-wrap-hint">전체 접기/펼치기</span></summary>
+<div class="mnemonic-book-body">
+<p class="subtle">기본반 NewDB 교재 기준 · 출처 → 두음 → 풀이 → 설명</p>
+<input class="mn-filter" type="search" placeholder="두음 검색 (예: ACID, 통저운공, 개도참사…)" oninput="filterMnemonics(this)"/>
+<div class="mnemonic-list"><details class="mnemonic-item">
+<summary><span class="mn-from">1. DBS 특징</span><span class="mn-key">실중무공독보</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 실(시간접근) · 중(복최소) · 무(결성) · 공(유) · 독(립) · 보(안)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>DBS 6대 특징. 파일시스템 대비 DBMS 도입 근거.</p>
+<p><a href="#overview-0">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">1. DB 특성</span><span class="mn-key">통저운공</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 통(합) · 저(장) · 운(영) · 공(용)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>데이터베이스 4대 특성 + 실시간·변화·동시공유·참조.</p>
+<p><a href="#overview-1">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">1. DIKW</span><span class="mn-key">데이터-정보-지식-지혜</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> Data → Information → Knowledge → Wisdom</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>DIKW 피라미드. 데이터 가치 변환 계층.</p>
+<p><a href="#overview-2">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">2. DBMS 특징</span><span class="mn-key">사참중대상</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 사(용자) · 참(조무결성) · 중(복최소) · 대(용량) · 상(용성)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>DBMS 5대 특징. 파일시스템 문제점 대비.</p>
+<p><a href="#dbms-0">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">3. ER 개체</span><span class="mn-key">유개사기중행</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 유(형) · 개(념) · 사(건) · 기(타)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>ER 모델 개체 4유형.</p>
+<p><a href="#model-1">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">3. 무결성</span><span class="mn-key">개도참사</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 개(체) · 도(메인) · 참(조) · 사(용자정의)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>릴레이션 무결성 제약 4종.</p>
+<p><a href="#model-4">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">4. SQL 분류</span><span class="mn-key">DDL-DML-DCL</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 정의 · 조작 · 제어</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>SQL 3분류. DDL/DML/DCL 답안 필수.</p>
+<p><a href="#sql-0">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">5. 설계 단계</span><span class="mn-key">개논물</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 개(념) · 논(리) · 물(리)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>데이터모델링 3단계.</p>
+<p><a href="#design-0">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">5. 정규화</span><span class="mn-key">1-2-3-BCNF-4-5</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 제1~5차 + BCNF</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>정규화 단계 순서. 이상현상 제거.</p>
+<p><a href="#design-3">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">5. 반정규화</span><span class="mn-key">테이블통합</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 성능·단순화 vs 무결성 Trade-off</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>반정규화는 성능 목적. 기출 빈출.</p>
+<p><a href="#design-4">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">6. ACID</span><span class="mn-key">원일고영</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 원(자성) · 일(관성) · 고(립성) · 영(속성)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>트랜잭션 4속성. 회복·병행제어 연계.</p>
+<p><a href="#tx-0">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">6. 회복</span><span class="mn-key">로체그백</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 로(그) · 체(크포인트) · 그(림자페이징) · 백(업)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>회복기법 4유형. 기출 135회.</p>
+<p><a href="#tx-2">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">6. 락</span><span class="mn-key">공배갱</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 공(유) · 배(타) · 갱(신)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>Lock 3모드. 2PL·교착 주의.</p>
+<p><a href="#tx-4">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">7. DQ 품질</span><span class="mn-key">완유일정접</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 완(전) · 유(효) · 일(관) · 정(확) · 접(근) · 유(일)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>데이터 품질 6대 기준(내용인증).</p>
+<p><a href="#quality-0">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">8. NoSQL</span><span class="mn-key">BASE</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> Basically Available · Soft-state · Eventually Consistent</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>RDB ACID 대비 NoSQL 일관성 모델.</p>
+<p><a href="#nosql-0">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">8. CAP</span><span class="mn-key">C-A-P 중 2</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> Consistency · Availability · Partition Tolerance</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>분산환경에서 3중 2만 선택.</p>
+<p><a href="#nosql-1">→ 본문 이동</a></p>
+</details>
+</div>
+</details></div>
+</div>
+</details>
+</section>
+<section id="study" class="section"><h2>0. 기출 분석 및 공부 방식</h2><article id="study-0" class="topic-card">
+<div class="topic-head"><div><h3>DB 기술사 공부 방식</h3><p class="pages">교재 범위: 교재 전체</p></div>
+<span class="mnemonic">암기: 키-도-표</span></div>
+<div class="chips"><span>키워드</span><span>도식</span><span>표</span><span>기출연계</span></div>
+<div class="diagram"><pre>① 기출 키워드 확인 → ② 도식·흐름 암기 → ③ 표로 구성요소 완전기재 → ④ 답안 문장 확장</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>키워드</td><td>두음·영문약어·구성요소를 먼저 나열</td><td>ACID, CAP, 정규화 단계, 회복기법 4종</td></tr><tr><td>도식</td><td>흐름·계층·비교를 그림으로 복원</td><td>3단계 스키마, ER→릴레이션, ACID-회복/병행제어</td></tr><tr><td>표</td><td>구분/개념/특징 3열 표로 답안 구조화</td><td>무결성 4종, 락 단위, NoSQL 분류</td></tr><tr><td>기출</td><td>135·134·133·132·131회 빈출 주제 우선</td><td>회복, 반정규화, CAP, ACID, DQ인증</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">1·2교시 답안 틀</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>1교시</td><td>정의 2~3줄 → 구성요소 표 → 비교 1개 → 결론 2줄</td><td>30줄 내외</td></tr><tr><td>2교시</td><td>개요 → 핵심(표+도식) → 절차/사례 → 한계·결론</td><td>70줄 4단 구조</td></tr><tr><td>비교형</td><td>정적/동적 SQL, 식별/비식별, RDB/NoSQL, Row/Column DB</td><td>차이점 표 필수</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>DB 과목은 개념 정의만 쓰면 감점되므로, 키워드 나열 후 표·도식으로 구성요소를 완전히 기재하고 기출 주제와 연결해 답안을 확장해야 한다.</p></div>
+</article></section>
+<section id="overview" class="section"><h2>1. Database·DBS 개요</h2><article id="overview-0" class="topic-card">
+<div class="topic-head"><div><h3>Database System(DBS) 개요</h3><p class="pages">교재 범위: p.6~8</p></div>
+<span class="mnemonic">암기: 실중무공독보</span></div>
+<div class="chips"><span>DBS</span><span>DB</span><span>DBMS</span><span>DDL</span><span>DML</span><span>DCL</span></div>
+<div class="diagram"><pre>[DB] + [DBMS] + [DBL] + [사용자] + [HW] → 조직 정보 제공</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>DBS</td><td>DB+DBMS로 조직 필요 정보를 제공하는 전체 시스템</td><td>실시간·중복최소·무결성·공유·독립·보안</td></tr><tr><td>DB</td><td>여러 사용자가 공유하는 통합 운영데이터 집합</td><td>통합·저장·운영·공유</td></tr><tr><td>DBMS</td><td>데이터 검색·삽입·삭제·수정 및 공유를 담당</td><td>정의·조작·제어</td></tr><tr><td>DBL</td><td>DB 구축·활용·관리 언어</td><td>DDL·DML·DCL</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">DBS 구성요소</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>데이터베이스</td><td>특정 조직 사용자가 공유하는 통합 운영데이터 집합</td><td>통저운공</td></tr><tr><td>DBMS</td><td>응용 대신 데이터 조작·공유를 담당하는 시스템</td><td>정의·조작·제어</td></tr><tr><td>사용자</td><td>DBA, 최종사용자, 응용프로그래머</td><td>역할별 권한</td></tr><tr><td>HW</td><td>메인메모리, CPU, I/O, 대용량 저장장치</td><td>성능 직결</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>DBS는 데이터베이스와 DBMS, 데이터언어, 사용자, 하드웨어로 구성되며, 실시간 접근·중복 최소화·무결성·동시 공유·데이터 독립성·보안을 특징으로 한다.</p></div>
+</article><article id="overview-1" class="topic-card">
+<div class="topic-head"><div><h3>Database 개요·DIKW·진화</h3><p class="pages">교재 범위: p.7~9</p></div>
+<span class="mnemonic">암기: 통저운공 / DIKW</span></div>
+<div class="chips"><span>통합성</span><span>저장성</span><span>운영성</span><span>공용성</span><span>DIKW</span></div>
+<div class="diagram"><pre>Data → Information → Knowledge → Wisdom (가치 상승)</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>DB 정의</td><td>여러 응용이 공용할 수 있도록 통합·저장된 운영데이터 집합</td><td>통저운공 + 실시간·변화·동시공유</td></tr><tr><td>DIKW</td><td>데이터→정보→지식→지혜 계층적 가치 변환 모델</td><td>의사결정 지원 관점</td></tr><tr><td>진화</td><td>1960 파일→1970 관계형→1990 DW/OLAP→2000 XML→NoSQL→클라우드 DBaaS</td><td>시대별 기술 변화</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">DB 진화 연표</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>1970</td><td>Codd 관계형 DB 이론, Peter Chen ER 모델</td><td>RDB 기반</td></tr><tr><td>1990</td><td>DW, Data Mart, OLAP 등장</td><td>다차원 분석</td></tr><tr><td>2000후반</td><td>빅데이터, NoSQL, 분산 DB</td><td>비정형·확장성</td></tr><tr><td>2010~</td><td>DBaaS, 인메모리 DB, 그래프 DB, AI 결합</td><td>클라우드·실시간</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>데이터베이스는 조직 운영데이터를 통합·저장·공유하는 집합체이며, DIKW 피라미드를 통해 데이터가 정보·지식·지혜로 변환되는 과정을 이해해야 한다.</p></div>
+</article><article id="overview-2" class="topic-card">
+<div class="topic-head"><div><h3>3단계 DB 구조·데이터 독립성·스키마</h3><p class="pages">교재 범위: p.10~16</p></div>
+<span class="mnemonic">암기: 외개내 / 논물</span></div>
+<div class="chips"><span>외부스키마</span><span>개념스키마</span><span>내부스키마</span><span>논리적독립</span><span>물리적독립</span></div>
+<div class="diagram"><pre>[외부뷰] → [개념스키마] → [내부스키마/물리저장]</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>외부스키마</td><td>사용자·응용이 보는 개별 뷰</td><td>사용자별 관점</td></tr><tr><td>개념스키마</td><td>전체 논리 구조(엔터티·관계)</td><td>DBA 관점</td></tr><tr><td>내부스키마</td><td>물리적 저장 구조</td><td>성능·저장 최적화</td></tr><tr><td>논리적 독립</td><td>개념 스키마 변경이 외부 스키마에 영향 최소</td><td>응용 독립성</td></tr><tr><td>물리적 독립</td><td>내부 스키마 변경이 개념 스키마에 영향 없음</td><td>저장 구조 변경 용이</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">데이터 사전</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>정의</td><td>DB에 관한 메타데이터를 저장·관리하는 시스템</td><td>스키마·통계·접근권한</td></tr><tr><td>역할</td><td>DBMS가 스키마 정보를 참조해 DDL/DML 처리</td><td>자동 관리</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>3단계 DB 구조는 외부·개념·내부 스키마로 구분되며, 논리적·물리적 데이터 독립성을 통해 응용과 저장 구조 변경의 영향을 분리한다.</p></div>
+</article></section>
+<section id="dbms" class="section"><h2>2. DBMS</h2><article id="dbms-0" class="topic-card">
+<div class="topic-head"><div><h3>DBMS 개요·파일시스템 비교</h3><p class="pages">교재 범위: p.19~25</p></div>
+<span class="mnemonic">암기: 사참중대상</span></div>
+<div class="chips"><span>중복최소</span><span>데이터독립</span><span>공유보안</span><span>무결성</span><span>회복</span></div>
+<div class="diagram"><pre>파일시스템(중복·종속·보안부족) → DBMS(독립·공유·무결성·회복)</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>파일 문제</td><td>중복·불일치, 데이터 종속, 공유·보안 부족, 복구 어려움</td><td>DBMS 도입 배경</td></tr><tr><td>DBMS 장점</td><td>중복 최소화, 데이터 독립성, 공유·보안, 무결성, 개발 용이</td><td>사참중대상</td></tr><tr><td>기능</td><td>정의·생성·조작·제어·보안·백업·회복</td><td>전체 DB 생명주기</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">DBMS 종류</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>계층형/네트워크형</td><td>초기 DBMS, 포인터 기반</td><td>역사적</td></tr><tr><td>관계형(RDBMS)</td><td>테이블·SQL 기반, 현재 표준</td><td>Oracle·MySQL·PostgreSQL</td></tr><tr><td>객체지향/객체관계형</td><td>복잡 객체·UDT 지원</td><td>ORDBMS</td></tr><tr><td>NoSQL/분산</td><td>비정형·수평확장</td><td>빅데이터·클라우드</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>DBMS는 파일시스템의 중복·종속·보안·복구 문제를 해결하고, 데이터 독립성과 무결성·공유·회복 기능을 제공하는 DB 관리 소프트웨어이다.</p></div>
+</article></section>
+<section id="model" class="section"><h2>3. 데이터 모델</h2><article id="model-0" class="topic-card">
+<div class="topic-head"><div><h3>데이터 모델·모델링 3단계</h3><p class="pages">교재 범위: p.28~33</p></div>
+<span class="mnemonic">암기: 개논물</span></div>
+<div class="chips"><span>개념적</span><span>논리적</span><span>물리적</span><span>ERD</span><span>정규화</span></div>
+<div class="diagram"><pre>[요구사항] → 개념(ERD) → 논리(정규화) → 물리(인덱스·파티션)</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>개념적</td><td>비즈니스 요구 반영, 엔터티·관계 정의, 기술 독립</td><td>ERD</td></tr><tr><td>논리적</td><td>DBMS 구조에 맞춘 관계·제약, 정규화</td><td>테이블·FK</td></tr><tr><td>물리적</td><td>인덱스·파티션·저장구조, 성능 최적화</td><td>반정규화 가능</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">모델링 목적</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>고성능</td><td>데이터 구조 최적화</td><td>조회·저장 효율</td></tr><tr><td>확장성</td><td>변경·확장 용이</td><td>스키마 진화</td></tr><tr><td>일관성</td><td>중복 최소화</td><td>무결성</td></tr><tr><td>의사소통</td><td>이해관계자 공통 언어</td><td>ERD·CRUD</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>데이터 모델링은 현실을 추상화해 DB 구조로 변환하는 과정으로, 개념·논리·물리 3단계를 거쳐 요구사항을 구현 가능한 스키마로 구체화한다.</p></div>
+</article><article id="model-1" class="topic-card">
+<div class="topic-head"><div><h3>ER 모델 — 개체·속성·관계</h3><p class="pages">교재 범위: p.34~41</p></div>
+<span class="mnemonic">암기: 유개사기중행</span></div>
+<div class="chips"><span>Entity</span><span>Attribute</span><span>Relationship</span><span>Cardinality</span><span>Weak Entity</span></div>
+<div class="diagram"><pre>[개체] —(관계)— [개체] / 속성은 타원, 관계는 마름모</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>개체</td><td>유형·개념·사건·기타 4유형</td><td>ERD 사각형</td></tr><tr><td>속성</td><td>단순·복합·단일·다중·유도</td><td>기본키·외래키</td></tr><tr><td>관계</td><td>1:1, 1:N, M:N</td><td>카디널리티·참여도</td></tr><tr><td>약한 개체</td><td>식별 관계로 존재, 부분키 필요</td><td>식별자 관계</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">관계 특성</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>카디널리티</td><td>한 엔터티가 참여하는 관계 수</td><td>1:1·1:N·M:N</td></tr><tr><td>참여도</td><td>전체참여 vs 부분참여</td><td>최소 참여</td></tr><tr><td>식별 관계</td><td>부모 PK가 자식 PK 일부</td><td>강한 의존</td></tr><tr><td>비식별 관계</td><td>FK만 참조, PK 독립</td><td>기출 비교</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>ER 모델은 개체·속성·관계로 현실 세계를 표현하며, 카디널리티와 식별/비식별 관계를 통해 논리 스키마 설계의 기초를 제공한다.</p></div>
+</article><article id="model-2" class="topic-card">
+<div class="topic-head"><div><h3>관계 데이터 모델·릴레이션</h3><p class="pages">교재 범위: p.42~46</p></div>
+<span class="mnemonic">암기: 튜플-속성-도메인</span></div>
+<div class="chips"><span>릴레이션</span><span>튜플</span><span>속성</span><span>도메인</span><span>키</span><span>외래키</span></div>
+<div class="diagram"><pre>릴레이션 = (R, dom(Ai), {I1..In})</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>릴레이션</td><td>n개 속성으로 구성된 튜플 집합</td><td>2차원 표</td></tr><tr><td>특징</td><td>튜플 무순서, 속성 무순서, 중복 튜플 없음</td><td>집합 이론 기반</td></tr><tr><td>키</td><td>후보키·기본키·대체키·슈퍼키</td><td>유일성·최소성</td></tr><tr><td>외래키</td><td>다른 릴레이션 기본키 참조</td><td>참조 무결성</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>관계 데이터 모델은 릴레이션(튜플 집합)으로 데이터를 표현하며, 키와 외래키를 통해 무결성을 보장한다.</p></div>
+</article><article id="model-3" class="topic-card">
+<div class="topic-head"><div><h3>관계 대수·관계 해석</h3><p class="pages">교재 범위: p.51~55</p></div>
+<span class="mnemonic">암기: 선합차교</span></div>
+<div class="chips"><span>Selection</span><span>Projection</span><span>Join</span><span>Union</span><span>Difference</span></div>
+<div class="diagram"><pre>σ(선택) · π(투영) · ⋈(조인) · ∪(합) · −(차)</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>일반 집합</td><td>합집합·교집합·차집합</td><td>릴레이션 호환 필요</td></tr><tr><td>관계 연산</td><td>선택·투영·조인·나눗셈</td><td>SQL WHERE·SELECT·JOIN</td></tr><tr><td>관계 해석</td><td>조건을 만족하는 튜플 집합</td><td>선언적 표현</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>관계 대수는 릴레이션에 대한 연산을 정의하며, SQL의 이론적 기반이 된다.</p></div>
+</article><article id="model-4" class="topic-card">
+<div class="topic-head"><div><h3>무결성 제약조건</h3><p class="pages">교재 범위: p.47~50</p></div>
+<span class="mnemonic">암기: 개도참사</span></div>
+<div class="chips"><span>개체</span><span>도메인</span><span>참조</span><span>사용자정의</span><span>NULL</span></div>
+<div class="diagram"><pre>개체(키) · 도메인(값범위) · 참조(FK) · 사용자정의(비즈니스규칙)</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>개체 무결성</td><td>기본키는 NULL·중복 불가</td><td>PK 제약</td></tr><tr><td>도메인 무결성</td><td>속성 값이 정의된 도메인 내</td><td>CHECK·타입</td></tr><tr><td>참조 무결성</td><td>FK는 참조 PK에 존재하는 값</td><td>CASCADE 옵션</td></tr><tr><td>사용자 정의</td><td>비즈니스 규칙을 제약으로 표현</td><td>트리거·CHECK</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">구현 방법</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>DDL</td><td>CREATE TABLE 시 CONSTRAINT 정의</td><td>선언적</td></tr><tr><td>트리거</td><td>INSERT/UPDATE/DELETE 시 검증</td><td>절차적</td></tr><tr><td>애플리케이션</td><td>비즈니스 로직에서 검증</td><td>유연하나 분산 위험</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>무결성 제약은 개체·도메인·참조·사용자정의 4종으로 분류되며, DDL·트리거·애플리케이션으로 구현한다.</p></div>
+</article></section>
+<section id="sql" class="section"><h2>4. SQL·DBL</h2><article id="sql-0" class="topic-card">
+<div class="topic-head"><div><h3>SQL 개요·분류</h3><p class="pages">교재 범위: p.56~59</p></div>
+<span class="mnemonic">암기: DDL-DML-DCL</span></div>
+<div class="chips"><span>DDL</span><span>DML</span><span>DCL</span><span>비절차적</span><span>ACID</span></div>
+<div class="diagram"><pre>DDL(정의) · DML(조작) · DCL(제어)</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>특징</td><td>표준화, 비절차적(What), 관계형 기반, 대량 처리</td><td>RDBMS 공통</td></tr><tr><td>DDL</td><td>CREATE·ALTER·DROP·TRUNCATE</td><td>스키마 정의</td></tr><tr><td>DML</td><td>SELECT·INSERT·UPDATE·DELETE</td><td>데이터 조작</td></tr><tr><td>DCL</td><td>GRANT·REVOKE·COMMIT·ROLLBACK</td><td>권한·트랜잭션</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>SQL은 RDBMS의 표준 데이터 언어로, DDL·DML·DCL로 스키마 정의·데이터 조작·접근 제어를 수행한다.</p></div>
+</article><article id="sql-1" class="topic-card">
+<div class="topic-head"><div><h3>DML — JOIN·서브쿼리</h3><p class="pages">교재 범위: p.61~64</p></div>
+<span class="mnemonic">암기: INNER-OUTER-CROSS</span></div>
+<div class="chips"><span>INNER JOIN</span><span>OUTER JOIN</span><span>CROSS JOIN</span><span>Subquery</span></div>
+<div class="diagram"><pre>FROM → JOIN → WHERE → GROUP BY → HAVING → SELECT</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>INNER JOIN</td><td>양쪽 모두 매칭되는 행만</td><td>가장 일반적</td></tr><tr><td>OUTER JOIN</td><td>LEFT·RIGHT·FULL — 미매칭도 포함</td><td>NULL 패딩</td></tr><tr><td>서브쿼리</td><td>WHERE·FROM·SELECT 내 중첩 쿼리</td><td>상관·비상관</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>JOIN은 여러 릴레이션을 결합하고, 서브쿼리는 복잡한 조건·집계를 표현하는 DML 핵심 기법이다.</p></div>
+</article><article id="sql-2" class="topic-card">
+<div class="topic-head"><div><h3>실행계획·접근방식</h3><p class="pages">교재 범위: p.66~70</p></div>
+<span class="mnemonic">암기: 인덱스-풀스캔</span></div>
+<div class="chips"><span>Execution Plan</span><span>Index Scan</span><span>Full Table Scan</span><span>Hash Join</span></div>
+<div class="diagram"><pre>SQL → Parser → Optimizer → Execution Plan → 실행</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>실행계획</td><td>옵티마이저가 선택한 연산 순서·접근 경로</td><td>성능 튜닝</td></tr><tr><td>접근방식</td><td>Index Scan, Full Scan, Range Scan</td><td>I/O 비용</td></tr><tr><td>조인 알고리즘</td><td>Nested Loop, Hash Join, Sort-Merge</td><td>데이터량·인덱스</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>실행계획은 SQL 처리 경로를 보여주며, 인덱스·조인 알고리즘 선택이 성능에 직결된다.</p></div>
+</article><article id="sql-3" class="topic-card">
+<div class="topic-head"><div><h3>정적 SQL vs 동적 SQL</h3><p class="pages">교재 범위: p.71~76</p></div>
+<span class="mnemonic">암기: 컴파일-런타임</span></div>
+<div class="chips"><span>Static SQL</span><span>Dynamic SQL</span><span>Embedded SQL</span><span>Prepared Statement</span></div>
+<div class="diagram"><pre>정적: 컴파일 시 SQL 확정 / 동적: 런타임에 SQL 조립</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>정적 SQL</td><td>컴파일 시 SQL 구조 확정, 실행계획 사전 생성</td><td>성능·보안 유리</td></tr><tr><td>동적 SQL</td><td>런타임에 SQL 문자열 생성·실행</td><td>유연성·동적 조건</td></tr><tr><td>비교</td><td>정적=예측 가능·최적화 / 동적=유연·오버헤드</td><td>134회 기출</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">선택 기준</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>정적</td><td>반복 쿼리, 보안 중요, 성능 우선</td><td>OLTP</td></tr><tr><td>동적</td><td>조건 가변, 리포트, 검색 화면</td><td>Ad-hoc</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>정적 SQL은 컴파일 시점에 SQL이 확정되어 성능·보안에 유리하고, 동적 SQL은 런타임 유연성이 필요할 때 사용한다.</p></div>
+</article></section>
+<section id="design" class="section"><h2>5. 데이터베이스 설계</h2><article id="design-0" class="topic-card">
+<div class="topic-head"><div><h3>DB 설계 개요·3단계 모델링</h3><p class="pages">교재 범위: p.77~81</p></div>
+<span class="mnemonic">암기: 개논물 / ER-정규화</span></div>
+<div class="chips"><span>ER 모델</span><span>정규화</span><span>무결성</span><span>성능</span><span>보안</span></div>
+<div class="diagram"><pre>요구사항 → 개념(ERD) → 논리(정규화) → 물리(인덱스·반정규화)</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>목표</td><td>데이터 구조 정의, 성능 최적화, 무결성 유지</td><td>설계 3목표</td></tr><tr><td>원칙</td><td>정규화, 무결성, 확장성, 성능, 보안</td><td>Trade-off</td></tr><tr><td>방법</td><td>ER 모델 기반 / 정규화 기반</td><td>상황별 선택</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>DB 설계는 사용자 요구를 반영해 효율적·무결한 데이터 구조를 정의하는 과정이다.</p></div>
+</article><article id="design-1" class="topic-card">
+<div class="topic-head"><div><h3>개념·논리·물리 설계</h3><p class="pages">교재 범위: p.82~97</p></div>
+<span class="mnemonic">암기: 식별-비식별 / 연결함정</span></div>
+<div class="chips"><span>Conceptual</span><span>Logical</span><span>Physical</span><span>Connection Trap</span><span>Super/Sub</span></div>
+<div class="diagram"><pre>ERD → 릴레이션 스키마 → 물리 테이블·인덱스</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>개념적</td><td>ERD, 엔터티·관계·속성, 연결함정 주의</td><td>비즈니스 중심</td></tr><tr><td>논리적</td><td>식별/비식별 관계, 자기참조, M:N 해소</td><td>정규화 전 단계</td></tr><tr><td>물리적</td><td>슈퍼/서브타입, 인덱스, 파티션, 반정규화</td><td>DBMS 종속</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">식별 vs 비식별</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>식별</td><td>부모 PK가 자식 PK 일부, 강한 의존</td><td>약한 엔터티</td></tr><tr><td>비식별</td><td>FK만 참조, 자식 PK 독립</td><td>133회 기출</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>개념 설계는 ERD로, 논리 설계는 식별/비식별 관계와 정규화로, 물리 설계는 성능·저장 구조로 구체화한다.</p></div>
+</article><article id="design-2" class="topic-card">
+<div class="topic-head"><div><h3>ER→릴레이션 변환 규칙</h3><p class="pages">교재 범위: p.88~97</p></div>
+<span class="mnemonic">암기: 1:1 / 1:N / M:N</span></div>
+<div class="chips"><span>1:1</span><span>1:N</span><span>M:N</span><span>관계엔터티</span></div>
+<div class="diagram"><pre>1:1→FK 한쪽 / 1:N→N쪽 FK / M:N→관계 릴레이션</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>1:1</td><td>한쪽에 FK 추가</td><td>선택적 참여 고려</td></tr><tr><td>1:N</td><td>N쪽에 FK</td><td>가장 흔함</td></tr><tr><td>M:N</td><td>관계 릴레이션 생성</td><td>물리 구현 불가→분해</td></tr><tr><td>다중값</td><td>별도 릴레이션 분리</td><td>1NF 위반 해소</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>ER 모델을 릴레이션으로 변환할 때 관계 카디널리티에 따라 FK 배치 또는 관계 릴레이션을 생성한다.</p></div>
+</article><article id="design-3" class="topic-card">
+<div class="topic-head"><div><h3>정규화</h3><p class="pages">교재 범위: p.98~116</p></div>
+<span class="mnemonic">암기: 1-2-3-BCNF-4-5</span></div>
+<div class="chips"><span>1NF</span><span>2NF</span><span>3NF</span><span>BCNF</span><span>4NF</span><span>5NF</span><span>이상현상</span></div>
+<div class="diagram"><pre>비정규 → 1NF(원자값) → 2NF(부분종속) → 3NF(이행종속) → BCNF → 4NF → 5NF</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>이상현상</td><td>삽입·삭제·갱신 이상</td><td>중복·종속 제거 목적</td></tr><tr><td>1NF</td><td>모든 속성 원자값</td><td>다중값 분리</td></tr><tr><td>2NF</td><td>부분 함수 종속 제거</td><td>복합키</td></tr><tr><td>3NF</td><td>이행 함수 종속 제거</td><td>일반적 목표</td></tr><tr><td>BCNF</td><td>결정자가 모두 후보키</td><td>보이스-코드</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">암스트롱 공리</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>반사</td><td>Y⊆X → X→Y</td><td>기본</td></tr><tr><td>추가</td><td>Z⊆Y, X→Y → X→Z</td><td>속성 추가</td></tr><tr><td>이행</td><td>X→Y, Y→Z → X→Z</td><td>종속 전파</td></tr><tr><td>분해</td><td>X→Y → R=(X∪Y)·(R−Y)</td><td>정규화 절차</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>정규화는 이상현상을 제거하기 위해 함수 종속에 따라 릴레이션을 분해하는 과정이다.</p></div>
+</article><article id="design-4" class="topic-card">
+<div class="topic-head"><div><h3>반정규화</h3><p class="pages">교재 범위: p.117~119</p></div>
+<span class="mnemonic">암기: 성능-무결성 Trade-off</span></div>
+<div class="chips"><span>테이블통합</span><span>중복허용</span><span>성능</span><span>I/O</span></div>
+<div class="diagram"><pre>정규화(무결성) ↔ 반정규화(성능·단순화)</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>정의</td><td>성능·개발·운영 단순화를 위해 테이블·속성 통합</td><td>135회 기출</td></tr><tr><td>절차</td><td>대상 테이블 선정 → 통합 검토 → Trade-off 평가 → 적용</td><td>3단계</td></tr><tr><td>유형</td><td>테이블 통합, 컬럼 통합, 중복 컬럼, 파생 컬럼</td><td>4유형</td></tr><tr><td>고려</td><td>데이터 무결성 저하, 중복 관리 비용</td><td>조인 감소 vs 무결성</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">적용 사유</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>성능</td><td>조인 과다, I/O 증가</td><td>DW·OLAP</td></tr><tr><td>단순화</td><td>경로 단축, 쿼리 단순</td><td>리포트</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>반정규화는 성능·운영 단순화를 위해 의도적으로 중복을 허용하는 설계 기법이며, 무결성과의 균형이 핵심이다.</p></div>
+</article><article id="design-5" class="topic-card">
+<div class="topic-head"><div><h3>상관모델링·CRUD Matrix</h3><p class="pages">교재 범위: p.120~127</p></div>
+<span class="mnemonic">암기: 시나리오-분해-ERD-CRUD</span></div>
+<div class="chips"><span>시나리오</span><span>업무기능분해</span><span>ERD</span><span>CRUD Matrix</span></div>
+<div class="diagram"><pre>시나리오 → 기능분해 → ERD → CRUD Matrix → 검증</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>시나리오</td><td>요구 기반 비즈니스 흐름 서술</td><td>업무 이해</td></tr><tr><td>기능분해</td><td>업무를 하위 기능으로 분해</td><td>객체 식별</td></tr><tr><td>CRUD</td><td>Create·Read·Update·Delete 매트릭스</td><td>133회 기출</td></tr><tr><td>목적</td><td>엔터티-프로세스 연관 검증, 누락·중복 식별</td><td>모델 검증</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>상관모델링은 시나리오·기능분해·ERD·CRUD Matrix로 요구와 데이터 모델의 정합성을 검증한다.</p></div>
+</article></section>
+<section id="tx" class="section"><h2>6. 트랜잭션·회복·동시성</h2><article id="tx-0" class="topic-card">
+<div class="topic-head"><div><h3>트랜잭션·ACID</h3><p class="pages">교재 범위: p.129~132</p></div>
+<span class="mnemonic">암기: 원일고영</span></div>
+<div class="chips"><span>Atomicity</span><span>Consistency</span><span>Isolation</span><span>Durability</span><span>ACID</span></div>
+<div class="diagram"><pre>A(회복) · C(병행제어) · I(병행제어) · D(회복)</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>원자성</td><td>All or Nothing, 전체 성공 또는 전체 취소</td><td>회복 기능</td></tr><tr><td>일관성</td><td>실행 전후 DB 상태 일관</td><td>병행제어</td></tr><tr><td>고립성</td><td>중간 결과 타 트랜잭션 접근 불가</td><td>병행제어</td></tr><tr><td>영속성</td><td>Commit 결과 영구 저장</td><td>회복·로그</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">Isolation Level</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>READ UNCOMMITTED</td><td>Dirty Read 가능</td><td>가장 낮음</td></tr><tr><td>READ COMMITTED</td><td>Committed만 읽기</td><td>일반적</td></tr><tr><td>REPEATABLE READ</td><td>동일 행 반복 읽기 일관</td><td>MySQL 기본</td></tr><tr><td>SERIALIZABLE</td><td>직렬화 수준</td><td>가장 높음</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>트랜잭션은 DB 연산의 논리적 단위이며, ACID 속성으로 무결성과 신뢰성을 보장한다.</p></div>
+</article><article id="tx-1" class="topic-card">
+<div class="topic-head"><div><h3>팬텀 충돌·장애</h3><p class="pages">교재 범위: p.132~134</p></div>
+<span class="mnemonic">암기: 팬텀-비재현</span></div>
+<div class="chips"><span>Phantom</span><span>Dirty Read</span><span>Non-repeatable</span><span>Lost Update</span></div>
+<div class="diagram"><pre>동시 실행 → 읽기/쓰기 충돌 → 이상 현상</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>팬텀</td><td>동일 조건 재조회 시 새 행 출현</td><td>135회 기출</td></tr><tr><td>Dirty Read</td><td>미커밋 데이터 읽기</td><td>격리 수준</td></tr><tr><td>Lost Update</td><td>동시 갱신으로 갱신 손실</td><td>락 필요</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>팬텀 충돌은 동일 범위 조회 시 트랜잭션 간 새로 삽입된 행이 보이는 현상으로, 격리 수준·락으로 제어한다.</p></div>
+</article><article id="tx-2" class="topic-card">
+<div class="topic-head"><div><h3>회복 기법</h3><p class="pages">교재 범위: p.135~140</p></div>
+<span class="mnemonic">암기: 로체그백 / REDO-UNDO</span></div>
+<div class="chips"><span>REDO</span><span>UNDO</span><span>Checkpoint</span><span>Shadow Paging</span><span>Backup</span></div>
+<div class="diagram"><pre>로그기반(REDO/UNDO) · 체크포인트 · 그림자페이징 · 백업복구</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>REDO/UNDO</td><td>즉시/지연 갱신 + 로그로 재적용·취소</td><td>135회 기출</td></tr><tr><td>체크포인트</td><td>특정 시점 DB 상태 저장, 복구 시간 단축</td><td>Redo/Undo 범위 축소</td></tr><tr><td>그림자 페이징</td><td>변경 시 새 페이지 생성, 기존 유지</td><td>Undo/Redo 불필요</td></tr><tr><td>백업·복구</td><td>주기 백업 + 아카이브 로그</td><td>미디어 장애</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">로그 기반</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>즉시 갱신</td><td>연산 즉시 DB 반영, Undo 필요</td><td>장애 시</td></tr><tr><td>지연 갱신</td><td>Commit 후 반영, Redo만</td><td>로그만 기록</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>회복 기법은 로그·체크포인트·그림자 페이징·백업을 통해 장애 후 일관된 DB 상태를 복원한다.</p></div>
+</article><article id="tx-3" class="topic-card">
+<div class="topic-head"><div><h3>병행제어·스케줄</h3><p class="pages">교재 범위: p.141~144</p></div>
+<span class="mnemonic">암기: 직렬가능</span></div>
+<div class="chips"><span>Schedule</span><span>Serializability</span><span>Conflict</span><span>View</span></div>
+<div class="diagram"><pre>트랜잭션 스케줄 → 직렬가능성 검증</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>스케줄</td><td>트랜잭션 연산 실행 순서</td><td>병행제어 대상</td></tr><tr><td>직렬가능</td><td>병행 결과가 어떤 직렬 실행과 동일</td><td>정확성 기준</td></tr><tr><td>충돌 직렬가능</td><td>충돌 연산 순서만 고려</td><td>검증 알고리즘</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>병행제어는 트랜잭션 스케줄의 직렬가능성을 보장해 동시 실행의 정확성을 유지한다.</p></div>
+</article><article id="tx-4" class="topic-card">
+<div class="topic-head"><div><h3>락·2PL·타임스탬프·MVCC</h3><p class="pages">교재 범위: p.145~156</p></div>
+<span class="mnemonic">암기: 공배갱 / 2PL / MVCC</span></div>
+<div class="chips"><span>Lock</span><span>2PL</span><span>Timestamp</span><span>OCC</span><span>MVCC</span><span>Deadlock</span></div>
+<div class="diagram"><pre>락(공유·배타·갱신) → 2PL → 타임스탬프 → OCC → MVCC</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>락</td><td>DB·테이블·페이지·튜플·속성 단위</td><td>공유·배타·갱신</td></tr><tr><td>2PL</td><td>확장→축소 2단계, 직렬가능 보장</td><td>교착 가능</td></tr><tr><td>타임스탬프</td><td>시간순으로 충돌 해결</td><td>교착 없음</td></tr><tr><td>MVCC</td><td>다중 버전으로 읽기·쓰기 분리</td><td>PostgreSQL·Oracle</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">락 단위</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>DB</td><td>전체, 동시성 최저</td><td>관리 단순</td></tr><tr><td>테이블/페이지</td><td>중간 수준</td><td>일반적</td></tr><tr><td>튜플</td><td>높은 동시성</td><td>락 수 증가</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>동시성 제어는 락·2PL·타임스탬프·낙관적·MVCC 등으로 트랜잭션 간 간섭을 방지한다.</p></div>
+</article></section>
+<section id="quality" class="section"><h2>7. 데이터 품질관리</h2><article id="quality-0" class="topic-card">
+<div class="topic-head"><div><h3>데이터 품질(DQ) 인증제도</h3><p class="pages">교재 범위: p.157~163</p></div>
+<span class="mnemonic">암기: 완유일정접 / 내용-관리</span></div>
+<div class="chips"><span>DQ</span><span>내용인증</span><span>관리체계인증</span><span>정형</span><span>비정형</span></div>
+<div class="diagram"><pre>데이터내용인증(Class A/B/C) · 데이터관리체계인증(Level 2~5)</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>제도</td><td>과기정통부 지정 기관이 품질 진단·인증</td><td>135회 공공데이터</td></tr><tr><td>내용인증</td><td>데이터 내용·구조 품질기준 충족</td><td>완전·유효·일관·정확·접근·유일</td></tr><tr><td>관리체계</td><td>프로세스·인력·조직·기술 성숙도</td><td>Level 2~5</td></tr><tr><td>유효기간</td><td>내용 1년 / 관리체계 3년</td><td>갱신 필요</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">품질 기준</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>정형</td><td>Simple/Normal/Complex-Type</td><td>구조 검증</td></tr><tr><td>비정형</td><td>필수·선택 심사항목</td><td>텍스트·이미지</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>데이터 품질 인증은 데이터 내용과 관리체계를 분리 평가해 공공·기업 데이터의 신뢰성을 보증한다.</p></div>
+</article></section>
+<section id="nosql" class="section"><h2>8. NoSQL</h2><article id="nosql-0" class="topic-card">
+<div class="topic-head"><div><h3>NoSQL 개요·BASE</h3><p class="pages">교재 범위: p.164~166</p></div>
+<span class="mnemonic">암기: BASE</span></div>
+<div class="chips"><span>Schema-less</span><span>Scale-out</span><span>BASE</span><span>비정형</span></div>
+<div class="diagram"><pre>RDB(ACID) ↔ NoSQL(BASE, 확장성)</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>정의</td><td>관계형 한계 극복, 비정형·확장성 최적화</td><td>Not only SQL</td></tr><tr><td>특징</td><td>스키마 없음, 수평확장, 고속처리, 다양한 모델</td><td>빅데이터</td></tr><tr><td>BASE</td><td>Basically Available, Soft-state, Eventually Consistent</td><td>ACID 대비</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">모델링 절차</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>1</td><td>도메인 모델 파악</td><td>업무 이해</td></tr><tr><td>2</td><td>쿼리 패턴 정의</td><td>RDB와 차이</td></tr><tr><td>3</td><td>데이터 모델 설계</td><td>비정규·중복 허용</td></tr><tr><td>4</td><td>성능·확장 검증</td><td>샤딩</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>NoSQL은 비정형·대용량 데이터에 수평 확장과 고속 처리를 제공하며, BASE 모델로 가용성을 우선한다.</p></div>
+</article><article id="nosql-1" class="topic-card">
+<div class="topic-head"><div><h3>CAP·PACELC</h3><p class="pages">교재 범위: p.167~168</p></div>
+<span class="mnemonic">암기: C-A-P 중 2</span></div>
+<div class="chips"><span>Consistency</span><span>Availability</span><span>Partition</span><span>CP</span><span>AP</span><span>CA</span></div>
+<div class="diagram"><pre>분산환경 → P 필수 → C vs A 선택</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>CAP</td><td>Consistency·Availability·Partition Tolerance 중 2만</td><td>131회 기출</td></tr><tr><td>CA</td><td>단일 노드 RDB</td><td>Oracle·MySQL</td></tr><tr><td>CP</td><td>일관성 우선, MongoDB·HBase</td><td>일부 가용성 희생</td></tr><tr><td>AP</td><td>가용성 우선, Cassandra·DynamoDB</td><td>Eventual Consistency</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>CAP 이론은 분산 환경에서 일관성·가용성·분할허용 중 동시 만족 불가능함을 설명하며, NoSQL 선택의 이론적 기반이다.</p></div>
+</article><article id="nosql-2" class="topic-card">
+<div class="topic-head"><div><h3>NoSQL 분류·RDB 비교</h3><p class="pages">교재 범위: p.169~176</p></div>
+<span class="mnemonic">암기: KV-Column-Document-Graph</span></div>
+<div class="chips"><span>Key-Value</span><span>Column</span><span>Document</span><span>Graph</span><span>Row DB</span><span>Column DB</span></div>
+<div class="diagram"><pre>KV(Redis) · Column(Cassandra) · Document(MongoDB) · Graph(Neo4j)</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>Key-Value</td><td>키-값 쌍, Redis·Riak</td><td>캐시·세션</td></tr><tr><td>Column Family</td><td>컬럼 단위, HBase·Cassandra</td><td>빅데이터·DW</td></tr><tr><td>Document</td><td>JSON/XML, MongoDB·Couchbase</td><td>웹·모바일</td></tr><tr><td>Graph</td><td>노드-관계, Neo4j</td><td>추천·소셜</td></tr><tr><td>Row vs Column</td><td>Row=OLTP·레코드 단위 / Column=OLAP·집계</td><td>175p</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">RDB vs NoSQL</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>RDB</td><td>ACID, 고정 스키마, 조인, CA</td><td>핵심 업무</td></tr><tr><td>NoSQL</td><td>BASE, 스키마 유연, API, CP/AP</td><td>대용량·비정형</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>NoSQL은 Key-Value·Column·Document·Graph 4유형으로 분류되며, 용도에 따라 RDB와 상호 보완적으로 활용한다.</p></div>
+</article></section>
+<section id="answer-template" class="section"><h2>9. 기술사 답안 템플릿</h2>
+<article class="template-card"><h3>9.1 DB 1교시형 (약 30줄)</h3>
+<div class="diagram"><pre>① 개념 정의 (2~3줄)
+② 핵심 구성·표 (키워드 5~7개)
+③ 비교·도식 1개 (정적/동적, 식별/비식별 등)
+④ 결론·시사점 (2~3줄)</pre></div></article>
+<article class="template-card"><h3>9.2 DB 2교시형 (약 70줄)</h3>
+<div class="diagram"><pre>1. 개요 — 정의 · 배경 · 전체 흐름도
+2. 핵심 — 구성요소 · 비교표 · 절차/알고리즘
+3. 적용 — 사례·고려사항 · 기대효과
+4. 결론 — 한계 · 대응 · 발전방향</pre></div>
+<div class="table-wrap"><table><thead><tr><th>유형</th><th>추천 구조</th></tr></thead><tbody>
+<tr><td>회복·동시성</td><td>ACID → 장애유형 → 회복기법 표 → 락/MVCC 비교</td></tr>
+<tr><td>모델링</td><td>3단계 → ER 변환 → 정규화/반정규화 Trade-off</td></tr>
+<tr><td>NoSQL</td><td>RDB 한계 → CAP → 유형 표 → RDB 비교</td></tr>
+</tbody></table></div></article>
+</section>
+<section id="flashcards" class="flash-section">
+<h2>10. 암기카드</h2>
+<div class="flash-controls">
+<input id="search" type="search" placeholder="검색…"/>
+<select id="catFilter"><option value="">전체 분류</option></select>
+<button id="shuffleBtn" type="button">섞기</button>
+<button id="revealBtn" type="button">전체 뒤집기</button>
+<button id="resetBtn" type="button">초기화</button>
+</div>
+<div class="flash-grid" id="cards"><div class="flash-card" data-cat="DBS">
+<div class="flash-front"><span class="flash-cat">DBS</span><p>DBS 6대 특징?</p></div>
+<div class="flash-back"><p>실시간접근·중복최소·무결성·동시공유·데이터독립·보안</p></div>
+</div><div class="flash-card" data-cat="DB">
+<div class="flash-front"><span class="flash-cat">DB</span><p>DB 4대 특성?</p></div>
+<div class="flash-back"><p>통합·저장·운영·공용</p></div>
+</div><div class="flash-card" data-cat="스키마">
+<div class="flash-front"><span class="flash-cat">스키마</span><p>3단계 스키마?</p></div>
+<div class="flash-back"><p>외부·개념·내부</p></div>
+</div><div class="flash-card" data-cat="무결성">
+<div class="flash-front"><span class="flash-cat">무결성</span><p>무결성 4종?</p></div>
+<div class="flash-back"><p>개체·도메인·참조·사용자정의</p></div>
+</div><div class="flash-card" data-cat="SQL">
+<div class="flash-front"><span class="flash-cat">SQL</span><p>SQL 3분류?</p></div>
+<div class="flash-back"><p>DDL·DML·DCL</p></div>
+</div><div class="flash-card" data-cat="정규화">
+<div class="flash-front"><span class="flash-cat">정규화</span><p>정규화 순서?</p></div>
+<div class="flash-back"><p>1NF→2NF→3NF→BCNF→4NF→5NF</p></div>
+</div><div class="flash-card" data-cat="ACID">
+<div class="flash-front"><span class="flash-cat">ACID</span><p>ACID?</p></div>
+<div class="flash-back"><p>Atomicity·Consistency·Isolation·Durability</p></div>
+</div><div class="flash-card" data-cat="회복">
+<div class="flash-front"><span class="flash-cat">회복</span><p>회복 4기법?</p></div>
+<div class="flash-back"><p>로그·체크포인트·그림자페이징·백업</p></div>
+</div><div class="flash-card" data-cat="CAP">
+<div class="flash-front"><span class="flash-cat">CAP</span><p>CAP 3요소?</p></div>
+<div class="flash-back"><p>Consistency·Availability·Partition Tolerance</p></div>
+</div><div class="flash-card" data-cat="NoSQL">
+<div class="flash-front"><span class="flash-cat">NoSQL</span><p>NoSQL 4유형?</p></div>
+<div class="flash-back"><p>Key-Value·Column·Document·Graph</p></div>
+</div><div class="flash-card" data-cat="반정규화">
+<div class="flash-front"><span class="flash-cat">반정규화</span><p>반정규화 목적?</p></div>
+<div class="flash-back"><p>성능·개발·운영 단순화 (무결성 Trade-off)</p></div>
+</div><div class="flash-card" data-cat="CRUD">
+<div class="flash-front"><span class="flash-cat">CRUD</span><p>CRUD Matrix 목적?</p></div>
+<div class="flash-back"><p>엔터티-프로세스 연관 검증</p></div>
+</div></div>
+</section>
+<section id="past-exams" class="section"><h2>11. 기출문제 (교재 p.2~3)</h2>
+<div class="table-wrap"><table><thead><tr><th>회차</th><th>구분</th><th>문제</th></tr></thead>
+<tbody><tr><td>135</td><td>컴시응</td><td>공공데이터 품질인증</td></tr><tr><td>135</td><td>컴시응</td><td>트랜잭션 회복 기법 — REDO/UNDO, 체크포인트, 그림자 페이징</td></tr><tr><td>135</td><td>관리</td><td>팬텀 충돌(Phantom Conflict)</td></tr><tr><td>135</td><td>관리</td><td>반정규화 — 절차·유형·고려사항</td></tr><tr><td>135</td><td>관리</td><td>확장성 해싱(Extendible Hashing)</td></tr><tr><td>135</td><td>관리</td><td>릴레이션 무결성 제약 유형·사례·구현</td></tr><tr><td>134</td><td>컴시응</td><td>DB 무결성 제약조건 — 개념·종류·생성 고려사항</td></tr><tr><td>134</td><td>관리</td><td>정적 SQL vs 동적 SQL</td></tr><tr><td>133</td><td>관리</td><td>NoSQL 유형과 모델링 절차</td></tr><tr><td>133</td><td>관리</td><td>CRUD Matrix 목적과 표현 방법</td></tr><tr><td>133</td><td>관리</td><td>RDBMS 적용 데이터모델링 — 단계·식별/비식별·고려사항</td></tr><tr><td>132</td><td>관리</td><td>분산 DB 5가지 투명성</td></tr><tr><td>131</td><td>관리</td><td>데이터 품질관리 — 아키텍처·성숙도·품질기준·전략</td></tr><tr><td>131</td><td>컴시응</td><td>NoSQL CAP</td></tr><tr><td>131</td><td>컴시응</td><td>DB 용량 산정 방법·기준</td></tr><tr><td>131</td><td>컴시응</td><td>트랜잭션 개념과 ACID</td></tr></tbody></table></div>
+<p class="note">135·134·133·132·131회 DB 관련 기출을 교재 목차와 함께 정리했습니다.</p>
+</section>
+</main>
+<button class="top-btn" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 위로</button>
+<script>
+const cards = Array.from(document.querySelectorAll('.flash-card'));
+cards.forEach(c => c.addEventListener('click', () => c.classList.toggle('flipped')));
+const catFilter = document.getElementById('catFilter');
+if (catFilter) {
+  [...new Set(cards.map(c => c.dataset.cat))].sort().forEach(cat => {
+    const opt = document.createElement('option'); opt.value = cat; opt.textContent = cat; catFilter.appendChild(opt);
+  });
+  function applyFilter() {
+    const q = (document.getElementById('search').value || '').toLowerCase();
+    const cat = catFilter.value;
+    cards.forEach(c => {
+      const text = c.textContent.toLowerCase();
+      const show = (!q || text.includes(q)) && (!cat || c.dataset.cat === cat);
+      c.style.display = show ? '' : 'none';
+    });
+  }
+  document.getElementById('search').addEventListener('input', applyFilter);
+  catFilter.addEventListener('change', applyFilter);
+  document.getElementById('shuffleBtn').addEventListener('click', () => {
+    const wrap = document.getElementById('cards');
+    cards.sort(() => Math.random() - 0.5).forEach(c => wrap.appendChild(c));
+  });
+  document.getElementById('revealBtn').addEventListener('click', () => cards.forEach(c => c.classList.add('flipped')));
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    document.getElementById('search').value=''; catFilter.value=''; cards.forEach(c => { c.style.display=''; c.classList.remove('flipped'); });
+  });
+}
+function filterMnemonics(inp){
+  const q=(inp.value||'').toLowerCase().trim();
+  const list=inp.closest('.mnemonic-book-section');
+  if(!list) return;
+  list.querySelectorAll('.mnemonic-item').forEach(el=>{
+    el.classList.toggle('hidden', q && !el.textContent.toLowerCase().includes(q));
+  });
+}
+
+const navLinks = Array.from(document.querySelectorAll('.sidebar nav a'));
+if (navLinks.length) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-35% 0px -60% 0px', threshold: 0 });
+  document.querySelectorAll('section[id], article[id]').forEach(s => obs.observe(s));
+}
+
+</script>
+</body>
+</html>
