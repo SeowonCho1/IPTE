@@ -1,0 +1,12 @@
+# Local Python deps (pip install --target tools/.pydeps)
+tools/.pydeps/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# macOS
+.DS_Store
+
+# Temp extract dirs
+.tmp-format/

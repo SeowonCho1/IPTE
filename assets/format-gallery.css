@@ -1,0 +1,89 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  line-height: 1.5;
+  color: #222;
+  background: #f0f2f5;
+}
+.top {
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1rem 1.25rem 1.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.top.hub { position: static; }
+.back {
+  display: inline-block;
+  font-size: .85rem;
+  color: #1a5fb4;
+  text-decoration: none;
+  margin-bottom: .5rem;
+}
+.back.home { margin-left: 1rem; }
+.top h1 { font-size: 1.35rem; margin-bottom: .25rem; }
+.top p { color: #555; font-size: .9rem; }
+.hub-main { max-width: 960px; margin: 0 auto; padding: 1.25rem; }
+.hub-section {
+  font-size: .95rem;
+  color: #444;
+  margin-bottom: .75rem;
+  padding-bottom: .35rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: .75rem;
+}
+.cat-card {
+  display: block;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow .15s, border-color .15s;
+}
+.cat-card:hover {
+  border-color: #1a5fb4;
+  box-shadow: 0 2px 8px rgba(26,95,180,.12);
+}
+.cat-card h2 { font-size: 1rem; margin-bottom: .35rem; color: #1a5fb4; }
+.cat-card p { font-size: .82rem; color: #666; margin-bottom: .5rem; }
+.count { font-size: .78rem; color: #888; background: #f3f4f6; padding: .15rem .45rem; border-radius: 4px; }
+.gallery {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.shot {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+.shot a { display: block; line-height: 0; }
+.shot img {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: zoom-in;
+}
+.shot figcaption {
+  padding: .45rem .75rem;
+  font-size: .75rem;
+  color: #888;
+  border-top: 1px solid #f0f0f0;
+}
+.empty { padding: 2rem; text-align: center; color: #888; }
+@media (max-width: 600px) {
+  .top h1 { font-size: 1.15rem; }
+  .cat-grid { grid-template-columns: 1fr; }
+}

@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
-"""Build pages/04-db.html from db_textbook_data.py."""
+"""Shared HTML builder for study pages (DB, AI, etc.)."""
 from html import escape
 from pathlib import Path
 
-from db_textbook_data import FLASHCARDS, MNEMONICS, PAST_EXAMS, SECTIONS
-
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "pages/04-db.html"
 
 NAV_OBSERVER = """
 const navLinks = Array.from(document.querySelectorAll('.sidebar nav a'));
@@ -82,9 +79,9 @@ def section_html(sec):
     return f'<section id="{esc(sec["id"])}" class="section"><h2>{esc(sec["title"])}</h2>{cards}</section>'
 
 
-def mnemonic_book():
+def mnemonic_book(mnemonics, title):
     items = []
-    for src, key, split, desc, anchor in MNEMONICS:
+    for src, key, split, desc, anchor in mnemonics:
         items.append(
             f"""<details class="mnemonic-item">
 <summary><span class="mn-from">{esc(src)}</span><span class="mn-key">{esc(key)}</span></summary>
@@ -101,31 +98,31 @@ def mnemonic_book():
     return f"""<!-- MNEMONIC_BOOK -->
 <section class="panel mnemonic-book-section" id="mnemonic-book">
 <details class="mnemonic-book-wrap" open>
-<summary><span class="mn-wrap-title">📖 두음 모음집 — DB</span><span class="mn-wrap-hint">전체 접기/펼치기</span></summary>
+<summary><span class="mn-wrap-title">📖 두음 모음집 — {esc(title)}</span><span class="mn-wrap-hint">전체 접기/펼치기</span></summary>
 <div class="mnemonic-book-body">
-<p class="subtle">기본반 NewDB 교재 기준 · 출처 → 두음 → 풀이 → 설명</p>
-<input class="mn-filter" type="search" placeholder="두음 검색 (예: ACID, 통저운공, 개도참사…)" oninput="filterMnemonics(this)"/>
+<p class="subtle">교재 기준 · 출처 → 두음 → 풀이 → 설명</p>
+<input class="mn-filter" type="search" placeholder="두음 검색…" oninput="filterMnemonics(this)"/>
 <div class="mnemonic-list">{''.join(items)}</div>
 </div>
 </details>
 </section>"""
 
 
-def past_exams():
+def past_exams(past_exams_list, note):
     rows = "".join(
         f"<tr><td>{esc(r)}</td><td>{esc(t)}</td><td>{esc(q)}</td></tr>"
-        for r, t, q in PAST_EXAMS
+        for r, t, q in past_exams_list
     )
-    return f"""<section id="past-exams" class="section"><h2>11. 기출문제 (교재 p.2~3)</h2>
+    return f"""<section id="past-exams" class="section"><h2>12. 기출문제</h2>
 <div class="table-wrap"><table><thead><tr><th>회차</th><th>구분</th><th>문제</th></tr></thead>
 <tbody>{rows}</tbody></table></div>
-<p class="note">135·134·133·132·131회 DB 관련 기출을 교재 목차와 함께 정리했습니다.</p>
+<p class="note">{esc(note)}</p>
 </section>"""
 
 
-def flashcards():
+def flashcards(flashcards_list):
     cards = []
-    for cat, q, a in FLASHCARDS:
+    for cat, q, a in flashcards_list:
         cards.append(
             f"""<div class="flash-card" data-cat="{esc(cat)}">
 <div class="card-front"><span>{esc(cat)}</span><p>{esc(q)}</p></div>
@@ -133,7 +130,7 @@ def flashcards():
 </div>"""
         )
     return f"""<section id="flashcards" class="flash-section">
-<h2>10. 암기카드</h2>
+<h2>11. 암기카드</h2>
 <div class="flash-controls">
 <input id="search" type="search" placeholder="검색…"/>
 <select id="catFilter"><option value="">전체 분류</option></select>
@@ -145,60 +142,52 @@ def flashcards():
 </section>"""
 
 
-def answer_template():
-    return """<section id="answer-template" class="section"><h2>9. 기술사 답안 템플릿</h2>
-<article class="template-card"><h3>9.1 DB 1교시형 (약 30줄)</h3>
+def answer_template_ai():
+    return """<section id="answer-template" class="section"><h2>10. 기술사 답안 템플릿</h2>
+<article class="template-card"><h3>10.1 AI 1교시형 (약 30줄)</h3>
 <div class="diagram"><pre>① 개념 정의 (2~3줄)
-② 핵심 구성·표 (키워드 5~7개)
-③ 비교·도식 1개 (정적/동적, 식별/비식별 등)
-④ 결론·시사점 (2~3줄)</pre></div></article>
-<article class="template-card"><h3>9.2 DB 2교시형 (약 70줄)</h3>
+② 구성요소·알고리즘 표 (키워드 5~7개)
+③ 비교·도식 1개 (지도/비지도, ROC/PR 등)
+④ 결론·윤리·시사점 (2~3줄)</pre></div></article>
+<article class="template-card"><h3>10.2 AI 2교시형 (약 70줄)</h3>
 <div class="diagram"><pre>1. 개요 — 정의 · 배경 · 전체 흐름도
 2. 핵심 — 구성요소 · 비교표 · 절차/알고리즘
 3. 적용 — 사례·고려사항 · 기대효과
-4. 결론 — 한계 · 대응 · 발전방향</pre></div>
+4. 결론 — 한계 · 윤리 · 발전방향</pre></div>
 <div class="table-wrap"><table><thead><tr><th>유형</th><th>추천 구조</th></tr></thead><tbody>
-<tr><td>회복·동시성</td><td>ACID → 장애유형 → 회복기법 표 → 락/MVCC 비교</td></tr>
-<tr><td>모델링</td><td>3단계 → ER 변환 → 정규화/반정규화 Trade-off</td></tr>
-<tr><td>NoSQL</td><td>RDB 한계 → CAP → 유형 표 → RDB 비교</td></tr>
+<tr><td>ML/DL</td><td>학습유형 → 알고리즘 → 하이퍼파라미터 → 평가지표 → 과적합 대응</td></tr>
+<tr><td>생성형AI</td><td>Foundation Model → LLM → Fine-tuning/RAG → 프롬프트 → 윤리</td></tr>
+<tr><td>강화학습</td><td>MDP → State/Action/Reward → Q-learning/DQN → 정책그래디언트</td></tr>
 </tbody></table></div></article>
 </section>"""
 
 
-def nav_links():
-    links = [
-        ("#mnemonic-book", "📖 두음 모음집"),
-    ]
-    for sec in SECTIONS:
+def nav_links(sections, extra_links):
+    links = [("#mnemonic-book", "📖 두음 모음집")]
+    for sec in sections:
         links.append((f"#{sec['id']}", sec["title"]))
-    links.extend([
-        ("#answer-template", "9. 기술사 답안 템플릿"),
-        ("#flashcards", "10. 암기카드"),
-        ("#past-exams", "11. 기출문제"),
-    ])
+    links.extend(extra_links)
     return "".join(f'<a href="{h}">{esc(t)}</a>' for h, t in links)
 
 
-def build():
-    nav = nav_links()
+def build_page(*, out_path, meta, sections, mnemonics, flashcards_list, past_exams_list, past_exams_note, answer_template_html, extra_nav):
+    nav = nav_links(sections, extra_nav)
     content = "\n".join([
-        '<section class="panel"><span class="kicker">사용법</span>'
-        "<p>① <b>두음 모음집</b>으로 암기 포인트 확인 → ② <b>도식·표</b>로 흐름 복원 "
-        "→ ③ <b>답안 확장 문장</b>으로 1·2교시 연습 → ④ <b>암기카드·기출</b>로 복원 훈련.</p>"
-        '<div class="note">「04. NewDB 기본반」 교재(179p) 흐름 기준 · 기출 131~135회 연계</div></section>',
-        mnemonic_book(),
-        *[section_html(s) for s in SECTIONS],
-        answer_template(),
-        flashcards(),
-        past_exams(),
+        f'<section class="panel"><span class="kicker">사용법</span>'
+        f"<p>{meta['usage']}</p>"
+        f'<div class="note">{meta["note"]}</div></section>',
+        mnemonic_book(mnemonics, meta["mnemonic_title"]),
+        *[section_html(s) for s in sections],
+        answer_template_html,
+        flashcards(flashcards_list),
+        past_exams(past_exams_list, past_exams_note),
     ])
-
     html = f"""<!doctype html>
 <html lang="ko">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>DB 기술사 분석 키워드 &amp; 암기카드</title>
+<title>{esc(meta['title'])}</title>
 <link rel="stylesheet" href="../assets/study-page.css"/>
 <link rel="stylesheet" href="../assets/diagrams.css"/>
 <link rel="stylesheet" href="../assets/mnemonic-book.css"/>
@@ -206,17 +195,17 @@ def build():
 <body>
 <aside class="sidebar">
   <a class="back-home" href="../index.html">← 목차로</a>
-  <h1>DB<br>기술사 정리</h1>
-  <p class="sub">키워드 + 도식 + 암기카드</p>
+  <h1>{meta['sidebar_h1']}</h1>
+  <p class="sub">{meta['sidebar_sub']}</p>
   <nav>{nav}</nav>
 </aside>
 <main class="main">
   <a class="back-home back-home-main" href="../index.html">← 목차로</a>
   <details class="mobile-toc"><summary>목차 열기</summary><div class="toc-links">{nav}</div></details>
   <div class="hero">
-    <h1>DB 기술사 분석 키워드 &amp; 암기카드</h1>
-    <p>「04. NewDB 기본반」 교재 흐름 · 기출 주제 · 1·2교시 답안 확장용</p>
-    <p class="note">PC: 왼쪽 고정 목차 / 모바일: 상단 접기형 목차 / 표: 가로 스크롤 지원</p>
+    <h1>{esc(meta['hero_h1'])}</h1>
+    <p>{esc(meta['hero_p'])}</p>
+    <p class="note">{esc(meta['hero_note'])}</p>
   </div>
 {content}
 </main>
@@ -262,9 +251,5 @@ function filterMnemonics(inp){{
 </body>
 </html>
 """
-    OUT.write_text(html, encoding="utf-8")
-    print(f"built: {OUT}")
-
-
-if __name__ == "__main__":
-    build()
+    out_path.write_text(html, encoding="utf-8")
+    print(f"built: {out_path}")

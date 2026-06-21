@@ -152,6 +152,16 @@
 </details>
 </div>
 </details><details class="mnemonic-item">
+<summary><span class="mn-from">6. 동시성 문제</span><span class="mn-key">더비비팬갱</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 더(티리드) · 비(재현) · 팬(텀) · 갱(신손실)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>병행제어가 필요한 4대 이상 현상.</p>
+<p><a href="#tx-1">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
 <summary><span class="mn-from">6. 락</span><span class="mn-key">공배갱</span></summary>
 <div class="mn-body">
 <p class="mn-split"><b>풀이:</b> 공(유) · 배(타) · 갱(신)</p>
@@ -159,6 +169,16 @@
 <summary>설명 보기</summary>
 <p>Lock 3모드. 2PL·교착 주의.</p>
 <p><a href="#tx-4">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">8. PACELC</span><span class="mn-key">PA-EL-EC</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> Partition→A/C · Else→Latency/Consistency</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>CAP 보완 이론. 정상·장애 상황 분리.</p>
+<p><a href="#nosql-1">→ 본문 이동</a></p>
 </details>
 </div>
 </details><details class="mnemonic-item">
@@ -370,13 +390,13 @@
 <details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">Isolation Level</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>READ UNCOMMITTED</td><td>Dirty Read 가능</td><td>가장 낮음</td></tr><tr><td>READ COMMITTED</td><td>Committed만 읽기</td><td>일반적</td></tr><tr><td>REPEATABLE READ</td><td>동일 행 반복 읽기 일관</td><td>MySQL 기본</td></tr><tr><td>SERIALIZABLE</td><td>직렬화 수준</td><td>가장 높음</td></tr></tbody></table></div></div></details>
 <div class="answer-box"><strong>답안 확장 문장</strong><p>트랜잭션은 DB 연산의 논리적 단위이며, ACID 속성으로 무결성과 신뢰성을 보장한다.</p></div>
 </article><article id="tx-1" class="topic-card">
-<div class="topic-head"><div><h3>팬텀 충돌·장애</h3><p class="pages">교재 범위: p.132~134</p></div>
-<span class="mnemonic">암기: 팬텀-비재현</span></div>
-<div class="chips"><span>Phantom</span><span>Dirty Read</span><span>Non-repeatable</span><span>Lost Update</span></div>
-<div class="diagram"><pre>동시 실행 → 읽기/쓰기 충돌 → 이상 현상</pre></div>
-<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>팬텀</td><td>동일 조건 재조회 시 새 행 출현</td><td>135회 기출</td></tr><tr><td>Dirty Read</td><td>미커밋 데이터 읽기</td><td>격리 수준</td></tr><tr><td>Lost Update</td><td>동시 갱신으로 갱신 손실</td><td>락 필요</td></tr></tbody></table></div>
-
-<div class="answer-box"><strong>답안 확장 문장</strong><p>팬텀 충돌은 동일 범위 조회 시 트랜잭션 간 새로 삽입된 행이 보이는 현상으로, 격리 수준·락으로 제어한다.</p></div>
+<div class="topic-head"><div><h3>동시성 문제·왜 병행제어가 필요한가</h3><p class="pages">교재 범위: p.128~134</p></div>
+<span class="mnemonic">암기: 더비비팬갱</span></div>
+<div class="chips"><span>Dirty Read</span><span>Non-repeatable Read</span><span>Phantom</span><span>Lost Update</span><span>Isolation</span><span>직렬가능성</span></div>
+<div class="diagram"><pre>[다중 사용자 동시 접근] → [같은 데이터 읽기/쓰기 충돌] → [이상 현상] → [병행제어로 직렬가능성 보장]</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>왜 필요?</td><td>여러 트랜잭션이 공유 DB에 동시 접근하면 연산 순서에 따라 결과가 달라져 ACID 고립성·일관성이 깨짐</td><td>답안 서론 필수</td></tr><tr><td>목적</td><td>병행 실행하되 결과는 어떤 직렬 실행과 동일하게(직렬가능성) 만들어 정확성 확보</td><td>성능+정확성</td></tr><tr><td>Dirty Read</td><td>다른 트랜잭션이 아직 Commit하지 않은(롤백 가능한) 데이터를 읽음 → 잘못된 의사결정</td><td>오염 읽기</td></tr><tr><td>Non-repeatable Read</td><td>같은 트랜잭션 안에서 동일 행을 두 번 읽었는데 값이 다름(다른 TX가 갱신·Commit)</td><td>비재현 읽기</td></tr><tr><td>Phantom Read</td><td>같은 조건으로 재조회했는데 행이 새로 나타나거나 사라짐(INSERT/DELETE)</td><td>135회 팬텀 충돌</td></tr><tr><td>Lost Update</td><td>두 트랜잭션이 같은 데이터를 읽고 각각 갱신해 한쪽 갱신이 덮어써짐</td><td>갱신 손실</td></tr><tr><td>Uncommitted Dependency</td><td>롤백된 트랜잭션 데이터에 의존한 읽기 → 연쇄 롤백 위험</td><td>격리 수준 상향</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">병행제어가 필요한 이유 (답안 골격)</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>공유 환경</td><td>DB는 다수 사용자·응용이 동시에 같은 데이터를 읽고 쓰는 공유 자원</td><td>배경 2줄</td></tr><tr><td>문제 발생</td><td>제어 없이 교차 실행하면 중간 결과 노출·갱신 덮어쓰기·팬텀 등으로 무결성·일관성 훼손</td><td>문제의식</td></tr><tr><td>ACID 연계</td><td>Isolation(고립성)을 보장하려면 동시 실행을 제어해야 하며, 회복(원자성·영속성)과 함께 신뢰성 확보</td><td>ACID 답안 연결</td></tr><tr><td>해결 방향</td><td>락·타임스탬프·MVCC 등으로 간섭을 막고 직렬가능한 스케줄만 허용</td><td>결론→기법 연결</td></tr></tbody></table></div><h4 class="depth-sub">이상 현상 ↔ 격리 수준</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>READ UNCOMMITTED</td><td>Dirty Read 허용</td><td>가장 약함</td></tr><tr><td>READ COMMITTED</td><td>Dirty Read 방지</td><td>Oracle 기본</td></tr><tr><td>REPEATABLE READ</td><td>Non-repeatable 방지, Phantom 가능</td><td>MySQL 기본</td></tr><tr><td>SERIALIZABLE</td><td>Phantom 포함 모두 방지</td><td>가장 강함</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>다중 트랜잭션이 공유 데이터에 동시 접근할 때 Dirty Read·Non-repeatable Read·Phantom·Lost Update 등이 발생하므로, 병행제어로 직렬가능성을 보장해 ACID 고립성과 데이터 정합성을 유지해야 한다.</p></div>
 </article><article id="tx-2" class="topic-card">
 <div class="topic-head"><div><h3>회복 기법</h3><p class="pages">교재 범위: p.135~140</p></div>
 <span class="mnemonic">암기: 로체그백 / REDO-UNDO</span></div>
@@ -386,13 +406,13 @@
 <details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">로그 기반</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>즉시 갱신</td><td>연산 즉시 DB 반영, Undo 필요</td><td>장애 시</td></tr><tr><td>지연 갱신</td><td>Commit 후 반영, Redo만</td><td>로그만 기록</td></tr></tbody></table></div></div></details>
 <div class="answer-box"><strong>답안 확장 문장</strong><p>회복 기법은 로그·체크포인트·그림자 페이징·백업을 통해 장애 후 일관된 DB 상태를 복원한다.</p></div>
 </article><article id="tx-3" class="topic-card">
-<div class="topic-head"><div><h3>병행제어·스케줄</h3><p class="pages">교재 범위: p.141~144</p></div>
+<div class="topic-head"><div><h3>병행제어·스케줄·직렬가능성</h3><p class="pages">교재 범위: p.141~144</p></div>
 <span class="mnemonic">암기: 직렬가능</span></div>
-<div class="chips"><span>Schedule</span><span>Serializability</span><span>Conflict</span><span>View</span></div>
-<div class="diagram"><pre>트랜잭션 스케줄 → 직렬가능성 검증</pre></div>
-<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>스케줄</td><td>트랜잭션 연산 실행 순서</td><td>병행제어 대상</td></tr><tr><td>직렬가능</td><td>병행 결과가 어떤 직렬 실행과 동일</td><td>정확성 기준</td></tr><tr><td>충돌 직렬가능</td><td>충돌 연산 순서만 고려</td><td>검증 알고리즘</td></tr></tbody></table></div>
-
-<div class="answer-box"><strong>답안 확장 문장</strong><p>병행제어는 트랜잭션 스케줄의 직렬가능성을 보장해 동시 실행의 정확성을 유지한다.</p></div>
+<div class="chips"><span>Schedule</span><span>Serializability</span><span>Conflict</span><span>View</span><span>Recoverable</span></div>
+<div class="diagram"><pre>이상 현상 발생 스케줄 → 직렬가능 스케줄만 허용 → 락/타임스탬프/MVCC 적용</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>스케줄</td><td>여러 트랜잭션 연산의 실행 순서(병행·직렬)</td><td>병행제어의 대상</td></tr><tr><td>직렬가능성</td><td>병행 실행 결과가 어떤 직렬 실행과 동일하면 정확</td><td>병행제어의 목표</td></tr><tr><td>충돌 직렬가능</td><td>읽기-쓰기·쓰기-쓰기 충돌 연산 순서가 직렬 스케줄과 동일</td><td>검증 알고리즘</td></tr><tr><td>회복가능 스케줄</td><td>Commit 전 데이터 읽기 제한 등 롤백 안전성</td><td>Recoverable/Cascadeless</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">답안에 넣을 한 줄</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>배경</td><td>동시성 문제(Dirty·Phantom 등)를 막기 위해</td><td>tx-1과 연결</td></tr><tr><td>정의</td><td>병행제어 = 트랜잭션 간 간섭을 조정해 직렬가능·회복가능 스케줄만 허용</td><td>정의</td></tr><tr><td>효과</td><td>고립성·일관성 유지 + 동시 처리 성능 확보</td><td>시사점</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>병행제어는 동시 실행 스케줄이 직렬가능하도록 간섭을 조정하여, 동시성 문제 없이 ACID 고립성을 만족시키는 것이 목적이다.</p></div>
 </article><article id="tx-4" class="topic-card">
 <div class="topic-head"><div><h3>락·2PL·타임스탬프·MVCC</h3><p class="pages">교재 범위: p.145~156</p></div>
 <span class="mnemonic">암기: 공배갱 / 2PL / MVCC</span></div>
@@ -421,12 +441,13 @@
 <div class="answer-box"><strong>답안 확장 문장</strong><p>NoSQL은 비정형·대용량 데이터에 수평 확장과 고속 처리를 제공하며, BASE 모델로 가용성을 우선한다.</p></div>
 </article><article id="nosql-1" class="topic-card">
 <div class="topic-head"><div><h3>CAP·PACELC</h3><p class="pages">교재 범위: p.167~168</p></div>
-<span class="mnemonic">암기: C-A-P 중 2</span></div>
-<div class="chips"><span>Consistency</span><span>Availability</span><span>Partition</span><span>CP</span><span>AP</span><span>CA</span></div>
-<div class="diagram"><pre>분산환경 → P 필수 → C vs A 선택</pre></div>
-<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>CAP</td><td>Consistency·Availability·Partition Tolerance 중 2만</td><td>131회 기출</td></tr><tr><td>CA</td><td>단일 노드 RDB</td><td>Oracle·MySQL</td></tr><tr><td>CP</td><td>일관성 우선, MongoDB·HBase</td><td>일부 가용성 희생</td></tr><tr><td>AP</td><td>가용성 우선, Cassandra·DynamoDB</td><td>Eventual Consistency</td></tr></tbody></table></div>
-
-<div class="answer-box"><strong>답안 확장 문장</strong><p>CAP 이론은 분산 환경에서 일관성·가용성·분할허용 중 동시 만족 불가능함을 설명하며, NoSQL 선택의 이론적 기반이다.</p></div>
+<span class="mnemonic">암기: CAP + PA/EL/EC</span></div>
+<div class="chips"><span>CAP</span><span>PACELC</span><span>Consistency</span><span>Availability</span><span>Latency</span><span>Partition</span></div>
+<div class="diagram"><pre>네트워크 분할(P) 시: CAP → C vs A
+정상 시: PACELC → Latency vs Consistency</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>CAP</td><td>분산 시스템은 C·A·P를 동시에 만족 불가 → 2개만 선택</td><td>131회 기출</td></tr><tr><td>CA</td><td>단일 노드·분할 없음, RDB(Oracle·MySQL)</td><td>전통 RDB</td></tr><tr><td>CP</td><td>분할 시 일관성 우선, MongoDB·HBase·Redis Sentinel</td><td>일부 요청 지연·실패</td></tr><tr><td>AP</td><td>분할 시 가용성 우선, Cassandra·DynamoDB·Riak</td><td>Eventual Consistency</td></tr><tr><td>PACELC</td><td>CAP 보완: 분할(P) 상황과 정상(E) 상황을 나눠 트레이드오프 설명</td><td>교재 p.168</td></tr><tr><td>PA</td><td>Partition + Availability → 일관성 희생</td><td>AP와 동일 방향</td></tr><tr><td>EL</td><td>Else(정상) + Latency → 응답속도 우선, 약한 일관성</td><td>저지연 서비스</td></tr><tr><td>EC</td><td>Else(정상) + Consistency → 지연 허용, 강한 일관성</td><td>금융·재고</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">PACELC 상세 (교재)</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>배경</td><td>CAP만으로는 정상 운영 시 Latency vs Consistency 트레이드오프 설명 부족</td><td>왜 PACELC?</td></tr><tr><td>P 발생 시</td><td>네트워크 분할이면 CAP과 같이 Availability vs Consistency 선택</td><td>CP / AP</td></tr><tr><td>정상 시(E)</td><td>분할이 없으면 Latency(지연) vs Consistency(일관성) 중 선택</td><td>EL / EC</td></tr><tr><td>답안 활용</td><td>NoSQL·분산DB 선정 시 장애/정상 시나리오별 우선순위를 표로 제시</td><td>2×2 표</td></tr></tbody></table></div><h4 class="depth-sub">DBMS별 성향</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>MongoDB</td><td>CP 성향</td><td>일관성 우선</td></tr><tr><td>Cassandra</td><td>AP 성향</td><td>가용성·최종일관성</td></tr><tr><td>DynamoDB</td><td>AP</td><td>AWS 분산 KV</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>CAP은 네트워크 분할 시 일관성과 가용성 중 하나를 포기해야 함을 말하고, PACELC은 정상 상황에서는 지연시간과 일관성 사이의 트레이드오프까지 포함해 분산 DB 설계 기준을 제시한다.</p></div>
 </article><article id="nosql-2" class="topic-card">
 <div class="topic-head"><div><h3>NoSQL 분류·RDB 비교</h3><p class="pages">교재 범위: p.169~176</p></div>
 <span class="mnemonic">암기: KV-Column-Document-Graph</span></div>
@@ -463,41 +484,50 @@
 <button id="resetBtn" type="button">초기화</button>
 </div>
 <div class="flash-grid" id="cards"><div class="flash-card" data-cat="DBS">
-<div class="flash-front"><span class="flash-cat">DBS</span><p>DBS 6대 특징?</p></div>
-<div class="flash-back"><p>실시간접근·중복최소·무결성·동시공유·데이터독립·보안</p></div>
+<div class="card-front"><span>DBS</span><p>DBS 6대 특징?</p></div>
+<div class="card-back"><pre>실시간접근·중복최소·무결성·동시공유·데이터독립·보안</pre></div>
 </div><div class="flash-card" data-cat="DB">
-<div class="flash-front"><span class="flash-cat">DB</span><p>DB 4대 특성?</p></div>
-<div class="flash-back"><p>통합·저장·운영·공용</p></div>
+<div class="card-front"><span>DB</span><p>DB 4대 특성?</p></div>
+<div class="card-back"><pre>통합·저장·운영·공용</pre></div>
 </div><div class="flash-card" data-cat="스키마">
-<div class="flash-front"><span class="flash-cat">스키마</span><p>3단계 스키마?</p></div>
-<div class="flash-back"><p>외부·개념·내부</p></div>
+<div class="card-front"><span>스키마</span><p>3단계 스키마?</p></div>
+<div class="card-back"><pre>외부·개념·내부</pre></div>
 </div><div class="flash-card" data-cat="무결성">
-<div class="flash-front"><span class="flash-cat">무결성</span><p>무결성 4종?</p></div>
-<div class="flash-back"><p>개체·도메인·참조·사용자정의</p></div>
+<div class="card-front"><span>무결성</span><p>무결성 4종?</p></div>
+<div class="card-back"><pre>개체·도메인·참조·사용자정의</pre></div>
 </div><div class="flash-card" data-cat="SQL">
-<div class="flash-front"><span class="flash-cat">SQL</span><p>SQL 3분류?</p></div>
-<div class="flash-back"><p>DDL·DML·DCL</p></div>
+<div class="card-front"><span>SQL</span><p>SQL 3분류?</p></div>
+<div class="card-back"><pre>DDL·DML·DCL</pre></div>
 </div><div class="flash-card" data-cat="정규화">
-<div class="flash-front"><span class="flash-cat">정규화</span><p>정규화 순서?</p></div>
-<div class="flash-back"><p>1NF→2NF→3NF→BCNF→4NF→5NF</p></div>
+<div class="card-front"><span>정규화</span><p>정규화 순서?</p></div>
+<div class="card-back"><pre>1NF→2NF→3NF→BCNF→4NF→5NF</pre></div>
 </div><div class="flash-card" data-cat="ACID">
-<div class="flash-front"><span class="flash-cat">ACID</span><p>ACID?</p></div>
-<div class="flash-back"><p>Atomicity·Consistency·Isolation·Durability</p></div>
+<div class="card-front"><span>ACID</span><p>ACID?</p></div>
+<div class="card-back"><pre>Atomicity·Consistency·Isolation·Durability</pre></div>
+</div><div class="flash-card" data-cat="동시성">
+<div class="card-front"><span>동시성</span><p>병행제어가 필요한 이유?</p></div>
+<div class="card-back"><pre>다중 TX가 공유 DB 동시 접근 → Dirty/Non-repeatable/Phantom/Lost Update → 직렬가능성·고립성 보장 필요</pre></div>
+</div><div class="flash-card" data-cat="동시성">
+<div class="card-front"><span>동시성</span><p>동시성 이상 현상 4가지?</p></div>
+<div class="card-back"><pre>Dirty Read(오염) · Non-repeatable Read(비재현) · Phantom(팬텀) · Lost Update(갱신손실)</pre></div>
 </div><div class="flash-card" data-cat="회복">
-<div class="flash-front"><span class="flash-cat">회복</span><p>회복 4기법?</p></div>
-<div class="flash-back"><p>로그·체크포인트·그림자페이징·백업</p></div>
+<div class="card-front"><span>회복</span><p>회복 4기법?</p></div>
+<div class="card-back"><pre>로그·체크포인트·그림자페이징·백업</pre></div>
 </div><div class="flash-card" data-cat="CAP">
-<div class="flash-front"><span class="flash-cat">CAP</span><p>CAP 3요소?</p></div>
-<div class="flash-back"><p>Consistency·Availability·Partition Tolerance</p></div>
+<div class="card-front"><span>CAP</span><p>CAP 3요소·선택?</p></div>
+<div class="card-back"><pre>Consistency·Availability·Partition — 분산환경에서 3중 2만 (P 발생 시 C↔A)</pre></div>
+</div><div class="flash-card" data-cat="PACELC">
+<div class="card-front"><span>PACELC</span><p>PACELC란?</p></div>
+<div class="card-back"><pre>CAP 보완: P(분할)시→A/C 선택 / Else(정상)시→Latency vs Consistency (EL·EC)</pre></div>
 </div><div class="flash-card" data-cat="NoSQL">
-<div class="flash-front"><span class="flash-cat">NoSQL</span><p>NoSQL 4유형?</p></div>
-<div class="flash-back"><p>Key-Value·Column·Document·Graph</p></div>
+<div class="card-front"><span>NoSQL</span><p>NoSQL 4유형?</p></div>
+<div class="card-back"><pre>Key-Value·Column·Document·Graph</pre></div>
 </div><div class="flash-card" data-cat="반정규화">
-<div class="flash-front"><span class="flash-cat">반정규화</span><p>반정규화 목적?</p></div>
-<div class="flash-back"><p>성능·개발·운영 단순화 (무결성 Trade-off)</p></div>
+<div class="card-front"><span>반정규화</span><p>반정규화 목적?</p></div>
+<div class="card-back"><pre>성능·개발·운영 단순화 (무결성 Trade-off)</pre></div>
 </div><div class="flash-card" data-cat="CRUD">
-<div class="flash-front"><span class="flash-cat">CRUD</span><p>CRUD Matrix 목적?</p></div>
-<div class="flash-back"><p>엔터티-프로세스 연관 검증</p></div>
+<div class="card-front"><span>CRUD</span><p>CRUD Matrix 목적?</p></div>
+<div class="card-back"><pre>엔터티-프로세스 연관 검증</pre></div>
 </div></div>
 </section>
 <section id="past-exams" class="section"><h2>11. 기출문제 (교재 p.2~3)</h2>

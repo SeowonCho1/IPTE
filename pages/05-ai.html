@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>인공지능 기술사 분석 키워드 &amp; 암기카드</title>
+<link rel="stylesheet" href="../assets/study-page.css"/>
+<link rel="stylesheet" href="../assets/diagrams.css"/>
+<link rel="stylesheet" href="../assets/mnemonic-book.css"/>
+</head>
+<body>
+<aside class="sidebar">
+  <a class="back-home" href="../index.html">← 목차로</a>
+  <h1>인공지능<br>기술사 정리</h1>
+  <p class="sub">키워드 + 도식 + 암기카드</p>
+  <nav><a href="#mnemonic-book">📖 두음 모음집</a><a href="#study">0. 기출 분석 및 공부 방식</a><a href="#overview">1. 인공지능 개요</a><a href="#ml">2. 머신러닝 (ML)</a><a href="#cluster">3. 군집분석</a><a href="#dim">4. 차원축소·오토인코더</a><a href="#assoc">5. 연관규칙</a><a href="#class">6. 분류·회귀</a><a href="#valid">7. 검증·앙상블</a><a href="#eval">8. 모델 평가</a><a href="#optimize">9. 최적화·하이퍼파라미터</a><a href="#dl">10. 딥러닝 (DL)</a><a href="#platform">11. 플랫폼·딥페이크·LangChain</a><a href="#nlp">12. NLP·Transformer·LLM</a><a href="#answer-template">10. 기술사 답안 템플릿</a><a href="#flashcards">11. 암기카드</a><a href="#past-exams">12. 기출문제</a></nav>
+</aside>
+<main class="main">
+  <a class="back-home back-home-main" href="../index.html">← 목차로</a>
+  <details class="mobile-toc"><summary>목차 열기</summary><div class="toc-links"><a href="#mnemonic-book">📖 두음 모음집</a><a href="#study">0. 기출 분석 및 공부 방식</a><a href="#overview">1. 인공지능 개요</a><a href="#ml">2. 머신러닝 (ML)</a><a href="#cluster">3. 군집분석</a><a href="#dim">4. 차원축소·오토인코더</a><a href="#assoc">5. 연관규칙</a><a href="#class">6. 분류·회귀</a><a href="#valid">7. 검증·앙상블</a><a href="#eval">8. 모델 평가</a><a href="#optimize">9. 최적화·하이퍼파라미터</a><a href="#dl">10. 딥러닝 (DL)</a><a href="#platform">11. 플랫폼·딥페이크·LangChain</a><a href="#nlp">12. NLP·Transformer·LLM</a><a href="#answer-template">10. 기술사 답안 템플릿</a><a href="#flashcards">11. 암기카드</a><a href="#past-exams">12. 기출문제</a></div></details>
+  <div class="hero">
+    <h1>인공지능 기술사 분석 키워드 &amp; 암기카드</h1>
+    <p>「04. 인공지능 기본반 v1.1」 교재 흐름 · 기출 주제 · 1·2교시 답안 확장용</p>
+    <p class="note">PC: 왼쪽 고정 목차 / 모바일: 상단 접기형 목차 / 표: 가로 스크롤 지원</p>
+  </div>
+<section class="panel"><span class="kicker">사용법</span><p>① <b>두음 모음집</b>으로 암기 포인트 확인 → ② <b>도식·표</b>로 알고리즘·흐름 복원 → ③ <b>답안 확장 문장</b>으로 1·2교시 연습 → ④ <b>암기카드·기출</b>로 복원 훈련.</p><div class="note">「04. 인공지능 for 기본반 v1.1」 교재(197p) 흐름 기준 · 기출 108~135회 연계</div></section>
+<!-- MNEMONIC_BOOK -->
+<section class="panel mnemonic-book-section" id="mnemonic-book">
+<details class="mnemonic-book-wrap" open>
+<summary><span class="mn-wrap-title">📖 두음 모음집 — AI</span><span class="mn-wrap-hint">전체 접기/펼치기</span></summary>
+<div class="mnemonic-book-body">
+<p class="subtle">교재 기준 · 출처 → 두음 → 풀이 → 설명</p>
+<input class="mn-filter" type="search" placeholder="두음 검색…" oninput="filterMnemonics(this)"/>
+<div class="mnemonic-list"><details class="mnemonic-item">
+<summary><span class="mn-from">1. AI 분류</span><span class="mn-key">약강초</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 약(ANI) · 강(AGI) · 초(ASI)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>지적수준별 AI 분류. 기출 ANI 필요성.</p>
+<p><a href="#overview-1">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">1. AI 윤리</span><span class="mn-key">인공기</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 인(간존엄) · 공(공선) · 기(합목적)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>정부 AI 윤리 3대 기본원칙.</p>
+<p><a href="#overview-3">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">1. AI 윤리10</span><span class="mn-key">인프다침공연책안투</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 인권·프라이버시·다양성·침해금지·공공성·연대·데이터·책임·안전·투명</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>10대 핵심요건.</p>
+<p><a href="#overview-3">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">2. ML 분류</span><span class="mn-key">지비강</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 지(도) · 비(지도) · 강(화)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>학습 유형 3분류.</p>
+<p><a href="#ml-0">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">2. 지도학습</span><span class="mn-key">분회</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 분(류) · 회(귀)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>Classification vs Regression.</p>
+<p><a href="#ml-1">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">2. 비지도</span><span class="mn-key">군차연</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 군(집) · 차(원축소) · 연(관규칙)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>Clustering·PCA·Association.</p>
+<p><a href="#ml-2">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">3. K-means</span><span class="mn-key">K-중심-반복</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> K개 중심 → 할당 → 재계산</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>군집화 대표 알고리즘.</p>
+<p><a href="#cluster-0">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">3. DBSCAN</span><span class="mn-key">밀도-코어-보더</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> ε·MinPts → Core/Border/Noise</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>밀도 기반 군집.</p>
+<p><a href="#cluster-1">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">4. PCA</span><span class="mn-key">공분산-고유값-주성분</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 분산 최대 방향 투영</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>차원축소 핵심.</p>
+<p><a href="#dim-0">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">5. Apriori</span><span class="mn-key">지지-신뢰-향상</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> Support·Confidence·Lift</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>연관규칙 3지표.</p>
+<p><a href="#assoc-0">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">6. DT</span><span class="mn-key">지니-엔트로피</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 불순도 최소 분할</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>의사결정나무 분할 기준.</p>
+<p><a href="#class-0">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">6. SVM</span><span class="mn-key">마진-서포트</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 최대 마진 초평면</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>서포트벡터머신.</p>
+<p><a href="#class-2">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">7. 앙상블</span><span class="mn-key">배부</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 배(Bagging) · 부(Boosting)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>병렬 vs 순차 가중.</p>
+<p><a href="#ensemble-0">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">8. 평가</span><span class="mn-key">혼정재F1</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 혼동행렬→Precision·Recall→F1</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>분류 성능지표.</p>
+<p><a href="#eval-0">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">8. ROC/PR</span><span class="mn-key">TPR-FPR vs P-R</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 균형→ROC / 불균형→PR</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>곡선 선택 기준.</p>
+<p><a href="#eval-1">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">9. RL</span><span class="mn-key">상행보정</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 상(태) · 행(동) · 보(상) · 정(책)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>강화학습 4요소.</p>
+<p><a href="#rl-0">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">9. Q-learning</span><span class="mn-key">Q-벨만-ε</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> Q(s,a) 벨만·Off-policy·ε-greedy</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>값기반 RL.</p>
+<p><a href="#rl-1">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">10. DL</span><span class="mn-key">입은출</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 입(력) · 은(닉) · 출(력)</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>ANN 3층 구조.</p>
+<p><a href="#dl-0">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">10. 역전파</span><span class="mn-key">순손역갱</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 순전파→손실→역전파→가중치갱신</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>Backpropagation.</p>
+<p><a href="#dl-2">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">10. 활성화</span><span class="mn-key">ReLU-Softmax</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 은닉 ReLU · 다중분류 Softmax</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>층별 활성화함수.</p>
+<p><a href="#dl-4">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">11. CNN</span><span class="mn-key">컨풀-풀-FC</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> Convolution→Pooling→Fully Connected</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>CNN 파이프라인.</p>
+<p><a href="#dl-cnn">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">11. RNN/LSTM</span><span class="mn-key">순환-게이트</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> RNN 순환 · LSTM 3게이트</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>시퀀스 모델.</p>
+<p><a href="#dl-rnn">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">12. NLP</span><span class="mn-key">RNN-Att-Trans</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> RNN→Attention→Transformer</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>NLP 아키텍처 진화.</p>
+<p><a href="#nlp-1">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">12. LLM</span><span class="mn-key">Pre-RLHF-FT</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> Pretrain→RLHF→Fine-tuning</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>ChatGPT 학습 3단.</p>
+<p><a href="#gen-2">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">12. RAG</span><span class="mn-key">검색-증강-생성</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> Retrieve→Augment→Generate</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>LLM 환각 완화.</p>
+<p><a href="#gen-3">→ 본문 이동</a></p>
+</details>
+</div>
+</details><details class="mnemonic-item">
+<summary><span class="mn-from">12. Foundation</span><span class="mn-key">대규모-전이-파</span></summary>
+<div class="mn-body">
+<p class="mn-split"><b>풀이:</b> 대규모·사전학습·파인튜닝</p>
+<details class="mn-more">
+<summary>설명 보기</summary>
+<p>Foundation Model.</p>
+<p><a href="#gen-4">→ 본문 이동</a></p>
+</details>
+</div>
+</details></div>
+</div>
+</details>
+</section>
+<section id="study" class="section"><h2>0. 기출 분석 및 공부 방식</h2><article id="study-0" class="topic-card">
+<div class="topic-head"><div><h3>AI 기술사 공부 방식</h3><p class="pages">교재 범위: 교재 전체</p></div>
+<span class="mnemonic">암기: 키-도-표</span></div>
+<div class="chips"><span>키워드</span><span>도식</span><span>표</span><span>기출연계</span></div>
+<div class="diagram"><pre>① 기출 키워드 → ② 알고리즘·흐름도 → ③ 비교표 → ④ 윤리·적용·결론</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>키워드</td><td>두음·영문약어·구성요소 나열</td><td>ANI/AGI, RAG, PACELC급 비교, RL MDP</td></tr><tr><td>도식</td><td>학습·추론·평가 흐름 복원</td><td>지도/비지도, CNN층, Transformer, RL 루프</td></tr><tr><td>표</td><td>알고리즘·지표·윤리 3열 표</td><td>K-means vs DBSCAN, ROC vs PR, 3원칙 10요건</td></tr><tr><td>기출</td><td>135~131회 AI 빈출 우선</td><td>LLM·RAG·딥페이크·SVM·강화학습·XAI</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">1·2교시 답안 틀</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>1교시</td><td>정의→구성요소 표→비교 1개→결론</td><td>30줄: ML/DL/생성형AI 개념형</td></tr><tr><td>2교시</td><td>개요→핵심(표+절차)→적용→윤리·한계</td><td>70줄: LLM 도입, RL, 딥페이크 대응</td></tr><tr><td>융합형</td><td>통계+ML, 빅데이터+AI, 보안+생성형AI</td><td>다중 분야 연결 답안</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>AI 과목은 개념 정의에 알고리즘 절차·평가지표·윤리·적용사례를 결합해야 하며, 최근 기출은 LLM·RAG·딥페이크·멀티모달·AI 거버넌스 비중이 높다.</p></div>
+</article></section>
+<section id="overview" class="section"><h2>1. 인공지능 개요</h2><article id="overview-0" class="topic-card">
+<div class="topic-head"><div><h3>AI 정의·연대표·3차 붐</h3><p class="pages">교재 범위: p.14~17, 23~24</p></div>
+<span class="mnemonic">암기: 1956 다트머스</span></div>
+<div class="chips"><span>정의</span><span>AI 겨울</span><span>전문가시스템</span><span>딥러닝</span></div>
+<div class="diagram"><pre>1950 튜링 → 1956 다트머스 → 1970 AI겨울 → 1980 전문가시스템 → 2010 ML/DL</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>정의</td><td>인간 지능적 행동을 컴퓨터로 구현하는 IT 분야</td><td>사전·전통·기술적 개념 3관점</td></tr><tr><td>3차 붐</td><td>빅데이터 + GPU/HW + 알고리즘(딥러닝)</td><td>데이터·연산·알고리즘 3요인</td></tr><tr><td>규칙→데이터</td><td>규칙기반→지식기반→전문가시스템→ML/DL</td><td>패러다임 전환</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">AI 연대표</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>1950</td><td>튜링 &#x27;Computing Machinery and Intelligence&#x27;</td><td>지능 판별 논의</td></tr><tr><td>1956</td><td>다트머스 워크샵 — AI학 탄생</td><td>기호주의 시작</td></tr><tr><td>1970·1980</td><td>1·2차 AI 겨울 — 기대 대비 성능·비용</td><td>펀딩 삭감</td></tr><tr><td>2010~</td><td>빅데이터·GPU·딥러닝 — 3차 붐</td><td>ImageNet, AlphaGo</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>AI는 인간의 사고·학습을 컴퓨터로 구현하는 학문이며, 3차 붐은 빅데이터·하드웨어 성능·딥러닝 알고리즘의 convergence로 설명한다.</p></div>
+</article><article id="overview-1" class="topic-card">
+<div class="topic-head"><div><h3>ANI·AGI·ASI 분류</h3><p class="pages">교재 범위: p.18~19</p></div>
+<span class="mnemonic">암기: 약강초</span></div>
+<div class="chips"><span>ANI</span><span>AGI</span><span>ASI</span><span>도메인특화</span><span>범용</span></div>
+<div class="diagram"><pre>ANI(특정업무) → AGI(인간급 범용) → ASI(초월)</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>ANI</td><td>특정 도메인 최적화 — 음성인식·번역·AlphaFold</td><td>현재 상용화, 위험 낮음</td></tr><tr><td>AGI</td><td>인간 수준 다양한 작업·자율학습</td><td>연구 중(GPT-4 등), 윤리·통제</td></tr><tr><td>ASI</td><td>인간 초월·자기개선</td><td>이론적, 매우 높은 위험</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">ANI 필요성 (135회)</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>단계적 발전</td><td>ANI 축적이 AGI/ASI 안전 연구 기반</td><td>기술·윤리·규제 학습</td></tr><tr><td>실용성</td><td>도메인별 검증·품질보증 가능</td><td>산업 적용</td></tr><tr><td>리스크 관리</td><td>범위 제한으로 통제 용이</td><td>단계적 확장</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>ANI는 특정 기능에 특화된 현재 AI이며, AGI로 가기 위한 기술·윤리·거버넌스 학습의 필수 단계로 ANI의 안전한 축적이 강조된다.</p></div>
+</article><article id="overview-2" class="topic-card">
+<div class="topic-head"><div><h3>튜링테스트·CAPTCHA·규칙기반 진화</h3><p class="pages">교재 범위: p.21~22</p></div>
+<span class="mnemonic">암기: 5분 5회 1/3</span></div>
+<div class="chips"><span>튜링테스트</span><span>CAPTCHA</span><span>전문가시스템</span><span>추천엔진</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>튜링테스트</td><td>5분 5회 대화 후 심판 1/3 속이면 통과</td><td>지능 판별</td></tr><tr><td>CAPTCHA</td><td>사람 vs 봇 구별 — 역튜링테스트</td><td>보안</td></tr><tr><td>전문가시스템</td><td>규칙+추론엔진 — MYCIN, Dendral</td><td>IF-THEN, 퍼지논리</td></tr><tr><td>추천엔진</td><td>협업필터링 기반 추측 제시</td><td>Netflix, 쇼핑몰</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>튜링테스트는 기계 대화 지능 판별법이며, AI는 규칙기반에서 데이터 기반 ML/DL로 진화했다.</p></div>
+</article><article id="overview-3" class="topic-card">
+<div class="topic-head"><div><h3>AI 윤리·XAI·적대적공격·특이점</h3><p class="pages">교재 범위: p.20, 24~29</p></div>
+<span class="mnemonic">암기: 인공기 / 인프다침공연책안투</span></div>
+<div class="chips"><span>트롤리딜레마</span><span>XAI</span><span>Adversarial</span><span>Singularity</span></div>
+<div class="diagram"><pre>윤리 3원칙 → 10요건 / XAI: LIME·SHAP / 공격: Evasion·Poisoning·Backdoor</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>윤리 3원칙</td><td>인간존엄·공공선·합목적성</td><td>129회 기출</td></tr><tr><td>10대 요건</td><td>인권·프라이버시·다양성·침해금지·공공·연대·데이터·책임·안전·투명</td><td>표로 완전기재</td></tr><tr><td>XAI</td><td>설명가능 AI — LIME, SHAP, Grad-CAM, Attention</td><td>DARPA XAI 프로젝트</td></tr><tr><td>적대적공격</td><td>Evasion·Poisoning·Model Extraction·Inversion·Backdoor</td><td>적대적훈련·탐지·차단</td></tr><tr><td>특이점</td><td>AI가 인간 지능 초월하는 시점</td><td>규제·법규 필요성</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">XAI 기법 분류</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>모델기반</td><td>White-box, Interpretable NN, Surrogate</td><td>DT·선형회귀</td></tr><tr><td>사후설명</td><td>LIME, SHAP, Counterfactual</td><td>블랙박스 설명</td></tr><tr><td>시각화</td><td>Saliency Map, Grad-CAM</td><td>CNN 설명</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>AI 윤리는 3대 원칙과 10대 요건으로 답안화하고, XAI는 LIME·SHAP 등으로 설명가능성을 확보하며, 적대적 공격 유형별 대응을 함께 기술한다.</p></div>
+</article></section>
+<section id="ml" class="section"><h2>2. 머신러닝 (ML)</h2><article id="ml-0" class="topic-card">
+<div class="topic-head"><div><h3>ML 개요·지도/비지도/강화학습</h3><p class="pages">교재 범위: p.31~40</p></div>
+<span class="mnemonic">암기: 지비강</span></div>
+<div class="chips"><span>Training Set</span><span>Model</span><span>Inference</span><span>Label</span></div>
+<div class="diagram"><pre>지도(Label O) | 비지도(Label X) | 강화(Reward)</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>ML 정의</td><td>명시적 프로그래밍 없이 데이터로부터 학습</td><td>Training·Model·Inference</td></tr><tr><td>지도학습</td><td>Classification·Regression</td><td>KNN, DT, SVM, RF, ANN</td></tr><tr><td>비지도학습</td><td>Clustering·Dimension Reduction·Association</td><td>K-means, PCA, Apriori</td></tr><tr><td>강화학습</td><td>State-Action-Reward-Policy</td><td>Q-learning, DQN, PPO</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">파라미터 vs 하이퍼파라미터</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>Parameter</td><td>학습으로 결정 — 가중치, μ, σ</td><td>모델 능력</td></tr><tr><td>Hyperparameter</td><td>사용자 설정 — learning rate, K</td><td>튜닝 대상</td></tr><tr><td>학습절차</td><td>입력→예측→손실→역전파→반복</td><td>6단계</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>ML은 Label 유무에 따라 지도·비지도로 나뉘고 강화학습은 보상 최대화 정책을 학습한다.</p></div>
+</article><article id="ml-1" class="topic-card">
+<div class="topic-head"><div><h3>강화학습 — MDP·Q-learning·DQN</h3><p class="pages">교재 범위: p.39~40, 114~119</p></div>
+<span class="mnemonic">암기: 상행보정 / Q-벨만-ε</span></div>
+<div class="chips"><span>MDP</span><span>Bellman</span><span>Q-learning</span><span>DQN</span><span>MCTS</span></div>
+<div class="diagram"><pre>Agent↔Environment: s→a→r→s&#x27; / Q(s,a)←r+γmaxQ(s&#x27;,a&#x27;)</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>구성요소</td><td>Agent·Environment·State·Action·Reward·Policy·Q·γ</td><td>6요소+α</td></tr><tr><td>Model-Free</td><td>Policy-Based(PPO) vs Value-Based(Q-learning)</td><td>On/Off-Policy</td></tr><tr><td>Q-learning</td><td>Off-policy, Q-table, ε-greedy, Bellman</td><td>114회</td></tr><tr><td>DQN</td><td>DNN+Q, Replay Buffer, Target Network</td><td>고차원 환경</td></tr><tr><td>MCTS</td><td>Monte Carlo Tree Search — AlphaGo</td><td>135·113회</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">강화학습 분류</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>Policy-Based</td><td>REINFORCE, PPO, DDPG</td><td>연속 행동</td></tr><tr><td>Value-Based</td><td>Q-learning, DQN, Double DQN</td><td>Q값 근사</td></tr><tr><td>Actor-Critic</td><td>A2C, A3C, SAC</td><td>Policy+Value 혼합</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>강화학습은 MDP 위에서 보상을 최대화하는 정책을 학습하며, Q-learning은 Off-policy 값기반이고 DQN은 신경망으로 Q함수를 근사한다.</p></div>
+</article></section>
+<section id="cluster" class="section"><h2>3. 군집분석</h2><article id="cluster-0" class="topic-card">
+<div class="topic-head"><div><h3>K-means·계층적·GMM</h3><p class="pages">교재 범위: p.41~48</p></div>
+<span class="mnemonic">암기: K-중심-반복</span></div>
+<div class="chips"><span>Centroid</span><span>K</span><span>Elbow</span><span>Silhouette</span></div>
+<div class="diagram"><pre>1)K선택 2)초기중심 3)할당 4)중심재계산 → 수렴</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>K-means</td><td>K개 중심, 유클리드 거리 최소</td><td>K·초기값·Elbow·Silhouette</td></tr><tr><td>계층적</td><td>Agglomerative/Divisive, 덴드로그램</td><td>군집 수 사후 결정</td></tr><tr><td>GMM</td><td>가우시안 혼합, EM 알고리즘</td><td>확률적 군집</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>K-means는 중심 기반 파티셔닝이며 K 선택은 Elbow·Silhouette(135회)로 판단한다.</p></div>
+</article><article id="cluster-1" class="topic-card">
+<div class="topic-head"><div><h3>DBSCAN·SOM</h3><p class="pages">교재 범위: p.49~57</p></div>
+<span class="mnemonic">암기: 밀도-코어-보더</span></div>
+<div class="chips"><span>ε</span><span>MinPts</span><span>Core</span><span>Border</span><span>Noise</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>DBSCAN</td><td>밀도 기반 — ε-neighborhood, MinPts</td><td>임의 형상, 노이즈 검출</td></tr><tr><td>SOM</td><td>Self-Organizing Map — 2D 격자 위치학습</td><td>134회: NN과 차이</td></tr><tr><td>K vs DB</td><td>K: 구형·K필요 / DB: 밀도·노이즈·ε</td><td>129·130회 비교</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>DBSCAN은 밀도 기반으로 코어·보더·노이즈를 구분하며 K-means와 형상·K·노이즈 처리에서 차이난다.</p></div>
+</article></section>
+<section id="dim" class="section"><h2>4. 차원축소·오토인코더</h2><article id="dim-0" class="topic-card">
+<div class="topic-head"><div><h3>PCA·Autoencoder·차원의 저주</h3><p class="pages">교재 범위: p.58~64</p></div>
+<span class="mnemonic">암기: 공분산-고유값</span></div>
+<div class="chips"><span>PCA</span><span>Autoencoder</span><span>Curse of Dimensionality</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>PCA</td><td>공분산 행렬 고유값·주성분 투영</td><td>선형 차원축소</td></tr><tr><td>Autoencoder</td><td>Encoder→Latent→Decoder, 재구성 오차 최소</td><td>131·135회 VAE</td></tr><tr><td>차원의 저주</td><td>고차원에서 거리·샘플 희소·과적합</td><td>135회, Grid Search 연계</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>PCA는 분산 보존 선형축소, Autoencoder/VAE는 비선형·생성형 표현학습이며 차원의 저주는 하이퍼파라미터 탐색 비용 증가로 연결된다.</p></div>
+</article></section>
+<section id="assoc" class="section"><h2>5. 연관규칙</h2><article id="assoc-0" class="topic-card">
+<div class="topic-head"><div><h3>Apriori·Support·Confidence·Lift</h3><p class="pages">교재 범위: p.65~71</p></div>
+<span class="mnemonic">암기: 지지-신뢰-향상</span></div>
+<div class="chips"><span>Apriori</span><span>Support</span><span>Confidence</span><span>Lift</span></div>
+<div class="diagram"><pre>Apriori: 빈발항목집→연관규칙 생성 / Support≥min, Confidence≥min</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>Support</td><td>A∪B 동시 발생 비율</td><td>빈도</td></tr><tr><td>Confidence</td><td>P(B|A) — A일 때 B</td><td>신뢰도</td></tr><tr><td>Lift</td><td>Confidence/P(B) — 독립 대비</td><td>&gt;1 양의 연관</td></tr><tr><td>Apriori</td><td>후보 생성·가지치기 — 하위집합 비빈발이면 상위도</td><td>장바구니 분석</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>연관규칙은 Support·Confidence·Lift로 평가하며 Apriori는 빈발항목집 기반 후보 가지치기로 효율화한다.</p></div>
+</article></section>
+<section id="class" class="section"><h2>6. 분류·회귀</h2><article id="class-0" class="topic-card">
+<div class="topic-head"><div><h3>의사결정나무·KNN</h3><p class="pages">교재 범위: p.72~76</p></div>
+<span class="mnemonic">암기: 지니-엔트로피</span></div>
+<div class="chips"><span>Gini</span><span>Entropy</span><span>KNN</span><span>Overfitting</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>DT</td><td>Gini·Entropy로 불순도 최소 분할</td><td>126·130회</td></tr><tr><td>KNN</td><td>K개 이웃 다수결·거리</td><td>K 선택 중요</td></tr><tr><td>과적합</td><td>깊은 트리·K 작음 → 과적합</td><td>Pruning·K↑</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>DT는 Gini/Entropy로 분할하고 KNN은 K와 거리 척도가 성능을 좌우한다.</p></div>
+</article><article id="class-1" class="topic-card">
+<div class="topic-head"><div><h3>로지스틱회귀·선형회귀</h3><p class="pages">교재 범위: p.77~80, 120</p></div>
+<span class="mnemonic">암기: 로짓-Sigmoid</span></div>
+<div class="chips"><span>Logit</span><span>Sigmoid</span><span>MSE</span><span>Homoscedasticity</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>선형회귀</td><td>Y=βX+ε, MSE 최소</td><td>연속 예측</td></tr><tr><td>로지스틱</td><td>로짓변환, Sigmoid, Cross-Entropy</td><td>이진 분류</td></tr><tr><td>회귀 가정</td><td>등분산성·다중공선성·선형성·독립성</td><td>135·132회</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>로지스틱 회귀는 로짓변환으로 확률을 모델링하고 회귀는 등분산·다중공선성 가정 위반 시 진단·대응이 필요하다.</p></div>
+</article><article id="class-2" class="topic-card">
+<div class="topic-head"><div><h3>SVM</h3><p class="pages">교재 범위: p.81~89</p></div>
+<span class="mnemonic">암기: 마진-서포트</span></div>
+<div class="chips"><span>Margin</span><span>Kernel</span><span>Soft margin</span><span>SV</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>개념</td><td>최대 마진 초평면, 서포트벡터</td><td>132·119회</td></tr><tr><td>선형</td><td>Hard/Soft margin — C 파라미터</td><td>132회 마진 2가지</td></tr><tr><td>비선형</td><td>Kernel trick — RBF, Polynomial</td><td>고차원 매핑</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>SVM은 마진 최대화 분류기로 서포트벡터만 결정 경계에 영향을 주며 커널로 비선형 확장한다.</p></div>
+</article></section>
+<section id="valid" class="section"><h2>7. 검증·앙상블</h2><article id="valid-0" class="topic-card">
+<div class="topic-head"><div><h3>교차검증·과적합</h3><p class="pages">교재 범위: p.90~98</p></div>
+<span class="mnemonic">암기: Train-Val-Test</span></div>
+<div class="chips"><span>K-Fold</span><span>Hold-out</span><span>Bias-Variance</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>Hold-out</td><td>Train/Validation/Test 분할</td><td>128회 CV</td></tr><tr><td>K-Fold</td><td>K번 분할·평균 성능</td><td>데이터 효율</td></tr><tr><td>과적합</td><td>Train↓ Test↑ — 편향·분산 Trade-off</td><td>127·126회</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>교차검증은 일반화 성능 추정에 필수이며 과적합은 규제·Dropout·Early Stop·데이터 확보로 완화한다.</p></div>
+</article><article id="ensemble-0" class="topic-card">
+<div class="topic-head"><div><h3>Bagging·Boosting·Random Forest</h3><p class="pages">교재 범위: p.99~105</p></div>
+<span class="mnemonic">암기: 배부</span></div>
+<div class="chips"><span>Bagging</span><span>Boosting</span><span>RF</span><span>AdaBoost</span><span>XGBoost</span></div>
+<div class="diagram"><pre>Bagging: 병렬 Bootstrap / Boosting: 순차 가중치↑</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>Bagging</td><td>Bootstrap + 다수결 — RF</td><td>분산 감소</td></tr><tr><td>Boosting</td><td>오분류 가중 — AdaBoost, GBM, XGBoost</td><td>편향 감소</td></tr><tr><td>RF</td><td>Bagging + DT + Feature random</td><td>110·126회</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>Bagging은 병렬 앙상블로 분산을, Boosting은 순차 학습으로 편향을 줄이며 RF는 Bagging+DT 조합이다.</p></div>
+</article></section>
+<section id="eval" class="section"><h2>8. 모델 평가</h2><article id="eval-0" class="topic-card">
+<div class="topic-head"><div><h3>혼동행렬·Precision·Recall·F1</h3><p class="pages">교재 범위: p.106~110</p></div>
+<span class="mnemonic">암기: 혼정재F1</span></div>
+<div class="chips"><span>TP</span><span>FP</span><span>FN</span><span>TN</span><span>F1</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>Precision</td><td>TP/(TP+FP) — 정밀도</td><td>FP↓</td></tr><tr><td>Recall</td><td>TP/(TP+FN) — 재현율·TPR</td><td>FN↓</td></tr><tr><td>F1</td><td>2PR/(P+R) — 조화평균</td><td>116회</td></tr><tr><td>Accuracy</td><td>(TP+TN)/Total — 불균형 시 부적절</td><td>주의</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>혼동행렬에서 Precision·Recall·F1을 산출하며 불균형 데이터는 Accuracy 단독 사용을 피한다.</p></div>
+</article><article id="eval-1" class="topic-card">
+<div class="topic-head"><div><h3>ROC·PR 곡선</h3><p class="pages">교재 범위: p.111</p></div>
+<span class="mnemonic">암기: TPR-FPR vs P-R</span></div>
+<div class="chips"><span>ROC</span><span>AUC</span><span>PR</span><span>Threshold</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>ROC</td><td>TPR vs FPR, AUC — 균형 데이터</td><td>135회 vs PR</td></tr><tr><td>PR</td><td>Precision vs Recall — 불균형</td><td>사기·희귀질병</td></tr><tr><td>AUC=0.5</td><td>랜덤과 동일</td><td>모델 무의미</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>균형 데이터는 ROC-AUC, 불균형(Positive 적음)은 PR 곡선이 적합하다(135회 비교).</p></div>
+</article></section>
+<section id="optimize" class="section"><h2>9. 최적화·하이퍼파라미터</h2><article id="optimize-0" class="topic-card">
+<div class="topic-head"><div><h3>경사하강법·Adam·하이퍼파라미터 튜닝</h3><p class="pages">교재 범위: p.120~128</p></div>
+<span class="mnemonic">암기: Grid-Random-Bayes</span></div>
+<div class="chips"><span>SGD</span><span>Adam</span><span>Grid Search</span><span>Bayesian Opt</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>GD</td><td>BGD·SGD·Mini-batch — 기울기 반대</td><td>119·120회</td></tr><tr><td>Adam</td><td>Momentum + RMSprop</td><td>DL 기본 Optimizer</td></tr><tr><td>Grid Search</td><td>전 조합 탐색 — 차원의 저주</td><td>완전탐색</td></tr><tr><td>Random Search</td><td>무작위 샘플 — 효율적</td><td>고차원</td></tr><tr><td>Bayesian Opt</td><td>GP + Acquisition Function</td><td>132·131회</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>하이퍼파라미터는 Grid→Random→Bayesian 순으로 효율이 높아지며 Bayesian은 적은 시도로 최적에 근접한다.</p></div>
+</article></section>
+<section id="dl" class="section"><h2>10. 딥러닝 (DL)</h2><article id="dl-0" class="topic-card">
+<div class="topic-head"><div><h3>ML vs DL·ANN 구조</h3><p class="pages">교재 범위: p.129~131</p></div>
+<span class="mnemonic">암기: 입은출</span></div>
+<div class="chips"><span>DNN</span><span>Feature Engineering</span><span>GPU</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>ML vs DL</td><td>ML: 수동 특징 / DL: 자동 특징·대량 데이터·GPU</td><td>131회</td></tr><tr><td>ANN</td><td>입력·은닉·출력, Weight·Bias·Activation</td><td>133회</td></tr><tr><td>구성</td><td>Neuron·Loss·Backprop·Optimizer</td><td>6요소</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>DL은 다층 신경망으로 특징을 자동 추출하며 GPU·빅데이터가 전제 조건이다.</p></div>
+</article><article id="dl-1" class="topic-card">
+<div class="topic-head"><div><h3>퍼셉트론·MLP·XOR</h3><p class="pages">교재 범위: p.133~137</p></div>
+<span class="mnemonic">암기: 단층-XOR불가</span></div>
+<div class="chips"><span>Perceptron</span><span>ADALINE</span><span>MLP</span><span>XOR</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>단층</td><td>AND/OR 가능, XOR 불가</td><td>113회</td></tr><tr><td>ADALINE</td><td>연속 출력, LMS — Delta rule</td><td>역전파 기초</td></tr><tr><td>MLP</td><td>은닉층+역전파 → XOR 해결</td><td>비선형</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>단층 퍼셉트론은 선형분리만 가능하고 MLP+역전파로 XOR 등 비선형 문제를 해결한다.</p></div>
+</article><article id="dl-2" class="topic-card">
+<div class="topic-head"><div><h3>역전파·Vanishing Gradient</h3><p class="pages">교재 범위: p.138~145</p></div>
+<span class="mnemonic">암기: 순손역갱</span></div>
+<div class="chips"><span>Backprop</span><span>ReLU</span><span>Dropout</span><span>Batch Norm</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>역전파</td><td>순전파→손실→Chain Rule→가중치 갱신</td><td>119·133회</td></tr><tr><td>Vanishing</td><td>Sigmoid/Tanh 깊은층 기울기 소멸</td><td>2차 AI 겨울 원인</td></tr><tr><td>해결</td><td>ReLU·Batch Norm·Dropout·Pre-training</td><td>145p</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>역전파는 Chain Rule로 손실을 역전파해 가중치를 갱신하며 Vanishing Gradient는 ReLU·Batch Norm 등으로 완화한다.</p></div>
+</article><article id="dl-3" class="topic-card">
+<div class="topic-head"><div><h3>과적합·규제화</h3><p class="pages">교재 범위: p.149~153</p></div>
+<span class="mnemonic">암기: L1-L2-Drop-Early</span></div>
+<div class="chips"><span>L1</span><span>L2</span><span>Dropout</span><span>Early Stopping</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>Overfitting</td><td>Train good·Test bad — 분산↑</td><td>127회</td></tr><tr><td>L1/L2</td><td>Lasso(희소)·Ridge(축소)</td><td>Regularization</td></tr><tr><td>Dropout</td><td>학습 시 뉴런 확률적 비활성</td><td>앙상블 효과</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>과적합은 L1/L2·Dropout·Early Stopping·교차검증·데이터 확보로 대응한다.</p></div>
+</article><article id="dl-cnn" class="topic-card">
+<div class="topic-head"><div><h3>CNN</h3><p class="pages">교재 범위: p.155~159</p></div>
+<span class="mnemonic">암기: 컨풀-풀-FC</span></div>
+<div class="chips"><span>Convolution</span><span>Pooling</span><span>Padding</span><span>Stride</span></div>
+<div class="diagram"><pre>Input→Conv→Pool→Conv→Pool→Flatten→FC→Output</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>Conv</td><td>Kernel·Stride·Padding·Feature Map</td><td>128회 계층</td></tr><tr><td>Pooling</td><td>Max/Avg — 차원축소·위치불변</td><td>과적합 완화</td></tr><tr><td>FC</td><td>Flatten→Dense→Softmax</td><td>최종 분류</td></tr><tr><td>개선</td><td>ResNet·DenseNet·EfficientNet</td><td>Skip connection</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>CNN은 Conv로 국소 특징, Pooling으로 축소, FC로 분류하며 ResNet은 Skip connection으로 기울기 소실을 해결한다.</p></div>
+</article><article id="dl-rnn" class="topic-card">
+<div class="topic-head"><div><h3>RNN·LSTM·GRU·GAN</h3><p class="pages">교재 범위: p.160~166</p></div>
+<span class="mnemonic">암기: 순환-게이트</span></div>
+<div class="chips"><span>RNN</span><span>LSTM</span><span>GRU</span><span>GAN</span><span>BPTT</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>RNN</td><td>Hidden state 순환, BPTT — 장기의존성 문제</td><td>120회</td></tr><tr><td>LSTM</td><td>Forget·Input·Output Gate + Cell State</td><td>3게이트</td></tr><tr><td>GRU</td><td>Update·Reset — LSTM 경량화</td><td>2게이트</td></tr><tr><td>GAN</td><td>Generator vs Discriminator 적대학습</td><td>DeepFake·이미지생성</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>RNN은 시퀀스 학습, LSTM/GRU는 게이트로 장기의존성을 해결하고 GAN은 생성자·판별자 경쟁으로 합성 데이터를 생성한다.</p></div>
+</article></section>
+<section id="platform" class="section"><h2>11. 플랫폼·딥페이크·LangChain</h2><article id="platform-0" class="topic-card">
+<div class="topic-head"><div><h3>TensorFlow·LangChain·딥페이크</h3><p class="pages">교재 범위: p.167~171</p></div>
+<span class="mnemonic">암기: TF-Lang-Deep</span></div>
+<div class="chips"><span>TensorFlow</span><span>LangChain</span><span>Deepfake</span><span>GAN</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>TensorFlow</td><td>Google E2E DL — Keras, TF Lite, TF.js</td><td>그래프·Eager</td></tr><tr><td>LangChain</td><td>LLM 앱 프레임워크 — Chain·Agent·VectorDB</td><td>132회 예지정비</td></tr><tr><td>딥페이크</td><td>GAN·Autoencoder·Neural Rendering</td><td>133·135회</td></tr><tr><td>대응</td><td>탐지AI·워터마킹·법규·디지털리터러시</td><td>5대 대응</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">딥페이크 탐지</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>영상</td><td>CNN·Xception·프레임간 불일치</td><td>Blink·PPG</td></tr><tr><td>음성</td><td>MFCC·WaveNet</td><td>음향 특성</td></tr><tr><td>메타</td><td>EXIF·GAN artifact</td><td>포렌식</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>LangChain은 LLM+VectorDB+Chain으로 RAG·에이전트 앱을 구축하고, 딥페이크는 GAN 기반이며 탐지·법규·교육으로 대응한다.</p></div>
+</article></section>
+<section id="nlp" class="section"><h2>12. NLP·Transformer·LLM</h2><article id="nlp-0" class="topic-card">
+<div class="topic-head"><div><h3>NLP 개요·NLU·NLG</h3><p class="pages">교재 범위: p.172~174</p></div>
+<span class="mnemonic">암기: NLU-NLG</span></div>
+<div class="chips"><span>NLP</span><span>NLU</span><span>NLG</span><span>Tokenization</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>NLP</td><td>자연어 이해·생성·처리</td><td>비정형 텍스트</td></tr><tr><td>NLU</td><td>의미·문맥 이해</td><td>Intent·Entity</td></tr><tr><td>NLG</td><td>데이터→자연어 생성</td><td>요약·번역</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>NLP는 NLU(이해)와 NLG(생성)로 나뉘며 기계번역·챗봇·감성분석에 활용된다.</p></div>
+</article><article id="nlp-1" class="topic-card">
+<div class="topic-head"><div><h3>RNN→Attention→Transformer</h3><p class="pages">교재 범위: p.174~177</p></div>
+<span class="mnemonic">암기: RNN-Att-Trans</span></div>
+<div class="chips"><span>Seq2Seq</span><span>Attention</span><span>Self-Attention</span><span>Transformer</span></div>
+<div class="diagram"><pre>RNN→LSTM→Seq2Seq+Att→Transformer(Encoder-Decoder)</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>Attention</td><td>Query-Key-Value, Context vector 한계 해결</td><td>175p</td></tr><tr><td>Self-Attention</td><td>문장 내 단어 간 관계 — Q·K·V</td><td>병렬 연산</td></tr><tr><td>Transformer</td><td>Multi-Head·FFN·Positional Encoding</td><td>RNN 제거</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>Transformer는 Self-Attention으로 장거리 의존성을 병렬 학습하며 GPT·BERT의 기반이다.</p></div>
+</article><article id="gen-0" class="topic-card">
+<div class="topic-head"><div><h3>생성형 AI·판별 vs 생성 모델</h3><p class="pages">교재 범위: p.180~183</p></div>
+<span class="mnemonic">암기: 판별-생성</span></div>
+<div class="chips"><span>Generative</span><span>Discriminative</span><span>GAN</span><span>VAE</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>판별모델</td><td>P(Y|X) — SVM, LR</td><td>경계 학습</td></tr><tr><td>생성모델</td><td>P(X) 또는 P(X|Y) — GAN, VAE</td><td>데이터 생성</td></tr><tr><td>Explicit/Implicit</td><td>VAE(명시적) vs GAN(암시적)</td><td>밀도 추정</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>생성형 AI는 데이터 분포를 학습해 새 샘플을 생성하며 GAN·VAE·Diffusion이 대표적이다.</p></div>
+</article><article id="gen-1" class="topic-card">
+<div class="topic-head"><div><h3>GPT·ChatGPT 학습·RLHF</h3><p class="pages">교재 범위: p.178~179</p></div>
+<span class="mnemonic">암기: Pre-RLHF-FT</span></div>
+<div class="chips"><span>GPT</span><span>RLHF</span><span>PPO</span><span>Fine-tuning</span></div>
+<div class="diagram"><pre>Pretrain→Supervised FT→Reward Model→PPO(RLHF)</pre></div>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>Pretraining</td><td>대규모 텍스트, Transformer Decoder</td><td>Next token prediction</td></tr><tr><td>RLHF</td><td>Human Feedback + PPO</td><td>대화 최적화</td></tr><tr><td>Fine-tuning</td><td>Task-specific — QA·코드·번역</td><td>132회 Fine-tuning</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>ChatGPT는 Pretraining 후 RLHF(PPO)로 인간 선호를 반영하고 Task별 Fine-tuning으로 특화한다.</p></div>
+</article><article id="gen-2" class="topic-card">
+<div class="topic-head"><div><h3>LLM·Foundation Model·RAG</h3><p class="pages">교재 범위: p.180~193</p></div>
+<span class="mnemonic">암기: 검색-증강-생성</span></div>
+<div class="chips"><span>LLM</span><span>Foundation Model</span><span>RAG</span><span>Prompt Engineering</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>Foundation Model</td><td>대규모 사전학습·전이·파인튜닝</td><td>131·135회</td></tr><tr><td>LLM</td><td>수십억~조 parameter — GPT, LLaMA, Claude</td><td>135회 5고려·5아키텍처</td></tr><tr><td>RAG</td><td>Retrieve+Augment+Generate — VectorDB</td><td>135·134·132회</td></tr><tr><td>Prompt Engineering</td><td>Few-shot·CoT·Role — 135회</td><td>할루시네이션 완화</td></tr></tbody></table></div>
+<details class="topic-depth-wrap" open><summary><span class="depth-title">📋 답안용 핵심 정리</span><span class="depth-hint">접기/펼치기</span></summary><div class="topic-depth-body"><h4 class="depth-sub">LLM 적용 5고려 (135회)</h4><div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th><th>답안 포인트</th></tr></thead><tbody><tr><td>데이터</td><td>품질·보안·저작권</td><td>학습 데이터</td></tr><tr><td>인프라</td><td>GPU·클라우드·비용</td><td>추론 지연</td></tr><tr><td>윤리</td><td>편향·환각·프라이버시</td><td>거버넌스</td></tr><tr><td>통합</td><td>RAG·Fine-tuning·API</td><td>아키텍처</td></tr><tr><td>운영</td><td>모니터링·버전·MLOps</td><td>지속 개선</td></tr></tbody></table></div></div></details>
+<div class="answer-box"><strong>답안 확장 문장</strong><p>Foundation Model/LLM은 사전학습+Fine-tuning/RAG로 도메인 적용하며, RAG는 외부 지식 검색으로 환각을 줄인다.</p></div>
+</article><article id="gen-3" class="topic-card">
+<div class="topic-head"><div><h3>멀티모달·초거대AI·온디바이스</h3><p class="pages">교재 범위: p.134, 167</p></div>
+<span class="mnemonic">암기: 텍스트-이미지-음성</span></div>
+<div class="chips"><span>Multimodal</span><span>Super-Giant AI</span><span>On-device AI</span></div>
+
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>키워드/개념</th><th>답안 활용</th></tr></thead><tbody><tr><td>Multimodal</td><td>텍스트+이미지+음성 통합 — GPT-4V</td><td>134·135회</td></tr><tr><td>초거대AI</td><td>공공 가이드라인 — 도입원칙·사전고려</td><td>134회</td></tr><tr><td>On-device AI</td><td>엣지 추론 — NPU·경량모델</td><td>134·127회</td></tr></tbody></table></div>
+
+<div class="answer-box"><strong>답안 확장 문장</strong><p>멀티모달 LLM은 다중 입력을 통합 처리하고, 온디바이스 AI는 프라이버시·지연·오프라인을 위해 엣지에서 추론한다.</p></div>
+</article></section>
+<section id="answer-template" class="section"><h2>10. 기술사 답안 템플릿</h2>
+<article class="template-card"><h3>10.1 AI 1교시형 (약 30줄)</h3>
+<div class="diagram"><pre>① 개념 정의 (2~3줄)
+② 구성요소·알고리즘 표 (키워드 5~7개)
+③ 비교·도식 1개 (지도/비지도, ROC/PR 등)
+④ 결론·윤리·시사점 (2~3줄)</pre></div></article>
+<article class="template-card"><h3>10.2 AI 2교시형 (약 70줄)</h3>
+<div class="diagram"><pre>1. 개요 — 정의 · 배경 · 전체 흐름도
+2. 핵심 — 구성요소 · 비교표 · 절차/알고리즘
+3. 적용 — 사례·고려사항 · 기대효과
+4. 결론 — 한계 · 윤리 · 발전방향</pre></div>
+<div class="table-wrap"><table><thead><tr><th>유형</th><th>추천 구조</th></tr></thead><tbody>
+<tr><td>ML/DL</td><td>학습유형 → 알고리즘 → 하이퍼파라미터 → 평가지표 → 과적합 대응</td></tr>
+<tr><td>생성형AI</td><td>Foundation Model → LLM → Fine-tuning/RAG → 프롬프트 → 윤리</td></tr>
+<tr><td>강화학습</td><td>MDP → State/Action/Reward → Q-learning/DQN → 정책그래디언트</td></tr>
+</tbody></table></div></article>
+</section>
+<section id="flashcards" class="flash-section">
+<h2>11. 암기카드</h2>
+<div class="flash-controls">
+<input id="search" type="search" placeholder="검색…"/>
+<select id="catFilter"><option value="">전체 분류</option></select>
+<button id="shuffleBtn" type="button">섞기</button>
+<button id="revealBtn" type="button">전체 뒤집기</button>
+<button id="resetBtn" type="button">초기화</button>
+</div>
+<div class="flash-grid" id="cards"><div class="flash-card" data-cat="AI개요">
+<div class="card-front"><span>AI개요</span><p>ANI·AGI·ASI 차이?</p></div>
+<div class="card-back"><pre>ANI: 특정도메인(현재상용)
+AGI: 인간급 범용(연구중)
+ASI: 초월(이론적)</pre></div>
+</div><div class="flash-card" data-cat="AI개요">
+<div class="card-front"><span>AI개요</span><p>AI 윤리 3대 원칙?</p></div>
+<div class="card-back"><pre>① 인간존엄성 ② 공공선 ③ 합목적성
++ 10대 핵심요건</pre></div>
+</div><div class="flash-card" data-cat="AI개요">
+<div class="card-front"><span>AI개요</span><p>튜링테스트 통과 조건?</p></div>
+<div class="card-back"><pre>5분 5회 대화
+심판 1/3 이상 속이면 통과</pre></div>
+</div><div class="flash-card" data-cat="ML">
+<div class="card-front"><span>ML</span><p>지도/비지도/강화 차이?</p></div>
+<div class="card-back"><pre>지도: Label O (분류·회귀)
+비지도: Label X (군집·PCA)
+강화: Reward (정책학습)</pre></div>
+</div><div class="flash-card" data-cat="ML">
+<div class="card-front"><span>ML</span><p>파라미터 vs 하이퍼파라미터?</p></div>
+<div class="card-back"><pre>Parameter: 학습으로 결정(가중치)
+Hyperparameter: 사용자 설정(lr, K)</pre></div>
+</div><div class="flash-card" data-cat="군집">
+<div class="card-front"><span>군집</span><p>K-means vs DBSCAN?</p></div>
+<div class="card-back"><pre>K-means: K필요·구형
+DBSCAN: ε·MinPts·밀도·노이즈</pre></div>
+</div><div class="flash-card" data-cat="군집">
+<div class="card-front"><span>군집</span><p>Silhouette Coefficient?</p></div>
+<div class="card-back"><pre>군집 품질 — -1~1
+1에 가까울수록 잘 분리</pre></div>
+</div><div class="flash-card" data-cat="차원">
+<div class="card-front"><span>차원</span><p>차원의 저주?</p></div>
+<div class="card-back"><pre>고차원→거리 희석·과적합·탐색비용↑</pre></div>
+</div><div class="flash-card" data-cat="연관">
+<div class="card-front"><span>연관</span><p>Support·Confidence·Lift?</p></div>
+<div class="card-back"><pre>Support=P(A∪B)
+Confidence=P(B|A)
+Lift=Conf/P(B)</pre></div>
+</div><div class="flash-card" data-cat="분류">
+<div class="card-front"><span>분류</span><p>Gini vs Entropy?</p></div>
+<div class="card-back"><pre>불순도 측정 — 0=순수
+DT 분할 기준</pre></div>
+</div><div class="flash-card" data-cat="분류">
+<div class="card-front"><span>분류</span><p>SVM 핵심?</p></div>
+<div class="card-back"><pre>최대 Margin 초평면
+서포트벡터만 경계 결정
+Kernel→비선형</pre></div>
+</div><div class="flash-card" data-cat="앙상블">
+<div class="card-front"><span>앙상블</span><p>Bagging vs Boosting?</p></div>
+<div class="card-back"><pre>Bagging: 병렬 Bootstrap(RF)
+Boosting: 순차 오분류 가중</pre></div>
+</div><div class="flash-card" data-cat="평가">
+<div class="card-front"><span>평가</span><p>Precision·Recall·F1?</p></div>
+<div class="card-back"><pre>P=TP/(TP+FP)
+R=TP/(TP+FN)
+F1=2PR/(P+R)</pre></div>
+</div><div class="flash-card" data-cat="평가">
+<div class="card-front"><span>평가</span><p>ROC vs PR?</p></div>
+<div class="card-back"><pre>ROC: TPR vs FPR (균형)
+PR: P vs R (불균형)</pre></div>
+</div><div class="flash-card" data-cat="RL">
+<div class="card-front"><span>RL</span><p>Q-learning 특징?</p></div>
+<div class="card-back"><pre>Off-policy, Value-based
+Q(s,a)←r+γmaxQ(s&#x27;,a&#x27;)
+ε-greedy</pre></div>
+</div><div class="flash-card" data-cat="RL">
+<div class="card-front"><span>RL</span><p>Q-learning vs DQN?</p></div>
+<div class="card-back"><pre>Q: Q-table, 작은 상태공간
+DQN: DNN+Replay+Target</pre></div>
+</div><div class="flash-card" data-cat="RL">
+<div class="card-front"><span>RL</span><p>MDP 5요소?</p></div>
+<div class="card-back"><pre>State·Action·Reward·Transition·Policy</pre></div>
+</div><div class="flash-card" data-cat="DL">
+<div class="card-front"><span>DL</span><p>ML vs DL?</p></div>
+<div class="card-back"><pre>ML: 수동 Feature·적은 데이터
+DL: 자동 Feature·GPU·Big Data</pre></div>
+</div><div class="flash-card" data-cat="DL">
+<div class="card-front"><span>DL</span><p>단층 퍼셉트론 XOR?</p></div>
+<div class="card-back"><pre>선형분리만 가능→XOR 불가
+MLP+은닉층+역전파로 해결</pre></div>
+</div><div class="flash-card" data-cat="DL">
+<div class="card-front"><span>DL</span><p>Vanishing Gradient 해결?</p></div>
+<div class="card-back"><pre>ReLU·Batch Norm·Dropout
+Pre-training·Weight Init</pre></div>
+</div><div class="flash-card" data-cat="DL">
+<div class="card-front"><span>DL</span><p>과적합 해결?</p></div>
+<div class="card-back"><pre>L1/L2·Dropout·Early Stop
+CV·데이터 확보·차원축소</pre></div>
+</div><div class="flash-card" data-cat="CNN">
+<div class="card-front"><span>CNN</span><p>CNN 3계층?</p></div>
+<div class="card-back"><pre>Conv(특징추출)→Pool(축소)→FC(분류)</pre></div>
+</div><div class="flash-card" data-cat="RNN">
+<div class="card-front"><span>RNN</span><p>LSTM 3 Gate?</p></div>
+<div class="card-back"><pre>Forget·Input·Output
+Cell State로 장기기억</pre></div>
+</div><div class="flash-card" data-cat="GAN">
+<div class="card-front"><span>GAN</span><p>GAN 구조?</p></div>
+<div class="card-back"><pre>Generator(가짜생성)
+Discriminator(진위판별)
+적대학습</pre></div>
+</div><div class="flash-card" data-cat="NLP">
+<div class="card-front"><span>NLP</span><p>Self-Attention QKV?</p></div>
+<div class="card-back"><pre>Query·Key·Value
+내적→Softmax→가중합</pre></div>
+</div><div class="flash-card" data-cat="LLM">
+<div class="card-front"><span>LLM</span><p>ChatGPT 학습 3단?</p></div>
+<div class="card-back"><pre>Pretrain→RLHF(PPO)→Fine-tuning</pre></div>
+</div><div class="flash-card" data-cat="LLM">
+<div class="card-front"><span>LLM</span><p>RAG 3단?</p></div>
+<div class="card-back"><pre>Retrieve(검색)→Augment(컨텍스트)→Generate</pre></div>
+</div><div class="flash-card" data-cat="LLM">
+<div class="card-front"><span>LLM</span><p>Foundation Model?</p></div>
+<div class="card-back"><pre>대규모 사전학습
+전이·파인튜닝·다운스트림</pre></div>
+</div><div class="flash-card" data-cat="윤리">
+<div class="card-front"><span>윤리</span><p>적대적 공격 5유형?</p></div>
+<div class="card-back"><pre>Evasion·Poisoning·Extraction
+Inversion·Backdoor</pre></div>
+</div><div class="flash-card" data-cat="XAI">
+<div class="card-front"><span>XAI</span><p>LIME vs SHAP?</p></div>
+<div class="card-back"><pre>LIME: 국소 근사
+SHAP: Shapley 기여도</pre></div>
+</div><div class="flash-card" data-cat="딥페이크">
+<div class="card-front"><span>딥페이크</span><p>딥페이크 핵심기술?</p></div>
+<div class="card-back"><pre>GAN·Autoencoder·Neural Rendering
+탐지·법규·리터러시</pre></div>
+</div><div class="flash-card" data-cat="최적화">
+<div class="card-front"><span>최적화</span><p>Grid vs Random vs Bayesian?</p></div>
+<div class="card-back"><pre>Grid: 전조합(비용↑)
+Random: 샘플링
+Bayesian: GP+효율탐색</pre></div>
+</div></div>
+</section>
+<section id="past-exams" class="section"><h2>12. 기출문제</h2>
+<div class="table-wrap"><table><thead><tr><th>회차</th><th>구분</th><th>문제</th></tr></thead>
+<tbody><tr><td>135</td><td>컴시응</td><td>Monte Carlo Tree Search (MCTS)</td></tr><tr><td>135</td><td>컴시응</td><td>차원의 저주 (Curse of Dimensionality)</td></tr><tr><td>135</td><td>컴시응</td><td>RAG (Retrieval-Augmented Generation)</td></tr><tr><td>135</td><td>컴시응</td><td>생성형 AI 멀티모달 데이터 품질검증 (TTAK.KO-10.1558)</td></tr><tr><td>135</td><td>관리</td><td>PR 곡선 vs ROC 곡선 비교</td></tr><tr><td>135</td><td>관리</td><td>Multimodal LLM</td></tr><tr><td>135</td><td>관리</td><td>실루엣 계수 (Silhouette Coefficient)</td></tr><tr><td>135</td><td>관리</td><td>불편추정량 (Unbiased Estimator)</td></tr><tr><td>135</td><td>관리</td><td>VAE (Variational Autoencoder)</td></tr><tr><td>135</td><td>관리</td><td>AGI 관점에서 ANI의 필요성</td></tr><tr><td>135</td><td>관리</td><td>회귀모형 — 등분산성·다중공선성</td></tr><tr><td>135</td><td>관리</td><td>LLM 적용 5가지 고려사항·5가지 아키텍처</td></tr><tr><td>135</td><td>관리</td><td>프롬프트 엔지니어링 기술요소·활용방안</td></tr><tr><td>135</td><td>관리</td><td>딥페이크 — 개념·핵심기술·문제점·대응방안</td></tr><tr><td>135</td><td>관리</td><td>이항분포 vs 포아송분포</td></tr><tr><td>135</td><td>관리</td><td>빅데이터 시각화</td></tr><tr><td>135</td><td>관리</td><td>AI SW 품질보증 테스트 (Metamorphic, Neuron Coverage, 안전반경)</td></tr><tr><td>134</td><td>컴시응</td><td>온디바이스 AI</td></tr><tr><td>134</td><td>컴시응</td><td>공공부문 초거대 AI 도입·활용 가이드라인</td></tr><tr><td>134</td><td>컴시응</td><td>멀티모달 인공지능</td></tr><tr><td>134</td><td>관리</td><td>ML 성능지표</td></tr><tr><td>134</td><td>관리</td><td>이미지 데이터 어노테이션</td></tr><tr><td>134</td><td>관리</td><td>RAG</td></tr><tr><td>134</td><td>관리</td><td>AI 법적·윤리·기술 이슈와 해결방안</td></tr><tr><td>134</td><td>관리</td><td>SOM (Self Organizing Map)</td></tr><tr><td>133</td><td>관리</td><td>AI 신뢰성 개념·핵심속성</td></tr><tr><td>133</td><td>관리</td><td>딥페이크</td></tr><tr><td>133</td><td>관리</td><td>PLM → LLM 훈련 과정</td></tr><tr><td>133</td><td>관리</td><td>생성형 AI 보안위협·대응 (챗GPT 보안가이드라인)</td></tr><tr><td>133</td><td>관리</td><td>인공신경망 — FFNN·역전파·활성화함수</td></tr><tr><td>132</td><td>관리</td><td>베이지안 최적화</td></tr><tr><td>132</td><td>관리</td><td>다중공선성</td></tr><tr><td>132</td><td>관리</td><td>중심극한정리·t-검정·z-검정</td></tr><tr><td>132</td><td>관리</td><td>선형 SVM 마진 분류 2가지</td></tr><tr><td>132</td><td>관리</td><td>TF-IDF 계산</td></tr><tr><td>132</td><td>관리</td><td>LangChain + LLM 설비예지정비</td></tr><tr><td>132</td><td>컴시응</td><td>파인튜닝 (Fine-tuning)</td></tr><tr><td>132</td><td>컴시응</td><td>SVM 개념·동작·장단점</td></tr><tr><td>131</td><td>관리</td><td>데이터 차원축소</td></tr><tr><td>131</td><td>관리</td><td>ML vs DL 차이</td></tr><tr><td>131</td><td>관리</td><td>독립표본 t-검정 vs 대응표본 t-검정</td></tr><tr><td>131</td><td>관리</td><td>AI 윤리·거버넌스 모형</td></tr><tr><td>131</td><td>관리</td><td>AI 학습용 데이터 허브·품질관리</td></tr><tr><td>131</td><td>관리</td><td>Foundation Model</td></tr><tr><td>131</td><td>컴시응</td><td>Monte Carlo Method</td></tr><tr><td>131</td><td>컴시응</td><td>Autoencoder</td></tr><tr><td>131</td><td>컴시응</td><td>전이학습 (Transfer Learning)</td></tr><tr><td>131</td><td>컴시응</td><td>MDP·벨만방정식·강화학습</td></tr><tr><td>131</td><td>컴시응</td><td>추천시스템 (CBF·CF·행렬분해)</td></tr><tr><td>130</td><td>관리</td><td>ML 최적화 알고리즘</td></tr><tr><td>130</td><td>관리</td><td>K-means·DBSCAN·SVM</td></tr><tr><td>130</td><td>관리</td><td>DSML·MLOps</td></tr><tr><td>130</td><td>관리</td><td>의사결정나무</td></tr><tr><td>130</td><td>관리</td><td>적대적 공격·생성형 AI 보안취약점</td></tr><tr><td>129</td><td>관리</td><td>AI 윤리 3대 원칙·10대 요건</td></tr><tr><td>129</td><td>관리</td><td>K-Means vs DBSCAN</td></tr><tr><td>129</td><td>관리</td><td>딥뷰 (DeepView)</td></tr><tr><td>129</td><td>관리</td><td>데이터마이닝 vs 통계·오피니언마이닝</td></tr><tr><td>129</td><td>컴시응</td><td>튜링 테스트</td></tr><tr><td>129</td><td>컴시응</td><td>벤치마크 데이터셋</td></tr><tr><td>128</td><td>관리</td><td>ModelOps</td></tr><tr><td>128</td><td>관리</td><td>상관관계 vs 인과관계</td></tr><tr><td>128</td><td>관리</td><td>뉴로모픽 칩</td></tr><tr><td>128</td><td>관리</td><td>AI 학습용 데이터 품질관리 가이드라인</td></tr><tr><td>128</td><td>관리</td><td>데이터3법·마이데이터</td></tr><tr><td>128</td><td>관리</td><td>연합학습 (Federated Learning)</td></tr><tr><td>128</td><td>컴시응</td><td>CNN 계층</td></tr><tr><td>128</td><td>컴시응</td><td>유사도 (Jaccard·Cosine·Silhouette)</td></tr><tr><td>128</td><td>컴시응</td><td>AIaaS</td></tr><tr><td>128</td><td>컴시응</td><td>교차검증</td></tr><tr><td>128</td><td>컴시응</td><td>엣지컴퓨팅</td></tr><tr><td>127</td><td>관리</td><td>ModelOps</td></tr><tr><td>127</td><td>관리</td><td>과적합 원인·해결</td></tr><tr><td>127</td><td>관리</td><td>온디바이스 AI</td></tr><tr><td>126</td><td>관리</td><td>앙상블 Bagging vs Boosting</td></tr><tr><td>126</td><td>관리</td><td>AI 학습용 빅데이터·라벨링</td></tr><tr><td>126</td><td>컴시응</td><td>결측값 처리</td></tr><tr><td>126</td><td>컴시응</td><td>YOLO 얼굴검출</td></tr><tr><td>120</td><td>관리</td><td>앙상블 기법</td></tr><tr><td>120</td><td>관리</td><td>파라미터 vs 하이퍼파라미터·튜닝</td></tr><tr><td>120</td><td>컴시응</td><td>RNN</td></tr><tr><td>120</td><td>컴시응</td><td>선형회귀 vs 로지스틱회귀</td></tr><tr><td>119</td><td>관리</td><td>Gradient Descent</td></tr><tr><td>119</td><td>컴시응</td><td>SVM</td></tr><tr><td>119</td><td>컴시응</td><td>역전파</td></tr><tr><td>114</td><td>관리</td><td>Q-Learning</td></tr><tr><td>114</td><td>컴시응</td><td>강화학습</td></tr><tr><td>113</td><td>관리</td><td>MCTS</td></tr><tr><td>113</td><td>관리</td><td>퍼셉트론·XOR 한계</td></tr><tr><td>113</td><td>관리</td><td>유전알고리즘</td></tr><tr><td>111</td><td>관리</td><td>HMM</td></tr><tr><td>111</td><td>관리</td><td>혼동행렬·성능평가</td></tr><tr><td>110</td><td>관리</td><td>Random Forest</td></tr><tr><td>110</td><td>관리</td><td>AI 법제도 촉진·규제</td></tr><tr><td>108</td><td>관리</td><td>AI 특이점·엑소브레인·딥뷰</td></tr><tr><td>117</td><td>관리</td><td>XAI</td></tr><tr><td>117</td><td>관리</td><td>AI 편향(bias) 원인</td></tr><tr><td>116</td><td>관리</td><td>F1·Precision·Recall</td></tr></tbody></table></div>
+<p class="note">135~108회 AI 관련 기출을 교재 p.4~13 목차와 함께 정리했습니다. LLM·RAG·딥페이크·SVM·강화학습·XAI 빈출.</p>
+</section>
+</main>
+<button class="top-btn" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 위로</button>
+<script>
+const cards = Array.from(document.querySelectorAll('.flash-card'));
+cards.forEach(c => c.addEventListener('click', () => c.classList.toggle('flipped')));
+const catFilter = document.getElementById('catFilter');
+if (catFilter) {
+  [...new Set(cards.map(c => c.dataset.cat))].sort().forEach(cat => {
+    const opt = document.createElement('option'); opt.value = cat; opt.textContent = cat; catFilter.appendChild(opt);
+  });
+  function applyFilter() {
+    const q = (document.getElementById('search').value || '').toLowerCase();
+    const cat = catFilter.value;
+    cards.forEach(c => {
+      const text = c.textContent.toLowerCase();
+      const show = (!q || text.includes(q)) && (!cat || c.dataset.cat === cat);
+      c.style.display = show ? '' : 'none';
+    });
+  }
+  document.getElementById('search').addEventListener('input', applyFilter);
+  catFilter.addEventListener('change', applyFilter);
+  document.getElementById('shuffleBtn').addEventListener('click', () => {
+    const wrap = document.getElementById('cards');
+    cards.sort(() => Math.random() - 0.5).forEach(c => wrap.appendChild(c));
+  });
+  document.getElementById('revealBtn').addEventListener('click', () => cards.forEach(c => c.classList.add('flipped')));
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    document.getElementById('search').value=''; catFilter.value=''; cards.forEach(c => { c.style.display=''; c.classList.remove('flipped'); });
+  });
+}
+function filterMnemonics(inp){
+  const q=(inp.value||'').toLowerCase().trim();
+  const list=inp.closest('.mnemonic-book-section');
+  if(!list) return;
+  list.querySelectorAll('.mnemonic-item').forEach(el=>{
+    el.classList.toggle('hidden', q && !el.textContent.toLowerCase().includes(q));
+  });
+}
+
+const navLinks = Array.from(document.querySelectorAll('.sidebar nav a'));
+if (navLinks.length) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-35% 0px -60% 0px', threshold: 0 });
+  document.querySelectorAll('section[id], article[id]').forEach(s => obs.observe(s));
+}
+
+</script>
+</body>
+</html>
