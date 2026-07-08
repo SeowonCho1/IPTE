@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI 과목 모범답안 7문항 (합격 강화판) - 기술사 정리</title>
+<link rel="stylesheet" href="../assets/study-page.css"/>
+<style>
+  /* 모범답안 전용 보강 스타일 */
+  .ans-meta { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:6px; }
+  .score-tag { display:inline-block; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:800; }
+  .score-1 { background:#dbeafe; color:#1e40af; }
+  .score-2 { background:#fce7f3; color:#9d174d; }
+  .ans-sub { font-size:17px; color:#0f172a; margin:18px 0 6px; font-weight:800; border-left:4px solid var(--accent); padding-left:10px; }
+  .ans-sub:first-of-type { margin-top:10px; }
+  .add-flag { display:inline-block; background:#fef3c7; color:#92400e; font-size:11px; font-weight:800; padding:2px 7px; border-radius:6px; margin-left:6px; vertical-align:middle; }
+  .grade-box { background:#fff7ed; border:1px solid #fed7aa; border-left:5px solid var(--amber); border-radius:12px; padding:14px 16px; margin:14px 0 0; }
+  .grade-box strong { display:block; color:#9a3412; margin-bottom:6px; }
+  .grade-box ul { margin:0; padding-left:1.2em; font-size:14px; }
+  .case-box strong, .answer-box strong { display:block; margin-bottom:6px; color:#065f46; }
+  .answer-box strong { color:#1e40af; }
+  .why { background:#faf5ff; border-left:5px solid #7c3aed; border-radius:12px; padding:12px 16px; margin:12px 0 0; font-size:14px; }
+  .why strong { display:block; color:#5b21b6; margin-bottom:4px; }
+  .legend { font-size:12px; color:#64748b; margin:4px 0 0; }
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <a class="back-home" href="../index.html">← 목차로</a>
+  <h1>AI 모범답안<br>7문항 (강화판)</h1>
+  <p class="sub">정보관리·컴퓨터시스템응용 기술사</p>
+  <nav>
+    <a href="#guide">★ 합격 강화 가이드</a>
+    <a href="#q1">1. 교차검증 (10점)</a>
+    <a href="#q2">2. 차원의 저주 (10점)</a>
+    <a href="#q3">3. CNN vs GAN (10점)</a>
+    <a href="#q4">4. 지도 vs 비지도 (10점)</a>
+    <a href="#q5">5. 혼동행렬 (10점)</a>
+    <a href="#q6">6. 과적합·최적화 (25점)</a>
+    <a href="#q7">7. 생성형 AI 환각 (25점)</a>
+  </nav>
+</aside>
+<main class="main">
+  <a class="back-home back-home-main" href="../index.html">← 목차로</a>
+  <details class="mobile-toc"><summary>목차 열기</summary><div class="toc-links">
+    <a href="#guide">★ 합격 강화 가이드</a>
+    <a href="#q1">1. 교차검증</a>
+    <a href="#q2">2. 차원의 저주</a>
+    <a href="#q3">3. CNN vs GAN</a>
+    <a href="#q4">4. 지도 vs 비지도</a>
+    <a href="#q5">5. 혼동행렬</a>
+    <a href="#q6">6. 과적합·최적화</a>
+    <a href="#q7">7. 생성형 AI 환각</a>
+  </div></details>
+
+  <div class="hero">
+    <h1>AI 과목 모범답안 — 7문항 합격 강화판</h1>
+    <p>1교시형 5문항(각 10점) + 2교시형 2문항(각 25점)</p>
+    <p class="note">기본 답안 골격은 유지하고, <b>득점 요소(최신 사례·심화 키워드·아키텍트 제언·채점 포인트)</b>를 추가했습니다. <span class="add-flag">추가</span> 표시가 보강 내용입니다.</p>
+  </div>
+
+  <!-- ===================== 가이드 ===================== -->
+  <section class="panel" id="guide">
+    <span class="kicker">왜 이 답안이 더 잘 받는가</span>
+    <h2 style="border-bottom:4px solid var(--line)">합격률을 높이는 5가지 보강 원칙</h2>
+    <div class="analysis-grid">
+      <div class="analysis-card">
+        <h3>① 도식 + 표 필수</h3>
+        <p>채점위원은 5~10분 내 답안을 훑습니다. <b>1교시 1도식·1표</b>, 2교시 <b>흐름도·비교표·메커니즘</b>이 있어야 "정리력"이 보입니다.</p>
+      </div>
+      <div class="analysis-card">
+        <h3>② 최신·구체 사례</h3>
+        <p>GPT-4o·Claude·Diffusion·RAG·EU AI Act 등 <b>실명·연도·수치</b>를 넣으면 변별력이 생깁니다.</p>
+      </div>
+      <div class="analysis-card">
+        <h3>③ 아키텍트 관점</h3>
+        <p>기술 나열로 끝내지 말고 <b>거버넌스·MLOps·비용·리스크</b> 관점의 제언으로 마무리합니다.</p>
+      </div>
+      <div class="analysis-card">
+        <h3>④ 두문자 암기</h3>
+        <p>핵심 분류는 <b>두문자</b>로 묶어 두면 시험장에서 누락 없이 복원됩니다.</p>
+      </div>
+      <div class="analysis-card">
+        <h3>⑤ 채점 키워드</h3>
+        <p>각 문항 말미 <b>채점 포인트</b>의 키워드를 반드시 본문에 노출시켜 가점 확보.</p>
+      </div>
+      <div class="analysis-card">
+        <h3>⑥ 결론(소견)</h3>
+        <p>2교시형은 <b>한계 → 발전방향 → 시사점</b>의 결론 단락으로 완결성을 줍니다.</p>
+      </div>
+    </div>
+    <div class="note">아래 각 문항은 ① 기본 골격(원안) + ② <b>추가 보강(가점 요소)</b> + ③ 채점 포인트로 구성됩니다.</div>
+  </section>
+
+  <!-- ===================== 문항 1 ===================== -->
+  <section class="topic-card" id="q1">
+    <div class="ans-meta"><span class="score-tag score-1">1교시형 · 10점</span><span class="mnemonic">두문자 「홀케스루」</span></div>
+    <h2 style="border:0;padding:0;margin:0 0 4px;font-size:24px">문항 1. 교차검증(Cross-Validation)</h2>
+    <div class="chips"><span>일반화 성능</span><span>Out-of-Sample</span><span>K-Fold</span><span>Stratified</span><span>Data Leakage</span><span>Nested CV</span></div>
+
+    <h3 class="ans-sub">Ⅰ. 일반화 성능 검증을 위한 반복 학습·평가 기법, 교차검증의 정의</h3>
+    <ul>
+      <li>교차검증(CV): 원본 데이터를 학습·검증·테스트로 분할하고 구성을 달리하며 <b>반복 학습·평가</b>하여 일반화 성능(Generalization)을 추정하는 기법(Out-of-Sample Testing)</li>
+      <li><b>Hold-out</b>: Train/Val/Test 1회 분할, 단순·고속, 데이터 활용률 낮음</li>
+      <li><b>K-Fold</b>: K등분, K-1 학습·1 검증을 K회 반복 후 평균 성능 산출</li>
+      <li><b>Stratified K-Fold</b>: 클래스 비율 유지 분할, 불균형 데이터 대응</li>
+      <li><b>LOO-CV</b>: N-1 학습·1 검증을 N회, 활용 극대화·연산 비용 최대</li>
+    </ul>
+
+    <h3 class="ans-sub">Ⅱ. K-Fold 교차검증 메커니즘 및 분할 구조</h3>
+    <div class="diagram"><pre>          Fold1   Fold2   Fold3  …  FoldK
+Iter 1  [ Test ][Train ][Train ]…[Train ]
+Iter 2  [Train ][ Test ][Train ]…[Train ]
+  ⋮          ⋮       ⋮       ⋮         ⋮
+Iter K  [Train ][Train ][Train ]…[ Test ]
+─────────────────────────────────────────
+각 Fold가 1회씩 Test → K개 점수 평균 = CV Score
+σ(표준편차)로 안정성(분산)까지 함께 보고</pre></div>
+    <div class="formula-box"><strong>K 선택의 Bias-Variance 관점</strong><pre>K 작음 → Train 적음 → Bias↑ (과소평가)
+K 큼   → Fold 간 중복↑ → Variance↑·연산량↑
+실무 표준: K = 5 또는 10 (경험적 최적 trade-off)
+시계열: TimeSeriesSplit(과거 Train·미래 Test) — 무작위 분할 금지</pre></div>
+
+    <blockquote><strong>[간글]</strong> 교차검증은 분할·평가 구조이므로, 과적합·편향·분산 Trade-off 관점의 한계와 <b>데이터 누수(Leakage) 방지</b>가 핵심 보완점이다.</blockquote>
+
+    <h3 class="ans-sub">Ⅲ. 교차검증 한계 및 실무 적용 방안</h3>
+    <ul>
+      <li><b>한계</b>: K-Fold 연산 비용 증가, Hold-out 데이터 부족 시 불안정</li>
+      <li><b>불균형</b>: Stratified Split·Stratified K-Fold 필수</li>
+      <li><b>시계열</b>: 무작위 분할 금지, 시간순 분할(Walk-forward) 적용</li>
+      <li><b>실무</b>: Stacking·Blending 메타모델 학습 시 K-Fold OOF 예측값 활용</li>
+      <li><b>과적합 완화</b>: CV Score 기반 Early Stopping·하이퍼파라미터 튜닝</li>
+    </ul>
+
+    <details class="answer-extra-wrap" open>
+      <summary><span class="answer-extra-title">＋ 가점 보강 <span class="add-flag">추가</span></span><span class="answer-extra-hint">변별력 확보 요소</span></summary>
+      <div class="answer-extra">
+        <div class="table-wrap"><table>
+          <thead><tr><th>기법</th><th>핵심</th><th>적용 상황</th></tr></thead>
+          <tbody>
+            <tr><td>Nested CV</td><td>외부 Loop=성능추정 / 내부 Loop=튜닝</td><td>하이퍼파라미터 튜닝 시 <b>낙관 편향·누수 방지</b></td></tr>
+            <tr><td>Group K-Fold</td><td>같은 그룹(환자·사용자)은 한 Fold에만</td><td>중복 개체 누수 방지(의료·세션)</td></tr>
+            <tr><td>Repeated K-Fold</td><td>분할을 시드 바꿔 반복 평균</td><td>소규모 데이터 추정 안정화</td></tr>
+            <tr><td>TimeSeriesSplit</td><td>시간순 누적 분할</td><td>수요예측·금융·로그</td></tr>
+          </tbody>
+        </table></div>
+        <div class="case-box"><strong>데이터 누수(Data Leakage) 방지 — 단골 감점 포인트</strong>
+          정규화·결측대치·인코딩·오버샘플링(SMOTE)은 <b>반드시 Fold 내부(Train에 fit → Val에 transform)</b>에서 수행. 전체 데이터에 먼저 적용하면 검증 점수가 부풀려진다. scikit-learn <code>Pipeline + cross_val_score</code>로 구조적 차단.</div>
+        <div class="answer-box"><strong>아키텍트 제언</strong> Train/Val/Test 역할 분리, <b>Seed·Fold 고정</b>으로 재현성 확보, CI에서 CV Score 회귀 테스트, 데이터 버전(DVC)·실험 추적(MLflow)으로 평가 신뢰성 관리.</div>
+      </div>
+    </details>
+
+    <div class="grade-box"><strong>채점 포인트(반드시 노출할 키워드)</strong>
+      <ul><li>일반화·Out-of-Sample / K=5·10 / Bias-Variance와 K의 관계</li><li>Stratified(불균형)·TimeSeriesSplit(시계열)·Group(누수)</li><li>전처리는 Fold 내부 — Data Leakage 방지 / Nested CV</li></ul>
+    </div>
+  </section>
+
+  <!-- ===================== 문항 2 ===================== -->
+  <section class="topic-card" id="q2">
+    <div class="ans-meta"><span class="score-tag score-1">1교시형 · 10점</span><span class="mnemonic">원인 「밀거과탐」</span></div>
+    <h2 style="border:0;padding:0;margin:0 0 4px;font-size:24px">문항 2. 차원의 저주(Curse of Dimensionality)</h2>
+    <div class="chips"><span>Sparsity</span><span>거리 집중</span><span>Hughes 현상</span><span>PCA</span><span>Manifold</span><span>Embedding</span></div>
+
+    <h3 class="ans-sub">Ⅰ. 고차원 공간의 데이터 희소·거리 왜곡 현상, 차원의 저주 정의</h3>
+    <ul>
+      <li>차원의 저주: 피처(차원) 수 증가 시 데이터 밀도가 급감하고 거리가 수렴하여 학습이 어려워지는 현상</li>
+      <li>고차원에서 모든 점 간 거리가 유사해지는 <b>거리 집중(Distance Concentration)</b></li>
+      <li>샘플 수 대비 차원 증가 → 표본 희소(Sparsity)·과적합 위험 증대</li>
+      <li>Grid Search 시 조합 폭발 → 하이퍼파라미터·탐색 비용 급증</li>
+      <li>특징: 차원↑ → 일반화 성능↓, 연산·저장 비용↑</li>
+    </ul>
+
+    <h3 class="ans-sub">Ⅱ. 차원의 저주 발생 메커니즘</h3>
+    <div class="diagram"><pre>[저차원] ●─●─●        밀집·거리 구분 용이
+[고차원] ●  ·  ●  ·  ●  희소·거리 유사(구분 곤란)
+
+원인① 표본 밀도 감소(Sparsity)   ② 거리 척도 무의미화
+원인③ 과적합·분산 증가           ④ 탐색 공간 기하급수 확대</pre></div>
+    <div class="formula-box"><strong>왜 거리가 무의미해지는가 (정량적 직관) <span class="add-flag">추가</span></strong><pre>① 단위 초입방체 부피의 99%가 표면(껍질)에 집중 → 중심 데이터 희박
+② d→∞ 일 때  (Dmax − Dmin) / Dmin → 0
+   ⇒ 최근접·최원접 거리 차이 소멸 → KNN·군집 무력화
+③ 차원 d, 일정 밀도 유지에 필요한 표본 ∝ 지수적 증가</pre></div>
+
+    <blockquote><strong>[간글]</strong> 발생 원인이 구조적이므로, <b>차원 축소·규제·효율 탐색</b>과 함께, 실제 데이터가 저차원 다양체에 분포한다는 <b>Manifold 가설</b>을 활용한 대응이 필요하다.</blockquote>
+
+    <h3 class="ans-sub">Ⅲ. 차원의 저주 해결방안 및 실무 제언</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>전략</th><th>기법</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td>차원축소</td><td>PCA(선형·분산보존), Autoencoder/VAE(비선형 잠재표현)</td><td>특징 압축</td></tr>
+        <tr><td>특징선택</td><td>상관·정보이득·Lasso(L1)·RFE</td><td>불필요 변수 제거</td></tr>
+        <tr><td>규제화</td><td>L1/L2·Dropout·Early Stopping</td><td>과적합 억제</td></tr>
+        <tr><td>탐색효율</td><td>Grid → Random → Bayesian Opt</td><td>조합 폭발 완화</td></tr>
+        <tr><td>데이터</td><td>표본 확보·합성(SMOTE/증강)</td><td>밀도 보강</td></tr>
+      </tbody>
+    </table></div>
+
+    <details class="answer-extra-wrap" open>
+      <summary><span class="answer-extra-title">＋ 가점 보강 <span class="add-flag">추가</span></span><span class="answer-extra-hint">심화 키워드·최신 기법</span></summary>
+      <div class="answer-extra">
+        <ul>
+          <li><b>Hughes 현상(Peaking Phenomenon)</b>: 표본 고정 시 차원 증가에 따라 성능이 정점 후 하락 → "특징은 많을수록 좋다"는 오해 반박</li>
+          <li><b>Manifold 가설</b>: 고차원 데이터도 실제로는 저차원 다양체에 분포 → t-SNE·UMAP(시각화), Isomap(비선형 축소)</li>
+          <li><b>Embedding</b>: 희소 고차원(원-핫)을 밀집 저차원 벡터로(Word2Vec·딥러닝 임베딩) → NLP·추천의 표준 해법</li>
+          <li><b>Feature Hashing·Random Projection(Johnson–Lindenstrauss)</b>: 거리 보존하며 저차원 사상</li>
+        </ul>
+        <div class="answer-box"><strong>아키텍트 제언</strong> 모델링 전 <b>차원 d : 표본 N 비율</b>을 점검(경험칙 N ≫ d), 도메인 지식 기반 특징선택과 통계적 축소를 <b>병행</b>, 임베딩·정규화로 거리 기반 모델의 안정성 확보.</div>
+      </div>
+    </details>
+
+    <div class="grade-box"><strong>채점 포인트</strong>
+      <ul><li>Sparsity·거리 집중·(Dmax−Dmin)/Dmin→0 / Hughes 현상</li><li>PCA·AE / Lasso·특징선택 / Bayesian 탐색</li><li>Manifold 가설·Embedding(차별화 키워드)</li></ul>
+    </div>
+  </section>
+
+  <!-- ===================== 문항 3 ===================== -->
+  <section class="topic-card" id="q3">
+    <div class="ans-meta"><span class="score-tag score-1">1교시형 · 10점</span><span class="mnemonic">CNN=판별 · GAN=생성</span></div>
+    <h2 style="border:0;padding:0;margin:0 0 4px;font-size:24px">문항 3. CNN vs GAN 비교</h2>
+    <div class="chips"><span>Convolution</span><span>지역 특징</span><span>적대학습</span><span>Minimax</span><span>Mode Collapse</span><span>Diffusion</span></div>
+
+    <h3 class="ans-sub">Ⅰ. 공간 특징 학습 vs 적대적 생성 구조, CNN·GAN 개념</h3>
+    <ul>
+      <li><b>CNN</b>: 이미지 등 격자 데이터의 <b>지역 특징</b>을 학습하는 신경망. Conv→Pool→FC, Kernel·Stride·Padding·Feature Map. 지역연결·가중치 공유로 파라미터↓</li>
+      <li><b>GAN</b>: Generator·Discriminator 적대학습 기반 생성 모델. Generator(노이즈 z→합성), Discriminator(진·가 판별)</li>
+      <li>관점: CNN=판별(Discriminative), GAN=생성(Generative)</li>
+    </ul>
+
+    <h3 class="ans-sub">Ⅱ. CNN·GAN 아키텍처 비교</h3>
+    <div class="diagram"><pre>[CNN] Input → Conv → ReLU → Pool → … → Flatten → FC → Softmax
+
+[GAN]  z(noise) → Generator → Fake ┐
+                                    ├→ Discriminator → Real/Fake
+        Real Data ─────────────────┘   (G·D 번갈아 학습)</pre></div>
+    <div class="formula-box"><strong>핵심 수식 <span class="add-flag">추가</span></strong><pre>CNN  : 합성곱 (f∗k)(i,j)=ΣΣ f(i+m,j+n)·k(m,n)   손실 CE/MSE
+GAN  : min max  E[log D(x)] + E[log(1−D(G(z)))]   (Minimax, Nash 균형)
+        G    D</pre></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>항목</th><th>CNN</th><th>GAN</th></tr></thead>
+      <tbody>
+        <tr><td>목적</td><td>분류·탐지·인식</td><td>이미지·데이터 생성</td></tr>
+        <tr><td>학습</td><td>지도(Label)</td><td>비지도(적대학습)</td></tr>
+        <tr><td>손실</td><td>CE·MSE</td><td>Minimax·BCE</td></tr>
+        <tr><td>평가</td><td>Accuracy·F1·mAP</td><td>IS·FID(생성 품질)</td></tr>
+        <tr><td>활용</td><td>ResNet·YOLO</td><td>StyleGAN·딥페이크</td></tr>
+      </tbody>
+    </table></div>
+
+    <blockquote><strong>[간글]</strong> 구조·목적이 상이하나, <b>CNN은 GAN의 Discriminator·딥페이크 탐지 백본</b>으로 상호 활용되며, 최근 생성은 GAN→<b>Diffusion</b>으로 무게중심이 이동 중이다.</blockquote>
+
+    <h3 class="ans-sub">Ⅲ. 한계 및 실무 적용</h3>
+    <ul>
+      <li><b>CNN 한계</b>: 대량 Label·GPU 필요, 위치·회전 변환에 Pooling 의존(→ ViT/Attention 보완)</li>
+      <li><b>GAN 한계</b>: Mode Collapse(다양성 붕괴), 학습 불안정, 윤리·법적 리스크</li>
+      <li><b>상호활용</b>: GAN Discriminator에 CNN 백본(Xception 등), 딥페이크 탐지 CNN</li>
+      <li><b>아키텍트</b>: 목적별 아키텍처 분리, 생성 AI 거버넌스·탐지(워터마킹·C2PA) 체계 구축</li>
+    </ul>
+
+    <details class="answer-extra-wrap" open>
+      <summary><span class="answer-extra-title">＋ 가점 보강 <span class="add-flag">추가</span></span><span class="answer-extra-hint">변형·최신 동향</span></summary>
+      <div class="answer-extra">
+        <div class="table-wrap"><table>
+          <thead><tr><th>GAN 변형</th><th>특징</th></tr></thead>
+          <tbody>
+            <tr><td>DCGAN</td><td>Conv 기반 안정화 기본형</td></tr>
+            <tr><td>cGAN / Pix2Pix</td><td>조건부 생성(라벨·이미지 변환)</td></tr>
+            <tr><td>CycleGAN</td><td>비쌍(Unpaired) 도메인 변환</td></tr>
+            <tr><td>StyleGAN2/3</td><td>고해상도·스타일 제어 얼굴 생성</td></tr>
+            <tr><td>WGAN-GP</td><td>Wasserstein 거리로 Mode Collapse·불안정 완화</td></tr>
+          </tbody>
+        </table></div>
+        <div class="case-box"><strong>최신 동향 — Diffusion이 GAN을 대체하는 흐름</strong>
+          Stable Diffusion·DALL·E 3·Midjourney 등 <b>확산모델(Diffusion)</b>이 품질·다양성·학습 안정성에서 GAN을 능가하며 생성 주류로 부상. 단, 실시간 1-step 생성은 여전히 GAN(예: StyleGAN)이 유리.</div>
+        <div class="answer-box"><strong>아키텍트 제언</strong> 생성물은 <b>워터마킹·출처표시(C2PA)·딥페이크 탐지 CNN</b>을 병행하고, EU AI Act의 생성형 AI 표시 의무 등 규제 대응 거버넌스를 설계.</div>
+      </div>
+    </details>
+
+    <div class="grade-box"><strong>채점 포인트</strong>
+      <ul><li>합성곱·가중치 공유·Feature Map / Minimax·Generator·Discriminator</li><li>판별 vs 생성 / Mode Collapse·FID / 딥페이크 탐지</li><li>Diffusion 동향·생성 AI 거버넌스(차별화)</li></ul>
+    </div>
+  </section>
+
+  <!-- ===================== 문항 4 ===================== -->
+  <section class="topic-card" id="q4">
+    <div class="ans-meta"><span class="score-tag score-1">1교시형 · 10점</span><span class="mnemonic">Label 「유=지도 / 무=비지도」</span></div>
+    <h2 style="border:0;padding:0;margin:0 0 4px;font-size:24px">문항 4. 지도 학습 vs 비지도 학습 비교</h2>
+    <div class="chips"><span>Label</span><span>분류·회귀</span><span>군집·축소</span><span>반지도</span><span>자기지도(SSL)</span><span>전이학습</span></div>
+
+    <h3 class="ans-sub">Ⅰ. Label 유무에 따른 학습 패러다임</h3>
+    <ul>
+      <li>ML: 명시적 프로그래밍 없이 데이터로부터 패턴을 학습</li>
+      <li><b>지도학습</b>: 입력-정답(Label) 쌍으로 학습 → 예측(분류·회귀)</li>
+      <li><b>비지도학습</b>: Label 없이 구조·패턴 발견 → 탐색(군집·축소·연관)</li>
+      <li>보조: 강화학습(Reward 기반 정책), <b>반지도·자기지도</b>(하이브리드)</li>
+    </ul>
+
+    <h3 class="ans-sub">Ⅱ. 지도·비지도 학습 구조 비교</h3>
+    <div class="diagram"><pre>[지도]   (X, Y) → Model → Ŷ ≈ Y        (오차 최소화)
+[비지도]  X      → Model → Pattern      (Cluster/Rule/Latent)</pre></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>구분</th><th>지도학습</th><th>비지도학습</th></tr></thead>
+      <tbody>
+        <tr><td>Label</td><td>O</td><td>X</td></tr>
+        <tr><td>과제</td><td>Classification·Regression</td><td>Clustering·PCA·Association</td></tr>
+        <tr><td>알고리즘</td><td>KNN·DT·SVM·RF·LR</td><td>K-means·DBSCAN·Apriori</td></tr>
+        <tr><td>평가</td><td>Accuracy·F1·MSE</td><td>Silhouette·Elbow·Lift</td></tr>
+        <tr><td>한계</td><td>Label 비용·편향</td><td>해석·검증 곤란</td></tr>
+      </tbody>
+    </table></div>
+
+    <blockquote><strong>[간글]</strong> 학습 유형은 문제 정의에 종속되므로, <b>반지도·자기지도(SSL)·전이학습</b> 등 Label 비용을 줄이는 하이브리드 전략 검토가 필요하다.</blockquote>
+
+    <h3 class="ans-sub">Ⅲ. 실무 선택 기준 및 아키텍트 제언</h3>
+    <ul>
+      <li><b>지도</b>: 목표 변수 명확·Label 확보 가능(사기탐지·가격예측)</li>
+      <li><b>비지도</b>: 고객세분·이상탐지·차원축소·장바구니 분석</li>
+      <li><b>반지도</b>: 소량 Label + 대량 Unlabeled(의료·제조)</li>
+      <li><b>전이학습</b>: 사전학습 모델 Fine-tuning으로 Label 비용 절감</li>
+    </ul>
+
+    <details class="answer-extra-wrap" open>
+      <summary><span class="answer-extra-title">＋ 가점 보강 <span class="add-flag">추가</span></span><span class="answer-extra-hint">최신 패러다임</span></summary>
+      <div class="answer-extra">
+        <div class="table-wrap"><table>
+          <thead><tr><th>패러다임</th><th>핵심</th><th>대표 사례</th></tr></thead>
+          <tbody>
+            <tr><td>자기지도(Self-Supervised)</td><td>데이터 자체로 가짜 정답 생성(MLM·대조학습)</td><td>BERT·GPT 사전학습·SimCLR</td></tr>
+            <tr><td>반지도(Semi-Supervised)</td><td>소량 Label+대량 Unlabeled</td><td>Pseudo-Labeling·FixMatch</td></tr>
+            <tr><td>Active Learning</td><td>불확실 샘플만 선별 라벨링</td><td>라벨링 비용 최소화</td></tr>
+            <tr><td>강화학습</td><td>Reward로 정책 학습</td><td>로봇·RLHF</td></tr>
+          </tbody>
+        </table></div>
+        <div class="case-box"><strong>핵심 인사이트</strong> 현재 LLM·Foundation Model의 사전학습은 대부분 <b>자기지도학습(SSL)</b>이며, 비지도/지도의 경계를 허무는 핵심 동력이다. "라벨이 비싼" 현실에서 SSL·반지도·Active Learning이 실무 표준 전략.</div>
+        <div class="answer-box"><strong>아키텍트 제언</strong> 데이터 성숙도·Label 전략·평가지표를 유형별로 설계하고, 사전학습(SSL)+소량 Fine-tuning(지도) 조합으로 비용·성능을 최적화.</div>
+      </div>
+    </details>
+
+    <div class="grade-box"><strong>채점 포인트</strong>
+      <ul><li>Label 유무·예측 vs 탐색 / 분류·회귀 / 군집·PCA·연관</li><li>Silhouette·Elbow(비지도 평가) / 전이학습</li><li>자기지도(SSL)·반지도·Active Learning(차별화)</li></ul>
+    </div>
+  </section>
+
+  <!-- ===================== 문항 5 ===================== -->
+  <section class="topic-card" id="q5">
+    <div class="ans-meta"><span class="score-tag score-1">1교시형 · 10점</span><span class="mnemonic">「TP·TN·FP·FN」</span></div>
+    <h2 style="border:0;padding:0;margin:0 0 4px;font-size:24px">문항 5. 혼동행렬(Confusion Matrix) 및 성능평가</h2>
+    <div class="chips"><span>Precision/Recall</span><span>F1</span><span>ROC-AUC</span><span>PR-AUC</span><span>Threshold</span><span>Cost Matrix</span></div>
+
+    <h3 class="ans-sub">Ⅰ. 분류 결과 오분류 구조 표현, 혼동행렬 정의</h3>
+    <ul>
+      <li>혼동행렬: 실제(Actual)×예측(Predicted) 교차표 — TP(정탐)·TN(정음)·FP(오탐)·FN(미탐)</li>
+      <li>분류 모델 성능지표 산출의 기초 행렬, 이진·다중 분류 모두 확장</li>
+      <li>불균형 데이터에서 <b>Accuracy 단독 사용은 부적절</b>(다수 클래스 편향)</li>
+    </ul>
+
+    <h3 class="ans-sub">Ⅱ. 혼동행렬 구조 및 성능지표 산식</h3>
+    <div class="diagram"><pre>              예측 Positive   예측 Negative
+실제 Positive |     TP      |     FN      |
+실제 Negative |     FP      |     TN      |</pre></div>
+    <div class="formula-box"><strong>핵심 지표</strong><pre>Precision = TP/(TP+FP)        정밀도·오탐 억제
+Recall(TPR) = TP/(TP+FN)      재현율·미탐 억제
+F1 = 2·P·R/(P+R)              P·R 조화평균
+Accuracy = (TP+TN)/Total      균형 데이터 한정</pre></div>
+
+    <blockquote><strong>[간글]</strong> 기본 지표 산출 후, 데이터 특성과 <b>비즈니스 비용(Cost)</b>에 따라 ROC-AUC·PR 곡선·임계값 조정 등 보완 평가가 필요하다.</blockquote>
+
+    <h3 class="ans-sub">Ⅲ. 불균형 데이터 대응 및 실무 제언</h3>
+    <ul>
+      <li><b>불균형</b>: Recall·F1·PR-AUC 우선, Threshold 조정</li>
+      <li><b>의료·사기</b>: FN 비용 큼 → Recall·민감도 중시</li>
+      <li><b>스팸·추천</b>: FP 비용 큼 → Precision 중시</li>
+      <li><b>ROC</b>: TPR vs FPR·AUC(균형) / <b>PR Curve</b>: P vs R(희귀 Positive)</li>
+    </ul>
+
+    <details class="answer-extra-wrap" open>
+      <summary><span class="answer-extra-title">＋ 가점 보강 <span class="add-flag">추가</span></span><span class="answer-extra-hint">확장 지표·다중분류</span></summary>
+      <div class="answer-extra">
+        <div class="formula-box"><strong>확장 지표</strong><pre>Specificity(TNR) = TN/(TN+FP)      FPR = FP/(FP+TN)
+Balanced Acc = (TPR+TNR)/2          불균형 보정 정확도
+MCC = (TP·TN − FP·FN)/√(…)          불균형에 강건(−1~1)
+Cohen's Kappa                        우연 일치 보정 일치도</pre></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>다중분류 평균</th><th>의미</th><th>적합</th></tr></thead>
+          <tbody>
+            <tr><td>Macro</td><td>클래스별 단순 평균</td><td>소수 클래스 동등 중시</td></tr>
+            <tr><td>Micro</td><td>전체 TP/FP/FN 합산</td><td>샘플 단위 전체 성능</td></tr>
+            <tr><td>Weighted</td><td>클래스 빈도 가중</td><td>분포 반영</td></tr>
+          </tbody>
+        </table></div>
+        <div class="case-box"><strong>실무 핵심</strong> ① 불균형 심하면 ROC-AUC는 낙관적 → <b>PR-AUC</b>가 더 정직. ② <b>Threshold Moving</b>·Cost-Sensitive Learning으로 운영점 결정. ③ 확률 신뢰도는 <b>Calibration(Platt/Isotonic)</b>으로 보정.</div>
+        <div class="answer-box"><strong>아키텍트 제언</strong> 비즈니스 <b>Cost Matrix</b>(FP·FN 비용)를 사전 합의하고, 지표·임계값·재학습 주기를 SLA로 명문화, 운영 중 분포 변화(Drift) 모니터링.</div>
+      </div>
+    </details>
+
+    <div class="grade-box"><strong>채점 포인트</strong>
+      <ul><li>TP/TN/FP/FN·Precision/Recall/F1 산식 정확히</li><li>불균형 → PR-AUC·Threshold·Cost / 도메인별(FN vs FP) 비용</li><li>MCC·Balanced Acc·Macro/Micro·Calibration(차별화)</li></ul>
+    </div>
+  </section>
+
+  <!-- ===================== 문항 6 ===================== -->
+  <section class="topic-card" id="q6">
+    <div class="ans-meta"><span class="score-tag score-2">2교시형 · 25점</span><span class="mnemonic">「편향=과소 / 분산=과적」</span></div>
+    <h2 style="border:0;padding:0;margin:0 0 4px;font-size:24px">문항 6. ML 모델 — 과적합·과소적합, 파라미터·하이퍼파라미터, 최적화</h2>
+    <div class="chips"><span>일반화</span><span>Bias-Variance</span><span>규제</span><span>하이퍼파라미터</span><span>Bayesian Opt</span><span>MLOps</span></div>
+
+    <h3 class="ans-sub">Ⅰ. 데이터 기반 예측 모델링과 일반화 과제 (개요)</h3>
+    <ul>
+      <li>ML 모델: 데이터로부터 패턴을 학습·예측·분류하는 구조(Training→Model→Inference)</li>
+      <li>핵심 과제: Train 성능과 Test 성능 간 <b>일반화 격차 최소화</b></li>
+      <li><b>Bias-Variance Trade-off</b>가 모델 복잡도·성능을 좌우</li>
+      <li>실무: 데이터 품질·모델 선택·검증·튜닝의 통합 설계 필요</li>
+    </ul>
+
+    <h3 class="ans-sub">Ⅱ. 과적합·과소적합 메커니즘 및 파라미터 구분</h3>
+    <div class="diagram"><pre>오차
+ │＼            ← 총오차 = Bias² + Variance + 노이즈
+ │  ＼ Bias        (편향: 과소적합)
+ │    ╲___ ___／   ← 최적 복잡도(일반화 최소 오차)
+ │        ╳
+ │    ___／  ＼___ Variance (분산: 과적합)
+ └──────────────────────→ 모델 복잡도
+[과소적합] Train↑오차·Test↑오차 (Bias 과대)
+[과적합]  Train↓오차·Test↑오차 (Variance 과대)</pre></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>구분</th><th>Parameter</th><th>Hyperparameter</th></tr></thead>
+      <tbody>
+        <tr><td>정의</td><td>학습으로 결정(가중치)</td><td>사용자 사전 설정</td></tr>
+        <tr><td>예시</td><td>W, b, μ, σ</td><td>lr, epoch, batch, depth, K, C, λ</td></tr>
+        <tr><td>튜닝</td><td>역전파·경사하강(GD)</td><td>CV·탐색 알고리즘</td></tr>
+      </tbody>
+    </table></div>
+    <div class="formula-box"><strong>정규화(규제) 수식 <span class="add-flag">추가</span></strong><pre>L2(Ridge): Loss + λΣw²     → 가중치 축소(완만)
+L1(Lasso): Loss + λΣ|w|     → 희소해·특징선택 효과
+Elastic Net: L1+L2 결합
+λ↑ → 모델 단순화(Bias↑·Variance↓)</pre></div>
+
+    <blockquote><strong>[간글]</strong> 적합도 문제는 <b>파라미터 학습</b>과 <b>하이퍼파라미터 탐색</b>의 이중 최적화로 해결하며, 진단은 Learning/Validation Curve로 한다.</blockquote>
+
+    <h3 class="ans-sub">Ⅲ. 비교 및 하이퍼파라미터 최적화 기법</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>항목</th><th>과적합(Over)</th><th>과소적합(Under)</th></tr></thead>
+      <tbody>
+        <tr><td>Train/Test</td><td>Train 좋음 / Test 나쁨</td><td>둘 다 나쁨</td></tr>
+        <tr><td>원인</td><td>분산↑·모델 과복잡</td><td>편향↑·모델 단순</td></tr>
+        <tr><td>대응</td><td>규제·Dropout·Early Stop·데이터↑</td><td>모델 복잡화·특징↑·학습↑</td></tr>
+      </tbody>
+    </table></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>탐색 기법</th><th>특징</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td>Grid Search</td><td>전 조합 탐색</td><td>차원의 저주·고비용</td></tr>
+        <tr><td>Random Search</td><td>무작위 샘플</td><td>고차원에서 효율↑</td></tr>
+        <tr><td>Bayesian Opt</td><td>GP+Acquisition으로 유망 영역 집중</td><td>적은 시도로 최적</td></tr>
+        <tr><td>Hyperband/BOHB <span class="add-flag">추가</span></td><td>조기 종료+자원 배분</td><td>대규모 효율 탐색</td></tr>
+      </tbody>
+    </table></div>
+
+    <blockquote><strong>[간글]</strong> 탐색 기법 선정과 함께, <b>MLOps 관점의 재현·모니터링</b>이 실무 완성도를 좌우한다.</blockquote>
+
+    <h3 class="ans-sub">Ⅳ. 실무 해결 방안 및 아키텍트 인사이트 (결론)</h3>
+    <ul>
+      <li><b>과적합</b>: L1/L2·Dropout·Batch Norm·Data Augmentation·앙상블</li>
+      <li><b>과소적합</b>: Feature Engineering·모델 용량 확대·학습 강화</li>
+      <li><b>검증</b>: K-Fold CV·Hold-out·Learning/Validation Curve로 진단</li>
+      <li><b>튜닝</b>: Grid→Random→Bayesian→Hyperband, CV Score 기준, AutoML(Optuna) 활용</li>
+    </ul>
+
+    <details class="answer-extra-wrap" open>
+      <summary><span class="answer-extra-title">＋ 가점 보강 — 결론 단락 강화 <span class="add-flag">추가</span></span><span class="answer-extra-hint">2교시 완결성</span></summary>
+      <div class="answer-extra">
+        <div class="case-box"><strong>최신 자동화 기법</strong> Optuna(TPE)·Ray Tune·Population Based Training(PBT)으로 분산 탐색, AutoML(AutoGluon)로 모델·특징·튜닝 자동화.</div>
+        <div class="answer-box"><strong>아키텍트 인사이트(결론)</strong>
+          ① <b>거버넌스</b>: 실험 추적(MLflow)·모델 레지스트리·버전 관리로 재현성 확보<br>
+          ② <b>운영</b>: 배포 후 <b>Data/Concept Drift</b> 모니터링과 자동 재학습(CT) 파이프라인<br>
+          ③ <b>정합</b>: 비즈니스 KPI와 ML 지표를 연동, 비용·지연·정확도 trade-off를 SLA로 합의<br>
+          ④ <b>발전방향</b>: 한정 데이터에선 전이·자기지도학습으로 Bias·Variance를 동시에 완화.</div>
+      </div>
+    </details>
+
+    <div class="grade-box"><strong>채점 포인트</strong>
+      <ul><li>Bias-Variance 분해·총오차 그래프 / Parameter vs Hyperparameter 표</li><li>규제 수식(L1/L2·λ)·Dropout·Early Stop / Grid·Random·Bayesian</li><li>Learning Curve 진단 / MLOps·Drift·CT(결론 차별화)</li></ul>
+    </div>
+  </section>
+
+  <!-- ===================== 문항 7 ===================== -->
+  <section class="topic-card" id="q7">
+    <div class="ans-meta"><span class="score-tag score-2">2교시형 · 25점</span><span class="mnemonic">개선 「RAG·검증·가드·거버」</span></div>
+    <h2 style="border:0;padding:0;margin:0 0 4px;font-size:24px">문항 7. 생성형 AI 환각(Hallucination) — 원인·문제점·개선방안</h2>
+    <div class="chips"><span>Next Token</span><span>RAG</span><span>Fact-checking</span><span>Guardrails</span><span>RLHF/DPO</span><span>거버넌스</span></div>
+
+    <h3 class="ans-sub">Ⅰ. 확률적 텍스트 생성의 신뢰성 한계 (도입)</h3>
+    <ul>
+      <li>환각: LLM이 사실과 무관한 내용을 그럴듯하게 생성하는 현상</li>
+      <li>Next Token Prediction 기반 <b>확률적 생성</b> 구조의 본질적 한계</li>
+      <li>Foundation Model·LLM(GPT·Claude·Gemini·LLaMA) 확산으로 리스크 대두</li>
+      <li>의료·법률·금융 등 고신뢰 도메인에서 치명적 오류 유발</li>
+    </ul>
+
+    <h3 class="ans-sub">Ⅱ. 환각 발생 메커니즘 및 원인</h3>
+    <div class="diagram"><pre>[LLM 추론] Prompt → Transformer(Self-Attention) → Token 확률분포 → Sampling → 출력
+                                                         ↑ 그럴듯함(확률) ≠ 사실(진실)</pre></div>
+    <ul>
+      <li>원인① 학습 데이터 노이즈·오정보·<b>지식 단절(Knowledge Cutoff)</b></li>
+      <li>원인② 맥락 윈도우 한계·장기 의존성 손실</li>
+      <li>원인③ 확률 최대화 편향(그럴듯함 ≠ 정확함), 샘플링 온도</li>
+      <li>원인④ 도메인 미세조정 부재·RLHF의 보상 해킹(Sycophancy)</li>
+      <li>원인⑤ 외부 지식 미연동·검증 부재</li>
+    </ul>
+    <div class="table-wrap"><table>
+      <thead><tr><th>환각 유형 <span class="add-flag">추가</span></th><th>정의</th></tr></thead>
+      <tbody>
+        <tr><td>Intrinsic</td><td>입력·맥락과 모순되는 출력</td></tr>
+        <tr><td>Extrinsic</td><td>입력에 없는·검증 불가한 사실 날조</td></tr>
+        <tr><td>Faithfulness</td><td>근거(소스) 충실성 결여</td></tr>
+        <tr><td>Factuality</td><td>세계 사실과의 불일치</td></tr>
+      </tbody>
+    </table></div>
+
+    <blockquote><strong>[간글]</strong> 구조적 원인이므로, <b>검색 증강·검증·가드레일·거버넌스</b>의 복합 완화 전략이 필요하다.</blockquote>
+
+    <h3 class="ans-sub">Ⅲ. 환각의 문제점 및 도메인별 리스크</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>문제</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr><td>사실 왜곡</td><td>허위 인용·통계·법조문 생성</td></tr>
+        <tr><td>의사결정</td><td>잘못된 조언·자동화 오류</td></tr>
+        <tr><td>보안</td><td>Prompt Injection·데이터 유출</td></tr>
+        <tr><td>법·윤리</td><td>저작권·개인정보·책임 소재 불명</td></tr>
+        <tr><td>운영</td><td>사용자 신뢰 하락·브랜드 리스크</td></tr>
+      </tbody>
+    </table></div>
+    <div class="limit-box"><strong>고신뢰 도메인</strong><p>단일 LLM 응답 의존 구조는 구조적으로 취약 → Human-in-the-loop 필수.</p></div>
+
+    <blockquote><strong>[간글]</strong> 문제 인식에 기반하여 <b>기술·프로세스·거버넌스</b>의 복합 개선이 요구된다.</blockquote>
+
+    <h3 class="ans-sub">Ⅳ. 환각 개선 방안 및 아키텍트 제언 (결론)</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>계층</th><th>기법</th><th>핵심</th></tr></thead>
+      <tbody>
+        <tr><td>지식 연동</td><td><b>RAG</b>(Retrieve→Augment→Generate)</td><td>VectorDB·외부 지식·출처 인용</td></tr>
+        <tr><td>프롬프트</td><td>Few-shot·CoT·Role·출처 요구</td><td>"모르면 모른다" 유도</td></tr>
+        <tr><td>학습</td><td>Fine-tuning·RLHF·<b>DPO</b></td><td>도메인 코퍼스·선호 정렬</td></tr>
+        <tr><td>검증</td><td>Fact-check·Human-in-the-loop·Confidence</td><td>출력 사후 검증</td></tr>
+        <tr><td>가드레일</td><td>출력 필터·정책 엔진·API 제한</td><td>유해·이탈 차단</td></tr>
+      </tbody>
+    </table></div>
+
+    <details class="answer-extra-wrap" open>
+      <summary><span class="answer-extra-title">＋ 가점 보강 — 최신 기법·거버넌스 <span class="add-flag">추가</span></span><span class="answer-extra-hint">2교시 변별력</span></summary>
+      <div class="answer-extra">
+        <div class="table-wrap"><table>
+          <thead><tr><th>최신 완화 기법</th><th>요지</th></tr></thead>
+          <tbody>
+            <tr><td>Self-RAG / CoVe</td><td>스스로 검색 필요성 판단·답변 자체 검증(Chain-of-Verification)</td></tr>
+            <tr><td>GraphRAG / Hybrid Search</td><td>지식그래프·키워드+벡터 결합으로 근거 정확도↑</td></tr>
+            <tr><td>Reranking·Chunking 최적화</td><td>검색 품질이 RAG 환각률을 좌우</td></tr>
+            <tr><td>Constitutional AI / Guardrails</td><td>원칙 기반 자기교정·NeMo Guardrails·Llama Guard</td></tr>
+          </tbody>
+        </table></div>
+        <div class="case-box"><strong>측정·평가</strong> 환각은 "관리하려면 측정"이 원칙 — <b>TruthfulQA·FActScore·RAGAS</b>(faithfulness·answer relevancy)로 정량 평가하고 회귀 테스트에 포함.</div>
+        <div class="answer-box"><strong>아키텍트 인사이트(결론)</strong>
+          ① 아키텍처: <b>LLM 단독 → RAG + 검증 + 가드레일 + Human-in-the-loop</b> 통합 설계<br>
+          ② 거버넌스: <b>EU AI Act·NIST AI RMF·ISO/IEC 42001</b> 기반 위험관리, 출처·면책·로깅 의무화<br>
+          ③ 운영: 프롬프트·모델 버전 관리, 환각률 모니터링·드리프트 대응, 보안(Prompt Injection 방어)<br>
+          ④ 발전방향: 도메인 특화 sLLM + RAG로 비용·신뢰성 균형, 책임있는 AI(Responsible AI) 체계 정착.</div>
+      </div>
+    </details>
+
+    <div class="grade-box"><strong>채점 포인트</strong>
+      <ul><li>Next Token·확률 최대화·지식 단절·맥락 한계(원인)</li><li>RAG·CoT·Fine-tuning/RLHF·Fact-check·Guardrails(개선 4계층)</li><li>Intrinsic/Extrinsic·Self-RAG·RAGAS·EU AI Act·NIST RMF(차별화)</li></ul>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2 style="border-bottom:4px solid var(--line)">마무리 — 시험장 적용 팁</h2>
+    <ul>
+      <li><b>1교시(10점)</b>: 정의 → 도식 1개 → 비교표 1개 → 결론 1~2줄. 약 1페이지·30줄 분량으로 압축.</li>
+      <li><b>2교시(25점)</b>: 개요 → 메커니즘/비교 → 적용/최적화 → <b>결론(한계·발전방향·시사점)</b>까지 4단 구성, 2.5~3페이지.</li>
+      <li>각 문항 <b>채점 포인트 키워드</b>를 본문에 빠짐없이 노출 → 가점 누락 방지.</li>
+      <li>최신 사례(GPT·Claude·Diffusion·RAG·EU AI Act)와 <b>아키텍트 제언</b>으로 변별력 확보.</li>
+    </ul>
+  </section>
+
+  <a class="top-btn" href="#guide">▲ 위로</a>
+</main>
+</body>
+</html>
